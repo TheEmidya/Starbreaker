@@ -1,0 +1,43 @@
+[gd_scene format=3 uid="uid://e73lcthekdry"]
+
+[sub_resource type="GDScript" id="GDScript_yqsox"]
+script/source = "extends CharacterBody2D
+
+var direction = Vector2.ZERO
+
+func _physics_process(delta: float) -> void:
+	velocity = direction
+	move_and_slide()
+
+func hitbox_entered(area: Area2D) -> void:
+	queue_free()
+
+
+func _on_visible_on_screen_enabler_2d_screen_exited() -> void:
+	queue_free()
+"
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_yqsox"]
+radius = 8.0
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_yqsox"]
+width = 8
+height = 8
+
+[node name="babystarbreakerbullet" type="CharacterBody2D" unique_id=1295262974]
+script = SubResource("GDScript_yqsox")
+
+[node name="hitbox" type="Area2D" parent="." unique_id=1338758014]
+collision_layer = 8
+collision_mask = 4
+
+[node name="Collision" type="CollisionShape2D" parent="hitbox" unique_id=2106936679]
+shape = SubResource("CircleShape2D_yqsox")
+
+[node name="Sprite" type="Sprite2D" parent="." unique_id=275498847]
+texture = SubResource("NoiseTexture2D_yqsox")
+
+[node name="VisibleOnScreenEnabler2D" type="VisibleOnScreenEnabler2D" parent="." unique_id=759231433]
+
+[connection signal="area_entered" from="hitbox" to="." method="hitbox_entered"]
+[connection signal="screen_exited" from="VisibleOnScreenEnabler2D" to="." method="_on_visible_on_screen_enabler_2d_screen_exited"]

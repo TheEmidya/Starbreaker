@@ -1,0 +1,472 @@
+[gd_scene format=3 uid="uid://c8cl1sli3qnjh"]
+
+[ext_resource type="AudioStream" uid="uid://erm3xbidorsi" path="res://Game Folder/game_assets/Menus/MainMenu/BASE/starbreaker - menu (chillin).mp3" id="1_wc0tj"]
+[ext_resource type="Texture2D" uid="uid://cs6s2641cjjdq" path="res://Game Folder/game_assets/Menus/MainMenu/Sprites/title.png" id="2_n3od2"]
+[ext_resource type="Theme" uid="uid://b1rbffoke0vnr" path="res://Game Folder/game_assets/Menus/Themes/MenuUI_Theme.tres" id="2_wc0tj"]
+
+[sub_resource type="GDScript" id="GDScript_cf4c7"]
+resource_name = "mainmenu"
+script/source = "extends Control
+signal play
+
+
+@onready var menu_music: AudioStreamPlayer = $MenuMusic
+@onready var menu_intro_sequence: AnimationPlayer = $MenuIntroSequence
+
+@onready var play_button: Button = %Play_button
+@onready var replay_button: Button = %Replay_button
+@onready var options_button: Button = %Options_button
+@onready var quit_button: Button = %Quit_button
+
+@onready var fade: AnimationPlayer = $BlackOverlay/Fade
+
+
+func _ready() -> void:
+	menu_music.play()
+	
+	button_setup()
+	
+	if !options.HasSeenIntro and !OS.is_debug_build():
+		menu_intro_sequence.play(\"MainMenu_introduction\")
+	else:
+		menu_intro_sequence.play(\"RESET\")
+	
+	options.HasSeenIntro = true
+
+func button_setup():
+	play_button.connect(\"pressed\", play_pressed, 0)
+	replay_button.connect(\"pressed\", replay_pressed, 0)
+	options_button.connect(\"pressed\", options_pressed, 0)
+	quit_button.connect(\"pressed\", quit_pressed, 0)
+
+func play_pressed():
+	fade.play(\"Fade\")
+	await fade.animation_finished
+	emit_signal('play')
+	queue_free()
+
+func replay_pressed():
+	pass
+
+func options_pressed():
+	pass
+
+func quit_pressed():
+	fade.play(\"Fade\")
+	await fade.animation_finished
+	get_tree().quit()
+"
+
+[sub_resource type="Animation" id="Animation_wc0tj"]
+resource_name = "MainMenu_introduction"
+length = 5.0
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MenuCamera:position")
+tracks/0/interp = 0
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Panel/PlayPanel/ButtonContainer/Play_button:offset_transform_position")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.6000001, 1.1),
+"transitions": PackedFloat32Array(-2, -2),
+"update": 0,
+"values": [Vector2(-250, 0), Vector2(0, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Panel/PlayPanel/ButtonContainer/Options_button:offset_transform_position")
+tracks/2/interp = 2
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(1.1, 1.5999999),
+"transitions": PackedFloat32Array(-2, -2),
+"update": 0,
+"values": [Vector2(-250, 0), Vector2(0, 0)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Panel/PlayPanel/ButtonContainer/Quit_button:offset_transform_position")
+tracks/3/interp = 2
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(1.3, 1.8),
+"transitions": PackedFloat32Array(-2, -2),
+"update": 0,
+"values": [Vector2(-250, 0), Vector2(0, 0)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("MenuCamera:offset")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.4, 0.41005778, 0.8, 0.81, 1.2, 1.2005657),
+"transitions": PackedFloat32Array(1, 0, 1, 0, 0, 1, -2),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(115, 0), Vector2(312, 100), Vector2(215, 100), Vector2(320, 188), Vector2(255.5, 156), Vector2(320, 188)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("MenuCamera:zoom")
+tracks/5/interp = 2
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 0.81, 1.2),
+"transitions": PackedFloat32Array(0, -2, -2),
+"update": 0,
+"values": [Vector2(5, 5), Vector2(5, 5), Vector2(1, 1)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("MenuCamera:anchor_mode")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0, 0.8, 0.81),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [0, 0, 1]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("Panel/PlayPanel/ButtonContainer/Replay_button:offset_transform_position")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0.9, 1.5),
+"transitions": PackedFloat32Array(-2, -2),
+"update": 0,
+"values": [Vector2(-250, 0), Vector2(0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_n3od2"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MenuCamera:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Panel/PlayPanel/ButtonContainer/Play_button:offset_transform_position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Panel/PlayPanel/ButtonContainer/Options_button:offset_transform_position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Panel/PlayPanel/ButtonContainer/Quit_button:offset_transform_position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("MenuCamera:offset")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("MenuCamera:zoom")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("MenuCamera:anchor_mode")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("Panel/PlayPanel/ButtonContainer/Replay_button:offset_transform_position")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_3e0w2"]
+_data = {
+&"MainMenu_introduction": SubResource("Animation_wc0tj"),
+&"RESET": SubResource("Animation_n3od2")
+}
+
+[sub_resource type="Animation" id="Animation_3e0w2"]
+resource_name = "Fade"
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:color")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(0.5, 0.5),
+"update": 0,
+"values": [Color(0, 0, 0, 0), Color(0, 0, 0, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../MenuMusic:volume_db")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 2),
+"update": 0,
+"values": [0.0, -80.0]
+}
+
+[sub_resource type="Animation" id="Animation_yd8gr"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0, 0, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../MenuMusic:volume_db")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_7j20o"]
+_data = {
+&"Fade": SubResource("Animation_3e0w2"),
+&"RESET": SubResource("Animation_yd8gr")
+}
+
+[node name="MainMenu" type="Control" unique_id=306334143]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = SubResource("GDScript_cf4c7")
+
+[node name="MenuIntroSequence" type="AnimationPlayer" parent="." unique_id=1874465932]
+libraries/ = SubResource("AnimationLibrary_3e0w2")
+autoplay = &"RESET"
+
+[node name="MenuMusic" type="AudioStreamPlayer" parent="." unique_id=1279935603]
+stream = ExtResource("1_wc0tj")
+bus = &"Music"
+
+[node name="MenuCamera" type="Camera2D" parent="." unique_id=1756615066]
+anchor_mode = 0
+limit_enabled = false
+limit_left = 0
+limit_top = 360
+limit_right = 640
+limit_bottom = 0
+position_smoothing_enabled = true
+
+[node name="Panel" type="HBoxContainer" parent="." unique_id=533453551]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("2_wc0tj")
+alignment = 1
+
+[node name="PlayPanel" type="Control" parent="Panel" unique_id=1883805540]
+layout_mode = 2
+
+[node name="Texture" type="TextureRect" parent="Panel/PlayPanel" unique_id=1436030104]
+z_index = -193
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -240.0
+offset_top = -228.0
+offset_right = 240.0
+offset_bottom = 196.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset_ratio = Vector2(0.5, 0.5)
+offset_transform_enabled = true
+offset_transform_position = Vector2(-98, -31.5)
+focus_behavior_recursive = 1
+mouse_filter = 2
+texture = ExtResource("2_n3od2")
+
+[node name="ButtonContainer" type="VBoxContainer" parent="Panel/PlayPanel" unique_id=1512995623]
+layout_mode = 0
+offset_left = -288.0
+offset_top = 32.0
+offset_right = -160.0
+offset_bottom = 160.0
+
+[node name="Play_button" type="Button" parent="Panel/PlayPanel/ButtonContainer" unique_id=1884113699]
+unique_name_in_owner = true
+layout_mode = 2
+offset_transform_enabled = true
+text = "Play"
+flat = true
+alignment = 0
+icon_alignment = 1
+
+[node name="Replay_button" type="Button" parent="Panel/PlayPanel/ButtonContainer" unique_id=844894521]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+offset_transform_enabled = true
+text = "Replay"
+flat = true
+alignment = 0
+
+[node name="Options_button" type="Button" parent="Panel/PlayPanel/ButtonContainer" unique_id=1641339888]
+unique_name_in_owner = true
+layout_mode = 2
+offset_transform_enabled = true
+text = "Options"
+flat = true
+alignment = 0
+icon_alignment = 1
+
+[node name="Quit_button" type="Button" parent="Panel/PlayPanel/ButtonContainer" unique_id=1993487278]
+unique_name_in_owner = true
+layout_mode = 2
+offset_transform_enabled = true
+text = "Quit"
+flat = true
+alignment = 0
+icon_alignment = 1
+
+[node name="BlackOverlay" type="ColorRect" parent="." unique_id=556302142]
+visible = false
+z_index = 4096
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0)
+
+[node name="Fade" type="AnimationPlayer" parent="BlackOverlay" unique_id=1415992175]
+libraries/ = SubResource("AnimationLibrary_7j20o")

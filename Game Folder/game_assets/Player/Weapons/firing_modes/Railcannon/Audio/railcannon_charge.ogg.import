@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://dj6oxcrpjl3gj"
+path="res://.godot/imported/railcannon_charge.ogg-06dbc0be5455a6caa4211c8a482ddbde.oggvorbisstr"
+
+[deps]
+
+source_file="res://Game Folder/game_assets/Player/Weapons/firing_modes/Railcannon/Audio/railcannon_charge.ogg"
+dest_files=["res://.godot/imported/railcannon_charge.ogg-06dbc0be5455a6caa4211c8a482ddbde.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

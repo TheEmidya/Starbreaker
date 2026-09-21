@@ -1,4 +1,4 @@
-[gd_scene load_steps=66 format=3 uid="uid://x3qocpbfrgay"]
+[gd_scene format=3 uid="uid://x3qocpbfrgay"]
 
 [ext_resource type="Texture2D" uid="uid://bsldpa031indc" path="res://Game Folder/game_assets/Enemies/Tres-2B/Trishooter/Sprites/trishooter_bullet.png" id="1_i86dx"]
 [ext_resource type="Script" uid="uid://ucfty02weqo2" path="res://Game Folder/game_components/entity_components/Hitbox/hitbox.gd" id="2_1s235"]
@@ -437,7 +437,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_w8fxt")
 }],
-"loop": true,
+"loop": 1,
 "name": &"pulse",
 "speed": 60.0
 }]
@@ -445,7 +445,7 @@ animations = [{
 [sub_resource type="CircleShape2D" id="CircleShape2D_6gdg6"]
 radius = 6.0
 
-[node name="BulletCosmaTurret" type="CharacterBody2D" node_paths=PackedStringArray("hitbox") groups=["enemy"]]
+[node name="BulletCosmaTurret" type="CharacterBody2D" unique_id=1147565017 node_paths=PackedStringArray("hitbox") groups=["enemy"]]
 z_index = 4096
 collision_layer = 0
 motion_mode = 1
@@ -453,23 +453,19 @@ script = SubResource("GDScript_qlpno")
 speed = 300.0
 hitbox = NodePath("HitboxComponent")
 
-[node name="Sprite" type="AnimatedSprite2D" parent="."]
+[node name="Sprite" type="AnimatedSprite2D" parent="." unique_id=1966819333]
 light_mask = 0
 sprite_frames = SubResource("SpriteFrames_1jvj4")
 animation = &"pulse"
 autoplay = "pulse"
 frame_progress = 0.579093
 
-[node name="HitboxComponent" type="Area2D" parent="." node_paths=PackedStringArray("parent") groups=["enemy"]]
+[node name="HitboxComponent" type="Area2D" parent="." unique_id=1342537829 groups=["enemy"]]
 collision_layer = 16
 collision_mask = 2
 script = ExtResource("2_1s235")
-parent = NodePath("..")
-damage = -25.0
-knockback_amount = 1115.0
-knockback_stun_duration = 0.3
 
-[node name="Collision" type="CollisionShape2D" parent="HitboxComponent" groups=["enemy"]]
+[node name="Collision" type="CollisionShape2D" parent="HitboxComponent" unique_id=28205298 groups=["enemy"]]
 shape = SubResource("CircleShape2D_6gdg6")
 
 [connection signal="area_entered" from="HitboxComponent" to="." method="area_entered"]

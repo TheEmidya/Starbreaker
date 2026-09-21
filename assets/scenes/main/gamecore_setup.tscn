@@ -1,0 +1,236 @@
+[gd_scene format=3 uid="uid://cntpgaax25ff5"]
+
+[ext_resource type="FontFile" uid="uid://tqmtgudiu7pk" path="res://Game Folder/game_assets/Menus/Themes/TutorialDialogue/Pixeloid/UIFont.ttf" id="1_6q4s5"]
+[ext_resource type="AudioStream" uid="uid://b5gc2bodkisnk" path="res://assets/audio/sfx/misc/ester_keyboardtype.ogg" id="2_yfac7"]
+[ext_resource type="AudioStream" uid="uid://gmvere8d8gxv" path="res://assets/audio/sfx/misc/ester_faderiser.ogg" id="3_jv0at"]
+
+[sub_resource type="GDScript" id="GDScript_byaqo"]
+resource_name = "gamecore_setup"
+script/source = "extends Control
+const GAME_CORE_PATH = \"uid://y4ga4anlwqmc\"
+
+@onready var setup_sequence: AnimationPlayer = $SetupSequence
+
+func _init() -> void:
+	print(\"Game Starting...\")
+
+func _ready() -> void:
+	if options.HasSeenIntro or OS.is_debug_build():
+		skip_sequence()
+		return
+	
+	setup_sequence.play(\"ESTER_text\")
+	var gamecore_int = load(GAME_CORE_PATH) as PackedScene
+	await setup_sequence.animation_finished
+	
+	print(\"Passing off to game core.\")
+	self.get_tree().change_scene_to_packed(gamecore_int)
+
+func skip_sequence():
+	var gamecore_int = load(GAME_CORE_PATH) as PackedScene
+	self.get_tree().change_scene_to_packed(gamecore_int)
+"
+
+[sub_resource type="Animation" id="Animation_e0swl"]
+resource_name = "ESTER_text"
+length = 7.3
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("SplashText:visible_ratio")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 1.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("ester_keyboard:playing")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.3, 0.6039064, 0.9125105, 1.2078128, 1.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 1,
+"values": [true, true, true, true, true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Black:color")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(2, 4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0.012617188, 0.012617188, 0.012617188, 1), Color(1, 1, 1, 1)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("ester_riser:playing")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 1.4, 7.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [false, true, false]
+}
+
+[sub_resource type="Animation" id="Animation_xs0es"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("SplashText:visible_ratio")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [1.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("ester_keyboard:playing")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Black:color")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0.012617188, 0.012617188, 0.012617188, 1)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("ester_riser:playing")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_i7fap"]
+_data = {
+&"ESTER_text": SubResource("Animation_e0swl"),
+&"RESET": SubResource("Animation_xs0es")
+}
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_byjkf"]
+bg_color = Color(0, 0, 0, 0)
+anti_aliasing = false
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_x3xe1"]
+bg_color = Color(0, 1, 1, 0.784314)
+border_blend = true
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+corner_detail = 1
+anti_aliasing = false
+
+[sub_resource type="Theme" id="Theme_ebr7t"]
+default_font = ExtResource("1_6q4s5")
+default_font_size = 25
+Button/colors/font_color = Color(18.892157, 18.892157, 18.892157, 1)
+Button/colors/font_disabled_color = Color(0.875, 0.875, 0.875, 0.5)
+Button/colors/font_focus_color = Color(0.95, 0.95, 0.95, 1)
+Button/colors/font_hover_color = Color(0.95, 0.95, 0.95, 1)
+Button/colors/font_hover_pressed_color = Color(1, 1, 1, 1)
+Button/colors/font_outline_color = Color(0, 0, 0, 1)
+Button/colors/font_pressed_color = Color(1, 1, 1, 1)
+Button/colors/icon_disabled_color = Color(1, 1, 1, 0.4)
+Button/colors/icon_focus_color = Color(1, 1, 1, 1)
+Button/colors/icon_hover_color = Color(1, 1, 1, 1)
+Button/colors/icon_hover_pressed_color = Color(1, 1, 1, 1)
+Button/colors/icon_normal_color = Color(1, 1, 1, 1)
+Button/colors/icon_pressed_color = Color(1, 1, 1, 1)
+Button/constants/align_to_largest_stylebox = 0
+Button/constants/h_separation = 0
+Button/constants/icon_max_width = 0
+Button/constants/outline_size = 0
+Label/colors/font_outline_color = Color(0, 0, 0, 0)
+Label/constants/outline_size = 0
+Label/font_sizes/font_size = 30
+ProgressBar/styles/background = SubResource("StyleBoxFlat_byjkf")
+ProgressBar/styles/fill = SubResource("StyleBoxFlat_x3xe1")
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_jgyy8"]
+random_pitch = 1.0594631
+streams_count = 1
+stream_0/stream = ExtResource("2_yfac7")
+
+[node name="Setup" type="Control" unique_id=313784802]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = SubResource("GDScript_byaqo")
+
+[node name="SetupSequence" type="AnimationPlayer" parent="." unique_id=856646228]
+libraries/ = SubResource("AnimationLibrary_i7fap")
+
+[node name="SplashText" type="RichTextLabel" parent="." unique_id=1781464562]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset_ratio = Vector2(0.5, 0.5)
+theme = SubResource("Theme_ebr7t")
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/normal_font_size = 40
+text = "ESTER"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Black" type="ColorRect" parent="." unique_id=669228099]
+z_index = -1
+z_as_relative = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.012617188, 0.012617188, 0.012617188, 1)
+
+[node name="ester_keyboard" type="AudioStreamPlayer" parent="." unique_id=280579621]
+stream = SubResource("AudioStreamRandomizer_jgyy8")
+volume_db = -5.5
+bus = &"MiscSFX"
+
+[node name="ester_riser" type="AudioStreamPlayer" parent="." unique_id=1994755178]
+stream = ExtResource("3_jv0at")
+volume_db = -6.0
+pitch_scale = 0.9
+bus = &"MiscSFX"

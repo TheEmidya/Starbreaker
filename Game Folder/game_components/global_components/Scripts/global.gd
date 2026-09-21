@@ -1,11 +1,21 @@
 extends Node
 
-var player = Player
+var player : PlayerEntityClass = null
+
+
+
+
 var crosshair = null
 var player_gui = null
 var camera = null
+var life_counter : int = 3
 
 var main_manager = null
+var fun_value = randi_range(0, 255):
+	get:
+		randomize()
+		print(fun_value)
+		return randi_range(0, 255)
 
 var boss_healthbar = null
 

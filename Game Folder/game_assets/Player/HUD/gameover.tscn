@@ -1,0 +1,46 @@
+[gd_scene format=3 uid="uid://kcmmmfwcrg27"]
+
+[ext_resource type="AudioStream" uid="uid://cem4aaklv0lae" path="res://Game Folder/game_assets/Menus/MainMenu/GameOver/BASE/starbreaker - game over.mp3" id="1_n1hq1"]
+
+[sub_resource type="GDScript" id="GDScript_n1hq1"]
+script/source = "extends CanvasLayer
+@onready var music: AudioStreamPlayer = $GameOverScreen/Music
+
+func _ready() -> void:
+	music.play()
+	await music.finished
+	queue_free()
+"
+
+[node name="GameOver_Screen" type="CanvasLayer" unique_id=189200014]
+layer = 999
+script = SubResource("GDScript_n1hq1")
+
+[node name="GameOverScreen" type="Control" parent="." unique_id=531996013]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="GameOverText" type="Label" parent="GameOverScreen" unique_id=1144204640]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -0.5
+offset_top = -11.5
+offset_right = 0.5
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+theme_override_font_sizes/font_size = 45
+text = "GAME OVER"
+horizontal_alignment = 1
+
+[node name="Music" type="AudioStreamPlayer" parent="GameOverScreen" unique_id=1238002042]
+stream = ExtResource("1_n1hq1")

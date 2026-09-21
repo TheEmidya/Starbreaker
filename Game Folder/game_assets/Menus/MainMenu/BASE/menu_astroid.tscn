@@ -1,0 +1,56 @@
+[gd_scene format=3 uid="uid://khjkjltcm8k6"]
+
+[sub_resource type="GDScript" id="GDScript_vb3i2"]
+script/source = "extends CharacterBody2D
+@onready var health = randf_range(0.2, 3)
+
+func _ready() -> void:
+	randomize()
+	velocity = velocity.move_toward(self.global_position.direction_to(get_parent().baby_starbreaker.global_position) * randi_range(100, 215), 100.0)
+	scale = Vector2(health, health)
+
+
+func _physics_process(delta: float) -> void:
+	rotate((health / health) * delta)
+	move_and_slide()
+
+
+func _on_visible_on_screen_enabler_2d_screen_exited() -> void:
+	queue_free()
+
+
+func exiting() -> void:
+	get_parent().current_astroid_count -= 1
+	get_parent().baby_starbreaker.enemies.erase(self)
+
+
+func hurtbox_entered(area: Area2D) -> void:
+	health -= 1
+	if health <= 0:
+		queue_free()
+"
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_p8xhl"]
+width = 16
+height = 16
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_vb3i2"]
+
+[node name="MenuAstroid" type="CharacterBody2D" unique_id=1967611972]
+script = SubResource("GDScript_vb3i2")
+
+[node name="Sprite" type="Sprite2D" parent="." unique_id=1596668528]
+texture = SubResource("NoiseTexture2D_p8xhl")
+
+[node name="VisibleOnScreenEnabler2D" type="VisibleOnScreenEnabler2D" parent="." unique_id=276011862]
+
+[node name="hurtbox" type="Area2D" parent="." unique_id=615775355]
+collision_layer = 4
+collision_mask = 8
+
+[node name="Collision" type="CollisionShape2D" parent="hurtbox" unique_id=68170576]
+shape = SubResource("CircleShape2D_vb3i2")
+
+[connection signal="screen_exited" from="VisibleOnScreenEnabler2D" to="." method="_on_visible_on_screen_enabler_2d_screen_exited"]
+[connection signal="tree_exiting" from="VisibleOnScreenEnabler2D" to="." method="exiting"]
+[connection signal="area_entered" from="hurtbox" to="." method="hurtbox_entered"]

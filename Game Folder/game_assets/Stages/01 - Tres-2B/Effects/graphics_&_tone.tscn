@@ -1,4 +1,4 @@
-[gd_scene load_steps=3 format=3 uid="uid://bhgdalba8s8j2"]
+[gd_scene format=3 uid="uid://bhgdalba8s8j2"]
 
 [sub_resource type="Environment" id="Environment_t5cpe"]
 background_mode = 3
@@ -17,6 +17,6 @@ func _ready() -> void:
 	self.environment.glow_bloom = options.bloom
 "
 
-[node name="Graphics & Tone" type="WorldEnvironment"]
+[node name="Graphics & Tone" type="WorldEnvironment" unique_id=705745012]
 environment = SubResource("Environment_t5cpe")
 script = SubResource("GDScript_rp1j6")

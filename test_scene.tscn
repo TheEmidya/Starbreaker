@@ -1,0 +1,13 @@
+[gd_scene format=3 uid="uid://og01pct2as2n"]
+
+[ext_resource type="PackedScene" uid="uid://dju5f2wa2fucv" path="res://Game Folder/game_assets/Player/Main/Player.tscn" id="1_uhqqe"]
+[ext_resource type="PackedScene" uid="uid://b2j62op6kxc6c" path="res://Game Folder/game_assets/Stages/01 - Tres-2B/Boss/Timothy/TimothyBoss.tscn" id="2_ia1lp"]
+
+[node name="Node2D" type="Node2D" unique_id=1000274295]
+
+[node name="Player" parent="." unique_id=1960371432 instance=ExtResource("1_uhqqe")]
+position = Vector2(161, 181)
+
+[node name="TimothyBoss" parent="." unique_id=1333666691 instance=ExtResource("2_ia1lp")]
+
+[editable path="Player"]

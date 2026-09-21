@@ -1,0 +1,10 @@
+[gd_scene format=3 uid="uid://bt2463d5pn3rg"]
+
+[ext_resource type="Script" uid="uid://i0ke4rspankj" path="res://assets/scripts/classes/StageClass.gd" id="1_2683v"]
+[ext_resource type="AudioStream" uid="uid://v87u8qir1ewr" path="res://assets/audio/music/mus_tutorial.ogg" id="2_0suui"]
+
+[node name="StageTutorial" type="Node2D" unique_id=707852187]
+script = ExtResource("1_2683v")
+skip_intro = true
+music_file = ExtResource("2_0suui")
+metadata/_custom_type_script = "uid://i0ke4rspankj"

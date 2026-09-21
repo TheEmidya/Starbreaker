@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://cs2ab5mo6o2bq"
+path="res://.godot/imported/ester.mp3-e0f40c2172f808649dab49864a8d5689.mp3str"
+
+[deps]
+
+source_file="res://Game Folder/game_assets/Menus/ester.mp3"
+dest_files=["res://.godot/imported/ester.mp3-e0f40c2172f808649dab49864a8d5689.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

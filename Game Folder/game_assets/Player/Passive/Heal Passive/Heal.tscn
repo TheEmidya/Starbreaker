@@ -1,0 +1,22 @@
+[gd_scene format=3 uid="uid://ctxxjuaxoctbm"]
+
+[sub_resource type="GDScript" id="GDScript_s2cd4"]
+script/source = "extends Passive
+
+var is_active = false
+
+func _ready() -> void:
+	events.max_energy_reached.connect(func(): is_active = false)
+	events.max_energy_lost.connect(func(): is_active = false)
+
+func action():
+	if is_active:
+		global.player.health.current_health = 7.5 * get_process_delta_time()
+
+func _physics_process(_delta: float) -> void:
+	is_active = global.player.loadout_manager.is_max_energy
+	action()
+"
+
+[node name="Passive" type="Node" unique_id=1098293474]
+script = SubResource("GDScript_s2cd4")

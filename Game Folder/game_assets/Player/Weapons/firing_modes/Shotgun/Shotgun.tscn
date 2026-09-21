@@ -1,6 +1,6 @@
-[gd_scene load_steps=3 format=3 uid="uid://cvk1bcp44fms6"]
+[gd_scene format=3 uid="uid://cvk1bcp44fms6"]
 
-[ext_resource type="AudioStream" uid="uid://bxrhsgdwv711w" path="res://Game Folder/game_assets/Player/Weapons/firing_modes/Spray/Audio/sp_firing.wav" id="1_1kwhh"]
+[ext_resource type="AudioStream" uid="uid://bxrhsgdwv711w" path="res://Game Folder/game_assets/Player/Weapons/firing_modes/Railcannon/Audio/sp_firing.wav" id="1_1kwhh"]
 
 [sub_resource type="GDScript" id="GDScript_vqp20"]
 script/source = "extends Weapon
@@ -35,12 +35,11 @@ func spawn_projectile():
 		firing_effects.call()
 "
 
-[node name="Shotgun" type="Node"]
+[node name="Shotgun" type="Node" unique_id=1881609381]
 script = SubResource("GDScript_vqp20")
 
-[node name="sfx_Firing" type="AudioStreamPlayer2D" parent="."]
+[node name="sfx_Firing" type="AudioStreamPlayer2D" parent="." unique_id=1480776208]
 stream = ExtResource("1_1kwhh")
 volume_db = 4.0
 pitch_scale = 0.3
 max_polyphony = 2
-bus = &"SFX"

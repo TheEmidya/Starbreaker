@@ -1,0 +1,31 @@
+[gd_scene format=3 uid="uid://ck0d2qpck7fi8"]
+
+[ext_resource type="PackedScene" uid="uid://dju5f2wa2fucv" path="res://Game Folder/game_assets/Player/Main/Player.tscn" id="1_r7tqq"]
+[ext_resource type="PackedScene" uid="uid://dfepk5fmqyutd" path="res://Game Folder/game_assets/Enemies/Tres-2B/Skeleshot/enemy.tscn" id="2_r7tqq"]
+
+[sub_resource type="Shader" id="Shader_r7tqq"]
+resource_local_to_scene = true
+resource_name = "enemy_flash"
+code = "shader_type canvas_item;
+
+uniform float hit_opacity = 0;
+
+void fragment(){
+	COLOR.rgb = texture(TEXTURE, UV).rgb * (1.0 - hit_opacity) + vec3(1,1,1) * hit_opacity;
+	COLOR.a = texture(TEXTURE, UV).a;
+}"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_qf267"]
+resource_local_to_scene = true
+resource_name = "enemy_flash"
+shader = SubResource("Shader_r7tqq")
+shader_parameter/hit_opacity = 0.0
+
+[node name="TestingZone" type="Node2D" unique_id=1078623301]
+
+[node name="Player" parent="." unique_id=472331241 instance=ExtResource("1_r7tqq")]
+position = Vector2(320, 192)
+
+[node name="Enemy" parent="." unique_id=358907931 instance=ExtResource("2_r7tqq")]
+material = SubResource("ShaderMaterial_qf267")
+position = Vector2(416, 80)

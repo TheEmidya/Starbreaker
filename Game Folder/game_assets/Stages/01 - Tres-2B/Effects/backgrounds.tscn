@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://cm6cjmxdwitx6"]
+[gd_scene format=3 uid="uid://cm6cjmxdwitx6"]
 
 [ext_resource type="Texture2D" uid="uid://cgmrpphio3w5a" path="res://Game Folder/game_assets/Stages/01 - Tres-2B/Sprites/Background/360_F_179077796_P6UNHX6KBpb1hITJSF1gN173qw4GF98U.jpg" id="1_wv5bw"]
 
@@ -15,6 +15,17 @@ func tokonemu_intro_fadein():
 		$Fade.play(\"Tokonemu_FadeIn\")
 "
 
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_ck7t2"]
+noise_type = 2
+seed = -202
+frequency = 0.0001
+fractal_octaves = 10
+fractal_lacunarity = 1486.0
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_tugfv"]
+width = 1
+noise = SubResource("FastNoiseLite_ck7t2")
+
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_1sgdk"]
 particle_flag_disable_z = true
 emission_shape_offset = Vector3(309, -75, 0)
@@ -30,17 +41,6 @@ radial_accel_min = -2.23517e-06
 radial_accel_max = -2.23517e-06
 scale_min = 0.0
 scale_max = 0.2
-
-[sub_resource type="FastNoiseLite" id="FastNoiseLite_ck7t2"]
-noise_type = 2
-seed = -202
-frequency = 0.0001
-fractal_octaves = 10
-fractal_lacunarity = 1486.0
-
-[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_tugfv"]
-width = 1
-noise = SubResource("FastNoiseLite_ck7t2")
 
 [sub_resource type="GDScript" id="GDScript_ub2jc"]
 script/source = "extends GPUParticles2D
@@ -226,37 +226,33 @@ domain_warp_enabled = true
 domain_warp_fractal_type = 2
 
 [sub_resource type="NoiseTexture2D" id="NoiseTexture2D_que5d"]
+noise = SubResource("FastNoiseLite_s3au4")
+color_ramp = SubResource("Gradient_e8xxh")
 seamless = true
 seamless_blend_skirt = 1.0
-color_ramp = SubResource("Gradient_e8xxh")
-noise = SubResource("FastNoiseLite_s3au4")
 
-[node name="VFX & Backgrounds" type="Node2D"]
+[node name="VFX & Backgrounds" type="Node2D" unique_id=1101347533]
 script = SubResource("GDScript_e4ttt")
 
-[node name="Speedlines" type="GPUParticles2D" parent="."]
+[node name="Speedlines" type="GPUParticles2D" parent="." unique_id=286636030]
 self_modulate = Color(1, 1, 1, 0.0196078)
 z_index = 4096
 amount = 2800
-process_material = SubResource("ParticleProcessMaterial_1sgdk")
 texture = SubResource("NoiseTexture2D_tugfv")
 lifetime = 3.5
 fixed_fps = 144
+process_material = SubResource("ParticleProcessMaterial_1sgdk")
 script = SubResource("GDScript_ub2jc")
 
-[node name="Speedline Amount" type="AnimationPlayer" parent="Speedlines"]
-libraries = {
-"": SubResource("AnimationLibrary_sa4x2")
-}
+[node name="Speedline Amount" type="AnimationPlayer" parent="Speedlines" unique_id=507561631]
+libraries/ = SubResource("AnimationLibrary_sa4x2")
 playback_default_blend_time = 1.0
 
-[node name="Fade" type="AnimationPlayer" parent="."]
+[node name="Fade" type="AnimationPlayer" parent="." unique_id=643172241]
 callback_mode_process = 0
-libraries = {
-"": SubResource("AnimationLibrary_0hi5d")
-}
+libraries/ = SubResource("AnimationLibrary_0hi5d")
 
-[node name="Background" type="Parallax2D" parent="."]
+[node name="Background" type="Parallax2D" parent="." unique_id=1479049764]
 z_index = -4096
 scroll_scale = Vector2(0, 0.5)
 repeat_size = Vector2(1166, 720)
@@ -264,34 +260,34 @@ autoscroll = Vector2(0, 175)
 repeat_times = 100
 ignore_camera_scroll = true
 
-[node name="Sprite" type="Sprite2D" parent="Background"]
+[node name="Sprite" type="Sprite2D" parent="Background" unique_id=1535676099]
 self_modulate = Color(1, 0, 0, 0.054902)
 position = Vector2(320, 184)
 scale = Vector2(2, 2)
 texture = ExtResource("1_wv5bw")
 
-[node name="Gas_Background" type="Parallax2D" parent="."]
+[node name="Gas_Background" type="Parallax2D" parent="." unique_id=1503645274]
 z_index = -4096
 scroll_scale = Vector2(0, 0.5)
 repeat_size = Vector2(512, 512)
 autoscroll = Vector2(0, 87)
 repeat_times = 5
 
-[node name="Sprite" type="Sprite2D" parent="Gas_Background"]
+[node name="Sprite" type="Sprite2D" parent="Gas_Background" unique_id=1157015146]
 self_modulate = Color(1, 0, 0, 0.054902)
 z_index = -4090
 position = Vector2(320, 184)
 scale = Vector2(2, 2)
 texture = SubResource("NoiseTexture2D_que5d")
 
-[node name="Clouds_Background" type="Parallax2D" parent="."]
+[node name="Clouds_Background" type="Parallax2D" parent="." unique_id=594808085]
 z_index = -4093
 scroll_scale = Vector2(0, 0.5)
 repeat_size = Vector2(512, 512)
 autoscroll = Vector2(0, 43)
 repeat_times = 5
 
-[node name="Sprite" type="Sprite2D" parent="Clouds_Background"]
+[node name="Sprite" type="Sprite2D" parent="Clouds_Background" unique_id=1298309343]
 self_modulate = Color(1, 1, 1, 0.054902)
 z_index = -4090
 position = Vector2(320.049, 183.915)

@@ -1,76 +1,71 @@
 extends Node2D
 class_name StageBase
+signal stage_ended()
 
-const HUD = preload("res://Game Folder/game_assets/Player/HUD/hud.tscn")
-const CAMERA_BASE = preload("res://Game Folder/game_components/camera_component/Camera/camera_base.tscn")
-const NAVIGATION_SPACE = preload("res://Game Folder/game_assets/Stages/00 - BASE/navigation_space.tscn")
+const ENEMY_NAVIGATIONSPACE = preload("res://Game Folder/game_assets/Stages/00 - BASE/navigation_space.tscn")
+const WALL_COLLISIONS = preload("res://Game Folder/game_assets/Stages/00 - BASE/lvl_manager/walls/wall_collisions.tscn")
 const PLAYER = preload("res://Game Folder/game_assets/Player/Main/Player.tscn")
 
-@export var end_time := 0.0
+var navigation_space = ENEMY_NAVIGATIONSPACE.instantiate()
+var wall_collision = WALL_COLLISIONS.instantiate()
+var player = PLAYER.instantiate()
+
+var stage_current_score : float = 0.0
+var stage_time_score : float = 0.0
+
+var stage_camera = CameraController.new()
+@onready var stage_enemy_ai = ENEMY_NAVIGATIONSPACE.instantiate()
+@onready var stage_music := AudioStreamPlayer.new()
+@export var stage_music_file : AudioStreamMP3
+@onready var stage_boss_music := AudioStreamPlayer.new()
+const STAGE_TIME_SCORE = 25000.0
 
 @onready var stage_started = false
-@onready var is_boss_active = false
+@onready var stage_current_time = 0.0: 
+	get: return stage_music.get_playback_position()
+@onready var stage_endtime := 0.0:
+	get: return stage_music.stream.get_length()
 
-@onready var is_nohit_run := true
+@export var enemy_wave_data : Dictionary[float, StageEnemyData] = {}
 
-@onready var EntityManager = Node.new()
-
-# Music
-@export var stage_music: AudioStreamPlayer
-@export var boss_music: AudioStreamPlayer
 
 # Extra ARG
 @onready var is_spawning = true
-@export var player_starting_position := Vector2(320, 290)
+const PLAYER_SPAWN_POSITION = Vector2(320, 290)
+
+func _init() -> void:
+	add_child(wall_collision, true)
+	add_child(navigation_space, true)
+	add_child(stage_music, true)
+	add_child(stage_camera, true)
+	add_child(stage_enemy_ai, true)
 
 func _ready() -> void:
-	add_child(EntityManager, true)
-	global.EntityManager = EntityManager
-	
-	var hud = HUD.instantiate()
-	var camera = CAMERA_BASE.instantiate()
-	var nav_space = NAVIGATION_SPACE.instantiate()
-	var player = PLAYER.instantiate()
-	
-	
-	
+	player_setup(player)
+	music_setup(stage_music_file)
+
+func _physics_process(_delta: float) -> void:
+	spawn_enemy_wave(enemy_wave_data)
+	stage_time_score = remap(stage_current_time, 0.0, stage_endtime, 0.0, STAGE_TIME_SCORE)
+
+func player_setup(PlayerScene : Player):
+	PlayerScene.global_position = PLAYER_SPAWN_POSITION
+	PlayerScene.current_life_counter = global.life_counter
 	add_child(player)
-	add_child(nav_space)
-	add_child(camera)
-	camera.reset_smoothing()
-	add_child(hud)
-	
-	events.connect("player_death", stop_stage, 2)
-	events.connect("debug_skip", skip_to, 0)
-	
-	add_wall_collision()
-	
-	global.player.global_position = player_starting_position
-	global.current_stage = self
 
-func start_stage():
-	stage_started = true
-	global.is_pausable = true
-	events.emit_signal("stage_started")
+func spawn_enemy_wave(data : Dictionary[float, StageEnemyData]):
+	if data.has(roundf(stage_current_time)):
+		if data[roundf(stage_current_time)].has_spawned == false:
+			data[roundf(stage_current_time)].has_spawned = true
+			printt(data[roundf(stage_current_time)].enemy_scene.resource_name, roundf(stage_current_time))
+			
+			var enemy = data[roundf(stage_current_time)].enemy_scene.instantiate() as Node2D
+			enemy.global_position = data[roundf(stage_current_time)].enemy_spawn_location
+			add_child(enemy)
 
-func skip_to():
-	stage_music.stop()
-	stage_music.play(end_time)
-
-#region Collisions
-
-
-# Collisions & Obstacles
-const WALL_COLLISIONS = preload("res://Game Folder/game_assets/Stages/00 - BASE/lvl_manager/walls/wall_collisions.tscn")
-
-func add_wall_collision():
-	var i = WALL_COLLISIONS.instantiate()
-	add_child(i)
-#endregion
-
-func stop_stage(damage_taken, colliding_hitbox):
-	for i in get_children():
-		if i is AudioStreamPlayer:
-			i.stop()
-	stage_started = false
-	is_boss_active = false
+func music_setup(StageMusicMP3 : AudioStreamMP3):
+	add_child(stage_music)
+	stage_music.stream = StageMusicMP3
+	stage_endtime = stage_music.stream.get_length()
+	stage_music.play()
+	stage_music.finished.connect(func(): stage_ended.emit())

@@ -1,4 +1,4 @@
-[gd_scene load_steps=55 format=3 uid="uid://bp4hwujbub3jp"]
+[gd_scene format=3 uid="uid://bp4hwujbub3jp"]
 
 [ext_resource type="Texture2D" uid="uid://cwwn34618nmuy" path="res://Game Folder/game_assets/Enemies/Tres-2B/Skeleshot/Sprites/death.png" id="1_wpeii"]
 [ext_resource type="Texture2D" uid="uid://duvka0g40rn5t" path="res://Game Folder/game_assets/Enemies/Tres-2B/TutorialEnemy/render.png" id="2_fotf5"]
@@ -11,7 +11,6 @@
 
 [sub_resource type="GDScript" id="GDScript_b6jdq"]
 script/source = "extends Enemy
-@onready var sprite: AnimatedSprite2D = $Sprite
 @onready var z_particles: GPUParticles2D = $\"Z-Particles\"
 @onready var animation: AnimationPlayer = $Animation
 
@@ -255,7 +254,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_i1vbt")
 }],
-"loop": false,
+"loop": 0,
 "name": &"Death",
 "speed": 60.0
 }]
@@ -280,7 +279,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_ruh4y")
 }],
-"loop": true,
+"loop": 1,
 "name": &"default",
 "speed": 5.0
 }]
@@ -403,16 +402,20 @@ _data = {
 &"sleeping": SubResource("Animation_6ayfv")
 }
 
-[node name="kevin" type="CharacterBody2D" groups=["enemy"]]
+[node name="kevin" type="CharacterBody2D" unique_id=450501364 node_paths=PackedStringArray("sprite", "health", "hurtbox") groups=["enemy"]]
 script = SubResource("GDScript_b6jdq")
+team = "Enemy"
+sprite = NodePath("Sprite")
+health = NodePath("HealthComponent")
+hurtbox = NodePath("HurtboxComponent")
 
-[node name="Sprite_Sleeping" type="Sprite2D" parent="."]
+[node name="Sprite_Sleeping" type="Sprite2D" parent="." unique_id=1984354286]
 texture = ExtResource("2_fotf5")
 offset = Vector2(-1, 0)
 hframes = 8
 vframes = 8
 
-[node name="Sprite" type="AnimatedSprite2D" parent="."]
+[node name="Sprite" type="AnimatedSprite2D" parent="." unique_id=510203354]
 visible = false
 position = Vector2(-1, -1)
 sprite_frames = SubResource("SpriteFrames_ubhq7")
@@ -420,31 +423,28 @@ animation = &"Death"
 frame = 30
 frame_progress = 1.0
 
-[node name="HealthComponent" type="Node" parent="."]
+[node name="HealthComponent" type="Node" parent="." unique_id=902829576]
 script = ExtResource("3_m2m8s")
 maximum_health = 5.0
 
-[node name="KnockbackComponent" type="Node2D" parent="." node_paths=PackedStringArray("parent")]
+[node name="KnockbackComponent" type="Node2D" parent="." unique_id=925475729 node_paths=PackedStringArray("parent")]
 script = ExtResource("4_7bewc")
 parent = NodePath("..")
 
-[node name="HurtboxComponent" type="Area2D" parent="." node_paths=PackedStringArray("parent", "health", "knockback") groups=["enemy"]]
+[node name="HurtboxComponent" type="Area2D" parent="." unique_id=281813405 groups=["enemy"]]
 collision_layer = 4
 collision_mask = 8
 input_pickable = false
 script = ExtResource("5_lciau")
-parent = NodePath("..")
-health = NodePath("../HealthComponent")
-knockback = NodePath("../KnockbackComponent")
 
-[node name="Collision" type="CollisionShape2D" parent="HurtboxComponent"]
+[node name="Collision" type="CollisionShape2D" parent="HurtboxComponent" unique_id=1259035543]
 shape = SubResource("CircleShape2D_gawb1")
 
-[node name="Arrow" type="Node2D" parent="."]
+[node name="Arrow" type="Node2D" parent="." unique_id=755513361]
 rotation = -3.05433
 scale = Vector2(0.2, 0.2)
 
-[node name="Mouse" type="AnimatedSprite2D" parent="Arrow"]
+[node name="Mouse" type="AnimatedSprite2D" parent="Arrow" unique_id=1474512959]
 position = Vector2(104.736, 106.405)
 rotation = 3.05433
 scale = Vector2(5, 5)
@@ -452,33 +452,27 @@ sprite_frames = SubResource("SpriteFrames_iap5h")
 autoplay = "default"
 frame_progress = 0.0584984
 
-[node name="Arrow" type="Sprite2D" parent="Arrow"]
+[node name="Arrow" type="Sprite2D" parent="Arrow" unique_id=1170908303]
 position = Vector2(61.6863, 49.1474)
 scale = Vector2(5, 5)
 texture = ExtResource("6_7e065")
 
-[node name="Animation" type="AnimationPlayer" parent="Arrow"]
-libraries = {
-"": SubResource("AnimationLibrary_ulf8m")
-}
-autoplay = "Wiggle"
+[node name="Animation" type="AnimationPlayer" parent="Arrow" unique_id=1718175683]
+libraries/ = SubResource("AnimationLibrary_ulf8m")
+autoplay = &"Wiggle"
 
-[node name="Z-Particles" type="GPUParticles2D" parent="."]
+[node name="Z-Particles" type="GPUParticles2D" parent="." unique_id=2125101995]
 position = Vector2(8, -7)
 emitting = false
 amount = 5
-process_material = SubResource("ParticleProcessMaterial_fvyak")
 texture = ExtResource("6_0s67l")
 lifetime = 1.5
 one_shot = true
 fixed_fps = 144
 draw_order = 0
+process_material = SubResource("ParticleProcessMaterial_fvyak")
 
-[node name="Animation" type="AnimationPlayer" parent="."]
-libraries = {
-"": SubResource("AnimationLibrary_as6gy")
-}
-autoplay = "sleeping"
+[node name="Animation" type="AnimationPlayer" parent="." unique_id=1891648806]
+libraries/ = SubResource("AnimationLibrary_as6gy")
+autoplay = &"sleeping"
 speed_scale = 0.5
-
-[connection signal="death" from="HealthComponent" to="." method="on_death"]

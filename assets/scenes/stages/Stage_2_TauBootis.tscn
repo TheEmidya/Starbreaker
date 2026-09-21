@@ -1,0 +1,7 @@
+[gd_scene format=3 uid="uid://sseu563vh7yb"]
+
+[ext_resource type="Script" uid="uid://i0ke4rspankj" path="res://assets/scripts/classes/StageClass.gd" id="1_5yxf3"]
+
+[node name="StageTauBootis" type="Node2D" unique_id=1272233587]
+script = ExtResource("1_5yxf3")
+metadata/_custom_type_script = "uid://i0ke4rspankj"

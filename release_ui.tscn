@@ -1,4 +1,4 @@
-[gd_scene load_steps=3 format=3 uid="uid://bm1xlgxrd1oa0"]
+[gd_scene format=3 uid="uid://bm1xlgxrd1oa0"]
 
 [ext_resource type="Theme" uid="uid://b1rbffoke0vnr" path="res://Game Folder/game_assets/Menus/Themes/MenuUI_Theme.tres" id="1_2hdvj"]
 
@@ -6,9 +6,9 @@
 script/source = "extends Label
 "
 
-[node name="ReleaseUI" type="CanvasLayer"]
+[node name="ReleaseUI" type="CanvasLayer" unique_id=155502739]
 
-[node name="Release" type="Label" parent="."]
+[node name="Release" type="Label" parent="." unique_id=1064751591]
 anchors_preset = 3
 anchor_left = 1.0
 anchor_top = 1.0
@@ -27,6 +27,6 @@ horizontal_alignment = 1
 vertical_alignment = 1
 script = SubResource("GDScript_qbwcn")
 
-[node name="Camera2D" type="Camera2D" parent="."]
+[node name="Camera2D" type="Camera2D" parent="." unique_id=1559374341]
 anchor_mode = 0
 enabled = false

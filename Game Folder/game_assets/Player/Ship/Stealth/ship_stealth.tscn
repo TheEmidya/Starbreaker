@@ -1,0 +1,20 @@
+[gd_scene format=3 uid="uid://bpnfexj1ol0qv"]
+
+[sub_resource type="GDScript" id="GDScript_n5kcq"]
+script/source = "extends Ship
+# Stealth grants a movement speed bonus.
+var is_active = false
+
+func _physics_process(_delta: float) -> void:
+	if global.player.physics_manager != null and !is_active:
+		is_active = true
+		global.player.physics_manager.speed_scalar += 0.45
+
+func _exit_tree() -> void:
+	if is_active:
+		global.player.physics_manager.speed_scalar -= 0.45
+"
+
+[node name="ShipStealth" type="Node" unique_id=311937361]
+script = SubResource("GDScript_n5kcq")
+metadata/_custom_type_script = "uid://cqq5k6yi7vye"

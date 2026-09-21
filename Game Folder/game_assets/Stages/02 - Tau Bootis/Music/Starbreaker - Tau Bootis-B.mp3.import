@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://cnqdufsb2h1td"
+path="res://.godot/imported/Starbreaker - Tau Bootis-B.mp3-46d2878427249a9bc45fbeba7895a983.mp3str"
+
+[deps]
+
+source_file="res://Game Folder/game_assets/Stages/02 - Tau Bootis/Music/Starbreaker - Tau Bootis-B.mp3"
+dest_files=["res://.godot/imported/Starbreaker - Tau Bootis-B.mp3-46d2878427249a9bc45fbeba7895a983.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

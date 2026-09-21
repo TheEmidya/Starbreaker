@@ -1,0 +1,104 @@
+[gd_scene format=3 uid="uid://bpjsnaet4i36d"]
+
+[ext_resource type="Texture2D" uid="uid://43q2dls58su3" path="res://Game Folder/game_assets/Player/LoadoutPickup/Pickup/Sprites/Pickupsprite_1.png" id="2_8bo2d"]
+[ext_resource type="Script" uid="uid://bql2an547gxi1" path="res://Game Folder/game_components/entity_components/Health/health_component.gd" id="2_jem5d"]
+[ext_resource type="Script" uid="uid://chx8xroi3hih8" path="res://Game Folder/game_components/entity_components/Hurtbox/hurtbox.gd" id="3_8bo2d"]
+
+[sub_resource type="GDScript" id="GDScript_kluio"]
+script/source = "extends Entity
+const UPGRADE_LIST = [MANPASSIVE_ID, HEALPASSIVE_ID]
+
+
+
+const MANPASSIVE_ID = \"uid://b4pyds5vcyj8n\"
+const HEALPASSIVE_ID = \"uid://ctxxjuaxoctbm\"
+
+func _ready() -> void:
+	super()
+
+
+func on_death(entity: Entity) -> void:
+	break_startup()
+
+func break_startup() -> void:
+	events.upgrade.emit(get_upgrade())
+	queue_free()
+
+func get_upgrade() -> String:
+	var upgrade = UPGRADE_LIST.pick_random()
+	return upgrade
+"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kihq4"]
+atlas = ExtResource("2_8bo2d")
+region = Rect2(0, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hsxoq"]
+atlas = ExtResource("2_8bo2d")
+region = Rect2(48, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nsrcw"]
+atlas = ExtResource("2_8bo2d")
+region = Rect2(96, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8rd8p"]
+atlas = ExtResource("2_8bo2d")
+region = Rect2(144, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lo7uw"]
+atlas = ExtResource("2_8bo2d")
+region = Rect2(192, 0, 48, 48)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_8s15r"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kihq4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hsxoq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nsrcw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8rd8p")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lo7uw")
+}],
+"loop": 1,
+"name": &"idle",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_kihq4"]
+radius = 16.0
+
+[node name="ItemStorageDevice" type="CharacterBody2D" unique_id=1564362815]
+motion_mode = 1
+script = SubResource("GDScript_kluio")
+metadata/_custom_type_script = "uid://dmakga811ff2w"
+
+[node name="Sprite" type="AnimatedSprite2D" parent="." unique_id=1524652454]
+sprite_frames = SubResource("SpriteFrames_8s15r")
+animation = &"idle"
+autoplay = "idle"
+frame_progress = 0.059188828
+
+[node name="HealthComponent" type="Node" parent="." unique_id=886024837]
+script = ExtResource("2_jem5d")
+maximum_health = 25.0
+metadata/_custom_type_script = "uid://bql2an547gxi1"
+
+[node name="HurtboxComponent" type="Area2D" parent="." unique_id=624021510]
+collision_layer = 64
+collision_mask = 8
+script = ExtResource("3_8bo2d")
+metadata/_custom_type_script = "uid://chx8xroi3hih8"
+
+[node name="Collision" type="CollisionShape2D" parent="HurtboxComponent" unique_id=505999749]
+shape = SubResource("CircleShape2D_kihq4")
+
+[node name="Collision" type="CollisionShape2D" parent="." unique_id=81613639]
+shape = SubResource("CircleShape2D_kihq4")

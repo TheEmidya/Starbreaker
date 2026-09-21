@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://dlwsq3a3sdfbw"]
+[gd_scene format=3 uid="uid://dlwsq3a3sdfbw"]
 
 [ext_resource type="PackedScene" uid="uid://c0qsib2m70nmv" path="res://Game Folder/game_components/entity_components/State Machine/stagemachine_parent.tscn" id="2_e1ni0"]
 
@@ -38,27 +38,27 @@ func physics_update(_delta):
 	parent.global_position = anchor.global_position
 "
 
-[node name="TheFaider" type="CharacterBody2D"]
+[node name="TheFaider" type="CharacterBody2D" unique_id=1667565511]
 motion_mode = 1
 script = SubResource("GDScript_f8mmj")
 
-[node name="Sprite" type="Polygon2D" parent="."]
+[node name="Sprite" type="Polygon2D" parent="." unique_id=1105621675]
 rotation = -1.5708
 polygon = PackedVector2Array(0, 8, -8, 8, -16, 0, -1.48473, 0, 16, 0, 8, 8)
 
-[node name="StateMachine" parent="." node_paths=PackedStringArray("parent", "intial_state") instance=ExtResource("2_e1ni0")]
+[node name="StateMachine" parent="." unique_id=1880612385 node_paths=PackedStringArray("parent", "intial_state") instance=ExtResource("2_e1ni0")]
 parent = NodePath("..")
 intial_state = NodePath("attacking")
 
-[node name="spawn" type="Node" parent="StateMachine"]
+[node name="spawn" type="Node" parent="StateMachine" unique_id=1187794178]
 script = SubResource("GDScript_xkvy3")
 
-[node name="attacking" type="Node" parent="StateMachine" node_paths=PackedStringArray("parent")]
+[node name="attacking" type="Node" parent="StateMachine" unique_id=552704044 node_paths=PackedStringArray("parent")]
 script = SubResource("GDScript_hp60x")
 parent = NodePath("../..")
 
-[node name="Anchor" type="Marker2D" parent="StateMachine/attacking"]
+[node name="Anchor" type="Marker2D" parent="StateMachine/attacking" unique_id=1309526015]
 
-[node name="Polygon2D" type="Polygon2D" parent="StateMachine/attacking/Anchor"]
+[node name="Polygon2D" type="Polygon2D" parent="StateMachine/attacking/Anchor" unique_id=450355439]
 color = Color(1, 0, 1, 1)
 polygon = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)

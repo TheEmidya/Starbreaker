@@ -1,0 +1,90 @@
+[gd_scene format=3 uid="uid://dr0fd06yrefxo"]
+
+[sub_resource type="GDScript" id="GDScript_cxlt4"]
+script/source = "extends Breaker
+var is_active = false
+
+@onready var hitbox = HitboxComponent.new()
+@onready var hitbox_collision: CollisionShape2D = $Collision
+
+@onready var current_lzr_tick = 0.0
+@onready var lzr_duration_timer: Timer = $LZR_Duration
+@export var lzr_duration := 8.5
+
+func _ready() -> void:
+	hitbox.parent = player
+	hitbox.is_disabled = true
+	hitbox.set_collision_layer_value(1, 0)
+	hitbox.set_collision_mask_value(1, 0)
+	hitbox.set_collision_layer_value(4, 1)
+	hitbox.set_collision_mask_value(3, 1)
+	
+	hitbox.starting_damage = 125.0
+	hitbox.starting_knockback_amount = -35.0
+	hitbox.starting_knockback_duration = 1.5
+	hitbox.respects_invincibility = false
+	
+	add_child(hitbox)
+	hitbox_collision.reparent(hitbox)
+	
+	lzr_duration_timer.timeout.connect(finish_action)
+
+func _physics_process(delta: float) -> void:
+	if Input.is_action_just_pressed(\"breaker\") and player.loadout_manager.is_max_energy and is_active == false:
+		hitbox_collision.shape.size = Vector2.ZERO
+		action()
+		is_active = true
+		events.emit_signal(\"breaker_activated\", self)
+	
+	if is_active:
+		player.loadout_manager.current_energy = -1000
+		
+		hitbox_collision.shape.size.x += 2555.0 * delta
+		hitbox_collision.shape.size.y += 5.0 * delta
+		
+		hitbox.global_position = player.global_position
+		hitbox.rotation = player.rotation
+		hitbox_collision.position.x = hitbox_collision.shape.size.x / 2
+		
+		current_lzr_tick += delta
+		
+		if current_lzr_tick > 0.065:
+			current_lzr_tick = 0
+			hitbox.is_disabled = !hitbox.is_disabled
+
+func action():
+	lzr_duration_timer.start(lzr_duration)
+	
+	player.force_invincibility = true
+	player.physics_manager.speed_scalar -= 0.85
+	
+	hitbox_collision.shape.size.x = 20.0
+	hitbox_collision.shape.size.y = 20.0
+	
+	hitbox.is_disabled = false
+
+func finish_action():
+	player.force_invincibility = false
+	player.physics_manager.speed_scalar += 0.85
+	
+	is_active = false
+	events.breaker_ended.emit(self)
+	hitbox.is_disabled = true
+	
+	hitbox_collision.shape.size.x = 20.0
+	hitbox_collision.shape.size.y = 20.0
+"
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_o022f"]
+
+[node name="LZ-R" type="Node" unique_id=645127438]
+script = SubResource("GDScript_cxlt4")
+metadata/_custom_type_script = "uid://cvhfmhfxq4h4b"
+
+[node name="Collision" type="CollisionShape2D" parent="." unique_id=1504467879]
+shape = SubResource("RectangleShape2D_o022f")
+debug_color = Color(0.9328139, 0.52191556, 0.12927905, 0.41960785)
+
+[node name="LZR_Duration" type="Timer" parent="." unique_id=1437070503]
+process_callback = 0
+one_shot = true

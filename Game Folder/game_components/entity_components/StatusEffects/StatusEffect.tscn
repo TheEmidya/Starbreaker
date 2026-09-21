@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://cwbwy0h6espo6"]
+
+[ext_resource type="Script" uid="uid://b0xr14yc30kb3" path="res://Game Folder/game_components/entity_components/StatusEffects/status_effect.gd" id="1_08pek"]
+
+[node name="StatusEffect" type="Node" unique_id=124613656]
+script = ExtResource("1_08pek")

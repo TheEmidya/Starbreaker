@@ -1,6 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://dy2lu7u6xhhkf"]
+[gd_scene format=3 uid="uid://dy2lu7u6xhhkf"]
 
+[ext_resource type="Script" uid="uid://bql2an547gxi1" path="res://Game Folder/game_components/entity_components/Health/health_component.gd" id="2_yxu3j"]
 [ext_resource type="PackedScene" uid="uid://x3qocpbfrgay" path="res://Game Folder/game_assets/Enemies/Tres-2B/Cosma-Turret/Bullet/bullet_cosma-turret.tscn" id="3_j221b"]
+[ext_resource type="Script" uid="uid://chx8xroi3hih8" path="res://Game Folder/game_components/entity_components/Hurtbox/hurtbox.gd" id="3_x24yd"]
 
 [sub_resource type="GDScript" id="GDScript_e85qt"]
 script/source = "extends Enemy
@@ -50,25 +52,37 @@ func shoot():
 	bulletsetup()
 "
 
-[node name="SpiralTurret" type="CharacterBody2D"]
+[node name="SpiralTurret" type="CharacterBody2D" unique_id=940519709 node_paths=PackedStringArray("health", "hurtbox")]
 position = Vector2(384, 0)
 motion_mode = 1
 script = SubResource("GDScript_e85qt")
 spawn_time = 0.5
+health = NodePath("HealthComponent")
+hurtbox = NodePath("HurtboxComponent")
 
-[node name="BulletPatternGenerator" type="Node2D" parent="."]
+[node name="BulletPatternGenerator" type="Node2D" parent="." unique_id=1351038195]
 script = SubResource("GDScript_g7sdy")
 bulletpath = ExtResource("3_j221b")
 firerate = 0.1
 rotation_speed = 75
 bullet_points = 14
 
-[node name="Duration" type="Timer" parent="."]
+[node name="Duration" type="Timer" parent="." unique_id=726198462]
 process_callback = 0
 
-[node name="CameraPreview" type="Camera2D" parent="."]
+[node name="CameraPreview" type="Camera2D" parent="." unique_id=1079883196]
 visible = false
 top_level = true
 anchor_mode = 0
 enabled = false
 zoom = Vector2(2.5, 2.5)
+
+[node name="HealthComponent" type="Node" parent="." unique_id=1035859970]
+script = ExtResource("2_yxu3j")
+metadata/_custom_type_script = "uid://bql2an547gxi1"
+
+[node name="HurtboxComponent" type="Area2D" parent="." unique_id=393239419]
+script = ExtResource("3_x24yd")
+metadata/_custom_type_script = "uid://chx8xroi3hih8"
+
+[node name="Collision" type="CollisionShape2D" parent="HurtboxComponent" unique_id=211980893]

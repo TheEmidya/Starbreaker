@@ -1,83 +1,128 @@
-[gd_scene load_steps=5 format=3 uid="uid://dejugigeb3rlr"]
-
-[ext_resource type="Theme" uid="uid://b1rbffoke0vnr" path="res://Game Folder/game_assets/Menus/Themes/MenuUI_Theme.tres" id="1_ya0xj"]
-[ext_resource type="Script" uid="uid://cb7ckkc703no7" path="res://Game Folder/game_components/button_component/global_button.gd" id="2_3e5w4"]
-[ext_resource type="AudioStream" uid="uid://wge4fqipu3wj" path="res://Game Folder/game_assets/Menus/StageSelect/Music/Tres2b Melody.mp3" id="3_btgfp"]
+[gd_scene format=3 uid="uid://dejugigeb3rlr"]
 
 [sub_resource type="GDScript" id="GDScript_ya0xj"]
-script/source = "extends Node2D
-@onready var music: AudioStreamPlayer = $Music
+script/source = "extends Control
 @onready var camera: Camera2D = $Camera2D
+@onready var music_player: AudioStreamPlayer = $Music
+@onready var stage_name: Label = $Menu/StageGraphic/Name
+
+@onready var current_stage_selection = 0:
+	get():
+		current_stage_selection = wrapi(current_stage_selection, 0, 2)
+		match current_stage_selection:
+			0:
+				switch_music(\"TRES2B\")
+			1:
+				switch_music(\"TAUBOOTIS\")
+		switch_graphic(current_stage_selection)
+		return current_stage_selection
+
+@onready var music_dict = {
+	\"TRES2B\": \"res://Game Folder/game_assets/Menus/StageSelect/Music/Stage Select - Tres-2B.ogg\",
+	\"TAUBOOTIS\": \"res://Game Folder/game_assets/Stages/02 - Tau Bootis/Music/Stage Select - Tau Bootis-B WIP.mp3\"
+}
 
 func _ready() -> void:
-	music.play()
+	current_stage_selection = 0
+	switch_graphic(0)
+	switch_music(\"TRES2B\")
 
+func switch_graphic(stage : int):
+	match stage:
+		0:
+			stage_name.text = \"TRES2B\"
+		1:
+			stage_name.text = \"TAUBOOTIS\"
 
-func button_pressed() -> void:
-	global.main_manager.switch_level_to(\"res://Game Folder/game_assets/Stages/01 - Tres-2B/Tres-2B.tscn\")
-	queue_free()
+func switch_music(requested_song : String):
+	music_player.stream = load(music_dict.get(requested_song))
+	music_player.play()
 
 func _process(delta: float) -> void:
+	if Input.is_action_just_pressed(\"ui_right\"):
+		current_stage_selection += 1
+	elif Input.is_action_just_pressed(\"ui_left\"):
+		current_stage_selection -= 1
+	
 	if Input.is_action_just_pressed(\"esc\"):
-		global.main_manager.switch_level_to(\"res://Game Folder/game_assets/Menus/MainMenu/BASE/mainmenu.tscn\")
+		global.main_manager.quick_load(\"res://Game Folder/game_assets/Menus/MainMenu/BASE/mainmenu.tscn\", self)
 		queue_free()
+
+func play_pressed() -> void:
+	match current_stage_selection:
+		0:
+			global.main_manager.switch_level_to(\"res://Game Folder/game_assets/Stages/01 - Tres-2B/Tres-2B.tscn\")
+		1:
+			push_error(\"Level not made...\")
 "
 
-[node name="StageSelect" type="Node2D"]
-script = SubResource("GDScript_ya0xj")
-
-[node name="Tres2B" type="Control" parent="."]
+[node name="StageSelect" type="Control" unique_id=1378505803]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme = ExtResource("1_ya0xj")
+script = SubResource("GDScript_ya0xj")
 
-[node name="TRES-2B" type="RichTextLabel" parent="Tres2B"]
+[node name="Menu" type="Control" parent="." unique_id=23126294]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 4
+
+[node name="StageGraphic" type="Control" parent="Menu" unique_id=1378497824]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -96.0
-offset_top = -192.0
-offset_right = 96.0
-offset_bottom = -152.0
 grow_horizontal = 2
 grow_vertical = 2
-text = "TRES-2B"
-scroll_active = false
+
+[node name="Name" type="Label" parent="Menu/StageGraphic" unique_id=1852149935]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -28.5
+offset_top = -45.0
+offset_right = 28.5
+offset_bottom = -22.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "TRES2B"
 horizontal_alignment = 1
-vertical_alignment = 1
 
-[node name="CenterContainer" type="CenterContainer" parent="Tres2B"]
+[node name="Play" type="Button" parent="Menu/StageGraphic" unique_id=1373977973]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -64.0
-offset_top = -19.0
-offset_right = 64.0
-offset_bottom = 19.0
+offset_left = -4.0
+offset_top = -4.0
+offset_right = 4.0
+offset_bottom = 4.0
 grow_horizontal = 2
 grow_vertical = 2
-
-[node name="CustomButton" type="Button" parent="Tres2B/CenterContainer"]
-layout_mode = 2
 text = "PLAY"
 flat = true
-script = ExtResource("2_3e5w4")
-metadata/_custom_type_script = "uid://cb7ckkc703no7"
 
-[node name="Music" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("3_btgfp")
+[node name="Music" type="AudioStreamPlayer" parent="." unique_id=1692362949]
 bus = &"Music"
 
-[node name="Camera2D" type="Camera2D" parent="."]
+[node name="Camera2D" type="Camera2D" parent="." unique_id=183133079]
+limit_left = 0
+limit_top = 0
+limit_right = 640
+limit_bottom = 360
 
-[connection signal="pressed" from="Tres2B/CenterContainer/CustomButton" to="." method="button_pressed"]
+[connection signal="pressed" from="Menu/StageGraphic/Play" to="." method="play_pressed"]

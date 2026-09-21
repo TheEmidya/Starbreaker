@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://ftfgs547yhwy"]
+[gd_scene format=3 uid="uid://ftfgs547yhwy"]
 
 [ext_resource type="Texture2D" uid="uid://ivfqvh25uukv" path="res://Game Folder/game_assets/Player/VFX/Movement Particles/movement-particles.png" id="1_ebcad"]
 
@@ -78,14 +78,14 @@ turbulence_initial_displacement_max = 100.0
 turbulence_influence_over_life = SubResource("CurveTexture_3bdke")
 collision_use_scale = true
 
-[node name="MVT_Particles" type="GPUParticles2D"]
+[node name="MVT_Particles" type="GPUParticles2D" unique_id=877734104]
 show_behind_parent = true
 texture_filter = 1
 material = SubResource("CanvasItemMaterial_ghrwa")
 position = Vector2(0, 8)
 amount = 16
-process_material = SubResource("ParticleProcessMaterial_mu2xp")
 texture = ExtResource("1_ebcad")
 lifetime = 0.45
 fixed_fps = 8
 draw_order = 0
+process_material = SubResource("ParticleProcessMaterial_mu2xp")

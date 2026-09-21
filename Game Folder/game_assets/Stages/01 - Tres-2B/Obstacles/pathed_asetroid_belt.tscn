@@ -1,4 +1,4 @@
-[gd_scene load_steps=3 format=3 uid="uid://j8na7wf2jjuj"]
+[gd_scene format=3 uid="uid://j8na7wf2jjuj"]
 
 [sub_resource type="Curve2D" id="Curve2D_76aar"]
 _data = {
@@ -85,6 +85,6 @@ func _process(delta: float) -> void:
 			queue_free()
 "
 
-[node name="pathed_asetroid_belt" type="Path2D"]
+[node name="pathed_asetroid_belt" type="Path2D" unique_id=105222201]
 curve = SubResource("Curve2D_76aar")
 script = SubResource("GDScript_mw0be")

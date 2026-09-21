@@ -1,4 +1,4 @@
-[gd_scene load_steps=2 format=3 uid="uid://bf6somwj76fiy"]
+[gd_scene format=3 uid="uid://bf6somwj76fiy"]
 
 [sub_resource type="GDScript" id="GDScript_u206m"]
 script/source = "extends Enemy
@@ -8,15 +8,6 @@ const ASETROID = preload(\"res://Game Folder/game_assets/Stages/01 - Tres-2B/Obs
 
 var has_started = false
 var s = null
-
-func appear(audio_time):
-	audio_time = snappedf(audio_time, 0.1)
-	if audio_time == spawn_time:
-		show()
-		process_mode = ProcessMode.PROCESS_MODE_INHERIT
-		start()
-		has_started = true
-		self.reparent(global.EntityManager)
 
 
 func start():
@@ -30,10 +21,10 @@ func start():
 			await $Spawnrate.timeout
 "
 
-[node name="AsetroidBelt" type="CharacterBody2D"]
+[node name="AsetroidBelt" type="CharacterBody2D" unique_id=209066235]
 script = SubResource("GDScript_u206m")
 
-[node name="Spawnrate" type="Timer" parent="."]
+[node name="Spawnrate" type="Timer" parent="." unique_id=307601013]
 process_callback = 0
 
 [connection signal="timeout" from="Spawnrate" to="." method="_on_spawnrate_timeout"]

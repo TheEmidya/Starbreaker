@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://c26v2faggef5y"]
+[gd_scene format=3 uid="uid://c26v2faggef5y"]
 
 [ext_resource type="Theme" uid="uid://b1rbffoke0vnr" path="res://Game Folder/game_assets/Menus/Themes/MenuUI_Theme.tres" id="1_ns363"]
 [ext_resource type="AudioStream" uid="uid://cem4aaklv0lae" path="res://Game Folder/game_assets/Menus/MainMenu/GameOver/BASE/starbreaker - game over.mp3" id="1_xouxq"]
@@ -137,30 +137,30 @@ glow_blend_mode = 0
 adjustment_enabled = true
 adjustment_saturation = 8.0
 
-[node name="GameOver" type="Node2D"]
+[node name="GameOver" type="Node2D" unique_id=919126631]
 script = SubResource("GDScript_83bpk")
 
-[node name="Gameover_Music" type="AudioStreamPlayer" parent="."]
+[node name="Gameover_Music" type="AudioStreamPlayer" parent="." unique_id=949311530]
 stream = ExtResource("1_xouxq")
 volume_db = -16.0
 bus = &"Music"
 script = SubResource("GDScript_jdbvu")
 
-[node name="Victory_music" type="AudioStreamPlayer" parent="."]
+[node name="Victory_music" type="AudioStreamPlayer" parent="." unique_id=419582068]
 stream = ExtResource("2_xv7wk")
 volume_db = -16.0
 script = SubResource("GDScript_85053")
 
-[node name="GameOver_Camera" type="Camera2D" parent="."]
+[node name="GameOver_Camera" type="Camera2D" parent="." unique_id=1442102337]
 offset = Vector2(0, 390)
 script = SubResource("GDScript_d3b08")
 
-[node name="GUI_Controller" type="Control" parent="."]
+[node name="GUI_Controller" type="Control" parent="." unique_id=136350776]
 layout_mode = 3
 anchors_preset = 0
 theme = ExtResource("1_ns363")
 
-[node name="Label" type="Label" parent="GUI_Controller"]
+[node name="Label" type="Label" parent="GUI_Controller" unique_id=40617104]
 layout_mode = 0
 offset_left = -105.0
 offset_top = -130.0
@@ -169,7 +169,7 @@ offset_bottom = -90.0
 text = " ☆ NO HIT! ☆"
 script = SubResource("GDScript_l4yif")
 
-[node name="Text" type="Label" parent="GUI_Controller"]
+[node name="Text" type="Label" parent="GUI_Controller" unique_id=931463967]
 layout_mode = 1
 anchors_preset = 7
 anchor_left = 0.5
@@ -191,7 +191,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 uppercase = true
 
-[node name="Retry_Button" type="Button" parent="GUI_Controller"]
+[node name="Retry_Button" type="Button" parent="GUI_Controller" unique_id=1717427473]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -208,7 +208,7 @@ focus_mode = 0
 text = "Retry"
 script = SubResource("GDScript_2sjya")
 
-[node name="Return_Button" type="Button" parent="GUI_Controller"]
+[node name="Return_Button" type="Button" parent="GUI_Controller" unique_id=244333299]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -225,7 +225,7 @@ focus_mode = 0
 text = "Return To Main Menu"
 script = SubResource("GDScript_2sjya")
 
-[node name="LostRank_Display" type="RichTextLabel" parent="GUI_Controller"]
+[node name="LostRank_Display" type="RichTextLabel" parent="GUI_Controller" unique_id=909999040]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -241,7 +241,7 @@ scroll_active = false
 autowrap_mode = 0
 script = ExtResource("2_16vph")
 
-[node name="LostScore_Display" type="RichTextLabel" parent="GUI_Controller"]
+[node name="LostScore_Display" type="RichTextLabel" parent="GUI_Controller" unique_id=1626146317]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -261,13 +261,13 @@ scroll_active = false
 autowrap_mode = 0
 horizontal_alignment = 1
 
-[node name="Tween_Timer" type="Timer" parent="GUI_Controller"]
+[node name="Tween_Timer" type="Timer" parent="GUI_Controller" unique_id=1682801488]
 one_shot = true
 
-[node name="Retry_Tween_Timer" type="Timer" parent="GUI_Controller"]
+[node name="Retry_Tween_Timer" type="Timer" parent="GUI_Controller" unique_id=2022055658]
 one_shot = true
 
-[node name="Particles" type="CPUParticles2D" parent="GUI_Controller"]
+[node name="Particles" type="CPUParticles2D" parent="GUI_Controller" unique_id=600410663]
 z_index = -4096
 amount = 618
 lifetime = 15.0
@@ -284,5 +284,5 @@ color = Color(0.901961, 1, 0.941176, 0.0235294)
 hue_variation_min = -1.0
 hue_variation_max = 1.0
 
-[node name="Visual Effects" type="WorldEnvironment" parent="."]
+[node name="Visual Effects" type="WorldEnvironment" parent="." unique_id=1188633829]
 environment = SubResource("Environment_nuskc")

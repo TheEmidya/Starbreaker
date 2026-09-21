@@ -1,4 +1,4 @@
-[gd_scene load_steps=2 format=3 uid="uid://cjce8owj17wr7"]
+[gd_scene format=3 uid="uid://cjce8owj17wr7"]
 
 [sub_resource type="GDScript" id="GDScript_p14kw"]
 resource_name = "level_manager"
@@ -79,5 +79,5 @@ func death_sequence(finalblow_idenity):
 	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 "
 
-[node name="LVL_MANAGER" type="Node"]
+[node name="LVL_MANAGER" type="Node" unique_id=1385377229]
 script = SubResource("GDScript_p14kw")

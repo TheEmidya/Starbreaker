@@ -1,22 +1,23 @@
-C:/Users/bkrbe/Desktop
-res://Game Folder/game_assets/Player/Sprites
-res://Game Folder/game_assets/Stages/01 - Tres-2B/Boss/Timothy/Sprites
-res://Game Folder/game_assets/Stages/01 - Tres-2B/Boss/Timothy/Bullet
-res://Game Folder/game_assets/Shaders
-res://Game Folder/game_components/shader_components
-res://Game Folder/game_assets/Menus/MainMenu/BASE/Textures
-res://Game Folder/game_assets/Menus/StageSelect/Base
-res://Game Folder/game_assets/Player/HUD
-res://Game Folder/game_assets/Player/Weapons/firing_modes
+res://assets/scripts/classes/
+res://assets/sprites/player/misc/
+res://Game Folder/game_assets/Player/Sprites/
+res://assets/scenes/misc/stage/
+res://assets/scripts/core/
+res://Game Folder/game_assets/Enemies/Tres-2B/Skeleshot/Projectile/
+res://Game Folder/game_components/global_components/Scripts/
+res://Game Folder/game_assets/Enemies/0. NULL/HitEffects/Shader/
+res://Game Folder/game_assets/Enemies/Tres-2B/Skeleshot/
 res://
-res://Game Folder/game_assets/Enemies/Tres-2B/SpiralTurret
-res://Game Folder/game_assets/Stages/01 - Tres-2B/Obstacles
-res://Game Folder/game_assets/Stages/00 - BASE
-res://Game Folder/game_assets/Stages/01 - Tres-2B/Effects
-res://Game Folder/game_assets/Player/Weapons
-res://Game Folder/game_components/shaders
-res://Game Folder/game_assets/Stages/01 - Tres-2B
-res://Game Folder/game_assets/Enemies/Tres-2B/Cosma-Turret
-res://Game Folder/game_assets/Enemies/Tres-2B/TutorialEnemy
-res://Game Folder/game_assets/Enemies/Tres-2B/Skeleshot/Sprites
-res://Game Folder/game_assets/Enemies/Tres-2B/Trishooter/Sprites
+res://Game Folder/game_assets/Menus/MainMenu/BASE/
+res://Game Folder/game_assets/Player/LoadoutPickup/Pickup/Sprites/
+res://Game Folder/game_assets/Player/LoadoutPickup/Pickup/
+res://Game Folder/game_assets/Player/Passive/Man Passive/Sprites/
+res://Game Folder/game_assets/Player/Passive/Man Passive/
+res://Game Folder/game_assets/Player/Weapons/firing_modes/Railcannon/Sprites/
+res://Game Folder/game_assets/Player/Breaker/LZ-R/
+res://Game Folder/game_assets/Player/Breaker/Starman/
+res://Game Folder/game_assets/Player/Breaker/
+res://Game Folder/game_assets/Player/Ship/Stealth/
+res://Game Folder/game_assets/Player/Ship/Advanced/
+res://Game Folder/game_assets/Player/Ship/Classic/
+C:/Users/bkrbe/Desktop/

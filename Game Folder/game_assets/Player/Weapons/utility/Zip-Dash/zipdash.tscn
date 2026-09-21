@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://by5k7qr0hhh78"]
+[gd_scene format=3 uid="uid://by5k7qr0hhh78"]
 
 [ext_resource type="Script" uid="uid://ucfty02weqo2" path="res://Game Folder/game_components/entity_components/Hitbox/hitbox.gd" id="1_7yi2p"]
 [ext_resource type="PackedScene" uid="uid://c0qsib2m70nmv" path="res://Game Folder/game_components/entity_components/State Machine/stagemachine_parent.tscn" id="2_fdxl6"]
@@ -21,6 +21,9 @@ script/source = "extends Weapon
 @onready var release: State = $ZipDash_StateMachine/RELEASE
 
 @export var energy_cost = 75.0
+
+func _init() -> void:
+	hitbox.parent = player
 
 func action():
 	if global.player.weapons.current_energy >= energy_cost:
@@ -79,8 +82,8 @@ func enter():
 	
 	var direction = parent.velocity_vector
 	
-	if direction == Vector2.ZERO:
-		direction = global.player.global_position.direction_to(global.player.get_global_mouse_position())
+	#if direction == Vector2.ZERO:
+		#direction = global.player.global_position.direction_to(global.player.get_global_mouse_position())
 	
 	parent.release_vector = direction
 	
@@ -121,51 +124,46 @@ func exit():
 	parent.is_weapon_actionable = true
 "
 
-[node name="Zipdash_Manager" type="Node"]
+[node name="Zipdash_Manager" type="Node" unique_id=1262080202]
 script = SubResource("GDScript_k1en3")
 energy_cost = 65.0
 
-[node name="ZipDash_Base" type="Node2D" parent="."]
+[node name="ZipDash_Base" type="Node2D" parent="." unique_id=21027563]
 script = SubResource("GDScript_1vu3n")
 
-[node name="Hitbox" type="Area2D" parent="ZipDash_Base" node_paths=PackedStringArray("parent") groups=["player"]]
+[node name="Hitbox" type="Area2D" parent="ZipDash_Base" unique_id=117594164 groups=["player"]]
 collision_layer = 8
 collision_mask = 4
 script = ExtResource("1_7yi2p")
-parent = NodePath("..")
-is_disabled = true
-damage = -55.0
-knockback_amount = -14000.0
-knockback_stun_duration = 0.4
 
-[node name="Collision" type="CollisionShape2D" parent="ZipDash_Base/Hitbox"]
+[node name="Collision" type="CollisionShape2D" parent="ZipDash_Base/Hitbox" unique_id=911537788]
 shape = SubResource("RectangleShape2D_fdxl6")
 disabled = true
 
-[node name="ZipDash_StateMachine" parent="." node_paths=PackedStringArray("parent", "intial_state") instance=ExtResource("2_fdxl6")]
+[node name="ZipDash_StateMachine" parent="." unique_id=1651974865 node_paths=PackedStringArray("parent", "intial_state") instance=ExtResource("2_fdxl6")]
 parent = NodePath("../ZipDash_Base")
 intial_state = NodePath("IDLE")
 
-[node name="IDLE" type="Node" parent="ZipDash_StateMachine" node_paths=PackedStringArray("parent")]
+[node name="IDLE" type="Node" parent="ZipDash_StateMachine" unique_id=684690906 node_paths=PackedStringArray("parent")]
 script = SubResource("GDScript_fdxl6")
 parent = NodePath("../..")
 metadata/_custom_type_script = "uid://dmgbhcexe6fw"
 
-[node name="FOCUS" type="Node" parent="ZipDash_StateMachine" node_paths=PackedStringArray("parent")]
+[node name="FOCUS" type="Node" parent="ZipDash_StateMachine" unique_id=2069996780 node_paths=PackedStringArray("parent")]
 script = SubResource("GDScript_81w08")
 parent = NodePath("../..")
 metadata/_custom_type_script = "uid://dmgbhcexe6fw"
 
-[node name="RELEASE" type="Node" parent="ZipDash_StateMachine" node_paths=PackedStringArray("parent")]
+[node name="RELEASE" type="Node" parent="ZipDash_StateMachine" unique_id=834690893 node_paths=PackedStringArray("parent")]
 script = SubResource("GDScript_dhdmc")
 parent = NodePath("../..")
 metadata/_custom_type_script = "uid://dmgbhcexe6fw"
 
-[node name="COOLDOWN" type="Node" parent="ZipDash_StateMachine" node_paths=PackedStringArray("parent")]
+[node name="COOLDOWN" type="Node" parent="ZipDash_StateMachine" unique_id=1277304208 node_paths=PackedStringArray("parent")]
 script = SubResource("GDScript_ovtgw")
 parent = NodePath("../..")
 metadata/_custom_type_script = "uid://dmgbhcexe6fw"
 
-[node name="Refunded" type="AudioStreamPlayer" parent="."]
+[node name="Refunded" type="AudioStreamPlayer" parent="." unique_id=230260565]
 stream = ExtResource("3_fdxl6")
 volume_db = -12.0

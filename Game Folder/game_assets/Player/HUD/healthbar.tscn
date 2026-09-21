@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://crg4nvhxx414j"]
+[gd_scene format=3 uid="uid://crg4nvhxx414j"]
 
 [ext_resource type="Texture2D" uid="uid://bcc15vut0aln7" path="res://Game Folder/game_assets/Player/HUD/hudhp_under.png" id="1_poui2"]
 [ext_resource type="Texture2D" uid="uid://edjqeafbibyh" path="res://Game Folder/game_assets/Player/HUD/hudhp_over.png" id="2_ihja2"]
@@ -49,7 +49,7 @@ func update_health_text():
 [sub_resource type="Gradient" id="Gradient_poui2"]
 colors = PackedColorArray(1, 0, 0, 1, 0, 1, 1, 1)
 
-[node name="HealthContainter" type="Control"]
+[node name="HealthContainter" type="Control" unique_id=122807023]
 layout_mode = 3
 anchor_left = 0.011
 anchor_top = 0.007
@@ -62,7 +62,7 @@ offset_bottom = -0.16
 script = SubResource("GDScript_ulytf")
 healthbar_gradient = SubResource("Gradient_poui2")
 
-[node name="health_progressbar" type="TextureProgressBar" parent="."]
+[node name="health_progressbar" type="TextureProgressBar" parent="." unique_id=1018092204]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.002
@@ -81,9 +81,8 @@ texture_over = ExtResource("2_ihja2")
 texture_progress = ExtResource("3_nvu63")
 texture_progress_offset = Vector2(0, 0.5)
 
-[node name="health_text" type="RichTextLabel" parent="."]
+[node name="health_text" type="RichTextLabel" parent="." unique_id=1322986579]
 clip_contents = false
-layout_direction = 1
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.034
@@ -97,6 +96,7 @@ offset_bottom = 71.806
 scale = Vector2(0.5, 0.5)
 size_flags_horizontal = 4
 size_flags_vertical = 4
+layout_direction = 1
 mouse_filter = 1
 theme = ExtResource("4_y1cuq")
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)

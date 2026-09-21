@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://byl5crghiev7l"
+path="res://.godot/imported/starman_music.ogg-eb6b936c90c1c80c625db320beb4b1b0.oggvorbisstr"
+
+[deps]
+
+source_file="res://Game Folder/game_assets/Player/Breaker/Starman/starman_music.ogg"
+dest_files=["res://.godot/imported/starman_music.ogg-eb6b936c90c1c80c625db320beb4b1b0.oggvorbisstr"]
+
+[params]
+
+loop=true
+loop_offset=0.0
+bpm=0.0
+beat_count=0
+bar_beats=4

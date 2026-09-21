@@ -1,0 +1,299 @@
+[gd_scene format=3 uid="uid://fual85xipl34"]
+
+[ext_resource type="AudioStream" uid="uid://bxrhsgdwv711w" path="res://Game Folder/game_assets/Player/Weapons/firing_modes/Railcannon/Audio/sp_firing.wav" id="1_ow2yi"]
+[ext_resource type="Texture2D" uid="uid://d3in8hfbxdaci" path="res://Game Folder/game_assets/Player/Weapons/firing_modes/Railcannon/Sprites/railcannon_secondaryfire.png" id="1_xpctd"]
+[ext_resource type="Texture2D" uid="uid://baa1mmpigaqjc" path="res://Game Folder/game_assets/Player/Weapons/firing_modes/Railcannon/Sprites/AttackConnect.png" id="2_f7hlg"]
+[ext_resource type="AudioStream" uid="uid://bpsyqjeosvi7t" path="res://Game Folder/game_assets/Player/Weapons/firing_modes/Railcannon/Audio/railcannon_secondaryfire.ogg" id="4_7bhbu"]
+[ext_resource type="AudioStream" uid="uid://dj6oxcrpjl3gj" path="res://Game Folder/game_assets/Player/Weapons/firing_modes/Railcannon/Audio/railcannon_charge.ogg" id="5_is1ss"]
+[ext_resource type="AudioStream" uid="uid://dx7hjyg2ws0tu" path="res://Game Folder/game_assets/Player/Weapons/firing_modes/Railcannon/Audio/railcannon_fullcharge.ogg" id="6_e6rsx"]
+[ext_resource type="AudioStream" uid="uid://bxsouwpqfjq4e" path="res://Game Folder/game_assets/Player/Weapons/firing_modes/Railcannon/Audio/railcannon_charge_atmos.ogg" id="7_7bhbu"]
+
+[sub_resource type="GDScript" id="GDScript_4ckef"]
+resource_name = "primaryweaponscript"
+script/source = "extends Weapon
+
+@onready var current_rail_charge := 0.0:
+	set(amount):
+		if current_rail_charge < 100.0 and abs(amount) > 0:
+			has_max_rail_charge = false
+			charging_sfx.stop()
+			charging_sfx.pitch_scale = remap(current_rail_charge, 0, 100.0, 1.0, 3.5)
+			charging_sfx.volume_db = remap(current_rail_charge, 0, 100.0, -24.0, -3.0)
+			charging_sfx.play()
+		
+		current_rail_charge += amount
+		current_rail_charge = clamp(current_rail_charge, 0, maximum_rail_charge)
+		
+		if current_rail_charge == 100.0 and has_max_rail_charge == false:
+			has_max_rail_charge = true
+			#player.sprite.play(\"refunded\")
+			full_charge_sfx.play()
+			full_charge_atmos.play()
+
+@export var maximum_rail_charge := 100.0
+@onready var has_max_rail_charge := false
+@onready var charging_sfx: AudioStreamPlayer = $Charging
+@onready var full_charge_sfx: AudioStreamPlayer = $FullCharge
+@onready var full_charge_atmos: AudioStreamPlayer = $FullChargeAtmos
+
+
+const PRIMARYBULLET_PATH = \"res://Game Folder/game_assets/Player/Weapons/firing_modes/Railcannon/Base/railcannon_primary_bullet.tscn\"
+@export var primary_firerate := 0.075
+@export var primary_firing_sfx : AudioStreamPlayer
+
+@onready var current_bullet_position = 0
+@onready var primarybullet_right_position = Vector2(2, 10)
+@onready var primarybullet_left_position = Vector2(2, -10)
+
+@onready var switch_bullet_position = func(projectile : Projectile): 
+	match(current_bullet_position):
+		0:
+			projectile.global_position += primarybullet_right_position.rotated(player.global_rotation)
+			current_bullet_position = 1
+		1:
+			projectile.global_position += primarybullet_left_position.rotated(player.global_rotation)
+			current_bullet_position = 0
+
+@onready var primary_tick = 99
+
+
+@export var secondary_min_damage := 1.0
+@export var secondary_max_damage := 125.0
+@export var secondary_firerate := 0.02
+
+@onready var secondary_firing_sfx: AudioStreamPlayer = $SecondaryFiring
+@onready var secondary_positiondata: Node2D = $PositionData
+
+@onready var secondary_sprite: AnimatedSprite2D = $SecondaryVisual/Sprite
+@onready var secondary_particles: GPUParticles2D = $SecondaryVisual/SecondaryParticles
+@onready var secondary_hitbox = Hitbox.new()
+@onready var secondary_hitbox_collisions = [Hitbox]
+@onready var secondary_tick = 99
+
+func _ready() -> void:
+	events.hitbox_interaction.connect(grant_charge, 1)
+	setup_secondary()
+
+func setup_secondary():
+	secondary_sprite.hide()
+	
+	for i in range(30):
+		
+		
+		var secondary_hitboxes = Hitbox.new()
+		secondary_hitboxes.set_collision_layer_value(1, 0)
+		secondary_hitboxes.set_collision_layer_value(4, 1)
+		secondary_hitboxes.set_collision_mask_value(1, 0)
+		secondary_hitboxes.set_collision_mask_value(3, 1)
+		secondary_hitboxes.set_collision_mask_value(6, 1)
+		secondary_hitboxes.set_collision_mask_value(7, 1)
+		secondary_hitboxes.position.x += 30.0 * i
+		secondary_hitboxes.is_hitbox_disabled = true
+		add_child(secondary_hitboxes, true)
+		secondary_hitboxes.reparent(secondary_positiondata)
+		
+		var collision = CollisionShape2D.new()
+		collision.shape = CircleShape2D.new()
+		collision.shape.radius = 15.0
+		collision.position.x += 25.0 * i
+		add_child(collision)
+		collision.reparent(secondary_hitboxes)
+		secondary_hitbox_collisions.append(secondary_hitboxes)
+
+
+func _physics_process(_delta: float) -> void:
+	primary_tick += _delta
+	secondary_tick += _delta
+	
+	if Input.is_action_pressed(\"primary\") and primary_tick > primary_firerate:
+		primary_action()
+	
+	if Input.is_action_just_pressed(\"secondary\") and secondary_tick > secondary_firerate and current_rail_charge > 0.1:
+		secondary_action()
+
+func grant_charge(hitbox : Hitbox):
+	if hitbox.get_parent().name.contains(\"railcannon_bullet\"):
+		current_rail_charge = hitbox.hitbox_data.damage / 2.5
+
+func primary_action():
+	primary_tick = 0
+	
+	primary_firing_sfx.play(0.0)
+	
+	var primary_bullet_scene = load(PRIMARYBULLET_PATH) as PackedScene
+	var primary_bullet = primary_bullet_scene.instantiate() as Projectile
+	primary_bullet.rotation = player.rotation
+	primary_bullet.global_position = player.global_position
+	switch_bullet_position.call(primary_bullet)
+	global.add_child(primary_bullet, true)
+	events.player_projectile_fired.emit(primary_bullet)
+
+func secondary_action():
+	secondary_tick = 0.0
+	
+	secondary_sprite.show()
+	secondary_sprite.global_position = player.global_position
+	secondary_sprite.rotation = player.rotation
+	secondary_sprite.play(\"fire\")
+	events.player_railcannon_secondary_fired.emit(current_rail_charge)
+	
+	secondary_firing_sfx.pitch_scale = remap(current_rail_charge, 0, maximum_rail_charge, 3.5, 0.85)
+	secondary_firing_sfx.play(0.0)
+	
+	full_charge_atmos.stop()
+	
+	secondary_particles.global_position = secondary_sprite.global_position
+	secondary_particles.rotation = secondary_sprite.rotation
+	secondary_particles.process_material.hue_variation_max = remap(current_rail_charge, 0, maximum_rail_charge, 0.0, 1.0)
+	secondary_particles.emitting = true
+	
+	secondary_sprite.animation_finished.connect(func(): 
+		secondary_sprite.hide()
+		for i in secondary_hitbox_collisions:
+			if i is Hitbox:
+				i.is_hitbox_disabled = true)
+	
+	var secondary_hitbox_data = HitboxData.new()
+	secondary_hitbox.hitbox_data = secondary_hitbox_data
+	secondary_hitbox_data.damage = remap(current_rail_charge, 0, maximum_rail_charge, secondary_min_damage, secondary_max_damage)
+	secondary_hitbox_data.knockback = remap(current_rail_charge, 0, maximum_rail_charge, 15, 525)
+	current_rail_charge = -maximum_rail_charge
+	
+	secondary_positiondata.position = player.position
+	secondary_positiondata.rotation = player.rotation
+	for i in secondary_hitbox_collisions:
+		if i is Hitbox:
+			i.hitbox_data = secondary_hitbox_data
+			i.is_hitbox_disabled = false
+"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xpctd"]
+atlas = ExtResource("1_xpctd")
+region = Rect2(0, 0, 812, 7)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_f7hlg"]
+atlas = ExtResource("1_xpctd")
+region = Rect2(0, 7, 812, 7)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_is1ss"]
+atlas = ExtResource("1_xpctd")
+region = Rect2(0, 14, 812, 7)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_e6rsx"]
+atlas = ExtResource("1_xpctd")
+region = Rect2(0, 21, 812, 7)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7bhbu"]
+atlas = ExtResource("1_xpctd")
+region = Rect2(0, 28, 812, 7)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_o2wc5"]
+atlas = ExtResource("1_xpctd")
+region = Rect2(0, 35, 812, 7)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_tmco2"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xpctd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_f7hlg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_is1ss")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_e6rsx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7bhbu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_o2wc5")
+}],
+"loop": 0,
+"name": &"fire",
+"speed": 30.0
+}]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_is1ss"]
+particles_animation = true
+particles_anim_h_frames = 11
+particles_anim_v_frames = 1
+particles_anim_loop = false
+
+[sub_resource type="Curve" id="Curve_e6rsx"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.10541312, 1), 0.0, 0.0, 0, 0, Vector2(0.957265, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_7bhbu"]
+curve = SubResource("Curve_e6rsx")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_o2wc5"]
+particle_flag_disable_z = true
+emission_shape_offset = Vector3(402, 0, 0)
+emission_shape = 3
+emission_box_extents = Vector3(402, 1, 1)
+angle_min = -720.0
+angle_max = 720.0
+spread = 180.0
+initial_velocity_max = 120.0
+gravity = Vector3(0, 0, 0)
+scale_curve = SubResource("CurveTexture_7bhbu")
+anim_speed_max = 1.0
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_7yd6t"]
+random_pitch = 1.2
+streams_count = 1
+stream_0/stream = ExtResource("1_ow2yi")
+
+[node name="Railcannon" type="Node" unique_id=934994111 node_paths=PackedStringArray("primary_firing_sfx")]
+script = SubResource("GDScript_4ckef")
+primary_firing_sfx = NodePath("PrimaryFiring")
+raycast_mask = 4
+
+[node name="PositionData" type="Node2D" parent="." unique_id=800990078]
+
+[node name="SecondaryVisual" type="Node2D" parent="." unique_id=611488979]
+
+[node name="Sprite" type="AnimatedSprite2D" parent="SecondaryVisual" unique_id=763495332]
+sprite_frames = SubResource("SpriteFrames_tmco2")
+animation = &"fire"
+frame = 5
+frame_progress = 1.0
+centered = false
+offset = Vector2(0, -3.5)
+
+[node name="SecondaryParticles" type="GPUParticles2D" parent="SecondaryVisual" unique_id=1500254490]
+texture_filter = 1
+material = SubResource("CanvasItemMaterial_is1ss")
+emitting = false
+amount = 83
+texture = ExtResource("2_f7hlg")
+lifetime = 0.25
+one_shot = true
+explosiveness = 1.0
+fixed_fps = 60
+visibility_rect = Rect2(-100, -6, 1111.5, 12)
+trail_sections = 2
+process_material = SubResource("ParticleProcessMaterial_o2wc5")
+
+[node name="PrimaryFiring" type="AudioStreamPlayer" parent="." unique_id=1686898959]
+stream = SubResource("AudioStreamRandomizer_7yd6t")
+volume_db = -6.0
+pitch_scale = 1.65
+
+[node name="SecondaryFiring" type="AudioStreamPlayer" parent="." unique_id=1662297642]
+stream = ExtResource("4_7bhbu")
+
+[node name="Charging" type="AudioStreamPlayer" parent="." unique_id=602150926]
+stream = ExtResource("5_is1ss")
+
+[node name="FullCharge" type="AudioStreamPlayer" parent="." unique_id=1789421482]
+stream = ExtResource("6_e6rsx")
+volume_db = -3.0
+
+[node name="FullChargeAtmos" type="AudioStreamPlayer" parent="." unique_id=2028734191]
+stream = ExtResource("7_7bhbu")
+volume_db = -6.0

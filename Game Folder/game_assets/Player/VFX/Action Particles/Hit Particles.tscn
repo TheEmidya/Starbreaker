@@ -1,4 +1,4 @@
-[gd_scene load_steps=3 format=3 uid="uid://dlq8my4bamdlh"]
+[gd_scene format=3 uid="uid://dlq8my4bamdlh"]
 
 [sub_resource type="Curve" id="Curve_5f22q"]
 _data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.752336, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
@@ -7,7 +7,7 @@ point_count = 3
 [sub_resource type="Gradient" id="Gradient_g2cnq"]
 colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
 
-[node name="hit_particles" type="CPUParticles2D"]
+[node name="hit_particles" type="CPUParticles2D" unique_id=902151140]
 emitting = false
 amount = 15
 lifetime = 0.3

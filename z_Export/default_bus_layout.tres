@@ -1,46 +1,28 @@
-[gd_resource type="AudioBusLayout" load_steps=6 format=3 uid="uid://camn38bni16hy"]
-
-[sub_resource type="AudioEffectHardLimiter" id="AudioEffectHardLimiter_20j36"]
-resource_name = "HardLimiter"
-
-[sub_resource type="AudioEffectReverb" id="AudioEffectReverb_20j36"]
-resource_name = "Reverb"
-room_size = 0.1
-damping = 0.2
-wet = 0.02
-
-[sub_resource type="AudioEffectHardLimiter" id="AudioEffectHardLimiter_8puds"]
-resource_name = "HardLimiter"
-
-[sub_resource type="AudioEffectHardLimiter" id="AudioEffectHardLimiter_0eqqy"]
-resource_name = "HardLimiter"
-
-[sub_resource type="AudioEffectReverb" id="AudioEffectReverb_0eqqy"]
-resource_name = "Reverb"
-room_size = 0.4
-wet = 0.03
+[gd_resource type="AudioBusLayout" format=3 uid="uid://camn38bni16hy"]
 
 [resource]
-bus/0/volume_db = -6.24739
-bus/0/effect/0/effect = SubResource("AudioEffectHardLimiter_20j36")
-bus/0/effect/0/enabled = true
-bus/1/name = &"SFX"
+bus/0/volume_db = -0.32825565
+bus/1/name = &"PlayerSFX"
 bus/1/solo = false
 bus/1/mute = false
 bus/1/bypass_fx = false
-bus/1/volume_db = 0.464998
+bus/1/volume_db = 0.0
 bus/1/send = &"Master"
-bus/1/effect/0/effect = SubResource("AudioEffectReverb_20j36")
-bus/1/effect/0/enabled = true
-bus/1/effect/1/effect = SubResource("AudioEffectHardLimiter_8puds")
-bus/1/effect/1/enabled = true
-bus/2/name = &"Music"
+bus/2/name = &"EnemySFX"
 bus/2/solo = false
 bus/2/mute = false
 bus/2/bypass_fx = false
-bus/2/volume_db = -2.51248
+bus/2/volume_db = 0.0
 bus/2/send = &"Master"
-bus/2/effect/0/effect = SubResource("AudioEffectHardLimiter_0eqqy")
-bus/2/effect/0/enabled = true
-bus/2/effect/1/effect = SubResource("AudioEffectReverb_0eqqy")
-bus/2/effect/1/enabled = true
+bus/3/name = &"MiscSFX"
+bus/3/solo = false
+bus/3/mute = false
+bus/3/bypass_fx = false
+bus/3/volume_db = 0.0
+bus/3/send = &"Master"
+bus/4/name = &"Music"
+bus/4/solo = false
+bus/4/mute = false
+bus/4/bypass_fx = false
+bus/4/volume_db = -5.9342504
+bus/4/send = &"Master"

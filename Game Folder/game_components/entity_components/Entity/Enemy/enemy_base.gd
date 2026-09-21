@@ -1,26 +1,25 @@
 extends Entity
 class_name Enemy
+@export var enemyscore_hit := 250
+@export var enemyscore_death := 1000
 
-@onready var is_active = false
-@export var auto_activate := false
-@export var spawn_time = 0.0
-@export var OnHit_score = 10
-@export var OnDeath_score = 10
+@export var display_healthbar := true
+@export var healthbar_y_offset := 0.0
+const ENEMY_HEALTHBAR = preload("uid://dpao1b3klbe5x")
+@onready var enemy_healthbar := ENEMY_HEALTHBAR.instantiate()
 
-@export var hurt_sfx_path = "String"
-@export var death_sfx_path = "String"
+@onready var hitflash_effect := self.material
 
 
+@export var ai_navigation : NavigationAgent2D
+@onready var player_direction := Vector2.ZERO:
+	get:
+		return self.global_position.direction_to(global.player.global_position)
 
 func _ready() -> void:
-	if !auto_activate:
-		hide()
-		process_mode = ProcessMode.PROCESS_MODE_DISABLED
-		events.connect("stage_time", appear, 1)
+	super()
+	setup_enemy_healthbar()
 
-func appear(audio_time):
-	audio_time = snappedf(audio_time, 0.1)
-	if audio_time == spawn_time:
-		show()
-		is_active = true
-		process_mode = ProcessMode.PROCESS_MODE_INHERIT
+func setup_enemy_healthbar():
+	add_child(enemy_healthbar)
+	enemy_healthbar.y_offset += healthbar_y_offset

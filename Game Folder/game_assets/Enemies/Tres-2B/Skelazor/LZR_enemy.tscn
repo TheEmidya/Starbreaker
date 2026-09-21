@@ -1,7 +1,7 @@
-[gd_scene load_steps=326 format=3 uid="uid://2kuv342uj1hh"]
+[gd_scene format=3 uid="uid://2kuv342uj1hh"]
 
 [ext_resource type="Script" uid="uid://ucfty02weqo2" path="res://Game Folder/game_components/entity_components/Hitbox/hitbox.gd" id="1_bqkrg"]
-[ext_resource type="PackedScene" uid="uid://cadhurax76sxf" path="res://Game Folder/game_components/entity_components/Hurtbox/HurtboxComponent.tscn" id="2_1smco"]
+[ext_resource type="PackedScene" uid="uid://cadhurax76sxf" path="res://Game Folder/game_components/entity_components/Hurtbox/Hurtbox.tscn" id="2_1smco"]
 [ext_resource type="Texture2D" uid="uid://cv6llxenkgbte" path="res://Game Folder/game_assets/Enemies/Tres-2B/Skelazor/Sprites/charging_anim.png" id="2_winjy"]
 [ext_resource type="PackedScene" uid="uid://duhmfhxqltebm" path="res://Game Folder/game_components/entity_components/Health/HealthComponent.tscn" id="3_d24t2"]
 [ext_resource type="PackedScene" uid="uid://c0qsib2m70nmv" path="res://Game Folder/game_components/entity_components/State Machine/stagemachine_parent.tscn" id="3_kxo5a"]
@@ -14,13 +14,11 @@
 
 [sub_resource type="GDScript" id="GDScript_iesie"]
 script/source = "extends Enemy
-@onready var hitbox: HitboxComponent = $HitboxComponent
+@onready var hitbox: Hitbox = $HitboxComponent
 @onready var collision: CollisionPolygon2D = $HitboxComponent/Collision
 @onready var lzr_spr: Polygon2D = $HitboxComponent/lzr_Spr
 
 @onready var particles: GPUParticles2D = $HitboxComponent/Particles
-
-@onready var hurtbox: HurtboxComponent = $HurtboxComponent
 
 @onready var state_machine = $StateMachine
 
@@ -29,17 +27,6 @@ script/source = "extends Enemy
 @export var charging_time = 1.5
 @export var is_mute = false
 #region Interaction Handlers
-
-
-func on_hit(damage_taken: Variant, colliding_hitbox: Variant) -> void:
-	events.enemy_damaged.emit(self)
-	state_machine.current_state.Transistioned.emit(state_machine.current_state, state_machine.hit_state.name)
-
-func on_death(damage_taken: Variant, colliding_hitbox: Variant) -> void:
-	utility.play_isolated_audio(death_sfx_path, -3.0, true, \"SFX\")
-	events.emit_signal(\"camera_shake\", 35.0)
-	events.enemy_killed.emit(self)
-	state_machine.current_state.Transistioned.emit(state_machine.current_state, state_machine.death_state.name)
 "
 
 [sub_resource type="GDScript" id="GDScript_80y0f"]
@@ -1442,7 +1429,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_ak4ei")
 }],
-"loop": true,
+"loop": 1,
 "name": &"Charging",
 "speed": 60.0
 }, {
@@ -1627,7 +1614,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_rquww")
 }],
-"loop": false,
+"loop": 0,
 "name": &"Death",
 "speed": 60.0
 }, {
@@ -1812,7 +1799,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_ydfyo")
 }],
-"loop": true,
+"loop": 1,
 "name": &"Firing",
 "speed": 120.0
 }, {
@@ -1997,7 +1984,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_ssgwd")
 }],
-"loop": false,
+"loop": 0,
 "name": &"Hit",
 "speed": 60.0
 }, {
@@ -2005,7 +1992,7 @@ animations = [{
 "duration": 1.0,
 "texture": ExtResource("5_t1yn4")
 }],
-"loop": true,
+"loop": 1,
 "name": &"Idle",
 "speed": 5.0
 }, {
@@ -2190,12 +2177,12 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_v8npp")
 }],
-"loop": false,
+"loop": 0,
 "name": &"Spawn",
 "speed": 60.0
 }, {
 "frames": [],
-"loop": true,
+"loop": 1,
 "name": &"Stun",
 "speed": 5.0
 }]
@@ -2203,14 +2190,6 @@ animations = [{
 [sub_resource type="GDScript" id="GDScript_lnf8h"]
 resource_name = "spawn"
 script/source = "extends State
-
-func enter():
-	parent.global_rotation_degrees = parent.spawn_rotation
-	sprite.play(\"Spawn\")
-
-func animation_finished() -> void:
-	if sprite.get_animation() == \"Spawn\":
-		Transistioned.emit(self, \"charging\")
 "
 
 [sub_resource type="GDScript" id="GDScript_3dcuv"]
@@ -2218,7 +2197,6 @@ script/source = "extends State
 @onready var charging_timer: Timer = $charging_timer
 
 func enter():
-	sprite.play(\"Charging\")
 	charging_timer.start(parent.charging_time)
 	if !parent.is_mute:
 		$\"../../Charge\".play()
@@ -2252,7 +2230,6 @@ func physics_update(_delta):
 	parent.global_rotation_degrees += parent.rotation_speed
 
 func fire():
-	sprite.play(\"Firing\")
 	parent.lzr_spr.show()
 	parent.hitbox.is_disabled = false
 
@@ -2278,8 +2255,6 @@ script/source = "extends State
 @onready var spin_animation: AnimationPlayer = $spin_animation
 
 func enter():
-	sprite.stop()
-	sprite.play(\"Hit\")
 	spin()
 
 func exit():
@@ -2287,10 +2262,6 @@ func exit():
 
 func spin():
 	spin_animation.play(\"spin\")
-
-func animation_finished() -> void:
-	if sprite.get_animation() == \"Hit\":
-		Transistioned.emit(self, \"charging\")
 "
 
 [sub_resource type="Animation" id="Animation_6f2hc"]
@@ -2335,13 +2306,7 @@ script/source = "extends State
 
 func enter():
 	$\"../../HitboxComponent/warning\".queue_free()
-	sprite.stop()
-	sprite.play(\"Death\")
 	parent.hurtbox.queue_free()
-
-func animation_finished() -> void:
-	if sprite.get_animation() == \"Death\":
-		parent.queue_free()
 "
 
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_i0cys"]
@@ -2349,23 +2314,17 @@ random_pitch = 1.1
 streams_count = 1
 stream_0/stream = ExtResource("11_j488y")
 
-[node name="LzrEnemy" type="CharacterBody2D" groups=["enemy"]]
+[node name="LzrEnemy" type="CharacterBody2D" unique_id=57596097 groups=["enemy"]]
 collision_layer = 0
 motion_mode = 1
 script = SubResource("GDScript_iesie")
-death_sfx_path = "res://Game Folder/game_assets/Enemies/Tres-2B/Skelazor/Sounds/bone_shatter.ogg"
 
-[node name="HitboxComponent" type="Area2D" parent="." node_paths=PackedStringArray("parent") groups=["enemy"]]
+[node name="HitboxComponent" type="Area2D" parent="." unique_id=688009669 groups=["enemy"]]
 collision_layer = 16
 collision_mask = 2
 script = ExtResource("1_bqkrg")
-parent = NodePath("..")
-is_disabled = true
-damage = -35.0
-knockback_amount = 1115.0
-knockback_stun_duration = 0.3
 
-[node name="warning" type="Polygon2D" parent="HitboxComponent"]
+[node name="warning" type="Polygon2D" parent="HitboxComponent" unique_id=517461041]
 show_behind_parent = true
 z_index = 4096
 position = Vector2(0, -2.22222)
@@ -2373,100 +2332,86 @@ scale = Vector2(1.11111, 1.11111)
 color = Color(1, 0, 0, 0)
 polygon = PackedVector2Array(0, 8, -8, 8, -16, 16, -16, 696, 16, 696, 16, 16, 8, 8)
 
-[node name="lzr_Spr" type="Polygon2D" parent="HitboxComponent"]
+[node name="lzr_Spr" type="Polygon2D" parent="HitboxComponent" unique_id=536039405]
 z_index = 1
 position = Vector2(0, 2)
 polygon = PackedVector2Array(0, 8, -8, 8, -16, 16, -16, 696, 16, 696, 16, 16, 8, 8)
 script = SubResource("GDScript_80y0f")
 
-[node name="lzr_outline_Spr" type="Polygon2D" parent="HitboxComponent/lzr_Spr"]
+[node name="lzr_outline_Spr" type="Polygon2D" parent="HitboxComponent/lzr_Spr" unique_id=799676039]
 show_behind_parent = true
 position = Vector2(0, -2.22222)
 scale = Vector2(1.11111, 1.11111)
 color = Color(1, 0, 0, 1)
 polygon = PackedVector2Array(0, 8, -8, 8, -16, 16, -16, 696, 16, 696, 16, 16, 8, 8)
 
-[node name="Collision" type="CollisionPolygon2D" parent="HitboxComponent"]
+[node name="Collision" type="CollisionPolygon2D" parent="HitboxComponent" unique_id=1329530087]
 position = Vector2(0, 1)
 polygon = PackedVector2Array(-8, 8, -16, 16, -16, 696, 16, 696, 16, 16, 8, 8)
 disabled = true
 
-[node name="HurtboxComponent" parent="." node_paths=PackedStringArray("parent", "health") groups=["enemy"] instance=ExtResource("2_1smco")]
+[node name="HurtboxComponent" parent="." unique_id=1350505661 groups=["enemy"] instance=ExtResource("2_1smco")]
 collision_layer = 4
 collision_mask = 8
-parent = NodePath("..")
-health = NodePath("../HealthComponent")
 
-[node name="Collision" type="CollisionShape2D" parent="HurtboxComponent"]
+[node name="Collision" type="CollisionShape2D" parent="HurtboxComponent" unique_id=1406970891]
 position = Vector2(0, 1)
 shape = SubResource("RectangleShape2D_63qk6")
 
-[node name="HealthComponent" parent="." instance=ExtResource("3_d24t2")]
+[node name="HealthComponent" parent="." unique_id=401399329 instance=ExtResource("3_d24t2")]
 maximum_health = 25.0
 
-[node name="spr" type="AnimatedSprite2D" parent="."]
+[node name="spr" type="AnimatedSprite2D" parent="." unique_id=637222213]
 sprite_frames = SubResource("SpriteFrames_32irs")
 animation = &"Charging"
 
-[node name="StateMachine" parent="." node_paths=PackedStringArray("parent", "intial_state", "hit_state", "death_state") instance=ExtResource("3_kxo5a")]
+[node name="StateMachine" parent="." unique_id=1768967493 node_paths=PackedStringArray("parent", "intial_state") instance=ExtResource("3_kxo5a")]
 parent = NodePath("..")
 intial_state = NodePath("spawn")
-hit_state = NodePath("hit")
-death_state = NodePath("death")
 
-[node name="spawn" type="Node" parent="StateMachine" node_paths=PackedStringArray("parent", "sprite")]
+[node name="spawn" type="Node" parent="StateMachine" unique_id=1880146841 node_paths=PackedStringArray("parent")]
 script = SubResource("GDScript_lnf8h")
 parent = NodePath("../..")
-sprite = NodePath("../../spr")
 
-[node name="charging" type="Node" parent="StateMachine" node_paths=PackedStringArray("parent", "sprite")]
+[node name="charging" type="Node" parent="StateMachine" unique_id=1210304584 node_paths=PackedStringArray("parent")]
 script = SubResource("GDScript_3dcuv")
 parent = NodePath("../..")
-sprite = NodePath("../../spr")
 
-[node name="charging_timer" type="Timer" parent="StateMachine/charging"]
+[node name="charging_timer" type="Timer" parent="StateMachine/charging" unique_id=1281817984]
 process_callback = 0
 
-[node name="firing" type="Node" parent="StateMachine" node_paths=PackedStringArray("parent", "sprite")]
+[node name="firing" type="Node" parent="StateMachine" unique_id=1853140716 node_paths=PackedStringArray("parent")]
 script = SubResource("GDScript_t821x")
 parent = NodePath("../..")
-sprite = NodePath("../../spr")
 
-[node name="firing_timer" type="Timer" parent="StateMachine/firing"]
+[node name="firing_timer" type="Timer" parent="StateMachine/firing" unique_id=1329358801]
 process_callback = 0
 wait_time = 10.0
 
-[node name="leave" type="Node" parent="StateMachine" node_paths=PackedStringArray("parent")]
+[node name="leave" type="Node" parent="StateMachine" unique_id=752856190 node_paths=PackedStringArray("parent")]
 script = SubResource("GDScript_geu3j")
 parent = NodePath("../..")
 
-[node name="hit" type="Node" parent="StateMachine" node_paths=PackedStringArray("parent", "sprite")]
+[node name="hit" type="Node" parent="StateMachine" unique_id=1898760965 node_paths=PackedStringArray("parent")]
 script = SubResource("GDScript_4q7xi")
 parent = NodePath("../..")
 is_state_cancelable = false
-sprite = NodePath("../../spr")
 
-[node name="spin_animation" type="AnimationPlayer" parent="StateMachine/hit"]
-libraries = {
-&"": SubResource("AnimationLibrary_rc546")
-}
+[node name="spin_animation" type="AnimationPlayer" parent="StateMachine/hit" unique_id=1138522748]
+libraries/ = SubResource("AnimationLibrary_rc546")
 playback_auto_capture_transition_type = 6
 playback_auto_capture_ease_type = 2
 playback_default_blend_time = 0.5
 
-[node name="death" type="Node" parent="StateMachine" node_paths=PackedStringArray("parent", "sprite")]
+[node name="death" type="Node" parent="StateMachine" unique_id=1774845312 node_paths=PackedStringArray("parent")]
 script = SubResource("GDScript_gp50k")
 parent = NodePath("../..")
 is_state_cancelable = false
-sprite = NodePath("../../spr")
 
-[node name="Charge" type="AudioStreamPlayer" parent="."]
+[node name="Charge" type="AudioStreamPlayer" parent="." unique_id=13662456]
 stream = SubResource("AudioStreamRandomizer_i0cys")
 volume_db = -3.0
-bus = &"SFX"
 
-[connection signal="death" from="HealthComponent" to="." method="on_death"]
-[connection signal="on_hit" from="HealthComponent" to="." method="on_hit"]
 [connection signal="animation_finished" from="spr" to="StateMachine/spawn" method="animation_finished"]
 [connection signal="animation_finished" from="spr" to="StateMachine/hit" method="animation_finished"]
 [connection signal="animation_finished" from="spr" to="StateMachine/death" method="animation_finished"]

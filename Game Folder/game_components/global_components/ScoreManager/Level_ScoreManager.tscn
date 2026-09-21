@@ -1,4 +1,4 @@
-[gd_scene load_steps=3 format=3 uid="uid://rrd4lwup6vib"]
+[gd_scene format=3 uid="uid://rrd4lwup6vib"]
 
 [ext_resource type="Theme" uid="uid://b1rbffoke0vnr" path="res://Game Folder/game_assets/Menus/Themes/MenuUI_Theme.tres" id="2_1q5ti"]
 
@@ -13,10 +13,10 @@ func _ready() -> void:
 	score_event.score_display = score_display
 "
 
-[node name="ScoreManager" type="Node"]
+[node name="ScoreManager" type="Node" unique_id=1863937729]
 script = SubResource("GDScript_l5l45")
 
-[node name="ScoreLayout" type="Control" parent="."]
+[node name="ScoreLayout" type="Control" parent="." unique_id=5988104]
 visible = false
 layout_mode = 3
 anchors_preset = 15
@@ -26,7 +26,7 @@ grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("2_1q5ti")
 
-[node name="ScoreDisplay" type="Label" parent="ScoreLayout"]
+[node name="ScoreDisplay" type="Label" parent="ScoreLayout" unique_id=245857616]
 visible = false
 layout_mode = 1
 anchors_preset = 1
@@ -42,6 +42,6 @@ horizontal_alignment = 1
 vertical_alignment = 1
 text_direction = 1
 
-[node name="Positional_Coords" type="Marker2D" parent="ScoreLayout"]
+[node name="Positional_Coords" type="Marker2D" parent="ScoreLayout" unique_id=1878922200]
 visible = false
 position = Vector2(560, 5)

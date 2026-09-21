@@ -1,0 +1,18 @@
+[gd_scene format=3 uid="uid://ddmv762pt02qx"]
+
+[sub_resource type="GDScript" id="GDScript_l2tly"]
+script/source = "extends StatusEffect
+
+func _ready() -> void:
+	target.is_slowed = true
+
+func _exit_tree() -> void:
+	target.is_slowed = false
+	super()
+"
+
+[node name="Slowness" type="Node" unique_id=2111466747]
+script = SubResource("GDScript_l2tly")
+effect_name = "Slowness"
+effect_description = "Reduces the target's speed by 25%"
+metadata/_custom_type_script = "uid://b0xr14yc30kb3"

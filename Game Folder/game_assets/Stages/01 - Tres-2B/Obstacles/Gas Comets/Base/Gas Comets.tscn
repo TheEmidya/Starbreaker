@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://tmv7qtq62kb6"]
+[gd_scene format=3 uid="uid://tmv7qtq62kb6"]
 
 [ext_resource type="Script" uid="uid://f37ieuipj0vh" path="res://Game Folder/game_components/collision_component/Databox/databox.gd" id="1_343ls"]
 [ext_resource type="Texture2D" uid="uid://fll005ijx1el" path="res://Game Folder/game_assets/Stages/01 - Tres-2B/Obstacles/Sprites/comet.png" id="2_0ja1j"]
@@ -124,12 +124,12 @@ turbulence_influence_max = 1.0
 [sub_resource type="CircleShape2D" id="CircleShape2D_kooud"]
 radius = 25.0
 
-[node name="Gas Comet" type="CharacterBody2D"]
+[node name="Gas Comet" type="CharacterBody2D" unique_id=1186988242]
 scale = Vector2(2, 2)
 motion_mode = 1
 script = SubResource("GDScript_torgt")
 
-[node name="Hurtbox" type="Area2D" parent="." node_paths=PackedStringArray("parent")]
+[node name="Hurtbox" type="Area2D" parent="." unique_id=706938984 node_paths=PackedStringArray("parent")]
 script = ExtResource("1_343ls")
 parent = NodePath("..")
 databox_type = "Hurtbox"
@@ -137,48 +137,48 @@ max_health = 500
 recieves_knockback = false
 is_knockback_forced_upwards = false
 
-[node name="Collision" type="CollisionShape2D" parent="Hurtbox"]
+[node name="Collision" type="CollisionShape2D" parent="Hurtbox" unique_id=867609888]
 shape = SubResource("CircleShape2D_ime8v")
 
-[node name="Placeholder_Sprite" type="Sprite2D" parent="."]
+[node name="Placeholder_Sprite" type="Sprite2D" parent="." unique_id=1519626222]
 texture = ExtResource("2_0ja1j")
 
-[node name="Gas" type="GPUParticles2D" parent="."]
+[node name="Gas" type="GPUParticles2D" parent="." unique_id=44273054]
 z_index = -1000
 material = SubResource("CanvasItemMaterial_ivfka")
 emitting = false
 amount = 500
-process_material = SubResource("ParticleProcessMaterial_k6y62")
 texture = ExtResource("3_yvflk")
 randomness = 1.0
 fixed_fps = 60
 trail_lifetime = 0.01
+process_material = SubResource("ParticleProcessMaterial_k6y62")
 
-[node name="GasHitbox" type="Area2D" parent="Gas" node_paths=PackedStringArray("parent")]
+[node name="GasHitbox" type="Area2D" parent="Gas" unique_id=1644351470 node_paths=PackedStringArray("parent")]
 script = ExtResource("1_343ls")
 parent = NodePath("../..")
 is_disabled = true
 damage = 5.0
 knockback_stun_duration = 0.1
 
-[node name="Collision" type="CollisionShape2D" parent="Gas/GasHitbox"]
+[node name="Collision" type="CollisionShape2D" parent="Gas/GasHitbox" unique_id=2096504064]
 shape = SubResource("CircleShape2D_kooud")
 
-[node name="Gas_Duration" type="Timer" parent="Gas"]
+[node name="Gas_Duration" type="Timer" parent="Gas" unique_id=409703455]
 process_callback = 0
 wait_time = 3.5
 one_shot = true
 
-[node name="ScreenNotifier" type="VisibleOnScreenNotifier2D" parent="."]
+[node name="ScreenNotifier" type="VisibleOnScreenNotifier2D" parent="." unique_id=343750011]
 position = Vector2(0, -2.08616e-07)
 scale = Vector2(1.5, 1.5)
 
-[node name="Notifier_Sprite" type="Sprite2D" parent="."]
+[node name="Notifier_Sprite" type="Sprite2D" parent="." unique_id=480385231]
 visible = false
 rotation = -1.5708
 texture = ExtResource("3_ubqiq")
 
-[node name="WarningSign" type="Sprite2D" parent="Notifier_Sprite"]
+[node name="WarningSign" type="Sprite2D" parent="Notifier_Sprite" unique_id=1214703708]
 modulate = Color(1, 1, 0, 1)
 position = Vector2(-4, 5)
 rotation = 1.5708

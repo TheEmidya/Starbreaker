@@ -1,0 +1,288 @@
+[gd_scene format=3 uid="uid://b4pyds5vcyj8n"]
+
+[ext_resource type="Texture2D" uid="uid://xt8m2ckw0d2u" path="res://Game Folder/game_assets/Player/Passive/Man Passive/Sprites/tether.png" id="1_y3ppx"]
+[ext_resource type="Texture2D" uid="uid://bsbwxli4hnpen" path="res://Game Folder/game_assets/Player/Passive/Man Passive/Sprites/manpassive.png" id="2_7js60"]
+[ext_resource type="Script" uid="uid://ucfty02weqo2" path="res://Game Folder/game_components/entity_components/Hitbox/hitbox.gd" id="2_x6tew"]
+[ext_resource type="AudioStream" uid="uid://c68up3qvmwiby" path="res://Game Folder/game_assets/Player/Passive/Man Passive/Audio/Punch/man_punch_0.wav" id="3_5ws33"]
+[ext_resource type="AudioStream" uid="uid://ns24rk2tr24p" path="res://Game Folder/game_assets/Player/Passive/Man Passive/Audio/Punch/man_punch_1.wav" id="4_e88o8"]
+[ext_resource type="AudioStream" uid="uid://7wkt5k46irgk" path="res://Game Folder/game_assets/Player/Passive/Man Passive/Audio/Punch/man_punch_2.wav" id="5_d8sqh"]
+[ext_resource type="AudioStream" uid="uid://bnqvjpmy0lj1w" path="res://Game Folder/game_assets/Player/Passive/Man Passive/Audio/Punch/man_punch_3.wav" id="6_hgv8n"]
+[ext_resource type="AudioStream" uid="uid://csh80011xs8lf" path="res://Game Folder/game_assets/Player/Passive/Man Passive/Audio/Shotgun/manshotgun_fire0.wav" id="7_hgv8n"]
+[ext_resource type="AudioStream" uid="uid://cvkthunjptte4" path="res://Game Folder/game_assets/Player/Passive/Man Passive/Audio/Shotgun/manshotgun_fire1.wav" id="8_if1vb"]
+[ext_resource type="AudioStream" uid="uid://qd504jh87vp8" path="res://Game Folder/game_assets/Player/Passive/Man Passive/Audio/Shotgun/manshotgun_fire2.wav" id="9_vat7i"]
+[ext_resource type="AudioStream" uid="uid://pa0clymg2fuj" path="res://Game Folder/game_assets/Player/Passive/Man Passive/Audio/Lunge/Swooshes, Swish, Rope, Thick, Whoosh, Fast x3 SND40875 4.wav" id="10_vat7i"]
+[ext_resource type="AudioStream" uid="uid://bavn7r8234eh0" path="res://Game Folder/game_assets/Player/Passive/Man Passive/Audio/Lunge/Swooshes, Swish, Rope, Thick, Whoosh, Fast x3 SND40875 5.wav" id="11_y3ppx"]
+[ext_resource type="AudioStream" uid="uid://crdgpwvp3if02" path="res://Game Folder/game_assets/Player/Passive/Man Passive/Audio/ShotgunHit/Metal, Impact, Luthiers Workshop, Jewelry Hammer, Bench Anvil, Tight Resonant Hit SND149391 1.wav" id="13_woebo"]
+[ext_resource type="AudioStream" uid="uid://clx6k38g47gdd" path="res://Game Folder/game_assets/Player/Passive/Man Passive/Audio/ShotgunHit/Metal, Impact, Luthiers Workshop, Jewelry Hammer, Bench Anvil, Tight Resonant Hit SND149391 2.wav" id="14_17msj"]
+[ext_resource type="AudioStream" uid="uid://dm4pmwtp5gxpg" path="res://Game Folder/game_assets/Player/Passive/Man Passive/Audio/ShotgunHit/Metal, Impact, Luthiers Workshop, Jewelry Hammer, Bench Anvil, Tight Resonant Hit SND149391 3.wav" id="15_bgnad"]
+[ext_resource type="AudioStream" uid="uid://bpjrb6d40bcor" path="res://Game Folder/game_assets/Player/Passive/Man Passive/Audio/ShotgunHit/Metal, Impact, Luthiers Workshop, Jewelry Hammer, Bench Anvil, Tight Resonant Hit SND149391.wav" id="16_fg67f"]
+
+[sub_resource type="GDScript" id="GDScript_vdnu0"]
+script/source = "extends Passive
+@onready var man_projectile: Projectile = $Man
+@onready var man_sprite: AnimatedSprite2D = $Man/Sprite
+@onready var player = get_parent().get_parent() as Player
+@export var current_tick = 0.0
+@export var current_lunge_tick = 0.0
+const MANSHOTGUNPROJECTILE_PATH = \"res://Game Folder/game_assets/Player/Passive/Man Passive/man__shotgunprojectile.tscn\"
+@onready var spotting_range: Area2D = $Man/SpottingRange
+@onready var tether: Line2D = $Man/Tether
+
+@onready var man_punch_sfx: AudioStreamPlayer = $ManPunchSound
+@onready var man_shotgun_sfx: AudioStreamPlayer = $ManShotgunSound
+@onready var man_lunge_sfx: AudioStreamPlayer = $ManLungeSound
+@onready var man_shotgun_hit_sfx: AudioStreamPlayer = $ManShotgunHitSound
+
+
+
+func _ready() -> void:
+	events.hitbox_impact.connect(melee_attack, 2)
+	events.hitbox_impact.connect(shotgun_hit_success, 2)
+	man_projectile.global_position = player.global_position
+
+func _physics_process(_delta: float) -> void:
+	update_sprite()
+	update_tether()
+	current_tick += _delta
+	current_lunge_tick += _delta
+	if current_tick > 1.5 and spotting_range.has_overlapping_areas():
+		current_tick = 0
+		action()
+	if current_tick < 1.5 and current_lunge_tick > 3.5 and spotting_range.has_overlapping_areas():
+		current_lunge_tick = 0
+		lunge_action()
+	
+	if man_projectile.global_position.distance_to(player.global_position) > 75.0:
+		man_projectile.velocity = man_projectile.velocity.lerp(man_projectile.global_position.direction_to(player.global_position).normalized() * (25.0 + man_projectile.global_position.distance_to(player.global_position)), _delta)
+	else:
+		man_projectile.velocity = man_projectile.velocity.slerp(Vector2.ZERO, _delta)
+	man_projectile.velocity.limit_length(125.0)
+	man_projectile.move_and_slide()
+
+func action():
+	var targets = spotting_range.get_overlapping_areas()
+	for projectile in range(5):
+		var shotgun_projectile_scene = load(MANSHOTGUNPROJECTILE_PATH) as PackedScene
+		var shotgun_projectile = shotgun_projectile_scene.instantiate() as Projectile
+		shotgun_projectile.global_position = man_projectile.global_position
+		shotgun_projectile.direction = (targets[0].global_position - man_projectile.global_position).normalized().rotated(randf_range(-0.25, 0.25))
+		global.add_child(shotgun_projectile)
+	man_sprite.play(\"fire\")
+	man_shotgun_sfx.play()
+
+func lunge_action():
+	var targets = spotting_range.get_overlapping_areas()
+	man_projectile.velocity += (targets[0].global_position - man_projectile.global_position).normalized() * 355.0
+	man_sprite.play(\"lunge_start\")
+	man_lunge_sfx.play()
+
+func melee_attack(_entity : Entity, hitbox_data : Dictionary):
+	if hitbox_data.hitbox.name == \"ManMeleeHitbox\":
+		current_tick = 0.0
+		man_sprite.play(\"lunge_end\")
+		man_punch_sfx.play()
+
+func shotgun_hit_success(_entity : Entity, hitbox_data : Dictionary):
+	if hitbox_data.hitbox.name.contains(\"ManPassiveShotgunProjectile\"):
+		man_shotgun_hit_sfx.play()
+
+func update_sprite():
+	if man_projectile.velocity.x > 0:
+		man_sprite.flip_h = false
+	if man_projectile.velocity.x < 0:
+		man_sprite.flip_h = true
+
+func update_tether():
+	tether.reparent(global)
+	tether.global_position = Vector2.ZERO
+	tether.points[0] = man_projectile.global_position.slerp(player.global_position, 0.0)
+	tether.points[1] = man_projectile.global_position.slerp(player.global_position, 0.25)
+	tether.points[2] = man_projectile.global_position.slerp(player.global_position, 0.50)
+	tether.points[3] = man_projectile.global_position.slerp(player.global_position, 0.75)
+	tether.points[4] = man_projectile.global_position.slerp(player.global_position, 1.0)
+
+func _exit_tree() -> void:
+	tether.queue_free()
+"
+
+[sub_resource type="GDScript" id="GDScript_4onvn"]
+script/source = "extends Projectile
+
+func _ready():
+	z_index = global.projectile_z_index
+"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_x6tew"]
+atlas = ExtResource("2_7js60")
+region = Rect2(20, 0, 20, 20)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7js60"]
+atlas = ExtResource("2_7js60")
+region = Rect2(40, 0, 20, 20)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5ws33"]
+atlas = ExtResource("2_7js60")
+region = Rect2(0, 0, 20, 20)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1eglb"]
+atlas = ExtResource("2_7js60")
+region = Rect2(0, 0, 20, 20)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_e88o8"]
+atlas = ExtResource("2_7js60")
+region = Rect2(100, 0, 20, 20)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_d8sqh"]
+atlas = ExtResource("2_7js60")
+region = Rect2(0, 0, 20, 20)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hgv8n"]
+atlas = ExtResource("2_7js60")
+region = Rect2(60, 0, 20, 20)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_if1vb"]
+atlas = ExtResource("2_7js60")
+region = Rect2(80, 0, 20, 20)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_5ws33"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_x6tew")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7js60")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5ws33")
+}],
+"loop": 0,
+"name": &"fire",
+"speed": 16.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1eglb")
+}],
+"loop": 1,
+"name": &"idle",
+"speed": 30.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_e88o8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_d8sqh")
+}],
+"loop": 0,
+"name": &"lunge_end",
+"speed": 16.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hgv8n")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_if1vb")
+}],
+"loop": 0,
+"name": &"lunge_start",
+"speed": 16.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_4onvn"]
+radius = 80.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_at5ca"]
+radius = 15.0
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_if1vb"]
+random_pitch = 1.1
+streams_count = 4
+stream_0/stream = ExtResource("3_5ws33")
+stream_1/stream = ExtResource("4_e88o8")
+stream_2/stream = ExtResource("5_d8sqh")
+stream_3/stream = ExtResource("6_hgv8n")
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_y3ppx"]
+random_pitch = 1.1
+streams_count = 3
+stream_0/stream = ExtResource("7_hgv8n")
+stream_1/stream = ExtResource("8_if1vb")
+stream_2/stream = ExtResource("9_vat7i")
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_bwvgr"]
+random_pitch = 1.2
+streams_count = 2
+stream_0/stream = ExtResource("10_vat7i")
+stream_1/stream = ExtResource("11_y3ppx")
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_3ulup"]
+random_pitch = 1.1
+streams_count = 4
+stream_0/stream = ExtResource("13_woebo")
+stream_1/stream = ExtResource("14_17msj")
+stream_2/stream = ExtResource("15_bgnad")
+stream_3/stream = ExtResource("16_fg67f")
+
+[node name="ManPassive" type="Node" unique_id=1886068470]
+script = SubResource("GDScript_vdnu0")
+metadata/_custom_type_script = "uid://cvsafe142q25"
+
+[node name="Man" type="CharacterBody2D" parent="." unique_id=631905213 node_paths=PackedStringArray("hitbox")]
+collision_layer = 8
+collision_mask = 4
+motion_mode = 1
+script = SubResource("GDScript_4onvn")
+hitbox = NodePath("ManMeleeHitbox")
+metadata/_custom_type_script = "uid://cp026tcaij1c6"
+
+[node name="Tether" type="Line2D" parent="Man" unique_id=1315515639]
+texture_repeat = 2
+points = PackedVector2Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 70)
+width = 5.0
+texture = ExtResource("1_y3ppx")
+texture_mode = 1
+
+[node name="Sprite" type="AnimatedSprite2D" parent="Man" unique_id=1369117356]
+sprite_frames = SubResource("SpriteFrames_5ws33")
+animation = &"lunge_start"
+autoplay = "idle"
+
+[node name="SpottingRange" type="Area2D" parent="Man" unique_id=874559927]
+collision_layer = 0
+collision_mask = 4
+input_pickable = false
+
+[node name="Collision" type="CollisionShape2D" parent="Man/SpottingRange" unique_id=1777285106]
+shape = SubResource("CircleShape2D_4onvn")
+debug_color = Color(0.9277892, 0.54743767, 1, 0.41960785)
+
+[node name="Collision" type="CollisionShape2D" parent="Man" unique_id=1641732282]
+shape = SubResource("CircleShape2D_at5ca")
+
+[node name="ManMeleeHitbox" type="Area2D" parent="Man" unique_id=1633514584]
+collision_layer = 8
+collision_mask = 4
+script = ExtResource("2_x6tew")
+metadata/_custom_type_script = "uid://ucfty02weqo2"
+
+[node name="Collision" type="CollisionShape2D" parent="Man/ManMeleeHitbox" unique_id=1904665717]
+shape = SubResource("CircleShape2D_at5ca")
+
+[node name="ManPunchSound" type="AudioStreamPlayer" parent="." unique_id=663389135]
+stream = SubResource("AudioStreamRandomizer_if1vb")
+volume_db = -3.0
+
+[node name="ManShotgunSound" type="AudioStreamPlayer" parent="." unique_id=396605309]
+stream = SubResource("AudioStreamRandomizer_y3ppx")
+volume_db = -3.0
+
+[node name="ManLungeSound" type="AudioStreamPlayer" parent="." unique_id=701166902]
+stream = SubResource("AudioStreamRandomizer_bwvgr")
+volume_db = -8.0
+
+[node name="ManShotgunHitSound" type="AudioStreamPlayer" parent="." unique_id=1590615439]
+stream = SubResource("AudioStreamRandomizer_3ulup")
+volume_db = -6.0

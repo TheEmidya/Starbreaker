@@ -1,6 +1,12 @@
-[gd_scene load_steps=2 format=3 uid="uid://cophdfdsane7m"]
+[gd_scene format=3 uid="uid://cophdfdsane7m"]
 
 [ext_resource type="Script" uid="uid://ucfty02weqo2" path="res://Game Folder/game_components/entity_components/Hitbox/hitbox.gd" id="1_ixl3j"]
+[ext_resource type="Script" uid="uid://bxhw6dnb6fuqm" path="res://Game Folder/game_components/entity_components/Hitbox/HitboxData.gd" id="2_1tt6v"]
 
-[node name="HitboxComponent" type="Area2D"]
+[sub_resource type="Resource" id="Resource_nww2o"]
+script = ExtResource("2_1tt6v")
+metadata/_custom_type_script = "uid://bxhw6dnb6fuqm"
+
+[node name="Hitbox" type="Area2D" unique_id=1390890486]
 script = ExtResource("1_ixl3j")
+hitbox_data = SubResource("Resource_nww2o")

@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://clx6k38g47gdd"
+path="res://.godot/imported/Metal, Impact, Luthiers Workshop, Jewelry Hammer, Bench Anvil, Tight Resonant Hit SND149391 2.wav-6bb0ea1c16f06cc50ed107fea1aaa98e.sample"
+
+[deps]
+
+source_file="res://Game Folder/game_assets/Player/Passive/Man Passive/Audio/ShotgunHit/Metal, Impact, Luthiers Workshop, Jewelry Hammer, Bench Anvil, Tight Resonant Hit SND149391 2.wav"
+dest_files=["res://.godot/imported/Metal, Impact, Luthiers Workshop, Jewelry Hammer, Bench Anvil, Tight Resonant Hit SND149391 2.wav-6bb0ea1c16f06cc50ed107fea1aaa98e.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

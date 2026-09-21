@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://5lh8eipbj0c6"]
+[gd_scene format=3 uid="uid://5lh8eipbj0c6"]
 
 [ext_resource type="PackedScene" uid="uid://bm1xlgxrd1oa0" path="res://release_ui.tscn" id="1_m4w8a"]
 [ext_resource type="PackedScene" uid="uid://crg4nvhxx414j" path="res://Game Folder/game_assets/Player/HUD/healthbar.tscn" id="2_5s35i"]
@@ -19,24 +19,17 @@ func _exit_tree() -> void:
 
 [sub_resource type="GDScript" id="GDScript_i0dof"]
 script/source = "extends ProgressBar
-
-
-
-func _process(delta: float) -> void:
-	if global.player.weapons:
-		max_value = int(global.player.weapons.max_energy)
-		value = int(global.player.weapons.current_energy)
 "
 
-[node name="HUD" type="CanvasLayer"]
+[node name="HUD" type="CanvasLayer" unique_id=1186395455]
 offset = Vector2(8, 0)
 transform = Transform2D(1, 0, 0, 1, 8, 0)
 follow_viewport_enabled = true
 script = SubResource("GDScript_qbaeb")
 
-[node name="ReleaseUI" parent="." instance=ExtResource("1_m4w8a")]
+[node name="ReleaseUI" parent="." unique_id=1906816562 instance=ExtResource("1_m4w8a")]
 
-[node name="HealthContainter" parent="." instance=ExtResource("2_5s35i")]
+[node name="HealthContainter" parent="." unique_id=141641668 instance=ExtResource("2_5s35i")]
 anchor_left = -0.017
 anchor_top = 0.0
 offset_left = -14.12
@@ -44,8 +37,7 @@ offset_top = 0.0
 offset_right = -58.92
 offset_bottom = 16.28
 
-[node name="ScoreRectTexture" parent="." instance=ExtResource("2_gjam0")]
-layout_direction = 0
+[node name="ScoreRectTexture" parent="." unique_id=1190510658 instance=ExtResource("2_gjam0")]
 anchors_preset = -1
 anchor_left = -0.012
 anchor_right = 0.987
@@ -58,9 +50,10 @@ grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
+layout_direction = 0
 mouse_filter = 1
 
-[node name="Energybar" type="ProgressBar" parent="."]
+[node name="Energybar" type="ProgressBar" parent="." unique_id=1202586377]
 texture_filter = 1
 offset_left = -8.0
 offset_top = 28.0

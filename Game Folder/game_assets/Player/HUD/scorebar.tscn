@@ -1,4 +1,4 @@
-[gd_scene load_steps=3 format=3 uid="uid://d4fy5lnqtae8j"]
+[gd_scene format=3 uid="uid://d4fy5lnqtae8j"]
 
 [ext_resource type="Theme" uid="uid://b1rbffoke0vnr" path="res://Game Folder/game_assets/Menus/Themes/MenuUI_Theme.tres" id="1_g2dfd"]
 
@@ -14,8 +14,7 @@ func update_score(amount):
 	text = str(score_event.score).pad_zeros(7)
 "
 
-[node name="ScoreRectTexture" type="Control"]
-layout_direction = 1
+[node name="ScoreRectTexture" type="Control" unique_id=366879994]
 layout_mode = 3
 anchors_preset = 1
 anchor_left = 1.0
@@ -23,9 +22,10 @@ anchor_right = 1.0
 offset_left = -70.0
 offset_bottom = 14.0
 grow_horizontal = 0
+layout_direction = 1
 tooltip_text = "SCORE: 000000"
 
-[node name="Score" type="RichTextLabel" parent="."]
+[node name="Score" type="RichTextLabel" parent="." unique_id=1212783795]
 z_index = 4095
 layout_mode = 0
 offset_right = 70.0

@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://dqvkw1ec1myhv"]
+[gd_scene format=3 uid="uid://dqvkw1ec1myhv"]
 
 [ext_resource type="PackedScene" uid="uid://c0qsib2m70nmv" path="res://Game Folder/game_components/entity_components/State Machine/stagemachine_parent.tscn" id="1_dsjbk"]
 
@@ -93,40 +93,40 @@ func exit():
 	parent.is_weapon_actionable = true
 "
 
-[node name="Shine" type="Node"]
+[node name="Shine" type="Node" unique_id=1983247837]
 script = SubResource("GDScript_k1ibn")
 shine_multiplier = 5
 
-[node name="Shine_Base" type="Node2D" parent="."]
+[node name="Shine_Base" type="Node2D" parent="." unique_id=2035381029]
 script = SubResource("GDScript_6glkj")
 
-[node name="HitboxComponent" type="Area2D" parent="Shine_Base" node_paths=PackedStringArray("parent")]
+[node name="HitboxComponent" type="Area2D" parent="Shine_Base" unique_id=425504335 node_paths=PackedStringArray("parent")]
 collision_layer = 8
 collision_mask = 21
 script = SubResource("GDScript_xdpew")
-parent = NodePath("..")
 is_disabled = true
+parent = NodePath("..")
 metadata/_custom_type_script = "uid://ucfty02weqo2"
 
-[node name="Collision" type="CollisionShape2D" parent="Shine_Base/HitboxComponent"]
+[node name="Collision" type="CollisionShape2D" parent="Shine_Base/HitboxComponent" unique_id=1570813797]
 shape = SubResource("CircleShape2D_4cm2j")
 
-[node name="PH_Rect" type="Polygon2D" parent="Shine_Base"]
+[node name="PH_Rect" type="Polygon2D" parent="Shine_Base" unique_id=1019000813]
 visible = false
 z_index = 4096
 color = Color(0, 1, 1, 0.509804)
 polygon = PackedVector2Array(0, -24, 18, -16, 24, 0, 18, 16, 0, 24, -17, 17, -24, 0, -17, -17)
 
-[node name="Shine_StateMachine" parent="." node_paths=PackedStringArray("parent", "intial_state") instance=ExtResource("1_dsjbk")]
+[node name="Shine_StateMachine" parent="." unique_id=881716568 node_paths=PackedStringArray("parent", "intial_state") instance=ExtResource("1_dsjbk")]
 parent = NodePath("../Shine_Base")
 intial_state = NodePath("IDLE")
 
-[node name="IDLE" type="Node" parent="Shine_StateMachine" node_paths=PackedStringArray("parent")]
+[node name="IDLE" type="Node" parent="Shine_StateMachine" unique_id=1317820640 node_paths=PackedStringArray("parent")]
 script = SubResource("GDScript_4cm2j")
 parent = NodePath("../..")
 metadata/_custom_type_script = "uid://dmgbhcexe6fw"
 
-[node name="ACTIVE" type="Node" parent="Shine_StateMachine" node_paths=PackedStringArray("parent")]
+[node name="ACTIVE" type="Node" parent="Shine_StateMachine" unique_id=190522336 node_paths=PackedStringArray("parent")]
 script = SubResource("GDScript_vuw3n")
 parent = NodePath("../..")
 metadata/_custom_type_script = "uid://dmgbhcexe6fw"

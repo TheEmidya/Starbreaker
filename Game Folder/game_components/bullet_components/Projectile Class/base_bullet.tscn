@@ -1,10 +1,10 @@
-[gd_scene load_steps=3 format=3 uid="uid://dbu0md0jtt1ov"]
+[gd_scene format=3 uid="uid://dbu0md0jtt1ov"]
 
 [ext_resource type="Script" uid="uid://cp026tcaij1c6" path="res://Game Folder/game_components/bullet_components/Projectile Class/base_bullet.gd" id="1_1rkj2"]
-[ext_resource type="Texture2D" uid="uid://csbofagkbecjv" path="res://Game Folder/game_assets/Player/Weapons/firing_modes/Spray/Sprites/bullet_particles.png" id="2_f04td"]
+[ext_resource type="Texture2D" uid="uid://csbofagkbecjv" path="res://Game Folder/game_assets/Player/Weapons/firing_modes/Railcannon/Sprites/bullet_particles.png" id="2_f04td"]
 
-[node name="BaseBullet" type="CharacterBody2D"]
+[node name="BaseBullet" type="CharacterBody2D" unique_id=693044903]
 script = ExtResource("1_1rkj2")
 
-[node name="Sprite" type="Sprite2D" parent="."]
+[node name="Sprite" type="Sprite2D" parent="." unique_id=1203592538]
 texture = ExtResource("2_f04td")

@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://dhtx5ctv0dx7p"
+path="res://.godot/imported/Stage Select - Tres-2B.ogg-cb0ef2407529f211587011861226fb3f.oggvorbisstr"
+
+[deps]
+
+source_file="res://Game Folder/game_assets/Menus/StageSelect/Music/Stage Select - Tres-2B.ogg"
+dest_files=["res://.godot/imported/Stage Select - Tres-2B.ogg-cb0ef2407529f211587011861226fb3f.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

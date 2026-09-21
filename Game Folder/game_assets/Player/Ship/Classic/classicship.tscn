@@ -1,0 +1,15 @@
+[gd_scene format=3 uid="uid://bx0iaqgmlekm7"]
+
+[sub_resource type="GDScript" id="GDScript_lrwhw"]
+script/source = "extends Ship
+# The classic ship grants increased projectile damage by 75%
+
+func _ready() -> void:
+	events.player_projectile_fired.connect(apply_bonus, 1)
+
+func apply_bonus(projectile : Projectile):
+	projectile.hitbox.hitbox_data.damage *= 1.75
+"
+
+[node name="ShipClassic" type="Node" unique_id=135727805]
+script = SubResource("GDScript_lrwhw")

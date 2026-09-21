@@ -23,7 +23,6 @@ signal is_taking_knockback(duration : float)
 @export var is_disabled := false
 
 @export_subgroup("Hitbox Data")
-var hitbox_data := HitboxData.new() as HitboxData
 @export var damage := 0.0
 @export var knockback_amount := 0.0
 @export var knockback_stun_duration : float = 0.0
@@ -50,7 +49,7 @@ func _ready() -> void:
 
 func _physics_process(delta: float) -> void:
 	matching_databox_type()
-	update_hitbox_data_process()
+	#update_hitbox_data_process()
 	check_knockback_process(delta)
 #endregion
 
@@ -82,16 +81,16 @@ func check_disable_mode_process():
 			child.disabled = is_disabled
 
 
-## Aligns the hitbox data to the current stats of the databox.
-func update_hitbox_data_process():
-	hitbox_data.team_affiliation = team_affiliation
-	hitbox_data.damage = damage
-	hitbox_data.knockback_amount = knockback_amount
-	hitbox_data.knockback_stun_duration = knockback_stun_duration
-	## Warns the developer that the data isn't local, causing possible bugs and unintended side effects.
-	#if is_instance_valid(hitbox_data) and damage > 0:
-		#if hitbox_data.resource_local_to_scene == false:
-			#printerr(var_to_str(parent.name) + var_to_str(self.name) + " doesn't have hitbox data local to it's scene!")
+### Aligns the hitbox data to the current stats of the databox.
+#func update_hitbox_data_process():
+	#hitbox_data.team_affiliation = team_affiliation
+	#hitbox_data.damage = damage
+	#hitbox_data.knockback_amount = knockback_amount
+	#hitbox_data.knockback_stun_duration = knockback_stun_duration
+	### Warns the developer that the data isn't local, causing possible bugs and unintended side effects.
+	##if is_instance_valid(hitbox_data) and damage > 0:
+		##if hitbox_data.resource_local_to_scene == false:
+			##printerr(var_to_str(parent.name) + var_to_str(self.name) + " doesn't have hitbox data local to it's scene!")
 #endregion
 
 #region Hitbox / Hurtbox Reaction

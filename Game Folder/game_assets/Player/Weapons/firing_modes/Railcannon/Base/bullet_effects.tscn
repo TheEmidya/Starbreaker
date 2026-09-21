@@ -1,0 +1,95 @@
+[gd_scene format=3 uid="uid://cvn1yj5f1jcfr"]
+
+[ext_resource type="Texture2D" uid="uid://cb4ed35sin5rx" path="res://Game Folder/game_assets/Player/Weapons/firing_modes/Railcannon/Sprites/bullet_trails.png" id="1_r6isx"]
+[ext_resource type="Texture2D" uid="uid://baa1mmpigaqjc" path="res://Game Folder/game_assets/Player/Weapons/firing_modes/Railcannon/Sprites/AttackConnect.png" id="2_5srov"]
+
+[sub_resource type="GDScript" id="GDScript_v7kgb"]
+script/source = "extends Node2D
+var damage := 0.0
+
+
+func _ready() -> void:
+	$HitParticles.emitting = true
+	$HitParticles_2.emitting = true
+	$HitParticles_2.process_material.hue_variation_max = damage
+	await get_tree().create_timer(1.5, false, true, false).timeout
+	queue_free()
+"
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_v03go"]
+particles_animation = true
+particles_anim_h_frames = 4
+particles_anim_v_frames = 1
+particles_anim_loop = false
+
+[sub_resource type="Curve" id="Curve_e85le"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.039886042, 1), 2.4554276, 2.4554276, 0, 0, Vector2(0.50142455, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_64etb"]
+curve = SubResource("Curve_e85le")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_rou1p"]
+direction = Vector3(0, 0, 0)
+spread = 180.0
+initial_velocity_min = 300.0
+initial_velocity_max = 355.0
+gravity = Vector3(0, 0, 0)
+scale_curve = SubResource("CurveTexture_64etb")
+anim_speed_min = 0.25
+anim_speed_max = 3.0
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_1jbg0"]
+particles_animation = true
+particles_anim_h_frames = 11
+particles_anim_v_frames = 1
+particles_anim_loop = false
+
+[sub_resource type="Curve" id="Curve_weyq8"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.92592597, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), -28.282858, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_mwdfr"]
+curve = SubResource("Curve_weyq8")
+
+[sub_resource type="Curve" id="Curve_64etb"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.045584045, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), -3.8066704, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_weyq8"]
+curve = SubResource("Curve_64etb")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_q1fnc"]
+particle_flag_disable_z = true
+direction = Vector3(0, 0, 0)
+spread = 180.0
+initial_velocity_max = 155.0
+gravity = Vector3(0, 0, 0)
+scale_curve = SubResource("CurveTexture_weyq8")
+color = Color(0, 1, 1, 1)
+alpha_curve = SubResource("CurveTexture_mwdfr")
+anim_speed_min = 0.75
+anim_speed_max = 1.0
+
+[node name="BulletEffects" type="Node2D" unique_id=1912360718]
+script = SubResource("GDScript_v7kgb")
+
+[node name="HitParticles" type="GPUParticles2D" parent="." unique_id=287527609]
+material = SubResource("CanvasItemMaterial_v03go")
+emitting = false
+amount = 6
+texture = ExtResource("1_r6isx")
+lifetime = 0.25
+one_shot = true
+explosiveness = 1.0
+process_material = SubResource("ParticleProcessMaterial_rou1p")
+
+[node name="HitParticles_2" type="GPUParticles2D" parent="." unique_id=1858634607]
+material = SubResource("CanvasItemMaterial_1jbg0")
+emitting = false
+amount = 5
+texture = ExtResource("2_5srov")
+lifetime = 0.2
+one_shot = true
+explosiveness = 1.0
+process_material = SubResource("ParticleProcessMaterial_q1fnc")

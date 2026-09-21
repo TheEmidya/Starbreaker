@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://c4it8uhwa4evo"]
+[gd_scene format=3 uid="uid://c4it8uhwa4evo"]
 
 [ext_resource type="Script" uid="uid://bql2an547gxi1" path="res://Game Folder/game_components/entity_components/Health/health_component.gd" id="1_gcoxo"]
 [ext_resource type="PackedScene" uid="uid://c0qsib2m70nmv" path="res://Game Folder/game_components/entity_components/State Machine/stagemachine_parent.tscn" id="1_ne3wu"]
@@ -74,75 +74,67 @@ func enter():
 	parent.queue_free()
 "
 
-[node name="Absorbio" type="CharacterBody2D" groups=["enemy"]]
+[node name="Absorbio" type="CharacterBody2D" unique_id=1060755079 groups=["enemy"]]
 script = SubResource("GDScript_q3hpd")
 movement_speed = 750.0
 max_scale = 3.0
 
-[node name="HealthComponent" type="Node" parent="."]
+[node name="HealthComponent" type="Node" parent="." unique_id=540915166]
 script = ExtResource("1_gcoxo")
-maximum_health = 1e+07
+maximum_health = 10000000.0
 
-[node name="HurtboxComponent" type="Area2D" parent="." node_paths=PackedStringArray("parent", "health") groups=["enemy"]]
+[node name="HurtboxComponent" type="Area2D" parent="." unique_id=1594992755 groups=["enemy"]]
 collision_layer = 4
 collision_mask = 8
 script = ExtResource("2_q2che")
-parent = NodePath("..")
-health = NodePath("../HealthComponent")
 
-[node name="Collision" type="CollisionShape2D" parent="HurtboxComponent"]
+[node name="Collision" type="CollisionShape2D" parent="HurtboxComponent" unique_id=157478393]
 shape = SubResource("CircleShape2D_2my7v")
 
-[node name="HitboxComponent" type="Area2D" parent="." node_paths=PackedStringArray("parent")]
+[node name="HitboxComponent" type="Area2D" parent="." unique_id=1449646289]
 collision_layer = 16
 collision_mask = 2
 script = ExtResource("3_l0epk")
-parent = NodePath("..")
-damage = -100.0
-knockback_amount = 7500.0
-knockback_stun_duration = 0.3
 
-[node name="Collision" type="CollisionShape2D" parent="HitboxComponent"]
+[node name="Collision" type="CollisionShape2D" parent="HitboxComponent" unique_id=1297595737]
 rotation = 1.5708
 shape = SubResource("CapsuleShape2D_q7oh3")
 
-[node name="Sprite" type="Node2D" parent="."]
+[node name="Sprite" type="Node2D" parent="." unique_id=1344226823]
 
-[node name="Orb" type="Polygon2D" parent="Sprite"]
+[node name="Orb" type="Polygon2D" parent="Sprite" unique_id=1240191547]
 color = Color(1, 0, 0, 1)
 polygon = PackedVector2Array(40, -8, 40, 8, 32, 24, 16, 32, 0, 32, -16, 32, -32, 24, -40, 8, -40, -8, -32, -24, -16, -32, 0, -32, 16, -32, 32, -24)
 
-[node name="Orb2" type="Polygon2D" parent="Sprite"]
+[node name="Orb2" type="Polygon2D" parent="Sprite" unique_id=1215134347]
 rotation = 3.14159
 scale = Vector2(0.7, 0.7)
 polygon = PackedVector2Array(40, -8, 40, 8, 32, 24, 16, 32, 0, 32, -16, 32, -32, 24, -40, 8, -40, -8, -32, -24, -16, -32, 0, -32, 16, -32, 32, -24)
 
-[node name="Pathfinding" type="NavigationAgent2D" parent="."]
+[node name="Pathfinding" type="NavigationAgent2D" parent="." unique_id=1803794193]
 avoidance_enabled = true
 
-[node name="StateMachine" parent="." node_paths=PackedStringArray("parent", "intial_state", "death_state") instance=ExtResource("1_ne3wu")]
+[node name="StateMachine" parent="." unique_id=1585045798 node_paths=PackedStringArray("parent", "intial_state") instance=ExtResource("1_ne3wu")]
 parent = NodePath("..")
 intial_state = NodePath("Idle")
-death_state = NodePath("Reward_Trigger")
 
-[node name="Appear" type="Node" parent="StateMachine" node_paths=PackedStringArray("parent")]
+[node name="Appear" type="Node" parent="StateMachine" unique_id=1199961800 node_paths=PackedStringArray("parent")]
 script = ExtResource("2_rq7qx")
 parent = NodePath("../..")
 
-[node name="Idle" type="Node" parent="StateMachine" node_paths=PackedStringArray("parent")]
+[node name="Idle" type="Node" parent="StateMachine" unique_id=1053663602 node_paths=PackedStringArray("parent")]
 script = SubResource("GDScript_f77i3")
 parent = NodePath("../..")
 
-[node name="Reward_Trigger" type="Node" parent="StateMachine" node_paths=PackedStringArray("parent")]
+[node name="Reward_Trigger" type="Node" parent="StateMachine" unique_id=764459322 node_paths=PackedStringArray("parent")]
 script = SubResource("GDScript_drgmp")
 parent = NodePath("../..")
 
-[node name="Reward_Timer" type="Timer" parent="."]
+[node name="Reward_Timer" type="Timer" parent="." unique_id=614512355]
 process_callback = 0
 wait_time = 15.0
 one_shot = true
 autostart = true
 
-[connection signal="on_hit" from="HealthComponent" to="." method="on_hit"]
 [connection signal="velocity_computed" from="Pathfinding" to="StateMachine/Idle" method="velocity_computed"]
 [connection signal="timeout" from="Reward_Timer" to="." method="reward_timeout"]

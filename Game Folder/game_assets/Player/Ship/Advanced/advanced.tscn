@@ -1,0 +1,10 @@
+[gd_scene format=3 uid="uid://bielkg82acqs6"]
+
+[sub_resource type="GDScript" id="GDScript_jgldg"]
+script/source = "extends Ship
+# Grants energy, code can be found inside the loadout script.
+"
+
+[node name="Advanced" type="Node" unique_id=353527774]
+script = SubResource("GDScript_jgldg")
+metadata/_custom_type_script = "uid://cqq5k6yi7vye"

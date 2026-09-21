@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://d2sv0rtup6yxf"]
+[gd_scene format=3 uid="uid://d2sv0rtup6yxf"]
 
 [ext_resource type="PackedScene" uid="uid://c0qsib2m70nmv" path="res://Game Folder/game_components/entity_components/State Machine/stagemachine_parent.tscn" id="1_0dh1d"]
 [ext_resource type="Script" uid="uid://ucfty02weqo2" path="res://Game Folder/game_components/entity_components/Hitbox/hitbox.gd" id="1_ysawc"]
@@ -163,35 +163,29 @@ func continue_combo_action():
 	Transistioned.emit(self, \"COMBO1\")
 "
 
-[node name="Slash" type="Node"]
+[node name="Slash" type="Node" unique_id=1729553857]
 script = SubResource("GDScript_u1470")
 
-[node name="SlashPosition" type="Node2D" parent="."]
+[node name="SlashPosition" type="Node2D" parent="." unique_id=2138837921]
 
-[node name="Sword" type="Polygon2D" parent="SlashPosition"]
+[node name="Sword" type="Polygon2D" parent="SlashPosition" unique_id=1232074155]
 color = Color(0, 1, 1, 1)
 polygon = PackedVector2Array(0, -8, 64, -8, 128, 0, 64, 8, 0, 8)
 
-[node name="Hitbox" type="Area2D" parent="SlashPosition/Sword" node_paths=PackedStringArray("parent")]
+[node name="Hitbox" type="Area2D" parent="SlashPosition/Sword" unique_id=2099629787]
 collision_layer = 8
 collision_mask = 4
 script = ExtResource("1_ysawc")
-parent = NodePath("../..")
-damage = -65.0
-knockback_amount = 10000.0
-knockback_stun_duration = 0.4
 metadata/_custom_type_script = "uid://ucfty02weqo2"
 
-[node name="Collision" type="CollisionShape2D" parent="SlashPosition/Sword/Hitbox"]
+[node name="Collision" type="CollisionShape2D" parent="SlashPosition/Sword/Hitbox" unique_id=481751698]
 position = Vector2(64, 0)
 shape = SubResource("RectangleShape2D_0dh1d")
 
-[node name="Animation" type="AnimationPlayer" parent="SlashPosition"]
-libraries = {
-&"": SubResource("AnimationLibrary_m5dmm")
-}
+[node name="Animation" type="AnimationPlayer" parent="SlashPosition" unique_id=217656207]
+libraries/ = SubResource("AnimationLibrary_m5dmm")
 
-[node name="Label" type="Label" parent="SlashPosition"]
+[node name="Label" type="Label" parent="SlashPosition" unique_id=1418805834]
 visible = false
 top_level = true
 offset_left = 24.0
@@ -199,7 +193,7 @@ offset_top = 40.0
 offset_right = 64.0
 offset_bottom = 63.0
 
-[node name="Label2" type="Label" parent="SlashPosition"]
+[node name="Label2" type="Label" parent="SlashPosition" unique_id=64586043]
 visible = false
 top_level = true
 offset_left = 24.0
@@ -207,31 +201,31 @@ offset_top = 63.0
 offset_right = 64.0
 offset_bottom = 86.0
 
-[node name="StateMachine" parent="." node_paths=PackedStringArray("parent", "intial_state") instance=ExtResource("1_0dh1d")]
+[node name="StateMachine" parent="." unique_id=1448916320 node_paths=PackedStringArray("parent", "intial_state") instance=ExtResource("1_0dh1d")]
 parent = NodePath("../SlashPosition")
 intial_state = NodePath("IDLE")
 
-[node name="IDLE" type="Node" parent="StateMachine" node_paths=PackedStringArray("parent")]
+[node name="IDLE" type="Node" parent="StateMachine" unique_id=61165034 node_paths=PackedStringArray("parent")]
 script = SubResource("GDScript_0dh1d")
 parent = NodePath("../..")
 metadata/_custom_type_script = "uid://dmgbhcexe6fw"
 
-[node name="COMBO1" type="Node" parent="StateMachine" node_paths=PackedStringArray("parent")]
+[node name="COMBO1" type="Node" parent="StateMachine" unique_id=104217445 node_paths=PackedStringArray("parent")]
 script = SubResource("GDScript_ysawc")
 parent = NodePath("../..")
 metadata/_custom_type_script = "uid://dmgbhcexe6fw"
 
-[node name="COMBO2" type="Node" parent="StateMachine" node_paths=PackedStringArray("parent")]
+[node name="COMBO2" type="Node" parent="StateMachine" unique_id=1105977702 node_paths=PackedStringArray("parent")]
 script = SubResource("GDScript_x3o7k")
 parent = NodePath("../..")
 metadata/_custom_type_script = "uid://dmgbhcexe6fw"
 
-[node name="COMBO3" type="Node" parent="StateMachine" node_paths=PackedStringArray("parent")]
+[node name="COMBO3" type="Node" parent="StateMachine" unique_id=1726914662 node_paths=PackedStringArray("parent")]
 script = SubResource("GDScript_14paq")
 parent = NodePath("../..")
 metadata/_custom_type_script = "uid://dmgbhcexe6fw"
 
-[node name="Timer" type="Timer" parent="."]
+[node name="Timer" type="Timer" parent="." unique_id=1562167531]
 process_callback = 0
 one_shot = true
 

@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://cvkthunjptte4"
+path="res://.godot/imported/manshotgun_fire1.wav-fe2b3d8554d555bbe58b1cc4c0328bd0.sample"
+
+[deps]
+
+source_file="res://Game Folder/game_assets/Player/Passive/Man Passive/Audio/Shotgun/manshotgun_fire1.wav"
+dest_files=["res://.godot/imported/manshotgun_fire1.wav-fe2b3d8554d555bbe58b1cc4c0328bd0.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

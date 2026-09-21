@@ -1,4 +1,4 @@
-[gd_scene load_steps=2 format=3 uid="uid://deqlsf3ha0ly2"]
+[gd_scene format=3 uid="uid://deqlsf3ha0ly2"]
 
 [sub_resource type="GDScript" id="GDScript_ptkyo"]
 script/source = "extends Node
@@ -26,17 +26,17 @@ func _process(delta: float) -> void:
 		$CanvasLayer/Label2.hide()
 "
 
-[node name="ComboSystem" type="Node"]
+[node name="ComboSystem" type="Node" unique_id=1325860502]
 script = SubResource("GDScript_ptkyo")
 
-[node name="Timer" type="Timer" parent="."]
+[node name="Timer" type="Timer" parent="." unique_id=1512812717]
 process_callback = 0
 wait_time = 15.0
 one_shot = true
 
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=401194573]
 
-[node name="Label" type="Label" parent="CanvasLayer"]
+[node name="Label" type="Label" parent="CanvasLayer" unique_id=2050110558]
 visible = false
 anchors_preset = 4
 anchor_top = 0.5
@@ -48,7 +48,7 @@ grow_vertical = 2
 size_flags_horizontal = 0
 text = "15"
 
-[node name="Label2" type="Label" parent="CanvasLayer"]
+[node name="Label2" type="Label" parent="CanvasLayer" unique_id=428986512]
 visible = false
 anchors_preset = 4
 anchor_top = 0.5

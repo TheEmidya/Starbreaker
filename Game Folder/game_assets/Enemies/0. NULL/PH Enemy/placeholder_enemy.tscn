@@ -1,12 +1,11 @@
-[gd_scene load_steps=4 format=3 uid="uid://c430suysa0v1a"]
+[gd_scene format=3 uid="uid://c430suysa0v1a"]
 
 [ext_resource type="Script" uid="uid://f37ieuipj0vh" path="res://Game Folder/game_components/collision_component/Databox/databox.gd" id="2_4w5la"]
+[ext_resource type="Script" uid="uid://ucfty02weqo2" path="res://Game Folder/game_components/entity_components/Hitbox/hitbox.gd" id="2_tgc8w"]
+[ext_resource type="Script" uid="uid://bxhw6dnb6fuqm" path="res://Game Folder/game_components/entity_components/Hitbox/HitboxData.gd" id="3_ru76w"]
 
 [sub_resource type="GDScript" id="GDScript_jlxpf"]
 script/source = "extends Enemy
-@onready var hurtbox: Databox = $Hurtbox
-
-
 
 func on_parent_hit(colliding_hitbox: Variant, damage_taken: Variant) -> void:
 	#PH Flash
@@ -16,25 +15,41 @@ func on_parent_hit(colliding_hitbox: Variant, damage_taken: Variant) -> void:
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_o6ceb"]
 size = Vector2(32, 32)
 
-[node name="EnemyPH" type="CharacterBody2D"]
+[sub_resource type="Resource" id="Resource_78q1l"]
+script = ExtResource("3_ru76w")
+metadata/_custom_type_script = "uid://bxhw6dnb6fuqm"
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_tgc8w"]
+
+[node name="EnemyPH" type="CharacterBody2D" unique_id=48822422]
 script = SubResource("GDScript_jlxpf")
 
-[node name="Hurtbox" type="Area2D" parent="." node_paths=PackedStringArray("parent")]
+[node name="Hurtbox" type="Area2D" parent="." unique_id=2106211726 node_paths=PackedStringArray("parent")]
 script = ExtResource("2_4w5la")
 parent = NodePath("..")
 team_affiliation = "EnemyTeam"
 databox_type = "Hurtbox"
 
-[node name="Collision" type="CollisionShape2D" parent="Hurtbox"]
+[node name="Collision" type="CollisionShape2D" parent="Hurtbox" unique_id=1235515495]
 shape = SubResource("RectangleShape2D_o6ceb")
 
-[node name="PH_Box" type="Polygon2D" parent="."]
+[node name="PH_Box" type="Polygon2D" parent="." unique_id=1520398307]
 color = Color(1, 0, 0, 1)
 polygon = PackedVector2Array(-16, -16, -16, 16, 16, 16, 16, -16)
 
-[node name="PH_Outline" type="Polygon2D" parent="."]
+[node name="PH_Outline" type="Polygon2D" parent="." unique_id=2084901047]
 show_behind_parent = true
 scale = Vector2(1.1, 1.1)
 polygon = PackedVector2Array(-16, -16, -16, 16, 16, 16, 16, -16)
+
+[node name="Hitbox" type="Area2D" parent="." unique_id=154044348]
+collision_layer = 16
+collision_mask = 2
+script = ExtResource("2_tgc8w")
+hitbox_data = SubResource("Resource_78q1l")
+metadata/_custom_type_script = "uid://ucfty02weqo2"
+
+[node name="Collision" type="CollisionShape2D" parent="Hitbox" unique_id=1051823909]
+shape = SubResource("CircleShape2D_tgc8w")
 
 [connection signal="on_parent_hit" from="Hurtbox" to="." method="on_parent_hit"]

@@ -1,54 +1,8 @@
-[gd_scene load_steps=6 format=3 uid="uid://cr5lkcdqqb78g"]
+[gd_scene format=3 uid="uid://cr5lkcdqqb78g"]
 
 [ext_resource type="Script" uid="uid://cs4mtsd6tqfmw" path="res://Game Folder/game_components/camera_component/Camera/camera_base.gd" id="1_8n6dp"]
 
-[sub_resource type="GDScript" id="GDScript_pam7k"]
-script/source = "extends ColorRect
-
-
-func _ready() -> void:
-	color = Color.TRANSPARENT
-"
-
-[sub_resource type="Animation" id="Animation_5gf6v"]
-resource_name = "Flash"
-length = 0.1
-step = 0.01
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:color")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.02),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
-}
-
-[sub_resource type="Animation" id="Animation_6bxt4"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:color")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Color(1, 1, 1, 0)]
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_erxvi"]
-_data = {
-&"Flash": SubResource("Animation_5gf6v"),
-&"RESET": SubResource("Animation_6bxt4")
-}
-
-[node name="JuicyCamera_Component" type="Camera2D"]
+[node name="Camera" type="Camera2D" unique_id=685539510]
 process_callback = 0
 limit_left = 0
 limit_top = 0
@@ -58,19 +12,3 @@ limit_smoothed = true
 position_smoothing_enabled = true
 editor_draw_limits = true
 script = ExtResource("1_8n6dp")
-initial_zoom_value = 3.0
-
-[node name="Flash" type="ColorRect" parent="."]
-z_index = 4095
-offset_left = -976.0
-offset_top = -456.0
-offset_right = 1616.0
-offset_bottom = 816.0
-mouse_filter = 1
-color = Color(1, 1, 1, 0)
-script = SubResource("GDScript_pam7k")
-
-[node name="Flash_Event" type="AnimationPlayer" parent="Flash"]
-libraries = {
-&"": SubResource("AnimationLibrary_erxvi")
-}

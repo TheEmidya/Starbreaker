@@ -1,4 +1,4 @@
-[gd_scene load_steps=71 format=3 uid="uid://bmehsjqlfnqij"]
+[gd_scene format=3 uid="uid://bmehsjqlfnqij"]
 
 [ext_resource type="Script" uid="uid://ucfty02weqo2" path="res://Game Folder/game_components/entity_components/Hitbox/hitbox.gd" id="1_8w56e"]
 [ext_resource type="Texture2D" uid="uid://d03ccb6618p5d" path="res://Game Folder/game_assets/Enemies/Tres-2B/Skeleshot/Sprites/shoot.png" id="1_c1kin"]
@@ -14,21 +14,6 @@
 script/source = "extends Enemy
 const TRISHOOTER_EXPLOSION = preload(\"res://Game Folder/game_assets/Enemies/Tres-2B/Trishooter/bullet_stuff/bullet_trishooter.tscn\")
 @onready var state_machine = $StateMachine
-@onready var sprite: AnimatedSprite2D = $Sprite
-
-func _physics_process(delta: float) -> void:
-	rotate_sprite()
-
-func rotate_sprite():
-	sprite.global_rotation_degrees += 15
-
-func on_hit(damage_taken: Variant, colliding_hitbox: Variant) -> void:
-	state_machine.current_state.Transistioned.emit(state_machine.current_state, state_machine.hit_state.name)
-	events.enemy_damaged.emit(self)
-
-func on_death(damage_taken: Variant, colliding_hitbox: Variant) -> void:
-	state_machine.current_state.Transistioned.emit(state_machine.current_state, state_machine.death_state.name)
-	events.enemy_killed.emit(self)
 "
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_2fj5c"]
@@ -255,7 +240,7 @@ animations = [{
 "duration": 1.0,
 "texture": ExtResource("1_c1kin")
 }],
-"loop": true,
+"loop": 1,
 "name": &"Death",
 "speed": 5.0
 }, {
@@ -347,7 +332,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_jfmlh")
 }],
-"loop": false,
+"loop": 0,
 "name": &"Hit",
 "speed": 60.0
 }, {
@@ -355,7 +340,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_ipb2n")
 }],
-"loop": true,
+"loop": 1,
 "name": &"Idle",
 "speed": 5.0
 }, {
@@ -429,7 +414,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_xbweg")
 }],
-"loop": false,
+"loop": 0,
 "name": &"Spawn",
 "speed": 60.0
 }]
@@ -438,9 +423,6 @@ animations = [{
 script/source = "extends State
 
 func enter():
-	sprite.stop()
-	sprite.play(\"Spawn\")
-	await sprite.animation_finished
 	Transistioned.emit(self, \"move\")
 "
 
@@ -449,10 +431,6 @@ script/source = "extends State
 @export var speed = 3075
 @onready var pathfinding: NavigationAgent2D = $\"../../Pathfinding\"
 
-
-func enter():
-	sprite.stop()
-	sprite.play(\"Idle\")
 
 func pathfinding_velocity_computed(safe_velocity: Vector2) -> void:
 	if get_parent().current_state == self:
@@ -475,69 +453,54 @@ func make_path():
 script/source = "extends State
 
 func enter():
-	sprite.stop()
-	sprite.play(\"Hit\")
-	await sprite.animation_finished
 	Transistioned.emit(self, \"move\")
 "
 
 [sub_resource type="GDScript" id="GDScript_fsgqf"]
 script/source = "extends State
-@onready var hurtbox: HurtboxComponent = $\"../../HurtboxComponent\"
 
 
 func enter():
 	$\"../../PatternGenerator\".firerate_timer.stop()
-	sprite.play_backwards(\"Spawn\")
-	hurtbox.queue_free()
-	await sprite.animation_finished
 	parent.queue_free()
 "
 
-[node name="Trishooter" type="CharacterBody2D" groups=["enemy"]]
+[node name="Trishooter" type="CharacterBody2D" unique_id=364070625 groups=["enemy"]]
 collision_layer = 0
 motion_mode = 1
 script = SubResource("GDScript_4qk1k")
-OnHit_score = 15
-OnDeath_score = 15
 
-[node name="HitboxComponent" type="Area2D" parent="." node_paths=PackedStringArray("parent") groups=["enemy"]]
+[node name="HitboxComponent" type="Area2D" parent="." unique_id=349441904 groups=["enemy"]]
 collision_layer = 16
 collision_mask = 2
 script = ExtResource("1_8w56e")
-parent = NodePath("..")
-damage = -5.0
-knockback_amount = 1115.0
-knockback_stun_duration = 0.3
 
-[node name="Collision" type="CollisionShape2D" parent="HitboxComponent"]
+[node name="Collision" type="CollisionShape2D" parent="HitboxComponent" unique_id=2093556176]
 shape = SubResource("CircleShape2D_2fj5c")
 
-[node name="HurtboxComponent" type="Area2D" parent="." node_paths=PackedStringArray("parent", "health") groups=["enemy"]]
+[node name="HurtboxComponent" type="Area2D" parent="." unique_id=1531400755 groups=["enemy"]]
 collision_layer = 4
 collision_mask = 8
 script = ExtResource("2_igsfb")
-parent = NodePath("..")
-health = NodePath("../HealthComponent")
 
-[node name="Collision" type="CollisionShape2D" parent="HurtboxComponent"]
+[node name="Collision" type="CollisionShape2D" parent="HurtboxComponent" unique_id=1967616509]
 shape = SubResource("CircleShape2D_bgvpu")
 
-[node name="HealthComponent" type="Node" parent="."]
+[node name="HealthComponent" type="Node" parent="." unique_id=376524964]
 script = ExtResource("3_hgvv4")
 maximum_health = 150.0
 
-[node name="Sprite" type="AnimatedSprite2D" parent="."]
+[node name="Sprite" type="AnimatedSprite2D" parent="." unique_id=1232428042]
 sprite_frames = SubResource("SpriteFrames_qohad")
 animation = &"Idle"
 
-[node name="PatternGenerator" parent="." instance=ExtResource("5_kbe1e")]
+[node name="PatternGenerator" parent="." unique_id=1687294711 instance=ExtResource("5_kbe1e")]
 bulletpath = ExtResource("6_xr2sy")
 firerate = 1.7
 rotation_speed = 175
 bullet_points = 3
 
-[node name="Pathfinding" type="NavigationAgent2D" parent="."]
+[node name="Pathfinding" type="NavigationAgent2D" parent="." unique_id=2007790308]
 path_desired_distance = 5.0
 target_desired_distance = 125.0
 path_max_distance = 125.0
@@ -545,34 +508,26 @@ simplify_path = true
 avoidance_enabled = true
 radius = 15.0
 
-[node name="StateMachine" parent="." node_paths=PackedStringArray("parent", "intial_state", "hit_state", "death_state") instance=ExtResource("3_mtath")]
+[node name="StateMachine" parent="." unique_id=1930307519 node_paths=PackedStringArray("parent", "intial_state") instance=ExtResource("3_mtath")]
 parent = NodePath("..")
 intial_state = NodePath("spawn")
-hit_state = NodePath("hit")
-death_state = NodePath("death")
 
-[node name="spawn" type="Node" parent="StateMachine" node_paths=PackedStringArray("parent", "sprite")]
+[node name="spawn" type="Node" parent="StateMachine" unique_id=1985760325 node_paths=PackedStringArray("parent")]
 script = SubResource("GDScript_a3ye7")
 parent = NodePath("../..")
-sprite = NodePath("../../Sprite")
 
-[node name="move" type="Node" parent="StateMachine" node_paths=PackedStringArray("parent", "sprite")]
+[node name="move" type="Node" parent="StateMachine" unique_id=1458129647 node_paths=PackedStringArray("parent")]
 script = SubResource("GDScript_cnuky")
 speed = 4075
 parent = NodePath("../..")
-sprite = NodePath("../../Sprite")
 
-[node name="hit" type="Node" parent="StateMachine" node_paths=PackedStringArray("parent", "sprite")]
+[node name="hit" type="Node" parent="StateMachine" unique_id=992005283 node_paths=PackedStringArray("parent")]
 script = SubResource("GDScript_10drs")
 parent = NodePath("../..")
-sprite = NodePath("../../Sprite")
 
-[node name="death" type="Node" parent="StateMachine" node_paths=PackedStringArray("parent", "sprite")]
+[node name="death" type="Node" parent="StateMachine" unique_id=855230938 node_paths=PackedStringArray("parent")]
 script = SubResource("GDScript_fsgqf")
 parent = NodePath("../..")
-sprite = NodePath("../../Sprite")
 
-[connection signal="death" from="HealthComponent" to="." method="on_death"]
-[connection signal="on_hit" from="HealthComponent" to="." method="on_hit"]
 [connection signal="target_reached" from="Pathfinding" to="StateMachine/move" method="_on_pathfinding_target_reached"]
 [connection signal="velocity_computed" from="Pathfinding" to="StateMachine/move" method="pathfinding_velocity_computed"]

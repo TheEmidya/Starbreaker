@@ -1,70 +1,12 @@
-[gd_scene load_steps=248 format=3 uid="uid://dju5f2wa2fucv"]
+[gd_scene format=3 uid="uid://dju5f2wa2fucv"]
 
 [ext_resource type="Script" uid="uid://bicfx3rt2dc3y" path="res://Game Folder/game_assets/Player/Main/Player.gd" id="1_5vafy"]
-[ext_resource type="Texture2D" uid="uid://0g26oshcb22" path="res://Game Folder/game_assets/Player/Crosshair/Crosshair.png" id="2_h5nhg"]
 [ext_resource type="Script" uid="uid://bql2an547gxi1" path="res://Game Folder/game_components/entity_components/Health/health_component.gd" id="2_shqxk"]
-[ext_resource type="Texture2D" uid="uid://dquvjfksile86" path="res://Game Folder/game_assets/Player/Crosshair/extra_air.png" id="3_wj1xj"]
-[ext_resource type="Script" uid="uid://3eh6xveo61nc" path="res://Game Folder/game_components/entity_components/Knockback/knockback.gd" id="4_pp5h7"]
-[ext_resource type="Texture2D" uid="uid://ceuqf56q32fjj" path="res://Game Folder/game_assets/Player/Crosshair/crosshair tile-export.png" id="5_p52m1"]
 [ext_resource type="Texture2D" uid="uid://dkg2wqmgi3s02" path="res://Game Folder/game_assets/Player/Sprites/starbreaker_death_128x128.png" id="6_n7eqj"]
 [ext_resource type="Texture2D" uid="uid://btqhqcn4wj5v7" path="res://Game Folder/game_assets/Player/Sprites/starbreaker_hit.png" id="7_0qlyo"]
-[ext_resource type="Script" uid="uid://cnrlid6cwjxj6" path="res://Game Folder/game_assets/Player/Crosshair/Crosshair.gd" id="8_oo2xt"]
+[ext_resource type="Script" uid="uid://chx8xroi3hih8" path="res://Game Folder/game_components/entity_components/Hurtbox/hurtbox.gd" id="7_wj88f"]
 [ext_resource type="Texture2D" uid="uid://bc2c5788m7sua" path="res://Game Folder/game_assets/Player/Sprites/starbreaker.png" id="8_tvc3t"]
 [ext_resource type="Texture2D" uid="uid://2vucydg8ubg1" path="res://Game Folder/game_assets/Player/Sprites/starbreaker_utility_recharge.png" id="9_0qlyo"]
-[ext_resource type="PackedScene" uid="uid://deqlsf3ha0ly2" path="res://Game Folder/game_assets/Player/Weapons/combo_system.tscn" id="10_5ayyr"]
-[ext_resource type="AudioStream" uid="uid://c7b1r3nn8qhhg" path="res://Game Folder/game_assets/Player/SFX/Hits/normal_hit.wav" id="13_b1fw5"]
-[ext_resource type="AudioStream" uid="uid://dopt1osie47ud" path="res://Game Folder/game_assets/Player/SFX/Hits/death.wav" id="14_n7eqj"]
-[ext_resource type="Texture2D" uid="uid://c51y82puqp6vt" path="res://Game Folder/game_assets/Player/Weapons/firing_modes/Spray/Sprites/SecondaryFire_explosion.png" id="15_xb2i5"]
-
-[sub_resource type="GDScript" id="GDScript_u1yyx"]
-script/source = "extends HurtboxComponent
-
-func _ready() -> void:
-	super()
-	events.connect(\"player_death\", func(damage_taken, colliding_hitbox): is_disabled = true, 2)
-"
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_rq3p4"]
-radius = 1.0
-
-[sub_resource type="Animation" id="Animation_k4rei"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [0]
-}
-
-[sub_resource type="Animation" id="Animation_76val"]
-resource_name = "default"
-length = 3.0
-loop_mode = 1
-step = 0.1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 3),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [0, 0]
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_57ssm"]
-_data = {
-&"RESET": SubResource("Animation_k4rei"),
-&"default": SubResource("Animation_76val")
-}
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_kwmem"]
 atlas = ExtResource("6_n7eqj")
@@ -826,34 +768,6 @@ region = Rect2(384, 0, 48, 48)
 atlas = ExtResource("7_0qlyo")
 region = Rect2(432, 0, 48, 48)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_b1fw5"]
-atlas = ExtResource("9_0qlyo")
-region = Rect2(0, 0, 48, 48)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_n7eqj"]
-atlas = ExtResource("9_0qlyo")
-region = Rect2(48, 0, 48, 48)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_xb2i5"]
-atlas = ExtResource("9_0qlyo")
-region = Rect2(96, 0, 48, 48)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_nc3ln"]
-atlas = ExtResource("9_0qlyo")
-region = Rect2(144, 0, 48, 48)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_7fipq"]
-atlas = ExtResource("9_0qlyo")
-region = Rect2(192, 0, 48, 48)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_t0rfw"]
-atlas = ExtResource("9_0qlyo")
-region = Rect2(240, 0, 48, 48)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_j3cg7"]
-atlas = ExtResource("9_0qlyo")
-region = Rect2(288, 0, 48, 48)
-
 [sub_resource type="AtlasTexture" id="AtlasTexture_jdklm"]
 atlas = ExtResource("9_0qlyo")
 region = Rect2(336, 0, 48, 48)
@@ -1449,7 +1363,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_i5h00")
 }],
-"loop": false,
+"loop": 0,
 "name": &"death",
 "speed": 60.0
 }, {
@@ -1484,7 +1398,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_r325p")
 }],
-"loop": false,
+"loop": 0,
 "name": &"hit",
 "speed": 60.0
 }, {
@@ -1492,32 +1406,11 @@ animations = [{
 "duration": 1.0,
 "texture": ExtResource("8_tvc3t")
 }],
-"loop": true,
+"loop": 1,
 "name": &"idle",
 "speed": 5.0
 }, {
 "frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_b1fw5")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_n7eqj")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_xb2i5")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_nc3ln")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_7fipq")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_t0rfw")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_j3cg7")
-}, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_jdklm")
 }, {
@@ -1557,422 +1450,432 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_uqkpg")
 }],
-"loop": false,
+"loop": 0,
 "name": &"refunded",
-"speed": 28.0
+"speed": 30.0
 }]
 
-[sub_resource type="GDScript" id="GDScript_w5s08"]
-script/source = "extends AnimatedSprite2D
-
-func _ready() -> void:
-	events.player_damaged.connect(func(current_health, damage_taken, colliding_hitbox): stop(); play(\"hit\"), 3)
-	events.player_death.connect(func(damage_taken, colliding_hitbox): 
-		stop()
-		play(\"death\")
-		if options.extra_vfx:
-			$DeathEffects.emitting = true, 2)
-"
-
-[sub_resource type="Curve" id="Curve_na574"]
-_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
-point_count = 2
-
-[sub_resource type="CurveTexture" id="CurveTexture_h3sh4"]
-curve = SubResource("Curve_na574")
-
-[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_rjiyg"]
-particle_flag_disable_z = true
-emission_shape = 1
-emission_sphere_radius = 75.0
-direction = Vector3(0, 0, 0)
-angular_velocity_min = -720.0
-angular_velocity_max = 720.0
-orbit_velocity_min = -2.0
-orbit_velocity_max = 9.49949e-08
-gravity = Vector3(0, 0, 0)
-tangential_accel_min = -100.0
-tangential_accel_max = 100.0
-scale_curve = SubResource("CurveTexture_h3sh4")
-turbulence_enabled = true
-
 [sub_resource type="CircleShape2D" id="CircleShape2D_23pmm"]
-radius = 12.0
 
 [sub_resource type="GDScript" id="GDScript_itgeb"]
-script/source = "extends Node  # Inherit from the base Node class
+script/source = "extends Node
 @onready var player: Player = $\"..\"
 
-@export var allows_input := false  # Flag to control input
-@export var is_movement_disabled := false  # Flag to control movement
-@onready var movement_speed : float  # Initial movement speed, should be set up in the editor
-@export var max_movement_speed : float  # Maximum movement speed
-@export var default_movement_speed : float
-@export var acceleration : float  # Acceleration rate
-@export var friction : float  # Friction rate
+@export var is_movement_disabled := false
 
-# Called when the node is ready
-func _ready() -> void:
-	# Connect signals to handle player death and tutorial completion
-	events.connect(\"player_death\", func(damage_taken, colliding_hitbox):
-		allows_input = false  # Disable input on player death
-		owner.velocity = Vector2.ZERO  # Stop player movement
-	, 2)
-	events.connect(\"stage_started\", func():
-		is_movement_disabled = false  # Re-enable movement after tutorial completion
-	)
+@onready var current_movement_speed : float
+@export var max_movement_speed : float
+@export_range(0.0, 1.0, 0.01, \"or_greater\") var acceleration : float
+@export_range(0.0, 1.0, 0.01, \"or_greater\") var friction : float
 
-# Called every physics frame
-func _physics_process(delta: float) -> void:
-	look_at_mouse()  # Make the player look at the mouse position
-	movement_handler(delta)  # Handle player movement
+@export_range(0, 5.0, 0.01, \"or_greater\") var speed_scalar := 1.0
 
-# Rotate player to face the mouse cursor
-func look_at_mouse():
-	if allows_input:
-		owner.look_at(player.crosshair.global_position)  # Face the mouse if input is allowed
+
+func _physics_process(_delta: float) -> void:
+	aim_at_mouse()
+	movement_handler()
+
+func aim_at_mouse():
+	if !is_movement_disabled:
+		player.look_at(player.get_global_mouse_position())
+
+func get_direction() -> Vector2:
+	var direction = Input.get_vector(\"ui_left\", \"ui_right\", \"ui_up\", \"ui_down\").normalized()
+	return direction 
 
 # Handle player movement
-func movement_handler(delta):
-	if allows_input and not is_movement_disabled:
-		var direction = Input.get_vector(\"ui_left\", \"ui_right\", \"ui_up\", \"ui_down\").normalized()
+func movement_handler():
+	if !is_movement_disabled:
+		var direction = get_direction()
 		
-		# Apply acceleration if there is a direction
 		if direction:
-			movement_speed += acceleration
-		# Apply friction if there is no input direction
+			current_movement_speed += lerpf(current_movement_speed, max_movement_speed, acceleration)
 		else:
-			movement_speed -= friction
+			current_movement_speed -= lerpf(current_movement_speed, 0, friction)
 		
+		player.velocity = lerp(player.velocity, direction * current_movement_speed, 15.0 * get_physics_process_delta_time())
 		
+		current_movement_speed = clampf(current_movement_speed, 0.0, max_movement_speed)
+		current_movement_speed *= speed_scalar
 		
-		movement_speed = clampf(movement_speed, 0.0, max_movement_speed)
-		
-		var slowed_movement_speed = default_movement_speed / 2
-		if Input.is_action_pressed(\"slow\") and movement_speed >= slowed_movement_speed:
-			movement_speed = slowed_movement_speed
-		
-		# Apply the velocity to move the player
-		owner.velocity = lerp(owner.velocity, direction * movement_speed, delta * acceleration)
-		
-		
-	owner.move_and_slide()  # Ensure physics-based movement
+		var slowed_movement_speed = current_movement_speed / 2.75
+		if Input.is_action_pressed(\"slow\") and current_movement_speed >= slowed_movement_speed:
+			current_movement_speed = slowed_movement_speed
+	
+	player.move_and_slide()
 "
 
 [sub_resource type="GDScript" id="GDScript_xpxrt"]
 script/source = "extends Node
-var is_all_weapons_actionable = true  # Exported boolean to control whether actions are actionable
 
-@export_enum(\"Spray\", \"Shotgun\", \"Longshot\", \"Slash\") var primary_firingmode_selection = \"None\"
-@export_enum(\"Zip-Dash\", \"DiagBomb\", \"Shine\") var utility_selection = \"None\"
-@export_enum(\"BH-7\", \"Overclock\", \"Starman\") var breaker_selection = \"None\"
+@export var maximum_energy := 100.0
+@onready var current_energy := maximum_energy:
+	set(value):
+		var previous_energy = current_energy
+		
+		if ship_selection == \"Advanced\":
+			value *= 2.75 # 175%
+		
+		current_energy += value
+		
+		current_energy = clampf(current_energy, 0, maximum_energy)
+		events.energy_updated.emit([current_energy, value, previous_energy])
+@export var energy_per_second := 5.0
+@onready var is_max_energy = false:
+	get:
+		if current_energy >= maximum_energy:
+			if is_max_energy == false:
+				events.max_energy_reached.emit()
+			is_max_energy = true
+		else:
+			if is_max_energy == true:
+				events.max_energy_lost.emit()
+			is_max_energy = false
+		return is_max_energy
 
-@export var max_energy := 100.0
-@onready var current_energy := max_energy
-@export var energy_gain_persecond := 15 / 1.0
-@export var energy_perdamage := 5
-@export var energy_perkill := 10
+@export_enum(\"None\", \"Railcannon\", \"Shotgun\", \"Longshot\", \"Slash\") var weapon_selection = \"None\":
+	set(value):
+		weapon_selection = value
+		update_loadout(weapon_selection)
+@export_enum(\"None\", \"Zip-Dash\", \"DiagBomb\", \"Shine\") var utility_selection = \"None\":
+	set(value):
+		utility_selection = value
+		update_loadout(utility_selection)
+@export_enum(\"None\", \"LZ-R\", \"Overclock\", \"Starman\") var breaker_selection = \"None\":
+	set(value):
+		breaker_selection = value
+		update_loadout(breaker_selection)
+@export_enum(\"None\", \"Classic\", \"Advanced\", \"Stealth\") var ship_selection = \"None\":
+	set(value):
+		ship_selection = value
+		update_loadout(ship_selection)
+@export_enum(\"None\", \"Heal\", \"Man\", \"Credit\") var passive_selection = \"None\":
+	set(value):
+		passive_selection = value
+		update_loadout(passive_selection)
 
+var current_loadout = {
+	\"weapon\" =  weapon_selection,
+	\"utility\" = utility_selection,
+	\"breaker\" = breaker_selection,
+	\"ship\" = ship_selection,
+	\"passive\" = passive_selection
+}
 
 @onready var active_weapon
-@onready var active_utility_selection
+@onready var active_utility
+@onready var active_breaker
+@onready var active_ship
+@onready var active_passive
 
-# Firing Modes
-const SPRAY_FIRINGMODE = preload(\"res://Game Folder/game_assets/Player/Weapons/firing_modes/Spray/Base/spray_firingmode.tscn\")
-const SHOTGUN_FIRINGMODE = preload(\"res://Game Folder/game_assets/Player/Weapons/firing_modes/Shotgun/Shotgun.tscn\")
-const SLASH_FIRINGMODE = preload(\"res://Game Folder/game_assets/Player/Weapons/firing_modes/Slash/Slash.tscn\")
+# Weapons
+const RAILCANNON_PATH = \"res://Game Folder/game_assets/Player/Weapons/firing_modes/Railcannon/Base/railcannon_weapon.tscn\"
+const SPLATTERSHOT_PATH = \"res://Game Folder/game_assets/Player/Weapons/firing_modes/Shotgun/Shotgun.tscn\"
+const LONGSHOT_PATH = \"null\"
+const ASSNINJA_PATH = \"res://Game Folder/game_assets/Player/Weapons/firing_modes/Slash/Slash.tscn\"
 
 # Utilities
-const ZIP_DASH = preload(\"res://Game Folder/game_assets/Player/Weapons/utility/Zip-Dash/zipdash.tscn\")
-const SHINE = preload(\"res://Game Folder/game_assets/Player/Weapons/utility/Shine/Shine.tscn\")
+const ZIPDASH_PATH = \"res://Game Folder/game_assets/Player/Weapons/utility/Zip-Dash/zipdash.tscn\"
+const SHINE_PATH = \"res://Game Folder/game_assets/Player/Weapons/utility/Shine/Shine.tscn\"
+const DIAGBOMB_PATH = \"null\"
+const SHOCKWAVE = \"null\"
 
-func _ready() -> void:
-	firingmode_selector(primary_firingmode_selection)
-	utilitymode_selector()
+# Breakers
+const STARMAN_PATH = \"res://Game Folder/game_assets/Player/Breaker/Starman/starman.tscn\"
+const LZR_PATH = \"res://Game Folder/game_assets/Player/Breaker/LZ-R/lz_r.tscn\"
+
+# Ship
+const CLASSICSHIP_PATH = \"res://Game Folder/game_assets/Player/Ship/Classic/classicship.tscn\"
+const ADVANCEDSHIP_PATH = \"res://Game Folder/game_assets/Player/Ship/Advanced/advanced.tscn\"
+const STEALTHSHIP_PATH = \"res://Game Folder/game_assets/Player/Ship/Stealth/ship_stealth.tscn\"
+
+# Passives
+const HEAL_PATH = \"res://Game Folder/game_assets/Player/Passive/Heal Passive/Heal.tscn\"
+const MAN_PATH = \"res://Game Folder/game_assets/Player/Passive/Man Passive/man_passive.tscn\"
+
+func _physics_process(delta: float) -> void:
+	update_energy(delta)
+
+func update_loadout(value : String):
+	current_loadout.weapon = weapon_selection
+	current_loadout.utility = utility_selection
+	current_loadout.breaker = breaker_selection
+	current_loadout.ship = ship_selection
+	current_loadout.passive = passive_selection
 	
-	events.connect(\"enemy_damaged\", update_consecutive_hits_counter, 1)
-	events.connect(\"enemy_killed\", update_consecutive_hits_counter, 1)
-	events.connect(\"enemy_damaged\", func(enemy): call(\"update_energy\", energy_perdamage), 1)
-	events.connect(\"boss_damaged\", func(enemy): call(\"update_energy\", energy_perdamage * 0.15), 1)
-	events.connect(\"enemy_killed\", func(enemy): call(\"update_energy\", energy_perkill), 1)
-	events.connect(\"player_death\", func(damage, hb): is_all_weapons_actionable = false, 2)
+	if value == current_loadout.weapon:
+		for bonus in get_children():
+			if bonus is Weapon:
+				bonus.queue_free()
+		match current_loadout.weapon:
+			\"Railcannon\":
+				var weapon = load(RAILCANNON_PATH) as PackedScene
+				active_weapon = weapon.instantiate() as Weapon
+			\"Shotgun\":
+				var weapon = load(SPLATTERSHOT_PATH) as PackedScene
+				active_weapon = weapon.instantiate() as Weapon
+			\"Longshot\":
+				var weapon = load(LONGSHOT_PATH) as PackedScene
+				active_weapon = weapon.instantiate() as Weapon
+			\"Slash\":
+				var weapon = load(ASSNINJA_PATH) as PackedScene
+				active_weapon = weapon.instantiate() as Weapon
+		if active_weapon:
+			add_child(active_weapon, true)
+	
+	if value == current_loadout.utility:
+		for bonus in get_children():
+			if bonus is Node:
+				pass
+		match current_loadout.utility:
+			\"Shine\":
+				var util = load(ZIPDASH_PATH) as PackedScene
+				active_utility = util.instantiate() as Node
+			\"Zip-Dash\":
+				var util = load(SHINE_PATH) as PackedScene
+				active_utility = util.instantiate() as Node
+			\"DiagBomb\":
+				var util = load(DIAGBOMB_PATH) as PackedScene
+				active_utility = util.instantiate() as Node
+		if active_utility:
+			add_child(active_utility, true)
+	
+	if value == current_loadout.breaker:
+		for bonus in get_children():
+			if bonus is Breaker:
+				bonus.queue_free()
+		match current_loadout.breaker:
+			\"LZ-R\":
+				var breaker = load(LZR_PATH) as PackedScene
+				active_breaker = breaker.instantiate() as Breaker
+			\"Overclock\":
+				pass
+			\"Starman\":
+				var breaker = load(STARMAN_PATH) as PackedScene
+				active_breaker = breaker.instantiate() as Breaker
+		if active_breaker:
+			add_child(active_breaker, true)
+	
+	if value == current_loadout.ship:
+		for bonus in get_children():
+			if bonus is Ship:
+				bonus.queue_free()
+		match current_loadout.ship:
+			\"Classic\":
+				var ship = load(CLASSICSHIP_PATH) as PackedScene
+				active_ship = ship.instantiate() as Ship
+			\"Advanced\":
+				var ship = load(ADVANCEDSHIP_PATH) as PackedScene
+				active_ship = ship.instantiate() as Ship
+			\"Stealth\":
+				var ship = load(STEALTHSHIP_PATH) as PackedScene
+				active_ship = ship.instantiate() as Ship
+		if active_ship:
+			add_child(active_ship, true)
+	
+	if value == current_loadout.passive:
+		for bonus in get_children():
+			if bonus is Passive:
+				bonus.queue_free()
+		match current_loadout.passive:
+			\"Heal\":
+				var passive = load(HEAL_PATH) as PackedScene
+				active_passive = passive.instantiate() as Passive
+			\"Man\":
+				var passive = load(MAN_PATH) as PackedScene
+				active_passive = passive.instantiate() as Passive
+			\"Credit\":
+				pass
+		if active_passive:
+			add_child(active_passive, true)
 
-func firingmode_selector(firingmode : String):
-	match(firingmode):
-		\"Spray\":
-			match(firingmode):
-				primary_firingmode_selection:
-					active_weapon = SPRAY_FIRINGMODE.instantiate()
-					add_child(active_weapon)
-		\"Shotgun\":
-			match(firingmode):
-				primary_firingmode_selection:
-					active_weapon = SHOTGUN_FIRINGMODE.instantiate()
-					add_child(active_weapon)
-
-func utilitymode_selector():
-	match utility_selection:
-		\"Zip-Dash\":
-			active_utility_selection = ZIP_DASH.instantiate()
-			add_child(active_utility_selection)
-		\"DiagBomb\":
-			pass
-		\"Shine\":
-			active_utility_selection = SHINE.instantiate()
-			add_child(active_utility_selection)
-
-
-func _physics_process(delta: float) -> void:
-	input_code(delta)
-	update_energy(energy_gain_persecond * delta)
-
-
-## Charge Mechanics
-func update_energy(new_value : float):
-	current_energy += new_value
-	current_energy = clamp(current_energy, 0, max_energy)
-	events.emit_signal(\"energy_updated\", current_energy)
-
-func input_code(delta):
-	if active_utility_selection != null:
-		if Input.is_action_just_pressed(\"shift\") and active_utility_selection.is_weapon_actionable:
-			active_utility_selection.action()
-
-@onready var consecutive_hits_target = Node2D
-@onready var consecutive_hits = 0
-
-func update_consecutive_hits_counter(target : Node2D):
-	if target == consecutive_hits_target:
-		consecutive_hits += 1
-	if target != consecutive_hits_target:
-		consecutive_hits = 1
-	consecutive_hits_target = target
-	print(str(consecutive_hits_target, consecutive_hits))
+func update_energy(delta : float):
+	current_energy = energy_per_second * delta
 "
 
-[sub_resource type="GDScript" id="GDScript_rdqb0"]
-script/source = "extends Node  # Inherit from Node class
+[sub_resource type="GDScript" id="GDScript_lrwhw"]
+script/source = "extends CanvasLayer
+@onready var current_selection_time := 0.0
+@export var maximum_selection_time := 6.5
+@export var time_progressbar: ProgressBar
 
-@onready var invincibility_timer := Timer.new()  # Initialize the invincibility timer
-@onready var invincibility_override : bool = false  # Flag to control invincibility override
-@export var hit_invincibility_duration : float = 1.75  # Duration of invincibility after taking damage
-
-# Called when the node is ready
-func _ready() -> void:
-	events.connect(\"player_death\", func(damage_taken, colliding_hitbox):
-		invincibility_override = true  # Enable invincibility override on player death
-	, 2)
-	events.connect(\"player_damaged\", func(current_health, damage_taken, colliding_hitbox):
-		invincibility_timer.start(hit_invincibility_duration)  # Start the invincibility timer when damaged
-	, 3)
-	setup_invincibility_timer()  # Initialize the invincibility timer
-
-# Called every physics frame
-func _physics_process(delta: float) -> void:
-	invincibility_check()  # Check the status of invincibility
-
-# Setup the invincibility timer with default properties
-func setup_invincibility_timer():
-	invincibility_timer.one_shot = true  # The timer runs only once
-	invincibility_timer.autostart = false  # The timer doesn't start automatically
-	invincibility_timer.process_callback = Timer.TIMER_PROCESS_PHYSICS  # Use physics process to update
-	add_child.call_deferred(invincibility_timer, true)  # Add the timer as a child with deferred call
-
-# Check if the player is currently invincible
-func invincibility_check():
-	if not invincibility_override:  # If invincibility override is not active
-		match invincibility_timer.time_left:  # Check the timer's remaining time
-			0.0:
-				owner.hurtbox.is_disabled = false  # Disable the hurtbox (player vulnerable)
-			_:
-				owner.hurtbox.is_disabled = true  # Enable the hurtbox (player invincible)
-	else:
-		owner.hurtbox.is_disabled = true  # Always enable hurtbox if invincibility override is active
-"
-
-[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_n7eqj"]
-random_pitch = 1.05
-streams_count = 1
-stream_0/stream = ExtResource("13_b1fw5")
-
-[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_nc3ln"]
-blend_mode = 1
-particles_animation = true
-particles_anim_h_frames = 8
-particles_anim_v_frames = 1
-particles_anim_loop = true
-
-[sub_resource type="Gradient" id="Gradient_7fipq"]
-interpolation_mode = 1
-offsets = PackedFloat32Array(0, 0.601824)
-colors = PackedColorArray(0, 1, 1, 1, 1, 1, 1, 1)
-
-[sub_resource type="GradientTexture1D" id="GradientTexture1D_gqa0r"]
-gradient = SubResource("Gradient_7fipq")
-
-[sub_resource type="Curve" id="Curve_t0rfw"]
-_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.75493, 1), 0.0, 0.0, 0, 0, Vector2(0.988732, 0), 0.0, 0.0, 0, 0]
-point_count = 3
-
-[sub_resource type="CurveTexture" id="CurveTexture_hmjde"]
-curve = SubResource("Curve_t0rfw")
-
-[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_j3cg7"]
-lifetime_randomness = 0.25
-particle_flag_disable_z = true
-emission_shape = 1
-emission_sphere_radius = 58.0
-spread = 180.0
-initial_velocity_max = 183.21
-gravity = Vector3(0, 0, 0)
-scale_curve = SubResource("CurveTexture_hmjde")
-color_ramp = SubResource("GradientTexture1D_gqa0r")
-anim_speed_min = 0.5
-anim_speed_max = 2.0
-turbulence_enabled = true
-turbulence_influence_min = 0.054
-turbulence_influence_max = 0.104
-
-[sub_resource type="GDScript" id="GDScript_jdklm"]
-script/source = "extends GPUParticles2D
+@export_enum(\"CLOSED\", \"SELECTION\", \"MINIGAME\") var menu_state = \"CLOSED\"
+@export var animation: AnimationPlayer
 
 func _ready() -> void:
-	emitting = true
-	await get_tree().create_timer(2.0, false, true, false).timeout
-	queue_free()
+	events.connect(\"upgrade\", init_upgrade_minigame, 1)
+
+func init_upgrade_minigame(upgrade_uid : String):
+	print(upgrade_uid)
+	show()
+	animation.play(\"Opening\")
+	await animation.animation_finished
+	menu_state = \"SELECTION\"
+	current_selection_time = 0.0
+
+func _physics_process(delta: float) -> void:
+	if current_selection_time < maximum_selection_time and menu_state == \"SELECTION\":
+		current_selection_time += delta
+		time_progressbar.value = remap(current_selection_time, 0.0, maximum_selection_time, 0.0, 100.0)
+		if current_selection_time >= maximum_selection_time:
+			menu_state = \"MINIGAME\"
+			animation.play(\"Closing\")
 "
 
-[node name="Player" type="CharacterBody2D" groups=["player"]]
-z_index = 4096
+[sub_resource type="Animation" id="Animation_cvawo"]
+resource_name = "Closing"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Upgrade Handler/Control:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(-2, 1),
+"update": 0,
+"values": [Vector2(0.7, 0.7), Vector2(1e-05, 1e-05)]
+}
+
+[sub_resource type="Animation" id="Animation_wj88f"]
+resource_name = "Opening"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Upgrade Handler/Control:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(-2, 1),
+"update": 0,
+"values": [Vector2(1e-05, 1e-05), Vector2(0.7, 0.7)]
+}
+
+[sub_resource type="Animation" id="Animation_garac"]
+length = 0.001
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Upgrade Handler/Control:scale:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(1e-05, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Upgrade Handler/Control:scale:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(1e-05, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Upgrade Handler/Control:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1e-05, 1e-05)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_vr0j5"]
+_data = {
+&"Closing": SubResource("Animation_cvawo"),
+&"Opening": SubResource("Animation_wj88f"),
+&"RESET": SubResource("Animation_garac")
+}
+
+[node name="Player" type="CharacterBody2D" unique_id=472331241 node_paths=PackedStringArray("entity_hurtbox")]
 collision_layer = 0
 motion_mode = 1
 script = ExtResource("1_5vafy")
+entity_hurtbox = NodePath("Hurtbox")
 
-[node name="HurtboxComponent" type="Area2D" parent="." node_paths=PackedStringArray("parent", "health", "knockback") groups=["player"]]
-collision_layer = 2
-collision_mask = 16
-script = SubResource("GDScript_u1yyx")
-parent = NodePath("..")
-health = NodePath("../Health Manager")
-knockback = NodePath("../KnockbackComponent")
-
-[node name="Collision" type="CollisionShape2D" parent="HurtboxComponent"]
-shape = SubResource("CircleShape2D_rq3p4")
-
-[node name="TrueCrosshair" type="Sprite2D" parent="."]
-z_index = 4096
-scale = Vector2(1.125, 1)
-texture = ExtResource("3_wj1xj")
-script = ExtResource("8_oo2xt")
-
-[node name="MouseCrosshair" type="Sprite2D" parent="TrueCrosshair"]
-show_behind_parent = true
-top_level = true
-z_index = 4096
-texture = ExtResource("2_h5nhg")
-hframes = 10
-
-[node name="Animation" type="AnimationPlayer" parent="TrueCrosshair/MouseCrosshair"]
-libraries = {
-&"": SubResource("AnimationLibrary_57ssm")
-}
-autoplay = "default"
-
-[node name="CrosshairLine" type="Line2D" parent="TrueCrosshair"]
-texture_filter = 3
-points = PackedVector2Array(0, 0, 130, 0)
-texture = ExtResource("5_p52m1")
-texture_mode = 2
-
-[node name="Marker" type="CharacterBody2D" parent="TrueCrosshair"]
-motion_mode = 1
-
-[node name="CanvasLayer" type="CanvasLayer" parent="TrueCrosshair"]
-
-[node name="Label" type="Label" parent="TrueCrosshair/CanvasLayer"]
-offset_top = 44.0
-offset_right = 40.0
-offset_bottom = 67.0
-
-[node name="Sprite" type="AnimatedSprite2D" parent="."]
+[node name="Sprite" type="AnimatedSprite2D" parent="." unique_id=1107981429]
 texture_filter = 1
 use_parent_material = true
 rotation = 1.5708
 sprite_frames = SubResource("SpriteFrames_wirgs")
-animation = &"death"
+animation = &"refunded"
 autoplay = "idle"
-frame = 179
+frame = 12
 frame_progress = 1.0
-script = SubResource("GDScript_w5s08")
 
-[node name="DeathEffects" type="GPUParticles2D" parent="Sprite"]
-z_index = 4096
-use_parent_material = true
-emitting = false
-amount = 100
-one_shot = true
-explosiveness = 0.5
-randomness = 1.0
-fixed_fps = 60
-process_material = SubResource("ParticleProcessMaterial_rjiyg")
-
-[node name="PhysicsCollision" type="CollisionShape2D" parent="."]
+[node name="PhysicsCollision" type="CollisionShape2D" parent="." unique_id=384166354]
 shape = SubResource("CircleShape2D_23pmm")
 
-[node name="Health Manager" type="Node" parent="."]
+[node name="Health Manager" type="Node" parent="." unique_id=2041249458]
 script = ExtResource("2_shqxk")
 
-[node name="Physics Manager" type="Node" parent="."]
+[node name="Physics Manager" type="Node" parent="." unique_id=1351138485]
 script = SubResource("GDScript_itgeb")
-allows_input = true
-is_movement_disabled = true
-max_movement_speed = 235.0
-default_movement_speed = 235.0
-acceleration = 50.0
-friction = 250.0
+max_movement_speed = 120.0
+acceleration = 0.25
+friction = 0.25
 
-[node name="Weapon Manager" type="Node" parent="."]
+[node name="Loadout Manager" type="Node" parent="." unique_id=2147123911]
 script = SubResource("GDScript_xpxrt")
-primary_firingmode_selection = "Spray"
-utility_selection = "Zip-Dash"
+weapon_selection = "Railcannon"
 
-[node name="ComboSystem" parent="Weapon Manager" instance=ExtResource("10_5ayyr")]
+[node name="Upgrade Handler" type="CanvasLayer" parent="." unique_id=1872894884 node_paths=PackedStringArray("time_progressbar", "animation")]
+process_mode = 3
+script = SubResource("GDScript_lrwhw")
+time_progressbar = NodePath("Control/Panel/ProgressBar")
+animation = NodePath("Animation")
 
-[node name="I-Frames Manager" type="Node" parent="."]
-script = SubResource("GDScript_rdqb0")
-hit_invincibility_duration = 1.5
+[node name="Control" type="Control" parent="Upgrade Handler" unique_id=611162574]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(1e-05, 1e-05)
+pivot_offset_ratio = Vector2(0.5, 0.5)
 
-[node name="KnockbackComponent" type="Node2D" parent="." node_paths=PackedStringArray("parent")]
-script = ExtResource("4_pp5h7")
-parent = NodePath("..")
-is_knockback_forced_upwards = false
+[node name="Panel" type="Panel" parent="Upgrade Handler/Control" unique_id=759434647]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 
-[node name="Hit_SFX" type="AudioStreamPlayer" parent="."]
-stream = SubResource("AudioStreamRandomizer_n7eqj")
-bus = &"SFX"
+[node name="ProgressBar" type="ProgressBar" parent="Upgrade Handler/Control/Panel" unique_id=570524435]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -320.00003
+offset_right = 320.0
+offset_bottom = 10.0
+grow_horizontal = 2
+show_percentage = false
 
-[node name="Death_SFX" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("14_n7eqj")
-volume_db = 3.0
-mix_target = 2
-bus = &"SFX"
+[node name="Animation" type="AnimationPlayer" parent="Upgrade Handler" unique_id=1937707420]
+root_node = NodePath("../..")
+libraries/ = SubResource("AnimationLibrary_vr0j5")
 
-[node name="Explosion_Particles" type="GPUParticles2D" parent="."]
-self_modulate = Color(1, 1, 1, 0.00392157)
-material = SubResource("CanvasItemMaterial_nc3ln")
-emitting = false
-amount = 500
-texture = ExtResource("15_xb2i5")
-lifetime = 0.3
-one_shot = true
-explosiveness = 1.0
-fixed_fps = 144
-visibility_rect = Rect2(-516.5, -100, 1033, 200)
-local_coords = true
-process_material = SubResource("ParticleProcessMaterial_j3cg7")
-script = SubResource("GDScript_jdklm")
+[node name="Hurtbox" type="Area2D" parent="." unique_id=245438406]
+collision_layer = 2
+collision_mask = 16
+script = ExtResource("7_wj88f")
+metadata/_custom_type_script = "uid://chx8xroi3hih8"
 
-[connection signal="animation_finished" from="Sprite" to="." method="animation_finished"]
-[connection signal="death" from="Health Manager" to="." method="on_death"]
-[connection signal="on_heal" from="Health Manager" to="." method="on_heal"]
-[connection signal="on_hit" from="Health Manager" to="." method="on_hit"]
+[node name="PhysicsCollision" type="CollisionShape2D" parent="Hurtbox" unique_id=963990577]
+shape = SubResource("CircleShape2D_23pmm")
+
+[connection signal="hurtbox_detection" from="Hurtbox" to="." method="hurtbox_detection"]

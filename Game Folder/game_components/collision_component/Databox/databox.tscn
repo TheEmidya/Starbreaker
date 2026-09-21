@@ -1,8 +1,8 @@
-[gd_scene load_steps=2 format=3 uid="uid://cv6n4owhqcfl0"]
+[gd_scene format=3 uid="uid://cv6n4owhqcfl0"]
 
 [ext_resource type="Script" uid="uid://f37ieuipj0vh" path="res://Game Folder/game_components/collision_component/Databox/databox.gd" id="1_o3wga"]
 
-[node name="Databox" type="Area2D"]
+[node name="Databox" type="Area2D" unique_id=1381950807]
 script = ExtResource("1_o3wga")
 
 [connection signal="area_entered" from="." to="." method="area_entered"]

@@ -1,19 +1,32 @@
-[gd_scene load_steps=221 format=3 uid="uid://dfepk5fmqyutd"]
+[gd_scene format=3 uid="uid://dfepk5fmqyutd"]
 
 [ext_resource type="Script" uid="uid://bpf2md5esgawm" path="res://Game Folder/game_assets/Enemies/Tres-2B/Skeleshot/enemy.gd" id="1_t7cul"]
 [ext_resource type="Texture2D" uid="uid://d03ccb6618p5d" path="res://Game Folder/game_assets/Enemies/Tres-2B/Skeleshot/Sprites/shoot.png" id="1_vsosa"]
 [ext_resource type="Texture2D" uid="uid://cwwn34618nmuy" path="res://Game Folder/game_assets/Enemies/Tres-2B/Skeleshot/Sprites/death.png" id="2_3ivxn"]
 [ext_resource type="PackedScene" uid="uid://c0qsib2m70nmv" path="res://Game Folder/game_components/entity_components/State Machine/stagemachine_parent.tscn" id="2_lgqps"]
 [ext_resource type="Texture2D" uid="uid://0giwyh1og78x" path="res://Game Folder/game_assets/Enemies/Tres-2B/Skeleshot/Sprites/hit.png" id="2_vrino"]
-[ext_resource type="Script" uid="uid://8a1bfnc6r587" path="res://Game Folder/game_components/shader_components/hitflash_component.gd" id="3_ehvip"]
 [ext_resource type="Texture2D" uid="uid://cipnnf6ne6or4" path="res://Game Folder/game_assets/Enemies/Tres-2B/Skeleshot/Sprites/spawn.png" id="3_kvhsi"]
-[ext_resource type="Script" uid="uid://dnnwhodvhbhrg" path="res://Game Folder/game_components/shader_components/shockwave_component.gd" id="4_mgxmf"]
 [ext_resource type="Script" uid="uid://chx8xroi3hih8" path="res://Game Folder/game_components/entity_components/Hurtbox/hurtbox.gd" id="5_alwm2"]
 [ext_resource type="Script" uid="uid://ucfty02weqo2" path="res://Game Folder/game_components/entity_components/Hitbox/hitbox.gd" id="6_w1j0l"]
-[ext_resource type="Script" uid="uid://bql2an547gxi1" path="res://Game Folder/game_components/entity_components/Health/health_component.gd" id="8_ueg8n"]
-[ext_resource type="Script" uid="uid://3eh6xveo61nc" path="res://Game Folder/game_components/entity_components/Knockback/knockback.gd" id="9_sjgo5"]
+[ext_resource type="Script" uid="uid://bxhw6dnb6fuqm" path="res://Game Folder/game_components/entity_components/Hitbox/HitboxData.gd" id="8_dtdju"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_3n1ei"]
+[sub_resource type="Shader" id="Shader_dtdju"]
+resource_local_to_scene = true
+resource_name = "enemy_flash"
+code = "shader_type canvas_item;
+
+uniform float hit_opacity = 0;
+
+void fragment(){
+	COLOR.rgb = texture(TEXTURE, UV).rgb * (1.0 - hit_opacity) + vec3(1,1,1) * hit_opacity;
+	COLOR.a = texture(TEXTURE, UV).a;
+}"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ehvip"]
+resource_local_to_scene = true
+resource_name = "enemy_flash"
+shader = SubResource("Shader_dtdju")
+shader_parameter/hit_opacity = 0.0
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_0qntg"]
 atlas = ExtResource("1_vsosa")
@@ -339,170 +352,6 @@ region = Rect2(4096, 512, 512, 512)
 atlas = ExtResource("2_vrino")
 region = Rect2(0, 1024, 512, 512)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_7rkgb"]
-atlas = ExtResource("2_vrino")
-region = Rect2(512, 1024, 512, 512)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_u4irp"]
-atlas = ExtResource("2_vrino")
-region = Rect2(1024, 1024, 512, 512)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_4am42"]
-atlas = ExtResource("2_vrino")
-region = Rect2(1536, 1024, 512, 512)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_a30js"]
-atlas = ExtResource("2_vrino")
-region = Rect2(2048, 1024, 512, 512)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_kdsob"]
-atlas = ExtResource("2_vrino")
-region = Rect2(2560, 1024, 512, 512)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_75sdk"]
-atlas = ExtResource("2_vrino")
-region = Rect2(3072, 1024, 512, 512)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_i8ejt"]
-atlas = ExtResource("2_vrino")
-region = Rect2(3584, 1024, 512, 512)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_f7i7e"]
-atlas = ExtResource("2_vrino")
-region = Rect2(4096, 1024, 512, 512)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_7vcee"]
-atlas = ExtResource("2_vrino")
-region = Rect2(0, 1536, 512, 512)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_v0fv3"]
-atlas = ExtResource("2_vrino")
-region = Rect2(512, 1536, 512, 512)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_x0h5t"]
-atlas = ExtResource("2_vrino")
-region = Rect2(1024, 1536, 512, 512)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_vprma"]
-atlas = ExtResource("2_vrino")
-region = Rect2(1536, 1536, 512, 512)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_p3260"]
-atlas = ExtResource("2_vrino")
-region = Rect2(2048, 1536, 512, 512)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_u754x"]
-atlas = ExtResource("2_vrino")
-region = Rect2(2560, 1536, 512, 512)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_g6kja"]
-atlas = ExtResource("2_vrino")
-region = Rect2(3072, 1536, 512, 512)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_obrf2"]
-atlas = ExtResource("2_vrino")
-region = Rect2(3584, 1536, 512, 512)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_uebc2"]
-atlas = ExtResource("2_vrino")
-region = Rect2(4096, 1536, 512, 512)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_3gxee"]
-atlas = ExtResource("2_vrino")
-region = Rect2(0, 2048, 512, 512)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_kcw1o"]
-atlas = ExtResource("2_vrino")
-region = Rect2(512, 2048, 512, 512)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_mc0vn"]
-atlas = ExtResource("2_vrino")
-region = Rect2(1024, 2048, 512, 512)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_tgxna"]
-atlas = ExtResource("2_vrino")
-region = Rect2(1536, 2048, 512, 512)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_jowum"]
-atlas = ExtResource("2_vrino")
-region = Rect2(2048, 2048, 512, 512)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_bk18p"]
-atlas = ExtResource("2_vrino")
-region = Rect2(2560, 2048, 512, 512)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_fokuy"]
-atlas = ExtResource("2_vrino")
-region = Rect2(3072, 2048, 512, 512)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_wnq7r"]
-atlas = ExtResource("2_vrino")
-region = Rect2(3584, 2048, 512, 512)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_rgghb"]
-atlas = ExtResource("2_vrino")
-region = Rect2(4096, 2048, 512, 512)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_pqvcg"]
-atlas = ExtResource("2_vrino")
-region = Rect2(0, 2560, 512, 512)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_6d640"]
-atlas = ExtResource("2_vrino")
-region = Rect2(512, 2560, 512, 512)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_yfsmk"]
-atlas = ExtResource("2_vrino")
-region = Rect2(1024, 2560, 512, 512)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_sn1wx"]
-atlas = ExtResource("2_vrino")
-region = Rect2(1536, 2560, 512, 512)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_gt6wu"]
-atlas = ExtResource("2_vrino")
-region = Rect2(2048, 2560, 512, 512)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_gr480"]
-atlas = ExtResource("2_vrino")
-region = Rect2(2560, 2560, 512, 512)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_08ukg"]
-atlas = ExtResource("2_vrino")
-region = Rect2(3072, 2560, 512, 512)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_d4eob"]
-atlas = ExtResource("2_vrino")
-region = Rect2(3584, 2560, 512, 512)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_sde6v"]
-atlas = ExtResource("2_vrino")
-region = Rect2(4096, 2560, 512, 512)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_ddllo"]
-atlas = ExtResource("2_vrino")
-region = Rect2(0, 3072, 512, 512)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_mjwps"]
-atlas = ExtResource("2_vrino")
-region = Rect2(512, 3072, 512, 512)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_ttof0"]
-atlas = ExtResource("2_vrino")
-region = Rect2(1024, 3072, 512, 512)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_cxkm5"]
-atlas = ExtResource("2_vrino")
-region = Rect2(1536, 3072, 512, 512)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_4v1pk"]
-atlas = ExtResource("2_vrino")
-region = Rect2(2048, 3072, 512, 512)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_gv6af"]
-atlas = ExtResource("2_vrino")
-region = Rect2(2560, 3072, 512, 512)
-
 [sub_resource type="AtlasTexture" id="AtlasTexture_4ta5f"]
 atlas = ExtResource("1_vsosa")
 region = Rect2(0, 0, 128, 128)
@@ -825,7 +674,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_0qntg")
 }],
-"loop": true,
+"loop": 1,
 "name": &"chase",
 "speed": 5.0
 }, {
@@ -1013,7 +862,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_fgmmk")
 }],
-"loop": false,
+"loop": 0,
 "name": &"death",
 "speed": 60.0
 }, {
@@ -1074,131 +923,8 @@ animations = [{
 }, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_scqkh")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_7rkgb")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_u4irp")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_4am42")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_a30js")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_kdsob")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_75sdk")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_i8ejt")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_f7i7e")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_7vcee")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_v0fv3")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_x0h5t")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_vprma")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_p3260")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_u754x")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_g6kja")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_obrf2")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_uebc2")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_3gxee")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_kcw1o")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_mc0vn")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_tgxna")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_jowum")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_bk18p")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_fokuy")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_wnq7r")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_rgghb")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_pqvcg")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_6d640")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_yfsmk")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_sn1wx")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_gt6wu")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_gr480")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_08ukg")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_d4eob")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_sde6v")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_ddllo")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_mjwps")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_ttof0")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_cxkm5")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_4v1pk")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_gv6af")
 }],
-"loop": false,
+"loop": 0,
 "name": &"hit",
 "speed": 60.0
 }, {
@@ -1266,7 +992,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_rx6ep")
 }],
-"loop": true,
+"loop": 1,
 "name": &"shoot",
 "speed": 60.0
 }, {
@@ -1445,191 +1171,406 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_820k6")
 }],
-"loop": false,
+"loop": 0,
 "name": &"spawn",
 "speed": 60.0
 }]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_dtdju"]
+radius = 5.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_3n1ei"]
+radius = 5.0
+
+[sub_resource type="Resource" id="Resource_ehvip"]
+script = ExtResource("8_dtdju")
+metadata/_custom_type_script = "uid://bxhw6dnb6fuqm"
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_el4kx"]
 radius = 9.0
 
 [sub_resource type="GDScript" id="GDScript_rrcrv"]
 script/source = "extends State
+@onready var sprite: AnimatedSprite2D = $\"../../Sprite\"
+@onready var state_owner: Enemy = $\"../..\"
+@export var spawn_speed = 1.0
+@onready var entity_hitbox: Hitbox = $\"../../Hitbox\"
+
 
 func enter():
-	sprite.play(\"spawn\")
+	state_owner.entity_hurtbox.is_hurtbox_disabled = true
+	entity_hitbox.is_hitbox_disabled  = true
+	sprite.play(\"spawn\", spawn_speed)
 	await sprite.animation_finished
-	
-	Transistioned.emit(self, \"chase\")
+	Transistioned.emit(self, \"Chasing\")
 
 func exit():
-	parent.hurtbox.is_disabled = false
-	parent.hitbox.is_disabled = false
+	entity_hitbox.is_hitbox_disabled = false
+	state_owner.entity_hurtbox.is_hurtbox_disabled = false
 "
 
 [sub_resource type="GDScript" id="GDScript_5wiu6"]
 resource_name = "idle"
 script/source = "extends State
-@onready var pathfinding: NavigationAgent2D = $\"../../Pathfinding\"
-@onready var state_machine = $\"..\"
+@onready var sprite: AnimatedSprite2D = $\"../../Sprite\"
+@onready var state_owner: Enemy = $\"../..\"
 
+var new_velocity := Vector2.ZERO
+@onready var path_position = Vector2.ZERO
+@export var chasing_speed = 25.0
+@onready var current_tick_time = 0.0
+@export var tickrate = 0.5
+@onready var current_attack_time = 0.0
+@export var attackrate = 3.5 + randf_range(-0.5, 0.5)
+
+func _ready() -> void:
+	state_owner.ai_navigation.velocity_computed.connect(ai_computed, 1)
 
 func enter():
 	sprite.play(\"chase\")
-	# Upon entering; plays the animation of chasing.
-
-func make_path():
-	if global.player:
-		pathfinding.target_position = global.player.global_position
-	else:
-		pathfinding.target_position = parent.get_global_mouse_position()
+	state_owner.ai_navigation.target_position = global.player.global_position
 
 func physics_update(_delta):
-	var dir = parent.to_local(pathfinding.get_next_path_position()).normalized()
-	var intended_velocity = dir * parent.movement_speed
-	pathfinding.set_velocity(intended_velocity)
-	make_path()
+	if !state_owner.is_stunned and !state_owner.is_flying:
+		var target_position_range = global.player.global_position + (Vector2.LEFT * 15).rotated(randf_range(-PI, PI))
+		
+		current_tick_time += _delta
+		if current_tick_time > tickrate:
+			current_tick_time = 0 + randf_range(0, 0.5)
+			state_owner.ai_navigation.target_position = target_position_range
+		
+		path_position = state_owner.ai_navigation.get_next_path_position()
+		new_velocity = state_owner.global_position.direction_to(path_position) * chasing_speed
+		state_owner.ai_navigation.set_velocity(new_velocity)
+		
+		if state_owner.current_health < state_owner.maximum_health * 0.35:
+			Transistioned.emit(self, \"Running\")
+		
+		current_attack_time += _delta
+		if current_attack_time > attackrate:
+			attack()
 
-func pathfinding_velocity_computed(safe_velocity: Vector2) -> void:
-	if state_machine.current_state == self:
-		parent.velocity = safe_velocity
+func ai_computed(safe_velocity : Vector2):
+	if !state_owner.is_stunned and !state_owner.is_flying:
+		state_owner.velocity = safe_velocity
+
+func exit():
+	state_owner.ai_navigation.set_velocity(Vector2.ZERO)
+	current_attack_time = 0
+	current_tick_time = 0
+
+func attack():
+	if state_owner.global_position.distance_to(global.player.global_position) < 45.0:
+		Transistioned.emit(self, \"ChargingBite\")
+	if state_owner.global_position.distance_to(global.player.global_position) > 45.0:
+		Transistioned.emit(self, \"ChargingShot\")
+"
+
+[sub_resource type="GDScript" id="GDScript_dtdju"]
+script/source = "extends State
+@onready var sprite: AnimatedSprite2D = $\"../../Sprite\"
+@onready var state_owner: Enemy = $\"../..\"
+
+var new_velocity := Vector2.ZERO
+@onready var path_position = Vector2.ZERO
+@export var chasing_speed = 25.0
+@onready var current_tick_time = 0.0
+@export var tickrate = 0.5
+@onready var current_attack_time = 0.0
+@export var attackrate = 3.5 + randf_range(-2.0, 2.0)
+
+func enter():
+	sprite.play(\"chase\")
+	state_owner.ai_navigation.target_position = global.player.global_position
+
+func physics_update(_delta):
+	if !state_owner.is_stunned and !state_owner.is_flying:
+		path_position = state_owner.ai_navigation.get_next_path_position()
+		
+		if state_owner.current_health > state_owner.maximum_health * 0.35:
+			Transistioned.emit(self, \"Chasing\")
+		
+		if state_owner.global_position.distance_to(global.player.global_position) < 120:
+			new_velocity = state_owner.global_position.direction_to(path_position) * -chasing_speed
+		elif state_owner.global_position.distance_to(global.player.global_position) > 160:
+			new_velocity = state_owner.global_position.direction_to(path_position) * chasing_speed
+		elif state_owner.global_position.distance_to(global.player.global_position) > 120:
+			new_velocity = Vector2.ZERO
+		
+		state_owner.ai_navigation.set_velocity(new_velocity)
+		
+		current_tick_time += _delta
+		if current_tick_time > tickrate:
+			state_owner.ai_navigation.target_position = global.player.global_position
+		
+		
+		current_attack_time += _delta
+		if current_attack_time > tickrate:
+			attack()
+
+func exit():
+	current_tick_time = 0
+	current_attack_time = 0.0
+	state_owner.ai_navigation.set_velocity(Vector2.ZERO)
+
+func attack():
+		if state_owner.global_position.distance_to(global.player.global_position) <= 45.0:
+			Transistioned.emit(self, \"ChargingBite\")
+		if state_owner.global_position.distance_to(global.player.global_position) > 45.0:
+			Transistioned.emit(self, \"ChargingShot\")
 "
 
 [sub_resource type="GDScript" id="GDScript_rnofh"]
 resource_name = "hit_state"
 script/source = "extends State
+@onready var state_owner: Enemy = $\"../..\"
+@onready var sprite: AnimatedSprite2D = $\"../../Sprite\"
+@export var animation_speed := 1.0
+
+func _ready() -> void:
+	state_owner.entity_hit.connect(func(_entity : Entity): Transistioned.emit(get_parent().current_state, \"Hit\"), 1)
 
 func enter():
-	sprite.offset = Vector2(1, 0)
+	sprite.play(\"hit\", animation_speed)
+	state_owner.material.set_shader_parameter(\"hit_opacity\", 1.0)
 	
-	sprite.stop()
-	sprite.play(\"hit\")
+	await sprite.animation_finished
+	
+	await get_tree().create_timer(0.3, false, true, false).timeout
+	
+	self.Transistioned.emit(self, \"Chasing\")
 
 func exit():
-	sprite.offset = Vector2(0, 0)
-
-func is_taking_knockback(duration: float) -> void:
-	await get_tree().create_timer(duration * 1.2).timeout
-	Transistioned.emit(self, \"chase\")
+	state_owner.material.set_shader_parameter(\"hit_opacity\", 0.0)
 "
 
 [sub_resource type="GDScript" id="GDScript_2nrcc"]
 resource_name = "death_state"
 script/source = "extends State
+@onready var state_owner: Enemy = $\"../..\"
+@onready var sprite: AnimatedSprite2D = $\"../../Sprite\"
+@export var animation_speed := 1.0
+@onready var entity_hitbox: Hitbox = $\"../../Hitbox\"
+
+func _ready() -> void:
+	state_owner.entity_death.connect(func(_entity : Entity): Transistioned.emit(get_parent().current_state, \"Death\"), 1)
 
 func enter():
-	if parent.hurtbox:
-		parent.hurtbox.queue_free()
-	if parent.hitbox:
-		parent.hitbox.queue_free()
-	
-	sprite.rotate(randi_range(-180, 180))
-	sprite.rotation -= parent.global_position.angle_to_point(global.player.global_position)
-	
-	utility.play_isolated_audio(\"res://Game Folder/game_assets/Player/Weapons/1. Primary/Audio/sfx_death.ogg\", -6, true)
-	
-	sprite.stop()
-	sprite.play(\"death\")
-	
+	sprite.play(\"death\", animation_speed)
+	state_owner.is_flying = false
+	state_owner.entity_hurtbox.is_hurtbox_disabled = true
+	entity_hitbox.is_hitbox_disabled  = true
 	await sprite.animation_finished
-	
-	parent.queue_free()
+	state_owner.queue_free()
 
 func physics_update(_delta):
 	parent.velocity = Vector2.ZERO
 "
 
-[node name="Enemy" type="CharacterBody2D" groups=["enemy"]]
+[sub_resource type="GDScript" id="GDScript_ehvip"]
+script/source = "extends State
+@export var charge_speed := 1.5
+@onready var current_time := 0.0
+
+func physics_update(_delta):
+	current_time += _delta
+	if current_time >= charge_speed:
+		Transistioned.emit(self, \"Bite\")
+
+func exit():
+	current_time = 0
+"
+
+[sub_resource type="GDScript" id="GDScript_mgxmf"]
+script/source = "extends State
+@onready var player_position = Vector2.ZERO
+@onready var movement_direction = Vector2.ZERO
+@export var bite_distance := 575.0
+@export var bite_duration := 1.0
+@onready var current_time := 0.0
+@onready var state_owner: Enemy = $\"../..\"
+
+func enter():
+	player_position = global.player.global_position
+	state_owner.ai_navigation.avoidance_enabled = false
+	movement_direction = state_owner.global_position.direction_to(player_position).normalized() * bite_distance
+
+func physics_update(_delta):
+	state_owner.velocity = state_owner.velocity.lerp(movement_direction, 2.6 * _delta)
+	current_time += _delta
+	if current_time >= bite_duration:
+		current_time = 0.0
+		Transistioned.emit(self, \"BiteRecovery\")
+
+func exit():
+	state_owner.ai_navigation.avoidance_enabled = true
+"
+
+[sub_resource type="GDScript" id="GDScript_hygbs"]
+script/source = "extends State
+@onready var current_time = 0.0
+@export var state_duration := 1.5
+
+func physics_update(_delta):
+	current_time += _delta
+	if current_time >= state_duration:
+		current_time = 0.0
+		Transistioned.emit(self, \"Running\")
+"
+
+[sub_resource type="GDScript" id="GDScript_f1ahw"]
+script/source = "extends State
+@export var charge_speed := 1.5
+@onready var current_time := 0.0
+
+func physics_update(_delta):
+	current_time += _delta
+	if current_time >= charge_speed:
+		Transistioned.emit(self, \"Shoot\")
+
+func exit():
+	current_time = 0
+"
+
+[sub_resource type="GDScript" id="GDScript_8x32q"]
+script/source = "extends State
+var player_position = Vector2.ZERO
+@onready var state_owner: Enemy = $\"../..\"
+
+
+func enter():
+	player_position = global.player.global_position
+	shoot()
+
+func shoot():
+	var _projectile = state_owner.PROJECTILE_PATH as PackedScene
+	var projectile = _projectile.instantiate()
+	projectile.global_position = state_owner.global_position
+	projectile.direction = state_owner.global_position.direction_to(player_position).normalized()
+	global.add_child(projectile)
+	await get_tree().physics_frame
+	Transistioned.emit(self, \"Chasing\")
+"
+
+[node name="Enemy" type="CharacterBody2D" unique_id=358907931 node_paths=PackedStringArray("ai_navigation", "entity_hurtbox")]
+material = SubResource("ShaderMaterial_ehvip")
 collision_layer = 0
 motion_mode = 1
 script = ExtResource("1_t7cul")
-death_sfx_path = "res://Game Folder/game_assets/Enemies/Tres-2B/Skelazor/Sounds/bone_shatter.ogg"
+healthbar_y_offset = -14.0
+ai_navigation = NodePath("EnemyNavigator")
+entity_hurtbox = NodePath("Hurtbox")
 
-[node name="HealthComponent" type="Node" parent="."]
-script = ExtResource("8_ueg8n")
-
-[node name="HitFlashComponent" type="Node" parent="." node_paths=PackedStringArray("target", "health_component")]
-script = ExtResource("3_ehvip")
-target = NodePath("..")
-health_component = NodePath("../HealthComponent")
-metadata/_custom_type_script = "uid://8a1bfnc6r587"
-
-[node name="ShockwaveComponent" type="Node" parent="."]
-script = ExtResource("4_mgxmf")
-
-[node name="KnockbackComponent" type="Node2D" parent="." node_paths=PackedStringArray("parent")]
-script = ExtResource("9_sjgo5")
-parent = NodePath("..")
-is_knockback_forced_upwards = false
-
-[node name="Collision" type="CollisionShape2D" parent="."]
-shape = SubResource("CircleShape2D_3n1ei")
-disabled = true
-
-[node name="Sprite" type="AnimatedSprite2D" parent="."]
+[node name="Sprite" type="AnimatedSprite2D" parent="." unique_id=1934091373]
 use_parent_material = true
 sprite_frames = SubResource("SpriteFrames_bk3gu")
-animation = &"chase"
+animation = &"shoot"
 autoplay = "chase"
+frame_progress = 0.9067121
 
-[node name="HurtboxComponent" type="Area2D" parent="." node_paths=PackedStringArray("parent", "health", "knockback") groups=["enemy"]]
+[node name="Collision" type="CollisionShape2D" parent="." unique_id=1963548914]
+shape = SubResource("CircleShape2D_dtdju")
+
+[node name="EnemyNavigator" type="NavigationAgent2D" parent="." unique_id=1132029296]
+path_desired_distance = 3.0
+target_desired_distance = 3.0
+path_postprocessing = 1
+avoidance_enabled = true
+radius = 15.95
+debug_enabled = true
+
+[node name="Hurtbox" type="Area2D" parent="." unique_id=1229048727]
 collision_layer = 4
 collision_mask = 8
 script = ExtResource("5_alwm2")
-parent = NodePath("..")
-health = NodePath("../HealthComponent")
-knockback = NodePath("../KnockbackComponent")
 
-[node name="Collision" type="CollisionShape2D" parent="HurtboxComponent"]
+[node name="Collision" type="CollisionShape2D" parent="Hurtbox" unique_id=1001851195]
 shape = SubResource("CircleShape2D_3n1ei")
 disabled = true
 
-[node name="HitboxComponent" type="Area2D" parent="." node_paths=PackedStringArray("parent") groups=["enemy"]]
+[node name="Hitbox" type="Area2D" parent="." unique_id=59852838]
 collision_layer = 16
 collision_mask = 2
 script = ExtResource("6_w1j0l")
-parent = NodePath("..")
-damage = -25.0
-knockback_amount = 1115.0
-knockback_stun_duration = 0.3
+hitbox_data = SubResource("Resource_ehvip")
 
-[node name="Collision" type="CollisionShape2D" parent="HitboxComponent"]
+[node name="Collision" type="CollisionShape2D" parent="Hitbox" unique_id=1564726397]
 shape = SubResource("CircleShape2D_el4kx")
 debug_color = Color(1, 0, 0, 0.1)
 
-[node name="Pathfinding" type="NavigationAgent2D" parent="."]
-avoidance_enabled = true
-debug_enabled = true
+[node name="SFX" type="Node" parent="." unique_id=283702683]
 
-[node name="StateMachine" parent="." node_paths=PackedStringArray("parent", "intial_state", "hit_state", "death_state") instance=ExtResource("2_lgqps")]
+[node name="Spawn" type="AudioStreamPlayer" parent="SFX" unique_id=576628751]
+
+[node name="Hit" type="AudioStreamPlayer" parent="SFX" unique_id=1258623923]
+
+[node name="Death" type="AudioStreamPlayer" parent="SFX" unique_id=1724138738]
+
+[node name="Instant_Kill" type="AudioStreamPlayer" parent="SFX" unique_id=1176725244]
+
+[node name="Shoot" type="AudioStreamPlayer" parent="SFX" unique_id=1176438054]
+
+[node name="Bite" type="AudioStreamPlayer" parent="SFX" unique_id=1974158543]
+
+[node name="Charge" type="AudioStreamPlayer" parent="SFX" unique_id=572993905]
+
+[node name="StateMachine" parent="." unique_id=432647556 node_paths=PackedStringArray("parent", "intial_state") instance=ExtResource("2_lgqps")]
 parent = NodePath("..")
-intial_state = NodePath("spawn")
-hit_state = NodePath("hit")
-death_state = NodePath("death")
+intial_state = NodePath("Spawning")
 
-[node name="spawn" type="Node" parent="StateMachine" node_paths=PackedStringArray("parent", "sprite")]
+[node name="Spawning" type="Node" parent="StateMachine" unique_id=835941974 node_paths=PackedStringArray("parent")]
 script = SubResource("GDScript_rrcrv")
+spawn_speed = 1.7
 parent = NodePath("../..")
 is_state_cancelable = false
-sprite = NodePath("../../Sprite")
 
-[node name="chase" type="Node" parent="StateMachine" node_paths=PackedStringArray("parent", "sprite")]
+[node name="Chasing" type="Node" parent="StateMachine" unique_id=1744086721 node_paths=PackedStringArray("parent")]
 script = SubResource("GDScript_5wiu6")
+chasing_speed = 45.0
 parent = NodePath("../..")
-sprite = NodePath("../../Sprite")
 
-[node name="hit" type="Node" parent="StateMachine" node_paths=PackedStringArray("parent", "sprite")]
+[node name="Running" type="Node" parent="StateMachine" unique_id=1210780258 node_paths=PackedStringArray("parent")]
+script = SubResource("GDScript_dtdju")
+chasing_speed = 90.0
+tickrate = 0.2
+parent = NodePath("../..")
+
+[node name="Hit" type="Node" parent="StateMachine" unique_id=1189951457 node_paths=PackedStringArray("parent")]
 script = SubResource("GDScript_rnofh")
+animation_speed = 1.5
 parent = NodePath("../..")
-sprite = NodePath("../../Sprite")
 
-[node name="death" type="Node" parent="StateMachine" node_paths=PackedStringArray("parent", "sprite")]
+[node name="Death" type="Node" parent="StateMachine" unique_id=982700977 node_paths=PackedStringArray("parent")]
 script = SubResource("GDScript_2nrcc")
+animation_speed = 1.2
 parent = NodePath("../..")
-sprite = NodePath("../../Sprite")
 
-[connection signal="death" from="HealthComponent" to="." method="on_death"]
-[connection signal="on_hit" from="HealthComponent" to="." method="on_hit"]
-[connection signal="is_taking_knockback" from="KnockbackComponent" to="StateMachine/hit" method="is_taking_knockback"]
-[connection signal="sprite_frames_changed" from="Sprite" to="StateMachine/hit" method="sprite_frames_changed"]
-[connection signal="velocity_computed" from="Pathfinding" to="StateMachine/chase" method="pathfinding_velocity_computed"]
+[node name="ChargingBite" type="Node" parent="StateMachine" unique_id=1305688126 node_paths=PackedStringArray("parent")]
+script = SubResource("GDScript_ehvip")
+charge_speed = 1.2
+parent = NodePath("../..")
+metadata/_custom_type_script = "uid://dmgbhcexe6fw"
+
+[node name="Bite" type="Node" parent="StateMachine" unique_id=228159093 node_paths=PackedStringArray("parent")]
+script = SubResource("GDScript_mgxmf")
+bite_distance = 870.0
+bite_duration = 0.4
+parent = NodePath("../..")
+metadata/_custom_type_script = "uid://dmgbhcexe6fw"
+
+[node name="BiteRecovery" type="Node" parent="StateMachine" unique_id=1338610806 node_paths=PackedStringArray("parent")]
+script = SubResource("GDScript_hygbs")
+state_duration = 0.5
+parent = NodePath("../..")
+metadata/_custom_type_script = "uid://dmgbhcexe6fw"
+
+[node name="ChargingShot" type="Node" parent="StateMachine" unique_id=52408098 node_paths=PackedStringArray("parent")]
+script = SubResource("GDScript_f1ahw")
+charge_speed = 0.5
+parent = NodePath("../..")
+metadata/_custom_type_script = "uid://dmgbhcexe6fw"
+
+[node name="Shoot" type="Node" parent="StateMachine" unique_id=126711243 node_paths=PackedStringArray("parent")]
+script = SubResource("GDScript_8x32q")
+parent = NodePath("../..")
+metadata/_custom_type_script = "uid://dmgbhcexe6fw"

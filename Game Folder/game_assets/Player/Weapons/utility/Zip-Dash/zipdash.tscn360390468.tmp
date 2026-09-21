@@ -1,0 +1,168 @@
+[gd_scene load_steps=11 format=3 uid="uid://by5k7qr0hhh78"]
+
+[ext_resource type="Script" uid="uid://ucfty02weqo2" path="res://Game Folder/game_components/entity_components/Hitbox/hitbox.gd" id="1_7yi2p"]
+[ext_resource type="PackedScene" uid="uid://c0qsib2m70nmv" path="res://Game Folder/game_components/entity_components/State Machine/stagemachine_parent.tscn" id="2_fdxl6"]
+[ext_resource type="AudioStream" uid="uid://cm8qj5rk6jeit" path="res://Game Folder/game_assets/Player/SFX/Hits/refunded.wav" id="3_fdxl6"]
+
+[sub_resource type="GDScript" id="GDScript_k1en3"]
+script/source = "extends Weapon
+@onready var zipdash_base: Node2D = $ZipDash_Base
+@onready var zipdash_statemachine: Node = $ZipDash_StateMachine
+@onready var hitbox: HitboxComponent = $ZipDash_Base/Hitbox
+@onready var refunded: AudioStreamPlayer = $Refunded
+
+@onready var velocity_vector = Vector2.ZERO
+@onready var release_vector = Vector2.ZERO
+
+@onready var is_refunded := true
+
+@onready var idle: Node = $ZipDash_StateMachine/IDLE
+@onready var focus: State = $ZipDash_StateMachine/FOCUS
+@onready var release: State = $ZipDash_StateMachine/RELEASE
+
+@export var energy_cost = 75.0
+
+func action():
+	if global.player.weapons.current_energy >= energy_cost:
+		global.player.weapons.update_energy(-energy_cost)
+		is_weapon_actionable = false
+		is_refunded = false
+		idle.action()
+
+func _physics_process(delta: float) -> void:
+	if global.player.weapons.current_energy >= energy_cost and !is_refunded:
+		is_refunded = true
+		refunded.play()
+		if global.player and !global.player.player_sprite.is_playing():
+			global.player.player_sprite.play(\"refunded\")
+"
+
+[sub_resource type="GDScript" id="GDScript_1vu3n"]
+script/source = "extends Node2D
+
+func _physics_process(delta: float) -> void:
+	global_position = global.player.global_position
+"
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_fdxl6"]
+size = Vector2(36, 36)
+
+[sub_resource type="GDScript" id="GDScript_fdxl6"]
+script/source = "extends State
+
+func action():
+	Transistioned.emit(self, \"FOCUS\")
+"
+
+[sub_resource type="GDScript" id="GDScript_81w08"]
+script/source = "extends State
+
+func enter():
+	parent.hitbox.is_disabled = false
+	global.player.i_frames.invincibility_override = true
+	
+	await get_tree().create_timer(0.01, false, true, true).timeout
+	
+	parent.velocity_vector = Input.get_vector(\"ui_left\", \"ui_right\", \"ui_up\", \"ui_down\").normalized()
+	
+	Transistioned.emit(self, \"RELEASE\")
+"
+
+[sub_resource type="GDScript" id="GDScript_dhdmc"]
+script/source = "extends State
+
+func enter():
+	global.player.velocity = Vector2.ZERO
+	global.player.physics.is_movement_disabled = true
+	global.player.weapons.is_all_weapons_actionable = false
+	
+	
+	var direction = parent.velocity_vector
+	
+	#if direction == Vector2.ZERO:
+		#direction = global.player.global_position.direction_to(global.player.get_global_mouse_position())
+	
+	parent.release_vector = direction
+	
+	await get_tree().create_timer(0.15, false, true, false).timeout
+	Transistioned.emit(self, \"COOLDOWN\")
+
+
+func physics_update(_delta):
+	var speed = 2500.0  # Dash speed
+	var deceleration = 10.0  # Deceleration factor
+	var target_velocity = parent.release_vector * speed
+	
+	# Apply a smoothing factor using custom logic
+	var velocity_diff = target_velocity - global.player.velocity
+	var smooth_velocity = global.player.velocity + velocity_diff * (deceleration * _delta)
+	
+	global.player.velocity = smooth_velocity
+"
+
+[sub_resource type="GDScript" id="GDScript_ovtgw"]
+script/source = "extends State
+
+
+func enter():
+	global.player.physics.is_movement_disabled = false
+	global.player.weapons.is_all_weapons_actionable = true
+	
+	parent.hitbox.is_disabled = true
+	
+	global.player.i_frames.invincibility_override = false
+	
+	global.player.i_frames.invincibility_timer.start(0.2)
+	await global.player.i_frames.invincibility_timer.timeout
+	Transistioned.emit(self, \"IDLE\")
+
+
+func exit():
+	parent.is_weapon_actionable = true
+"
+
+[node name="Zipdash_Manager" type="Node"]
+script = SubResource("GDScript_k1en3")
+energy_cost = 65.0
+
+[node name="ZipDash_Base" type="Node2D" parent="."]
+script = SubResource("GDScript_1vu3n")
+
+[node name="Hitbox" type="Area2D" parent="ZipDash_Base" node_paths=PackedStringArray("parent") groups=["player"]]
+collision_layer = 8
+collision_mask = 4
+script = ExtResource("1_7yi2p")
+parent = NodePath("..")
+is_disabled = true
+
+[node name="Collision" type="CollisionShape2D" parent="ZipDash_Base/Hitbox"]
+shape = SubResource("RectangleShape2D_fdxl6")
+disabled = true
+
+[node name="ZipDash_StateMachine" parent="." node_paths=PackedStringArray("parent", "intial_state") instance=ExtResource("2_fdxl6")]
+parent = NodePath("../ZipDash_Base")
+intial_state = NodePath("IDLE")
+
+[node name="IDLE" type="Node" parent="ZipDash_StateMachine" node_paths=PackedStringArray("parent")]
+script = SubResource("GDScript_fdxl6")
+parent = NodePath("../..")
+metadata/_custom_type_script = "uid://dmgbhcexe6fw"
+
+[node name="FOCUS" type="Node" parent="ZipDash_StateMachine" node_paths=PackedStringArray("parent")]
+script = SubResource("GDScript_81w08")
+parent = NodePath("../..")
+metadata/_custom_type_script = "uid://dmgbhcexe6fw"
+
+[node name="RELEASE" type="Node" parent="ZipDash_StateMachine" node_paths=PackedStringArray("parent")]
+script = SubResource("GDScript_dhdmc")
+parent = NodePath("../..")
+metadata/_custom_type_script = "uid://dmgbhcexe6fw"
+
+[node name="COOLDOWN" type="Node" parent="ZipDash_StateMachine" node_paths=PackedStringArray("parent")]
+script = SubResource("GDScript_ovtgw")
+parent = NodePath("../..")
+metadata/_custom_type_script = "uid://dmgbhcexe6fw"
+
+[node name="Refunded" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_fdxl6")
+volume_db = -12.0

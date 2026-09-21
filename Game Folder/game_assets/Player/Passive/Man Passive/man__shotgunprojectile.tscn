@@ -1,0 +1,44 @@
+[gd_scene format=3 uid="uid://cctxebkw1r7ss"]
+
+[ext_resource type="Script" uid="uid://ucfty02weqo2" path="res://Game Folder/game_components/entity_components/Hitbox/hitbox.gd" id="2_k2wls"]
+
+[sub_resource type="GDScript" id="GDScript_hdwt3"]
+script/source = "extends Projectile
+
+var direction := Vector2.ZERO
+var current_tick = 0.0
+
+func _ready():
+	events.hitbox_impact.connect(hit_impact, 2)
+	events.player_projectile_fired.emit(self)
+
+func hit_impact(_entity : Entity, hitbox_data : Dictionary):
+	print(hitbox_data.damage)
+	if hitbox_data.hitbox_parent.name == self.name:
+		queue_free()
+
+func _physics_process(_delta: float) -> void:
+	current_tick += _delta
+	if current_tick > 0.1:
+		queue_free()
+	velocity = direction * speed
+	move_and_slide()
+"
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_asvld"]
+radius = 2.5
+
+[node name="ManPassive_ShotgunProjectile" type="CharacterBody2D" unique_id=2025244975 node_paths=PackedStringArray("hitbox")]
+script = SubResource("GDScript_hdwt3")
+speed = 800.0
+hitbox = NodePath("ManPassiveShotgunProjectile")
+metadata/_custom_type_script = "uid://cp026tcaij1c6"
+
+[node name="ManPassiveShotgunProjectile" type="Area2D" parent="." unique_id=215879729]
+collision_layer = 8
+collision_mask = 4
+script = ExtResource("2_k2wls")
+metadata/_custom_type_script = "uid://ucfty02weqo2"
+
+[node name="Collision" type="CollisionShape2D" parent="ManPassiveShotgunProjectile" unique_id=501217857]
+shape = SubResource("CircleShape2D_asvld")

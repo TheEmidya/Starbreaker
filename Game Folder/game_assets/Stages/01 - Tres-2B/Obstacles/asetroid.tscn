@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://b8litkitbnw3p"]
+[gd_scene format=3 uid="uid://b8litkitbnw3p"]
 
 [ext_resource type="Texture2D" uid="uid://cqexw4iganr5g" path="res://Game Folder/game_assets/Enemies/Tres-2B/Skeleshot/Sprites/default.png" id="1_2edsa"]
 [ext_resource type="Script" uid="uid://ucfty02weqo2" path="res://Game Folder/game_components/entity_components/Hitbox/hitbox.gd" id="2_tcuiy"]
@@ -28,41 +28,32 @@ func on_death(damage_taken: Variant, colliding_hitbox: Variant) -> void:
 [sub_resource type="CircleShape2D" id="CircleShape2D_40622"]
 radius = 13.0384
 
-[node name="Asetroid" type="CharacterBody2D" node_paths=PackedStringArray("hitbox") groups=["enemy"]]
+[node name="Asetroid" type="CharacterBody2D" unique_id=551055334 node_paths=PackedStringArray("hitbox") groups=["enemy"]]
 script = SubResource("GDScript_ltu4l")
 speed = 250.0
 hitbox = NodePath("HitboxComponent")
 
-[node name="Sprite" type="Sprite2D" parent="."]
+[node name="Sprite" type="Sprite2D" parent="." unique_id=2129477080]
 scale = Vector2(2, 2)
 texture = ExtResource("1_2edsa")
 hframes = 2
 
-[node name="HitboxComponent" type="Area2D" parent="." node_paths=PackedStringArray("parent")]
+[node name="HitboxComponent" type="Area2D" parent="." unique_id=1976099176]
 collision_layer = 16
 collision_mask = 2
 script = ExtResource("2_tcuiy")
-parent = NodePath("..")
-damage = -20.0
-knockback_amount = 4500.0
-knockback_stun_duration = 0.3
 
-[node name="Collision" type="CollisionShape2D" parent="HitboxComponent"]
+[node name="Collision" type="CollisionShape2D" parent="HitboxComponent" unique_id=1894360257]
 shape = SubResource("CircleShape2D_40622")
 
-[node name="HurtboxComponent" type="Area2D" parent="." node_paths=PackedStringArray("parent", "health") groups=["enemy"]]
+[node name="HurtboxComponent" type="Area2D" parent="." unique_id=66035211 groups=["enemy"]]
 collision_layer = 4
 collision_mask = 8
 script = ExtResource("3_vqd17")
-parent = NodePath("..")
-health = NodePath("../HealthComponent")
 
-[node name="Collision" type="CollisionShape2D" parent="HurtboxComponent"]
+[node name="Collision" type="CollisionShape2D" parent="HurtboxComponent" unique_id=1211356024]
 shape = SubResource("CircleShape2D_40622")
 
-[node name="HealthComponent" type="Node" parent="." groups=["enemy"]]
+[node name="HealthComponent" type="Node" parent="." unique_id=1574131652 groups=["enemy"]]
 script = ExtResource("4_7pyke")
 maximum_health = 15.0
-
-[connection signal="death" from="HealthComponent" to="." method="on_death"]
-[connection signal="on_hit" from="HealthComponent" to="." method="on_hit"]

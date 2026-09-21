@@ -1,9 +1,9 @@
-[gd_scene load_steps=2 format=3 uid="uid://ccyfgaostrrk4"]
+[gd_scene format=3 uid="uid://ccyfgaostrrk4"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_1nr6p"]
-vertices = PackedVector2Array(694.109, 437.813, -53.8828, 438.008, -54.0234, -117.977, 693.969, -118.18)
+vertices = PackedVector2Array(12420.719, -1622.2891, 11247.203, 7829.6875, -1838.9531, 7374.3125, -2820.8594, -2029.6875)
 polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3)])
-outlines = Array[PackedVector2Array]([PackedVector2Array(-64.0339, -127.983, 703.966, -128.187, 704.119, 447.813, -63.8813, 448.017, -64.0339, -127.983)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(-2832, -2040, 12432, -1632, 11256, 7840, -1848, 7384)])
 
-[node name="Navigation Space" type="NavigationRegion2D"]
+[node name="Navigation Space" type="NavigationRegion2D" unique_id=247644531]
 navigation_polygon = SubResource("NavigationPolygon_1nr6p")

@@ -1,9 +1,8 @@
-[gd_scene load_steps=30 format=3 uid="uid://b2j62op6kxc6c"]
+[gd_scene format=3 uid="uid://b2j62op6kxc6c"]
 
 [ext_resource type="Script" uid="uid://bql2an547gxi1" path="res://Game Folder/game_components/entity_components/Health/health_component.gd" id="1_b0e1c"]
 [ext_resource type="Script" uid="uid://chx8xroi3hih8" path="res://Game Folder/game_components/entity_components/Hurtbox/hurtbox.gd" id="1_ey2q7"]
 [ext_resource type="Texture2D" uid="uid://bgspc6d22nb3e" path="res://Game Folder/game_assets/Stages/01 - Tres-2B/Boss/Timothy/Sprites/ph_sprite.png" id="1_t8ueu"]
-[ext_resource type="Script" uid="uid://8a1bfnc6r587" path="res://Game Folder/game_components/shader_components/hitflash_component.gd" id="2_8jqi3"]
 [ext_resource type="PackedScene" uid="uid://c0qsib2m70nmv" path="res://Game Folder/game_components/entity_components/State Machine/stagemachine_parent.tscn" id="4_8jqi3"]
 [ext_resource type="Script" uid="uid://ucfty02weqo2" path="res://Game Folder/game_components/entity_components/Hitbox/hitbox.gd" id="4_y34cm"]
 [ext_resource type="Texture2D" uid="uid://bec7dyabqg5qy" path="res://Game Folder/game_assets/Stages/01 - Tres-2B/Boss/Timothy/Sprites/mono_fingergun.png" id="6_f4y6k"]
@@ -15,7 +14,6 @@
 [sub_resource type="GDScript" id="GDScript_jm1ts"]
 script/source = "extends Boss
 @onready var head: Sprite2D = $Head
-@onready var hurtbox_list = [$Head/Hitbox]
 @export var difficulty_curve : Curve
 @onready var health_component: HealthComponent = $HealthComponent
 @export var phase2_health := 25000
@@ -29,14 +27,13 @@ const asetroid_belt_file = preload(\"res://Game Folder/game_assets/Stages/01 - T
 func _ready() -> void:
 	$Head/Hurtbox.is_disabled = true
 	hide()
-	for i in hurtbox_list:
-		i.is_disabled = true
+	hurtbox.is_disabled = true
 	events.connect(\"spawn_boss\", start)
+	start()
 
 func start():
 	$Head/Hurtbox.is_disabled = false
-	for i in hurtbox_list:
-		i.is_disabled = false
+	hurtbox.is_disabled = false
 	$StateMachine/intro.start()
 
 func on_hit(damage_taken: Variant, colliding_hitbox: Variant) -> void:
@@ -144,7 +141,7 @@ func shoot():
 	i.global_position = muzzle.global_position
 	i.direction = Vector2.RIGHT
 	
-	global.EntityManager.add_child(i, true)
+	global.add_child(i, true)
 	var fire_animation = create_tween().set_ease(Tween.EASE_IN_OUT).set_trans(Tween.TRANS_BACK)
 	fire_animation.tween_property(self, \"rotation_degrees\", -80, tween_duration)
 	fire_animation.tween_property(self, \"rotation_degrees\", 0, tween_duration)
@@ -173,7 +170,7 @@ func shoot():
 	i.global_position = muzzle.global_position
 	i.direction = Vector2.LEFT
 	
-	global.EntityManager.add_child(i, true)
+	global.add_child(i, true)
 	var fire_animation = create_tween().set_ease(Tween.EASE_IN_OUT).set_trans(Tween.TRANS_BACK)
 	fire_animation.tween_property(self, \"rotation_degrees\", 80, tween_duration)
 	fire_animation.tween_property(self, \"rotation_degrees\", 0, tween_duration)
@@ -347,7 +344,7 @@ func spawn_enemies():
 			0:
 				enemy.global_position = Vector2(320, -64)
 		enemy.auto_activate = true
-		global.current_stage.add_child(enemy)
+		global.add_child(enemy)
 
 
 func wait():
@@ -462,15 +459,7 @@ func exit():
 script/source = "extends State
 
 func enter():
-	for i in parent.hurtbox_list:
-		i.is_disabled = true
-		print(str(i) + \" is disabled.\")
 	movement_animation()
-
-func exit():
-	for i in parent.hurtbox_list:
-		i.is_disabled = false
-		print(str(i) + \" is not disabled.\")
 
 func movement_animation():
 	var position_action = create_tween().set_ease(Tween.EASE_IN_OUT).set_trans(Tween.TRANS_BACK)
@@ -496,56 +485,49 @@ func enter():
 	global.main_manager.gameover_sequence(false)
 "
 
-[node name="TimothyBoss" type="CharacterBody2D" groups=["enemy"]]
+[node name="TimothyBoss" type="CharacterBody2D" unique_id=2022942075 node_paths=PackedStringArray("health", "hurtbox") groups=["enemy"]]
 motion_mode = 1
 script = SubResource("GDScript_jm1ts")
 difficulty_curve = SubResource("Curve_f4y6k")
-phase2_health = 20000
+phase2_health = 12500
+team = "Enemy"
+recieves_knockback = false
+health = NodePath("HealthComponent")
+hurtbox = NodePath("Head/Hurtbox")
 metadata/_custom_type_script = "uid://dx63kshbg5nmp"
 
-[node name="HealthComponent" type="Node" parent="."]
+[node name="HealthComponent" type="Node" parent="." unique_id=2070722601]
 script = ExtResource("1_b0e1c")
-maximum_health = 35000.0
+maximum_health = 25000.0
 metadata/_custom_type_script = "uid://bql2an547gxi1"
 
-[node name="HitFlashComponent" type="Node" parent="." node_paths=PackedStringArray("target", "health_component")]
-script = ExtResource("2_8jqi3")
-target = NodePath("..")
-health_component = NodePath("../HealthComponent")
-
-[node name="Head" type="Sprite2D" parent="."]
+[node name="Head" type="Sprite2D" parent="." unique_id=648024225]
 use_parent_material = true
 position = Vector2(0, -138)
 scale = Vector2(6, 6)
 texture = ExtResource("1_t8ueu")
 offset = Vector2(0.5, 0)
 
-[node name="Hitbox" type="Area2D" parent="Head" node_paths=PackedStringArray("parent") groups=["enemy"]]
+[node name="Hitbox" type="Area2D" parent="Head" unique_id=359584050 groups=["enemy"]]
 collision_layer = 16
 collision_mask = 2
 script = ExtResource("4_y34cm")
-parent = NodePath("../..")
-damage = -20.0
-knockback_amount = 4555.0
-knockback_stun_duration = 0.4
 metadata/_custom_type_script = "uid://ucfty02weqo2"
 
-[node name="Collision" type="CollisionShape2D" parent="Head/Hitbox"]
+[node name="Collision" type="CollisionShape2D" parent="Head/Hitbox" unique_id=1725488246]
 shape = SubResource("CircleShape2D_y34cm")
 
-[node name="Hurtbox" type="Area2D" parent="Head" node_paths=PackedStringArray("parent", "health") groups=["enemy"]]
+[node name="Hurtbox" type="Area2D" parent="Head" unique_id=776059926 groups=["enemy"]]
 scale = Vector2(0.166667, 0.166667)
 collision_layer = 4
 collision_mask = 8
 script = ExtResource("1_ey2q7")
-parent = NodePath("../..")
-health = NodePath("../../HealthComponent")
 metadata/_custom_type_script = "uid://chx8xroi3hih8"
 
-[node name="Collision" type="CollisionShape2D" parent="Head/Hurtbox"]
+[node name="Collision" type="CollisionShape2D" parent="Head/Hurtbox" unique_id=1052249880]
 shape = SubResource("CircleShape2D_t8ueu")
 
-[node name="boom" type="Sprite2D" parent="Head"]
+[node name="boom" type="Sprite2D" parent="Head" unique_id=2118500268]
 visible = false
 z_index = 3215
 position = Vector2(2.66667, -9)
@@ -554,54 +536,50 @@ texture = ExtResource("6_mugeq")
 hframes = 6
 vframes = 10
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="Head/boom"]
-libraries = {
-&"": SubResource("AnimationLibrary_d6gxk")
-}
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Head/boom" unique_id=1101561938]
+libraries/ = SubResource("AnimationLibrary_d6gxk")
 
-[node name="boomsfx" type="AudioStreamPlayer" parent="Head"]
+[node name="boomsfx" type="AudioStreamPlayer" parent="Head" unique_id=320247145]
 stream = ExtResource("7_50xss")
 volume_db = -3.4
 
-[node name="L_Hand" type="Sprite2D" parent="."]
+[node name="L_Hand" type="Sprite2D" parent="." unique_id=1181038513]
 position = Vector2(-192, 64)
 texture = ExtResource("6_f4y6k")
 script = SubResource("GDScript_d6gxk")
 
-[node name="muzzle" type="Marker2D" parent="L_Hand"]
+[node name="muzzle" type="Marker2D" parent="L_Hand" unique_id=1947224071]
 show_behind_parent = true
 position = Vector2(48, 0)
 
-[node name="warn_flash" type="ColorRect" parent="L_Hand/muzzle"]
+[node name="warn_flash" type="ColorRect" parent="L_Hand/muzzle" unique_id=1921576457]
 show_behind_parent = true
 offset_top = -8.0
 offset_right = 1096.0
 offset_bottom = 8.0
 color = Color(1, 0, 0, 0)
 
-[node name="HitboxComponent" type="Area2D" parent="L_Hand" node_paths=PackedStringArray("parent")]
+[node name="HitboxComponent" type="Area2D" parent="L_Hand" unique_id=1541838925]
 collision_layer = 16
 collision_mask = 2
 script = ExtResource("4_y34cm")
-parent = NodePath("..")
-damage = -15.0
 metadata/_custom_type_script = "uid://ucfty02weqo2"
 
-[node name="Collision" type="CollisionShape2D" parent="L_Hand/HitboxComponent"]
+[node name="Collision" type="CollisionShape2D" parent="L_Hand/HitboxComponent" unique_id=114085185]
 position = Vector2(-24, 12)
 shape = SubResource("CircleShape2D_50xss")
 
-[node name="R_Hand" type="Sprite2D" parent="."]
+[node name="R_Hand" type="Sprite2D" parent="." unique_id=1524047544]
 position = Vector2(832, 64)
 texture = ExtResource("6_f4y6k")
 flip_h = true
 script = SubResource("GDScript_8ulq0")
 
-[node name="muzzle" type="Marker2D" parent="R_Hand"]
+[node name="muzzle" type="Marker2D" parent="R_Hand" unique_id=120238575]
 show_behind_parent = true
 position = Vector2(-48, 0)
 
-[node name="warn_flash" type="ColorRect" parent="R_Hand/muzzle"]
+[node name="warn_flash" type="ColorRect" parent="R_Hand/muzzle" unique_id=1095126639]
 show_behind_parent = true
 offset_left = -1064.0
 offset_top = -8.0
@@ -609,19 +587,17 @@ offset_right = 32.0
 offset_bottom = 8.0
 color = Color(1, 0, 0, 0)
 
-[node name="HitboxComponent" type="Area2D" parent="R_Hand" node_paths=PackedStringArray("parent")]
+[node name="HitboxComponent" type="Area2D" parent="R_Hand" unique_id=1042583636]
 collision_layer = 16
 collision_mask = 2
 script = ExtResource("4_y34cm")
-parent = NodePath("../../L_Hand")
-damage = -15.0
 metadata/_custom_type_script = "uid://ucfty02weqo2"
 
-[node name="Collision" type="CollisionShape2D" parent="R_Hand/HitboxComponent"]
+[node name="Collision" type="CollisionShape2D" parent="R_Hand/HitboxComponent" unique_id=416491575]
 position = Vector2(24, 8)
 shape = SubResource("CircleShape2D_50xss")
 
-[node name="HP_Placeholder" type="Label" parent="."]
+[node name="HP_Placeholder" type="Label" parent="." unique_id=1319796336]
 top_level = true
 offset_left = 8.0
 offset_top = 328.0
@@ -629,51 +605,50 @@ offset_right = 184.0
 offset_bottom = 355.0
 script = SubResource("GDScript_b0e1c")
 
-[node name="StateMachine" parent="." node_paths=PackedStringArray("parent", "intial_state", "death_state") instance=ExtResource("4_8jqi3")]
+[node name="StateMachine" parent="." unique_id=1017062395 node_paths=PackedStringArray("parent", "intial_state") instance=ExtResource("4_8jqi3")]
 parent = NodePath("..")
 intial_state = NodePath("intro")
-death_state = NodePath("death")
 
-[node name="intro" type="Node" parent="StateMachine" node_paths=PackedStringArray("parent")]
+[node name="intro" type="Node" parent="StateMachine" unique_id=1762721705 node_paths=PackedStringArray("parent")]
 script = SubResource("GDScript_f4y6k")
 parent = NodePath("../..")
 metadata/_custom_type_script = "uid://dmgbhcexe6fw"
 
-[node name="idle" type="Node" parent="StateMachine"]
+[node name="idle" type="Node" parent="StateMachine" unique_id=1087536075]
 script = SubResource("GDScript_y34cm")
 min_movement_interval = 1.5
 max_movement_interval = 2.0
 metadata/_custom_type_script = "uid://dmgbhcexe6fw"
 
-[node name="chase" type="Node" parent="StateMachine" node_paths=PackedStringArray("parent")]
+[node name="chase" type="Node" parent="StateMachine" unique_id=415921772 node_paths=PackedStringArray("parent")]
 script = SubResource("GDScript_apond")
 movement_speed = 155.0
 parent = NodePath("../..")
 metadata/_custom_type_script = "uid://dmgbhcexe6fw"
 
-[node name="dash" type="Node" parent="StateMachine"]
+[node name="dash" type="Node" parent="StateMachine" unique_id=1023664591]
 script = SubResource("GDScript_8jqi3")
 wait_interval = 1.0
 metadata/_custom_type_script = "uid://dmgbhcexe6fw"
 
-[node name="hand_shoot" type="Node" parent="StateMachine"]
+[node name="hand_shoot" type="Node" parent="StateMachine" unique_id=1807282445]
 script = SubResource("GDScript_xklbp")
 max_wait_interval = 0.7
 min_wait_interval = 0.5
 metadata/_custom_type_script = "uid://dmgbhcexe6fw"
 
-[node name="recover" type="Node" parent="StateMachine" node_paths=PackedStringArray("parent")]
+[node name="recover" type="Node" parent="StateMachine" unique_id=773940512 node_paths=PackedStringArray("parent")]
 script = SubResource("GDScript_mugeq")
 parent = NodePath("../..")
 metadata/_custom_type_script = "uid://dmgbhcexe6fw"
 
-[node name="death" type="Node" parent="StateMachine" node_paths=PackedStringArray("parent")]
+[node name="death" type="Node" parent="StateMachine" unique_id=195620371 node_paths=PackedStringArray("parent")]
 script = SubResource("GDScript_50xss")
 parent = NodePath("../..")
 is_state_cancelable = false
 metadata/_custom_type_script = "uid://dmgbhcexe6fw"
 
-[node name="Warning Signal" type="ColorRect" parent="."]
+[node name="Warning Signal" type="ColorRect" parent="." unique_id=1202579997]
 top_level = true
 texture_filter = 1
 offset_left = 240.0
@@ -683,7 +658,7 @@ offset_bottom = 144.0
 pivot_offset = Vector2(12.5, 12.5)
 color = Color(1, 0, 0, 0.196078)
 
-[node name="Dash-Warning" type="ColorRect" parent="."]
+[node name="Dash-Warning" type="ColorRect" parent="." unique_id=859747817]
 texture_filter = 1
 offset_left = -64.0
 offset_top = -168.0
@@ -692,15 +667,13 @@ offset_bottom = 568.0
 pivot_offset = Vector2(12, 0)
 color = Color(1, 0, 0, 0)
 
-[node name="BossMusic" type="AudioStreamPlayer" parent="."]
+[node name="BossMusic" type="AudioStreamPlayer" parent="." unique_id=1024370889]
 stream = ExtResource("7_y34cm")
 volume_db = -12.0
 
-[node name="warning" type="AudioStreamPlayer" parent="."]
+[node name="warning" type="AudioStreamPlayer" parent="." unique_id=1392246346]
 stream = ExtResource("11_d6gxk")
 volume_db = -9.0
 mix_target = 2
 
-[connection signal="death" from="HealthComponent" to="." method="on_death"]
-[connection signal="on_hit" from="HealthComponent" to="." method="on_hit"]
 [connection signal="frame_changed" from="Head/boom" to="." method="_on_boom_frame_changed"]

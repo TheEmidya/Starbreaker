@@ -1,0 +1,9 @@
+[gd_scene format=3 uid="uid://dsoc2yii2o420"]
+
+[ext_resource type="Script" uid="uid://i0ke4rspankj" path="res://assets/scripts/classes/StageClass.gd" id="1_6t8dt"]
+[ext_resource type="AudioStream" uid="uid://cwa6hu4v1ftsh" path="res://assets/audio/music/mus_stage1.ogg" id="2_6qrhd"]
+
+[node name="StageTres2b" type="Node2D" unique_id=461584369]
+script = ExtResource("1_6t8dt")
+music_file = ExtResource("2_6qrhd")
+metadata/_custom_type_script = "uid://i0ke4rspankj"

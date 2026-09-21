@@ -1,0 +1,69 @@
+[gd_scene load_steps=4 format=3 uid="uid://bvfkqbreh53ch"]
+
+[ext_resource type="AudioStream" uid="uid://byl5crghiev7l" path="res://Game Folder/game_assets/Player/Breaker/Starman/starman_music.ogg" id="1_rl445"]
+
+[sub_resource type="GDScript" id="GDScript_sg0jn"]
+script/source = "extends Breaker
+@onready var hitbox = HitboxComponent.new()
+@onready var hitbox_collision: CollisionShape2D = $Collision
+@export var starman_duration := 16.0
+@onready var current_starman_tick = 0.0
+@onready var starman_duration_timer: Timer = $\"Starman Duration\"
+@onready var starman_music: AudioStreamPlayer = $MusicLoop
+
+func _ready() -> void:
+	hitbox.parent = player
+	hitbox.is_disabled = true
+	hitbox.set_collision_layer_value(1, 0)
+	hitbox.set_collision_mask_value(1, 0)
+	hitbox.set_collision_layer_value(4, 1)
+	hitbox.set_collision_mask_value(3, 1)
+	
+	hitbox.starting_damage = 75.0
+	hitbox.starting_knockback_amount = 5.0
+	hitbox.starting_knockback_duration = 0.15
+	hitbox.respects_invincibility = false
+	
+	add_child(hitbox)
+	hitbox_collision.reparent(hitbox)
+
+func _physics_process(_delta: float) -> void:
+	current_starman_tick += _delta
+	hitbox.global_position = player.global_position
+	
+	if Input.is_action_just_pressed(\"breaker\") and player.loadout_manager.is_max_energy and starman_duration_timer.time_left <= 0.0:
+		events.breaker_activated.emit(self)
+		starman_music.play()
+		starman_duration_timer.start(starman_duration)
+	
+	if starman_duration_timer.time_left > 0.0 and current_starman_tick >= 0.075:
+		current_starman_tick = 0
+		action()
+	
+	if starman_duration_timer.is_stopped():
+		player.force_invincibility = false
+		hitbox.is_disabled = true
+		starman_music.stop()
+
+func action():
+	player.loadout_manager.current_energy = -1000
+	player.force_invincibility = true
+	hitbox.is_disabled = !hitbox.is_disabled
+"
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_rl445"]
+size = Vector2(36, 38)
+
+[node name="Starman" type="Node"]
+script = SubResource("GDScript_sg0jn")
+
+[node name="Collision" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_rl445")
+debug_color = Color(0.88800424, 0.56481445, 0, 0.41960785)
+
+[node name="Starman Duration" type="Timer" parent="."]
+process_callback = 0
+one_shot = true
+
+[node name="MusicLoop" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("1_rl445")

@@ -1,306 +1,479 @@
-ea4bc82a6ad023ab7ee23ee620429895
-::res://::1745201234
-export_presets.cfg::TextFile/TextFile::-1::1744947354::0::1::::<><><>0<>0<><>::
-release_ui.tscn::PackedScene/PackedScene::3283777114969678129::1744423777::0::1::::<><><>0<>0<><>::uid://b1rbffoke0vnr::::res://Game Folder/game_assets/Menus/Themes/MenuUI_Theme.tres
-::res://Game Folder/::1744819169
-main_manager.tscn::PackedScene/PackedScene::1744765027920507482::1744819169::0::1::::<><><>0<>0<><>::uid://c4x1qm6djaif4::::res://Game Folder/game_components/global_loading/loading.tscn<>uid://b1rbffoke0vnr::::res://Game Folder/game_assets/Menus/Themes/MenuUI_Theme.tres
-::res://Game Folder/game_assets/::1744438914
-::res://Game Folder/game_assets/Enemies/::1732633185
-::res://Game Folder/game_assets/Enemies/0. NULL/::1732633185
-::res://Game Folder/game_assets/Enemies/0. NULL/PH Enemy/::1741378208
-placeholder_enemy.tscn::PackedScene/PackedScene::6867671567473418960::1741378208::0::1::::<><><>0<>0<><>::uid://f37ieuipj0vh::::res://Game Folder/game_components/collision_component/Databox/databox.gd
-::res://Game Folder/game_assets/Enemies/Tres-2B/::1745202705
-::res://Game Folder/game_assets/Enemies/Tres-2B/Absorbio/::1741378264
-Absorbio.tscn::PackedScene/PackedScene::6826046471264402128::1741378264::0::1::::<><><>0<>0<><>::uid://bql2an547gxi1::::res://Game Folder/game_components/entity_components/Health/health_component.gd<>uid://c0qsib2m70nmv::::res://Game Folder/game_components/entity_components/State Machine/stagemachine_parent.tscn<>uid://chx8xroi3hih8::::res://Game Folder/game_components/entity_components/Hurtbox/hurtbox.gd<>uid://dmgbhcexe6fw::::res://Game Folder/game_components/entity_components/State Machine/state_base.gd<>uid://ucfty02weqo2::::res://Game Folder/game_components/entity_components/Hitbox/hitbox.gd
-::res://Game Folder/game_assets/Enemies/Tres-2B/Cosma-Turret/::1744474227
-Cosma-Turret.png::CompressedTexture2D/CompressedTexture2D::6431472512808238131::1737559003::1741377362::1::::<><><>0<>0<>e23e73c9e53425a16f13efcbe7395fb6<>res://.godot/imported/Cosma-Turret.png-a26a2599600436cc16c1e9249d69c854.ctex::
-cosmaturret.tscn::PackedScene/PackedScene::9076893433249695384::1744474227::0::1::::<><><>0<>0<><>::uid://chx8xroi3hih8::::res://Game Folder/game_components/entity_components/Hurtbox/hurtbox.gd<>uid://cxvpobaioil4n::::res://Game Folder/game_assets/Enemies/Tres-2B/Cosma-Turret/Cosma-Turret.png<>uid://8nbd6mrasp3a::::res://Game Folder/game_components/shaders/hitflash.tres<>uid://bql2an547gxi1::::res://Game Folder/game_components/entity_components/Health/health_component.gd<>uid://c0qsib2m70nmv::::res://Game Folder/game_components/entity_components/State Machine/stagemachine_parent.tscn
-::res://Game Folder/game_assets/Enemies/Tres-2B/Cosma-Turret/Bullet/::1741401813
-bullet_cosma-turret.tscn::PackedScene/PackedScene::1673142582058909288::1741401813::0::1::::<><><>0<>0<><>::uid://bsldpa031indc::::res://Game Folder/game_assets/Enemies/Tres-2B/Trishooter/Sprites/trishooter_bullet.png<>uid://ucfty02weqo2::::res://Game Folder/game_components/entity_components/Hitbox/hitbox.gd
+6d3b77f294a95ad2bb592a87da89201d
+::res://::1789874571
+BreakerBase.gd::GDScript::1851348038958161431::1768672809::0::1::::<>Node<><>0<>0<><>::
+export_presets.cfg::TextFile/TextFile::-1::1745208752::0::1::::<><><>0<>0<><>::
+release_ui.tscn::PackedScene::3283777114969678129::1788405249::0::1::::<><><>0<>0<><>::uid://b1rbffoke0vnr::::res://Game Folder/game_assets/Menus/Themes/MenuUI_Theme.tres
+TESTING.tscn::PackedScene::5526570478682918501::1788405250::0::1::::<><><>0<>0<><>::uid://dju5f2wa2fucv::::res://Game Folder/game_assets/Player/Main/Player.tscn<>uid://dfepk5fmqyutd::::res://Game Folder/game_assets/Enemies/Tres-2B/Skeleshot/enemy.tscn
+test_scene.tscn::PackedScene::996595224756737787::1788405294::0::1::::<><><>0<>0<><>::uid://dju5f2wa2fucv::::res://Game Folder/game_assets/Player/Main/Player.tscn<>uid://b2j62op6kxc6c::::res://Game Folder/game_assets/Stages/01 - Tres-2B/Boss/Timothy/TimothyBoss.tscn
+::res://addons/::1788973350
+::res://addons/discord-rpc-gd/::1788973351
+Debug.svg::CompressedTexture2D::1414570589633831756::1788973350::1788973351::1::::<><><>0<>0<>4cd11ae9f3675726cac84fe99821331a<>res://.godot/imported/Debug.svg-d4cb8599fa7926b76a2d6e40d2efd949.ctex::
+example.gd::GDScript::2320425426142327775::1788973350::0::1::::DiscordRPCTutorial<>Node<><>0<>0<><>::
+logo.png::CompressedTexture2D::6060475218541271158::1788973350::1788973351::1::::<><><>0<>0<>1ce8e41d259476c8826b3a713cbd4541<>res://.godot/imported/logo.png-bacb448eabae556bdb0659359ea4e4af.ctex::
+Logo_V2_No_Bg.png::CompressedTexture2D::6060475218541271158::1788973350::1788973351::1::::<><><>0<>0<>8f5f834c2b7e8ec024e4c11a8048e4b2<>res://.godot/imported/Logo_V2_No_Bg.png-ed667fb599fe1e17ebcfc361ff7c9c93.ctex::
+plugin.cfg::TextFile::-1::1788973350::0::1::::<><><>0<>0<><>::
+plugin.gd::GDScript::3944446999943096765::1788973350::0::1::::<>EditorPlugin<><>0<>1<><>::
+READ_ME_PLEASE.txt::TextFile::-1::1788973350::0::1::::<><><>0<>0<><>::
+restart_window.tscn::PackedScene::4076847685139362056::1788973350::0::1::::<><><>0<>0<><>::uid://csl0e2px0cwc1::::res://addons/discord-rpc-gd/Logo_V2_No_Bg.png
+::res://addons/discord-rpc-gd/bin/::1788973390
+discord-rpc-gd.gdextension::GDExtension::7863159542338687726::1788973350::0::1::::<><><>0<>0<><>::
+::res://addons/discord-rpc-gd/bin/linux/::1788973350
+::res://addons/discord-rpc-gd/bin/macos/::1788973350
+::res://addons/discord-rpc-gd/bin/windows/::1789874565
+::res://addons/discord-rpc-gd/nodes/::1789440615
+debug.gd::GDScript::3527112355299685399::1788973350::0::1::::<>Node<><>0<>1<><>::
+Debug.tscn::PackedScene::6635590667203094151::1788973350::0::1::::<><><>0<>0<><>::uid://dnfq6kug4x6o2::::res://addons/discord-rpc-gd/nodes/assets/Checked.svg<>uid://compmm3kviqqe::::res://addons/discord-rpc-gd/nodes/assets/Unchecked.svg<>uid://dtc6ckladq0td::::res://addons/discord-rpc-gd/nodes/assets/circle.svg
+discord_autoload.gd::GDScript::78121779871730461::1789440615::0::1::::<>Node<><>0<>0<><>::
+::res://addons/discord-rpc-gd/nodes/assets/::1788973351
+Checked.svg::CompressedTexture2D::8083066295081234619::1788973350::1788973351::1::::<><><>0<>0<>5d7f71acf37c6255f3facc77c235f42d<>res://.godot/imported/Checked.svg-80704e37f30c24e2ec3dfc0955f5f21c.ctex::
+circle.svg::CompressedTexture2D::8498865176304625629::1788973350::1788973351::1::::<><><>0<>0<>2da8339acdc6f20ce6987fd45082d39f<>res://.godot/imported/circle.svg-d0b0579c9433c6250a5869daf4f70024.ctex::
+Unchecked.svg::CompressedTexture2D::5781190569803204660::1788973350::1788973351::1::::<><><>0<>0<>6ad1bc0b8083da017e202277e34e23f0<>res://.godot/imported/Unchecked.svg-b526adfd78f7b1577fc3c10a8ea626ee.ctex::
+::res://addons/godotsteam/::1788972983
+godotsteam.gdextension::GDExtension::3552831246424339576::1751299341::0::1::::<><><>0<>0<><>::
+godotsteam_plugin.gd::GDScript::3760372618818852495::1788972983::0::1::::GodotSteamPlugin<>EditorPlugin<><>0<>1<><>::
+license.md::TextFile::-1::1788972983::0::1::::<><><>0<>0<><>::
+plugin.cfg::TextFile::-1::1788972983::0::1::::<><><>0<>0<><>::
+readme.md::TextFile::-1::1788972983::0::1::::<><><>0<>0<><>::
+::res://addons/godotsteam/androidarm64/::1788972983
+::res://addons/godotsteam/editor/::1788972983
+steamworks_panel.gd::GDScript::1854706253489638439::1788972982::0::1::::<>Control<><>0<>1<><>::
+steamworks_panel.tscn::PackedScene::6484703463217850114::1788972982::0::1::::<><><>0<>0<><>::uid://1oo0gvamoxgp::::res://addons/godotsteam/editor/steamworks_panel.gd<>uid://b4nvgu7h84u53::::res://addons/godotsteam/editor/updates/updates.gd
+::res://addons/godotsteam/editor/ui/::1788972983
+steam.svg::CompressedTexture2D::7679158975758942475::1788972983::1788972983::1::::<><><>0<>0<>484d5fe808d3a01c1a719f0d99c25e87<>res://.godot/imported/steam.svg-1c1b1c87b286630e8735047e7af015ac.ctex::
+::res://addons/godotsteam/editor/updates/::1788972982
+updates.gd::GDScript::4450020931874397632::1788972982::0::1::::<>MarginContainer<><>0<>1<><>::
+::res://addons/godotsteam/linux32/::1759233487
+::res://addons/godotsteam/linux64/::1759233487
+::res://addons/godotsteam/linuxarm64/::1788972983
+::res://addons/godotsteam/osx/::1788972983
+::res://addons/godotsteam/osx/libgodotsteam.macos.template_debug.framework/::1759233487
+::res://addons/godotsteam/osx/libgodotsteam.macos.template_debug.framework/Resources/::1759233487
+::res://addons/godotsteam/osx/libgodotsteam.macos.template_release.framework/::1759233487
+::res://addons/godotsteam/osx/libgodotsteam.macos.template_release.framework/Resources/::1759233487
+::res://addons/godotsteam/win32/::1759233487
+::res://addons/godotsteam/win64/::1789874565
+::res://addons/godotsteam_server/::1759233487
+godotsteam_server.gdextension::GDExtension::3247762750949506981::1751299362::0::1::::<><><>0<>0<><>::
+license.txt::TextFile::-1::1751299362::0::1::::<><><>0<>0<><>::
+readme.md::TextFile::-1::1751299363::0::1::::<><><>0<>0<><>::
+::res://addons/godotsteam_server/linux32/::1759233487
+::res://addons/godotsteam_server/linux64/::1759233487
+::res://addons/godotsteam_server/osx/::1759233487
+::res://addons/godotsteam_server/osx/libgodotsteam_server.macos.template_debug.framework/::1759233487
+::res://addons/godotsteam_server/osx/libgodotsteam_server.macos.template_debug.framework/Resources/::1759233487
+::res://addons/godotsteam_server/osx/libgodotsteam_server.macos.template_release.framework/::1759233487
+::res://addons/godotsteam_server/osx/libgodotsteam_server.macos.template_release.framework/Resources/::1759233487
+::res://addons/godotsteam_server/win32/::1759233487
+::res://addons/godotsteam_server/win64/::1789874565
+::res://assets/::1789676376
+::res://assets/audio/::1789075044
+::res://assets/audio/music/::1789494116
+mus_boss.ogg::AudioStreamOggVorbis::1228573921880598761::1789443651::1789494006::1::::<><><>0<>0<>04587d7f8cf5b6e12ca1b286c81be354<>res://.godot/imported/mus_boss.ogg-f99638801c38a8600226428701f726e4.oggvorbisstr::
+mus_stage1.ogg::AudioStreamOggVorbis::6318891751011447903::1789494107::1789494116::1::::<><><>0<>0<>cf84fed7c4366c28a9d491cd4e5fd0c6<>res://.godot/imported/mus_stage1.ogg-fe521a1bb336721cd851ee918fa8e354.oggvorbisstr::
+mus_tutorial.ogg::AudioStreamOggVorbis::1544070600303931245::1789443625::1789443626::1::::<><><>0<>0<>f353642cf406e9eb99276f52db99f193<>res://.godot/imported/mus_tutorial.ogg-da6ee59b33d082520b8802b9ed577ff4.oggvorbisstr::
+::res://assets/audio/sfx/::1789075035
+::res://assets/audio/sfx/enemy/::1789075035
+::res://assets/audio/sfx/misc/::1789434321
+ester_faderiser.ogg::AudioStreamOggVorbis::447188695481479827::1789074580::1789075012::1::::<><><>0<>0<>82731e4a0867f125db21398ab39d8459<>res://.godot/imported/ester_faderiser.ogg-448913de9c4ad841bb6cdfc727e1ef5a.oggvorbisstr::
+ester_keyboardtype.ogg::AudioStreamOggVorbis::4504641984080013644::1789073806::1789075012::1::::<><><>0<>0<>e796e45cb925b394f6e733d5a6fdb15e<>res://.godot/imported/ester_keyboardtype.ogg-24453ce6d6394a09187343df1ba98ec7.oggvorbisstr::
+::res://assets/audio/sfx/misc/stage/::1789434403
+::res://assets/audio/sfx/misc/stage/countdown/::1789434409
+one.mp3::AudioStreamMP3::8223504160205207237::1789434401::1789434409::1::::<><><>0<>0<>b2504a31d9e107edc0d950e3c0b022a4<>res://.godot/imported/one.mp3-aea15dff889e69e62a22e585c3858978.mp3str::
+three.mp3::AudioStreamMP3::4998367501455194833::1789434335::1789434409::1::::<><><>0<>0<>34522e8d720c290990a5655b977603fb<>res://.godot/imported/three.mp3-c77976e8e820fc61b875b62e34d13136.mp3str::
+two.mp3::AudioStreamMP3::4883173160370698106::1789434375::1789434409::1::::<><><>0<>0<>e70b0d1b16a3507cefd62ce2ab6156e6<>res://.godot/imported/two.mp3-516fb0aefacd4ec6928e397c7fa6657a.mp3str::
+::res://assets/audio/sfx/player/::1789075031
+::res://assets/scenes/::1789496357
+::res://assets/scenes/entity/::1789496566
+::res://assets/scenes/entity/base/::1789502349
+::res://assets/scenes/entity/player/::1789746689
+Starbreaker.tscn::PackedScene::1367702252010556262::1789746689::0::1::::<><><>0<>0<><>::uid://dctfdpq34oo0r::::res://assets/scripts/classes/PlayerEntityClass.gd<>uid://cs4br51hr00rr::::res://assets/scripts/classes/EntityMultipliersClass.gd<>uid://bqknoi4t0h2p0::::res://assets/scripts/classes/EntityMovementClass.gd<>uid://bq5wnk4wiiwor::::res://Game Folder/game_assets/Player/Sprites/Starbreaker_20xSprite.png<>uid://bur4rwjvq20ro::::res://assets/scripts/classes/EntityHealthClass.gd<>uid://b7gq70653v4f6::::res://assets/sprites/player/misc/spr_player_crosshair.png<>uid://h3l8mr8338cm::::res://assets/scripts/classes/HurtboxClass.gd
+::res://assets/scenes/main/::1789744819
+gamecore.tscn::PackedScene::1744765027920507482::1789494072::0::1::::<><><>0<>0<><>::
+gamecore_setup.tscn::PackedScene::5725440982744966108::1789744819::0::1::::<><><>0<>0<><>::uid://tqmtgudiu7pk::::res://Game Folder/game_assets/Menus/Themes/TutorialDialogue/Pixeloid/UIFont.ttf<>uid://b5gc2bodkisnk::::res://assets/audio/sfx/misc/ester_keyboardtype.ogg<>uid://gmvere8d8gxv::::res://assets/audio/sfx/misc/ester_faderiser.ogg
+::res://assets/scenes/menu/::1789433325
+main_menu.tscn::PackedScene::7093917243326044909::1789433325::0::1::::<><><>0<>0<><>::uid://erm3xbidorsi::::res://Game Folder/game_assets/Menus/MainMenu/BASE/starbreaker - menu (chillin).mp3<>uid://cs6s2641cjjdq::::res://Game Folder/game_assets/Menus/MainMenu/Sprites/title.png<>uid://b1rbffoke0vnr::::res://Game Folder/game_assets/Menus/Themes/MenuUI_Theme.tres
+::res://assets/scenes/misc/::1789494203
+::res://assets/scenes/misc/stage/::1789571697
+stage_introvisuals.tscn::PackedScene::6344350790370006849::1789571697::0::1::::<><><>0<>0<><>::uid://b1rbffoke0vnr::::res://Game Folder/game_assets/Menus/Themes/MenuUI_Theme.tres<>uid://cdhinae6tmdn2::::res://assets/audio/sfx/misc/stage/countdown/three.mp3<>uid://cbtpfbxckfu0q::::res://assets/audio/sfx/misc/stage/countdown/two.mp3<>uid://dpfr6algxvno4::::res://assets/audio/sfx/misc/stage/countdown/one.mp3
+::res://assets/scenes/stages/::1789572065
+Stage_0_Tutorial.tscn::PackedScene::3777564541248478480::1789497542::0::1::::<><><>0<>0<><>::uid://i0ke4rspankj::::res://assets/scripts/classes/StageClass.gd<>uid://v87u8qir1ewr::::res://assets/audio/music/mus_tutorial.ogg
+Stage_1_Tres2B.tscn::PackedScene::8451733448860676035::1789572065::0::1::::<><><>0<>0<><>::uid://i0ke4rspankj::::res://assets/scripts/classes/StageClass.gd<>uid://cwa6hu4v1ftsh::::res://assets/audio/music/mus_stage1.ogg
+Stage_2_TauBootis.tscn::PackedScene::1300838193796831737::1789432573::0::1::::<><><>0<>0<><>::uid://i0ke4rspankj::::res://assets/scripts/classes/StageClass.gd
+::res://assets/scripts/::1789432044
+::res://assets/scripts/classes/::1789746632
+EntityClass.gd::GDScript::8842123732674574893::1789502721::0::1::::EntityClass<>CharacterBody2D<><>0<>0<><>::
+EntityHealthClass.gd::GDScript::3827084299952934508::1789572205::0::1::::EntityHealthClass<>Node<><>0<>0<><>::
+EntityMovementClass.gd::GDScript::3530900747345967083::1789569329::0::1::::EntityMovementClass<>Node<><>0<>0<><>::
+EntityMultipliersClass.gd::GDScript::6096200199434865135::1789502507::0::1::::EntityMultipliersClass<>Resource<><>0<>0<><>::
+HitboxClass.gd::GDScript::6485201982469923713::1789745592::0::1::::HitboxClass<>Area2D<><>0<>0<><>::
+HitboxDamageResource.gd::GDScript::1079301928583118711::1789745592::0::1::::HitboxDataResource<>Resource<><>0<>0<><>::
+HurtboxClass.gd::GDScript::549851958778995028::1789745549::0::1::::HurtboxClass<>Area2D<><>0<>0<><>::
+PlayerEntityClass.gd::GDScript::7339172671906686427::1789746632::0::1::::PlayerEntityClass<>EntityClass<><>0<>0<><>::
+StageClass.gd::GDScript::613736056335764993::1789571954::0::1::::StageClass<>Node2D<><>0<>0<><>::
+::res://assets/scripts/core/::1789432046
+SteamHook.gd::GDScript::5109336864043647287::1788974004::0::1::::<>Node<><>0<>0<><>::
+::res://assets/sprites/::1789676520
+::res://assets/sprites/player/::1789676528
+::res://assets/sprites/player/misc/::1789677061
+spr_player_crosshair.png::CompressedTexture2D::4645879926297745829::1789677060::1789677061::1::::<><><>0<>0<>02cc5a58f35bc4b72730fd7d80c40f64<>res://.godot/imported/spr_player_crosshair.png-a19d0ba4af010a943893ceea233d7224.ctex::
+::res://Game Folder/::1788974936
+::res://Game Folder/game_assets/::1767450974
+::res://Game Folder/game_assets/Enemies/::1759233487
+::res://Game Folder/game_assets/Enemies/0. NULL/::1777074810
+::res://Game Folder/game_assets/Enemies/0. NULL/Healthbar/::1788405252
+enemyhealthbar.tscn::PackedScene::8212991270437019419::1788405252::0::1::::<><><>0<>0<><>::
+::res://Game Folder/game_assets/Enemies/0. NULL/HitEffects/::1777074814
+::res://Game Folder/game_assets/Enemies/0. NULL/HitEffects/Shader/::1789744819
+hitflash.gdshader::Shader::406690314706853622::1789744819::0::1::::<><><>0<>0<><>::
+::res://Game Folder/game_assets/Enemies/0. NULL/PH Enemy/::1788405253
+placeholder_enemy.tscn::PackedScene::6867671567473418960::1788405253::0::1::::<><><>0<>0<><>::uid://f37ieuipj0vh::::res://Game Folder/game_components/collision_component/Databox/databox.gd<>uid://ucfty02weqo2::::res://Game Folder/game_components/entity_components/Hitbox/hitbox.gd<>uid://bxhw6dnb6fuqm::::res://Game Folder/game_components/entity_components/Hitbox/HitboxData.gd
+::res://Game Folder/game_assets/Enemies/Tres-2B/::1759233487
+::res://Game Folder/game_assets/Enemies/Tres-2B/Absorbio/::1788405253
+Absorbio.tscn::PackedScene::6826046471264402128::1788405253::0::1::::<><><>0<>0<><>::uid://bql2an547gxi1::::res://Game Folder/game_components/entity_components/Health/health_component.gd<>uid://c0qsib2m70nmv::::res://Game Folder/game_components/entity_components/State Machine/stagemachine_parent.tscn<>uid://chx8xroi3hih8::::res://Game Folder/game_components/entity_components/Hurtbox/hurtbox.gd<>uid://dmgbhcexe6fw::::res://Game Folder/game_components/entity_components/State Machine/state_base.gd<>uid://ucfty02weqo2::::res://Game Folder/game_components/entity_components/Hitbox/hitbox.gd
+::res://Game Folder/game_assets/Enemies/Tres-2B/Cosma-Turret/::1788405253
+Cosma-Turret.png::CompressedTexture2D::6431472512808238131::1737559003::1788405242::1::::<><><>0<>0<>be02a9cb0e501aca7637bd4ab1367fd4<>res://.godot/imported/Cosma-Turret.png-a26a2599600436cc16c1e9249d69c854.ctex::
+cosmaturret.tscn::PackedScene::9076893433249695384::1788405253::0::1::::<><><>0<>0<><>::uid://chx8xroi3hih8::::res://Game Folder/game_components/entity_components/Hurtbox/hurtbox.gd<>uid://cxvpobaioil4n::::res://Game Folder/game_assets/Enemies/Tres-2B/Cosma-Turret/Cosma-Turret.png<>uid://bql2an547gxi1::::res://Game Folder/game_components/entity_components/Health/health_component.gd<>uid://c0qsib2m70nmv::::res://Game Folder/game_components/entity_components/State Machine/stagemachine_parent.tscn
+::res://Game Folder/game_assets/Enemies/Tres-2B/Cosma-Turret/Bullet/::1788405253
+bullet_cosma-turret.tscn::PackedScene::1673142582058909288::1788405253::0::1::::<><><>0<>0<><>::uid://bsldpa031indc::::res://Game Folder/game_assets/Enemies/Tres-2B/Trishooter/Sprites/trishooter_bullet.png<>uid://ucfty02weqo2::::res://Game Folder/game_components/entity_components/Hitbox/hitbox.gd
 ::res://Game Folder/game_assets/Enemies/Tres-2B/Cosma-Turret/Sprites/::1737558994
-::res://Game Folder/game_assets/Enemies/Tres-2B/Skelazor/::1745202792
-LZR_enemy.tscn::PackedScene::1916995914001803525::1745202792::0::1::::<><><>0<>0<><>::uid://ucfty02weqo2::::res://Game Folder/game_components/entity_components/Hitbox/hitbox.gd<>uid://cadhurax76sxf::::res://Game Folder/game_components/entity_components/Hurtbox/HurtboxComponent.tscn<>uid://cv6llxenkgbte::::res://Game Folder/game_assets/Enemies/Tres-2B/Skelazor/Sprites/charging_anim.png<>uid://duhmfhxqltebm::::res://Game Folder/game_components/entity_components/Health/HealthComponent.tscn<>uid://c0qsib2m70nmv::::res://Game Folder/game_components/entity_components/State Machine/stagemachine_parent.tscn<>uid://ck31hjtmh31lx::::res://Game Folder/game_assets/Enemies/Tres-2B/Skelazor/Sprites/death_anim.png<>uid://8qx08ci5568s::::res://Game Folder/game_assets/Enemies/Tres-2B/Skelazor/Sprites/firing_anim.png<>uid://c0nvr66o40bkf::::res://Game Folder/game_assets/Enemies/Tres-2B/Skelazor/Sprites/LZR_hit.png<>uid://cr238a06lh5v0::::res://Game Folder/game_assets/Enemies/Tres-2B/Skelazor/Sprites/idle.png<>uid://fan0fvghtn0x::::res://Game Folder/game_assets/Enemies/Tres-2B/Skelazor/Sprites/appear_anim.png<>uid://b5jbn44bu2n5s::::res://Game Folder/game_assets/Enemies/Tres-2B/Skelazor/Sounds/bone_charge.ogg
-::res://Game Folder/game_assets/Enemies/Tres-2B/Skelazor/Sounds/::1745202799
-bone_charge.ogg::AudioStreamOggVorbis::4510750892983862330::1745201229::1745201234::1::::<><><>0<>0<>a5c53ca22931de5df9d1174a85ebfbfe<>res://.godot/imported/bone_charge.ogg-3cc635f60c70b8964c350ee016ba3ded.oggvorbisstr::
-bone_shatter.ogg::AudioStreamOggVorbis::6923211926160436239::1745202799::1745202800::1::::<><><>0<>0<>e570fbed674d8d01df61564f8049638a<>res://.godot/imported/bone_shatter.ogg-2f4f97f17e5ed991041a6d8230e237e4.oggvorbisstr::
-::res://Game Folder/game_assets/Enemies/Tres-2B/Skelazor/Sprites/::1741377365
-appear_anim.png::CompressedTexture2D/CompressedTexture2D::351778479284121381::1724157193::1741377362::1::::<><><>0<>0<>9ad1deab2d006032431cc21510f2ee98<>res://.godot/imported/appear_anim.png-0f7a5e3cf631c90fb6a71cf75891de4d.ctex::
-charging_anim.png::CompressedTexture2D/CompressedTexture2D::6311491539634652670::1724156705::1741377364::1::::<><><>0<>0<>a2ae250dcd51167ac2a0acd152af54e7<>res://.godot/imported/charging_anim.png-6611e5173c3822cc4516d4b626b5da46.ctex::
-death_anim.png::CompressedTexture2D/CompressedTexture2D::5534124025866607621::1724157193::1741377362::1::::<><><>0<>0<>39946d2a9837ee0abcfdd1243353abb4<>res://.godot/imported/death_anim.png-33da0fd2d5a7dd66b02e1e95ef81fad3.ctex::
-firing_anim.png::CompressedTexture2D/CompressedTexture2D::2350704756566229312::1724157557::1741377362::1::::<><><>0<>0<>83e35fa700236030ec3761d14ecc03ce<>res://.godot/imported/firing_anim.png-c5c5aa001cce871b6833b5a611068e15.ctex::
-idle.png::CompressedTexture2D/CompressedTexture2D::6023548955632307939::1724157697::1741377362::1::::<><><>0<>0<>bfada1899099bc5f9db0becdddc71a88<>res://.godot/imported/idle.png-eca0cf48b3d66426069e98d2bb420912.ctex::
-LZR_hit.png::CompressedTexture2D/CompressedTexture2D::6555706461272892917::1724584861::1741377364::1::::<><><>0<>0<>1dccbaaf492c99438f9f260667af1575<>res://.godot/imported/LZR_hit.png-e68ba2c525673c61abf517013649c7da.ctex::
-LZR_Spritesheet.png::CompressedTexture2D/CompressedTexture2D::394015165011311104::1724156061::1741377362::1::::<><><>0<>0<>f495b1e25f554c503f6dfecab19d6b2c<>res://.godot/imported/LZR_Spritesheet.png-474752b6b12500debc7298259d618511.ctex::
-::res://Game Folder/game_assets/Enemies/Tres-2B/Skeleshot/::1745202554
-enemy.gd::GDScript/GDScript::3451236219485654216::1745195178::0::1::::<>Enemy<><>0<>0<><>::
-enemy.tscn::PackedScene::7519393977108350041::1745202554::0::1::::<><><>0<>0<><>::uid://bpf2md5esgawm::::res://Game Folder/game_assets/Enemies/Tres-2B/Skeleshot/enemy.gd<>uid://d03ccb6618p5d::::res://Game Folder/game_assets/Enemies/Tres-2B/Skeleshot/Sprites/shoot.png<>uid://cwwn34618nmuy::::res://Game Folder/game_assets/Enemies/Tres-2B/Skeleshot/Sprites/death.png<>uid://c0qsib2m70nmv::::res://Game Folder/game_components/entity_components/State Machine/stagemachine_parent.tscn<>uid://0giwyh1og78x::::res://Game Folder/game_assets/Enemies/Tres-2B/Skeleshot/Sprites/hit.png<>uid://8a1bfnc6r587::::res://Game Folder/game_components/shader_components/hitflash_component.gd<>uid://cipnnf6ne6or4::::res://Game Folder/game_assets/Enemies/Tres-2B/Skeleshot/Sprites/spawn.png<>uid://dnnwhodvhbhrg::::res://Game Folder/game_components/shader_components/shockwave_component.gd<>uid://chx8xroi3hih8::::res://Game Folder/game_components/entity_components/Hurtbox/hurtbox.gd<>uid://ucfty02weqo2::::res://Game Folder/game_components/entity_components/Hitbox/hitbox.gd<>uid://bql2an547gxi1::::res://Game Folder/game_components/entity_components/Health/health_component.gd<>uid://3eh6xveo61nc::::res://Game Folder/game_components/entity_components/Knockback/knockback.gd
-Sprite-0001-export.png::CompressedTexture2D/CompressedTexture2D::1357047042142471251::1735882129::1741377362::1::::<><><>0<>0<>49b099877baef2ff76223dfa6f4102a7<>res://.godot/imported/Sprite-0001-export.png-685951694fe1813ab220f1828eec45ee.ctex::
-Sprite-0001.png::CompressedTexture2D/CompressedTexture2D::3410350899204530773::1735879331::1741377362::1::::<><><>0<>0<>cef4f2ff62060b78db13628ca8efc3c9<>res://.godot/imported/Sprite-0001.png-fa606894080013689b4a5e3359f3387e.ctex::
-::res://Game Folder/game_assets/Enemies/Tres-2B/Skeleshot/Sprites/::1741377365
-death.png::CompressedTexture2D/CompressedTexture2D::6363253133439567464::1725934891::1741377364::1::::<><><>0<>0<>15d2e0cdda003aa7a938b97b12bd807c<>res://.godot/imported/death.png-354a903f684a744f02cb88e38dd527e6.ctex::
-default.png::CompressedTexture2D/CompressedTexture2D::5905557690719229422::1719544729::1741377362::1::::<><><>0<>0<>5860d5dec7b3ab427b7f3adebe4bcc13<>res://.godot/imported/default.png-5cd54552ca804c17624a70c8252e24e5.ctex::
-enemydeath1.png::CompressedTexture2D/CompressedTexture2D::7232508818623638821::1719544733::1741377364::1::::<><><>0<>0<>dafd8a6494cd3b85c750546074e96cb3<>res://.godot/imported/enemydeath1.png-2035a84cecbafeb403901c893ebb3257.ctex::
-hit.png::CompressedTexture2D/CompressedTexture2D::1767633653457545737::1725888645::1741377365::1::::<><><>0<>0<>ce1da0db51af2d969b050a5b9b0fe4af<>res://.godot/imported/hit.png-646c6b61cde2d12bb08bbb427a9d106f.ctex::
-shoot.png::CompressedTexture2D/CompressedTexture2D::8971910826573974531::1725888206::1741377362::1::::<><><>0<>0<>a0ee498a50ae3df7018831b55dbe90ab<>res://.godot/imported/shoot.png-0412c1b4da92077cc43c9e2ec697b1ae.ctex::
-spawn.png::CompressedTexture2D/CompressedTexture2D::5366130630131014191::1725888206::1741377362::1::::<><><>0<>0<>260ee862007eb8da82e93fd2f3edd253<>res://.godot/imported/spawn.png-635ac6baa81af099a919ed356000fdc6.ctex::
-::res://Game Folder/game_assets/Enemies/Tres-2B/SpiralTurret/::1745202555
-spiral_turret.tscn::PackedScene::8900237813633033725::1745202555::0::1::::<><><>0<>0<><>::uid://x3qocpbfrgay::::res://Game Folder/game_assets/Enemies/Tres-2B/Cosma-Turret/Bullet/bullet_cosma-turret.tscn
-::res://Game Folder/game_assets/Enemies/Tres-2B/The Faider/::1741378208
-TheFaider.tscn::PackedScene/PackedScene::7977878592209422852::1741378208::0::1::::<><><>0<>0<><>::uid://c0qsib2m70nmv::::res://Game Folder/game_components/entity_components/State Machine/stagemachine_parent.tscn
+::res://Game Folder/game_assets/Enemies/Tres-2B/Skelazor/::1788405254
+LZR_enemy.tscn::PackedScene::1916995914001803525::1788405254::0::1::::<><><>0<>0<><>::uid://ucfty02weqo2::::res://Game Folder/game_components/entity_components/Hitbox/hitbox.gd<>uid://cadhurax76sxf::::res://Game Folder/game_components/entity_components/Hurtbox/Hurtbox.tscn<>uid://cv6llxenkgbte::::res://Game Folder/game_assets/Enemies/Tres-2B/Skelazor/Sprites/charging_anim.png<>uid://duhmfhxqltebm::::res://Game Folder/game_components/entity_components/Health/HealthComponent.tscn<>uid://c0qsib2m70nmv::::res://Game Folder/game_components/entity_components/State Machine/stagemachine_parent.tscn<>uid://ck31hjtmh31lx::::res://Game Folder/game_assets/Enemies/Tres-2B/Skelazor/Sprites/death_anim.png<>uid://8qx08ci5568s::::res://Game Folder/game_assets/Enemies/Tres-2B/Skelazor/Sprites/firing_anim.png<>uid://c0nvr66o40bkf::::res://Game Folder/game_assets/Enemies/Tres-2B/Skelazor/Sprites/LZR_hit.png<>uid://cr238a06lh5v0::::res://Game Folder/game_assets/Enemies/Tres-2B/Skelazor/Sprites/idle.png<>uid://fan0fvghtn0x::::res://Game Folder/game_assets/Enemies/Tres-2B/Skelazor/Sprites/appear_anim.png<>uid://b5jbn44bu2n5s::::res://Game Folder/game_assets/Enemies/Tres-2B/Skelazor/Sounds/bone_charge.ogg
+::res://Game Folder/game_assets/Enemies/Tres-2B/Skelazor/Sounds/::1788405242
+bone_charge.ogg::AudioStreamOggVorbis::4510750892983862330::1745201229::1788405242::1::::<><><>0<>0<>a5c53ca22931de5df9d1174a85ebfbfe<>res://.godot/imported/bone_charge.ogg-3cc635f60c70b8964c350ee016ba3ded.oggvorbisstr::
+bone_shatter.ogg::AudioStreamOggVorbis::6923211926160436239::1745202799::1788405242::1::::<><><>0<>0<>e570fbed674d8d01df61564f8049638a<>res://.godot/imported/bone_shatter.ogg-2f4f97f17e5ed991041a6d8230e237e4.oggvorbisstr::
+::res://Game Folder/game_assets/Enemies/Tres-2B/Skelazor/Sprites/::1788405245
+appear_anim.png::CompressedTexture2D::351778479284121381::1724157193::1788405243::1::::<><><>0<>0<>888f94678b7e1083450d7dc8cb987445<>res://.godot/imported/appear_anim.png-0f7a5e3cf631c90fb6a71cf75891de4d.ctex::
+charging_anim.png::CompressedTexture2D::6311491539634652670::1724156705::1788405245::1::::<><><>0<>0<>b48d941396cade51b2add61d84fa58df<>res://.godot/imported/charging_anim.png-6611e5173c3822cc4516d4b626b5da46.ctex::
+death_anim.png::CompressedTexture2D::5534124025866607621::1724157193::1788405243::1::::<><><>0<>0<>e2ad0bbdfb23ab79786179009577bd41<>res://.godot/imported/death_anim.png-33da0fd2d5a7dd66b02e1e95ef81fad3.ctex::
+firing_anim.png::CompressedTexture2D::2350704756566229312::1724157557::1788405243::1::::<><><>0<>0<>2463125234b6e3734565689f2f0e9048<>res://.godot/imported/firing_anim.png-c5c5aa001cce871b6833b5a611068e15.ctex::
+idle.png::CompressedTexture2D::6023548955632307939::1724157697::1788405243::1::::<><><>0<>0<>aa347469279c0c7042abeab6393a8bdc<>res://.godot/imported/idle.png-eca0cf48b3d66426069e98d2bb420912.ctex::
+LZR_hit.png::CompressedTexture2D::6555706461272892917::1724584861::1788405245::1::::<><><>0<>0<>c2f22822ad02a72402f583fa4bf6f80a<>res://.godot/imported/LZR_hit.png-e68ba2c525673c61abf517013649c7da.ctex::
+LZR_Spritesheet.png::CompressedTexture2D::394015165011311104::1724156061::1788405243::1::::<><><>0<>0<>f14a4d47b7c944b98f89854499936c87<>res://.godot/imported/LZR_Spritesheet.png-474752b6b12500debc7298259d618511.ctex::
+::res://Game Folder/game_assets/Enemies/Tres-2B/Skeleshot/::1788405254
+enemy.gd::GDScript::3451236219485654216::1777812710::0::1::::<>Enemy<><>0<>0<><>::
+enemy.tscn::PackedScene::7519393977108350041::1788405254::0::1::::<><><>0<>0<><>::uid://bpf2md5esgawm::::res://Game Folder/game_assets/Enemies/Tres-2B/Skeleshot/enemy.gd<>uid://d03ccb6618p5d::::res://Game Folder/game_assets/Enemies/Tres-2B/Skeleshot/Sprites/shoot.png<>uid://cwwn34618nmuy::::res://Game Folder/game_assets/Enemies/Tres-2B/Skeleshot/Sprites/death.png<>uid://c0qsib2m70nmv::::res://Game Folder/game_components/entity_components/State Machine/stagemachine_parent.tscn<>uid://0giwyh1og78x::::res://Game Folder/game_assets/Enemies/Tres-2B/Skeleshot/Sprites/hit.png<>uid://cipnnf6ne6or4::::res://Game Folder/game_assets/Enemies/Tres-2B/Skeleshot/Sprites/spawn.png<>uid://chx8xroi3hih8::::res://Game Folder/game_components/entity_components/Hurtbox/hurtbox.gd<>uid://ucfty02weqo2::::res://Game Folder/game_components/entity_components/Hitbox/hitbox.gd<>uid://bxhw6dnb6fuqm::::res://Game Folder/game_components/entity_components/Hitbox/HitboxData.gd
+Sprite-0001-export.png::CompressedTexture2D::1357047042142471251::1735882129::1788405243::1::::<><><>0<>0<>ee6e61675357a193d14c3922403cac20<>res://.godot/imported/Sprite-0001-export.png-685951694fe1813ab220f1828eec45ee.ctex::
+Sprite-0001.png::CompressedTexture2D::3410350899204530773::1735879331::1788405243::1::::<><><>0<>0<>039631d0598cd673f6aabcfccb976346<>res://.godot/imported/Sprite-0001.png-fa606894080013689b4a5e3359f3387e.ctex::
+::res://Game Folder/game_assets/Enemies/Tres-2B/Skeleshot/Projectile/::1788405255
+skeleshot_projectile.tscn::PackedScene::5014650793999268837::1788405255::0::1::::<><><>0<>0<><>::uid://ucfty02weqo2::::res://Game Folder/game_components/entity_components/Hitbox/hitbox.gd<>uid://bxhw6dnb6fuqm::::res://Game Folder/game_components/entity_components/Hitbox/HitboxData.gd
+::res://Game Folder/game_assets/Enemies/Tres-2B/Skeleshot/Sprites/::1788405245
+death.png::CompressedTexture2D::6363253133439567464::1725934891::1788405245::1::::<><><>0<>0<>5cd3a96c9274d656957a2641468f8a78<>res://.godot/imported/death.png-354a903f684a744f02cb88e38dd527e6.ctex::
+default.png::CompressedTexture2D::5905557690719229422::1719544729::1788405243::1::::<><><>0<>0<>0020c5e51c67f82d0be31875b4cb549e<>res://.godot/imported/default.png-5cd54552ca804c17624a70c8252e24e5.ctex::
+enemydeath1.png::CompressedTexture2D::7232508818623638821::1719544733::1788405245::1::::<><><>0<>0<>f7729af9f23ad32a7015597812217bfa<>res://.godot/imported/enemydeath1.png-2035a84cecbafeb403901c893ebb3257.ctex::
+hit.png::CompressedTexture2D::1767633653457545737::1725888645::1788405245::1::::<><><>0<>0<>0a258fe7003fbf64cca1ece916516cf0<>res://.godot/imported/hit.png-646c6b61cde2d12bb08bbb427a9d106f.ctex::
+shoot.png::CompressedTexture2D::8971910826573974531::1725888206::1788405243::1::::<><><>0<>0<>4f4e1f400c6a93e71120315f42bbb5c3<>res://.godot/imported/shoot.png-0412c1b4da92077cc43c9e2ec697b1ae.ctex::
+spawn.png::CompressedTexture2D::5366130630131014191::1725888206::1788405243::1::::<><><>0<>0<>c31fe56f70639b1637df88df33d20fe9<>res://.godot/imported/spawn.png-635ac6baa81af099a919ed356000fdc6.ctex::
+::res://Game Folder/game_assets/Enemies/Tres-2B/SpiralTurret/::1788405255
+spiral_turret.tscn::PackedScene::8900237813633033725::1788405255::0::1::::<><><>0<>0<><>::uid://bql2an547gxi1::::res://Game Folder/game_components/entity_components/Health/health_component.gd<>uid://x3qocpbfrgay::::res://Game Folder/game_assets/Enemies/Tres-2B/Cosma-Turret/Bullet/bullet_cosma-turret.tscn<>uid://chx8xroi3hih8::::res://Game Folder/game_components/entity_components/Hurtbox/hurtbox.gd
+::res://Game Folder/game_assets/Enemies/Tres-2B/The Faider/::1788405255
+TheFaider.tscn::PackedScene::7977878592209422852::1788405255::0::1::::<><><>0<>0<><>::uid://c0qsib2m70nmv::::res://Game Folder/game_components/entity_components/State Machine/stagemachine_parent.tscn
 ::res://Game Folder/game_assets/Enemies/Tres-2B/The Faider/Sprites/::1722622561
-::res://Game Folder/game_assets/Enemies/Tres-2B/Trishooter/::1745202554
-trishooter.tscn::PackedScene::3237401979539405169::1745202554::0::1::::<><><>0<>0<><>::uid://ucfty02weqo2::::res://Game Folder/game_components/entity_components/Hitbox/hitbox.gd<>uid://d03ccb6618p5d::::res://Game Folder/game_assets/Enemies/Tres-2B/Skeleshot/Sprites/shoot.png<>uid://ibjey310ja1h::::res://Game Folder/game_assets/Enemies/Tres-2B/Trishooter/Sprites/trishooter_hit_45x45.png<>uid://chx8xroi3hih8::::res://Game Folder/game_components/entity_components/Hurtbox/hurtbox.gd<>uid://bql2an547gxi1::::res://Game Folder/game_components/entity_components/Health/health_component.gd<>uid://c0qsib2m70nmv::::res://Game Folder/game_components/entity_components/State Machine/stagemachine_parent.tscn<>uid://cj28c6xg6lr1k::::res://Game Folder/game_assets/Enemies/Tres-2B/Trishooter/Trishooter_Spawning_62x40.png<>uid://vf8atn3god1g::::res://Game Folder/game_components/bullet_pattern_gen/bpm.tscn<>uid://cpyhh3wvmfubr::::res://Game Folder/game_assets/Enemies/Tres-2B/Trishooter/bullet_stuff/bullet_trishooter.tscn
-Trishooter_Spawning_62x40.png::CompressedTexture2D/CompressedTexture2D::5462288055906058506::1728058822::1741377362::1::::<><><>0<>0<>aaa5c6aa0a1fb97c18c98b3b735e883e<>res://.godot/imported/Trishooter_Spawning_62x40.png-fc78286fef057c8b42a2ac9cdb94cade.ctex::
-::res://Game Folder/game_assets/Enemies/Tres-2B/Trishooter/bullet_stuff/::1744214058
-bullet_trishooter.tscn::PackedScene/PackedScene::5875658113170722827::1744214058::0::1::::<><><>0<>0<><>::uid://bsldpa031indc::::res://Game Folder/game_assets/Enemies/Tres-2B/Trishooter/Sprites/trishooter_bullet.png<>uid://ucfty02weqo2::::res://Game Folder/game_components/entity_components/Hitbox/hitbox.gd
-::res://Game Folder/game_assets/Enemies/Tres-2B/Trishooter/Sprites/::1741377367
-bullet2.png::CompressedTexture2D/CompressedTexture2D::7142891864421072143::1722577039::1741377362::1::::<><><>0<>0<>2d52a0b0511435252f676aac1df41047<>res://.godot/imported/bullet2.png-fd83f166010961d9f9d23e9d727ee9c6.ctex::
-trishooter.png::CompressedTexture2D/CompressedTexture2D::149570835568178826::1724860067::1741377365::1::::<><><>0<>0<>20d1417ec045742565f534714baf894e<>res://.godot/imported/trishooter.png-072b3082ad8b754e4ed886d94c694c94.ctex::
-trishooter_bullet.png::CompressedTexture2D/CompressedTexture2D::3672737002286590908::1724935944::1741377362::1::::<><><>0<>0<>90907d1ce2381b6136a61030bc82eb29<>res://.godot/imported/trishooter_bullet.png-155bde7b6cccf29a4e827838099464f5.ctex::
-trishooter_explode.png::CompressedTexture2D/CompressedTexture2D::3702566625524592354::1724937680::1741377367::1::::<><><>0<>0<>e96ba751f28fd5695fa557b90f56829d<>res://.godot/imported/trishooter_explode.png-1cd2086d0bd8c2e3fd8a8e55dd6d3568.ctex::
-trishooter_hit.png::CompressedTexture2D/CompressedTexture2D::6023690053902652272::1724934332::1741377364::1::::<><><>0<>0<>83e2329e59bb6a2bf864d85e152e2ed7<>res://.godot/imported/trishooter_hit.png-38dd8cf1ade5e6de138b673df0c59753.ctex::
-trishooter_hit_45x45.png::CompressedTexture2D/CompressedTexture2D::564130027998847763::1728065678::1741377362::1::::<><><>0<>0<>e2b0f7b25884bb5cc586446ebb6d6437<>res://.godot/imported/trishooter_hit_45x45.png-5fab4e225d30e40fc76d1626974be81c.ctex::
-::res://Game Folder/game_assets/Enemies/Tres-2B/TutorialEnemy/::1741378264
-mousesprite.png::CompressedTexture2D/CompressedTexture2D::3852803366982522307::1735888713::1741377362::1::::<><><>0<>0<>c05fd1a4626cc1a74adc520eded7979a<>res://.godot/imported/mousesprite.png-cda1c67019e0f97f8b343bc7e3a43901.ctex::
-render.png::CompressedTexture2D/CompressedTexture2D::8606999350307170811::1735888526::1741377362::1::::<><><>0<>0<>5b5ecb2c1ad0ad7e870ff763b045b812<>res://.godot/imported/render.png-1fff12715846f542b628ab53d340402a.ctex::
-sPRITE_Z.png::CompressedTexture2D/CompressedTexture2D::6632111689247956655::1735888349::1741377362::1::::<><><>0<>0<>7f2e4e5e2648c47d4ff0460bfd754a91<>res://.godot/imported/sPRITE_Z.png-632be850f2102263e363a13ca8676689.ctex::
-Tutorial_Skeleshot.tscn::PackedScene/PackedScene::3499585663989070041::1741378264::0::1::::<><><>0<>0<><>::uid://cwwn34618nmuy::::res://Game Folder/game_assets/Enemies/Tres-2B/Skeleshot/Sprites/death.png<>uid://duvka0g40rn5t::::res://Game Folder/game_assets/Enemies/Tres-2B/TutorialEnemy/render.png<>uid://bql2an547gxi1::::res://Game Folder/game_components/entity_components/Health/health_component.gd<>uid://3eh6xveo61nc::::res://Game Folder/game_components/entity_components/Knockback/knockback.gd<>uid://chx8xroi3hih8::::res://Game Folder/game_components/entity_components/Hurtbox/hurtbox.gd<>uid://c1qv57ut2bxq2::::res://Game Folder/game_assets/Enemies/Tres-2B/TutorialEnemy/sPRITE_Z.png<>uid://tlmmpxt51c48::::res://Game Folder/game_assets/Enemies/Tres-2B/Skeleshot/Sprite-0001-export.png<>uid://bu5ldxqsy0p1l::::res://Game Folder/game_assets/Enemies/Tres-2B/TutorialEnemy/mousesprite.png
-::res://Game Folder/game_assets/Menus/::1743795848
-::res://Game Folder/game_assets/Menus/IntroCine/::1745195000
-bg.png::CompressedTexture2D/CompressedTexture2D::530990573010513372::1743726657::1743726659::1::::<><><>0<>0<>2daa7c83a36281c1b7246a645cb4db8a<>res://.godot/imported/bg.png-cc9a6521645b538f778240992cefc4a4.ctex::
-intro_cine.tscn::PackedScene/PackedScene::5725440982744966108::1745195000::0::1::::<><><>0<>0<><>::uid://b1rbffoke0vnr::::res://Game Folder/game_assets/Menus/Themes/MenuUI_Theme.tres
-::res://Game Folder/game_assets/Menus/MainMenu/::1727460258
-::res://Game Folder/game_assets/Menus/MainMenu/BASE/::1745202554
+::res://Game Folder/game_assets/Enemies/Tres-2B/Trishooter/::1788405255
+trishooter.tscn::PackedScene::3237401979539405169::1788405255::0::1::::<><><>0<>0<><>::uid://ucfty02weqo2::::res://Game Folder/game_components/entity_components/Hitbox/hitbox.gd<>uid://d03ccb6618p5d::::res://Game Folder/game_assets/Enemies/Tres-2B/Skeleshot/Sprites/shoot.png<>uid://ibjey310ja1h::::res://Game Folder/game_assets/Enemies/Tres-2B/Trishooter/Sprites/trishooter_hit_45x45.png<>uid://chx8xroi3hih8::::res://Game Folder/game_components/entity_components/Hurtbox/hurtbox.gd<>uid://bql2an547gxi1::::res://Game Folder/game_components/entity_components/Health/health_component.gd<>uid://c0qsib2m70nmv::::res://Game Folder/game_components/entity_components/State Machine/stagemachine_parent.tscn<>uid://cj28c6xg6lr1k::::res://Game Folder/game_assets/Enemies/Tres-2B/Trishooter/Trishooter_Spawning_62x40.png<>uid://vf8atn3god1g::::res://Game Folder/game_components/bullet_pattern_gen/bpm.tscn<>uid://cpyhh3wvmfubr::::res://Game Folder/game_assets/Enemies/Tres-2B/Trishooter/bullet_stuff/bullet_trishooter.tscn
+Trishooter_Spawning_62x40.png::CompressedTexture2D::5462288055906058506::1728058822::1788405243::1::::<><><>0<>0<>37df44470a96c678943cf0287b4ff70a<>res://.godot/imported/Trishooter_Spawning_62x40.png-fc78286fef057c8b42a2ac9cdb94cade.ctex::
+::res://Game Folder/game_assets/Enemies/Tres-2B/Trishooter/bullet_stuff/::1788405256
+bullet_trishooter.tscn::PackedScene::5875658113170722827::1788405256::0::1::::<><><>0<>0<><>::uid://bsldpa031indc::::res://Game Folder/game_assets/Enemies/Tres-2B/Trishooter/Sprites/trishooter_bullet.png<>uid://ucfty02weqo2::::res://Game Folder/game_components/entity_components/Hitbox/hitbox.gd
+::res://Game Folder/game_assets/Enemies/Tres-2B/Trishooter/Sprites/::1788405247
+bullet2.png::CompressedTexture2D::7142891864421072143::1722577039::1788405242::1::::<><><>0<>0<>adecf51a4e6bf0b0675bb273bd8702b0<>res://.godot/imported/bullet2.png-fd83f166010961d9f9d23e9d727ee9c6.ctex::
+trishooter.png::CompressedTexture2D::149570835568178826::1724860067::1788405245::1::::<><><>0<>0<>766e1c11f1b723543ac13f8cf3a8139c<>res://.godot/imported/trishooter.png-072b3082ad8b754e4ed886d94c694c94.ctex::
+trishooter_bullet.png::CompressedTexture2D::3672737002286590908::1724935944::1788405242::1::::<><><>0<>0<>126d4286917be209421dde6082f3f8d9<>res://.godot/imported/trishooter_bullet.png-155bde7b6cccf29a4e827838099464f5.ctex::
+trishooter_explode.png::CompressedTexture2D::3702566625524592354::1724937680::1788405247::1::::<><><>0<>0<>2ce80d0be560619e80c79c71535c03ff<>res://.godot/imported/trishooter_explode.png-1cd2086d0bd8c2e3fd8a8e55dd6d3568.ctex::
+trishooter_hit.png::CompressedTexture2D::6023690053902652272::1724934332::1788405245::1::::<><><>0<>0<>542af1391336a296b32d939dbdbba8e0<>res://.godot/imported/trishooter_hit.png-38dd8cf1ade5e6de138b673df0c59753.ctex::
+trishooter_hit_45x45.png::CompressedTexture2D::564130027998847763::1728065678::1788405242::1::::<><><>0<>0<>4e6d41f639d8bd0d21ae52fc2ba1b990<>res://.godot/imported/trishooter_hit_45x45.png-5fab4e225d30e40fc76d1626974be81c.ctex::
+::res://Game Folder/game_assets/Enemies/Tres-2B/TutorialEnemy/::1788405256
+mousesprite.png::CompressedTexture2D::3852803366982522307::1735888713::1788405242::1::::<><><>0<>0<>ca84cf8344a09b3c71fcf5200ed9703b<>res://.godot/imported/mousesprite.png-cda1c67019e0f97f8b343bc7e3a43901.ctex::
+render.png::CompressedTexture2D::8606999350307170811::1735888526::1788405243::1::::<><><>0<>0<>1c993e4fbcfda7cf77533dad0f540de3<>res://.godot/imported/render.png-1fff12715846f542b628ab53d340402a.ctex::
+sPRITE_Z.png::CompressedTexture2D::6632111689247956655::1735888349::1788405242::1::::<><><>0<>0<>c686f99b7a345e08421245e41599e463<>res://.godot/imported/sPRITE_Z.png-632be850f2102263e363a13ca8676689.ctex::
+Tutorial_Skeleshot.tscn::PackedScene::3499585663989070041::1788405256::0::1::::<><><>0<>0<><>::uid://cwwn34618nmuy::::res://Game Folder/game_assets/Enemies/Tres-2B/Skeleshot/Sprites/death.png<>uid://duvka0g40rn5t::::res://Game Folder/game_assets/Enemies/Tres-2B/TutorialEnemy/render.png<>uid://bql2an547gxi1::::res://Game Folder/game_components/entity_components/Health/health_component.gd<>uid://3eh6xveo61nc::::res://Game Folder/game_components/entity_components/Knockback/knockback.gd<>uid://chx8xroi3hih8::::res://Game Folder/game_components/entity_components/Hurtbox/hurtbox.gd<>uid://c1qv57ut2bxq2::::res://Game Folder/game_assets/Enemies/Tres-2B/TutorialEnemy/sPRITE_Z.png<>uid://tlmmpxt51c48::::res://Game Folder/game_assets/Enemies/Tres-2B/Skeleshot/Sprite-0001-export.png<>uid://bu5ldxqsy0p1l::::res://Game Folder/game_assets/Enemies/Tres-2B/TutorialEnemy/mousesprite.png
+::res://Game Folder/game_assets/Menus/::1789080122
+ester.mp3::AudioStreamMP3::6091982132940565054::1775436147::1788405242::1::::<><><>0<>0<>638d191f0dbedd92301ec099a796ef6e<>res://.godot/imported/ester.mp3-e0f40c2172f808649dab49864a8d5689.mp3str::
+::res://Game Folder/game_assets/Menus/MainMenu/::1759233487
+::res://Game Folder/game_assets/Menus/MainMenu/BASE/::1789077332
+babystarbreakerbullet.tscn::PackedScene::348535316934231830::1788405257::0::1::::<><><>0<>0<><>::
 fading_image.gd::GDScript/GDScript::1594911224616601493::1743727948::0::1::::<>ColorRect<><>0<>0<><>::
-mainmenu.tscn::PackedScene::7093917243326044909::1745202554::0::1::::<><><>0<>0<><>::uid://c0qsib2m70nmv::::res://Game Folder/game_components/entity_components/State Machine/stagemachine_parent.tscn<>uid://fs5p06uv4ecd::::res://Game Folder/game_assets/Menus/MainMenu/BASE/Textures/bg.png<>uid://b1rbffoke0vnr::::res://Game Folder/game_assets/Menus/Themes/MenuUI_Theme.tres<>uid://cs6s2641cjjdq::::res://Game Folder/game_assets/Menus/MainMenu/Sprites/title.png
-MainMenu_Starbreaker.wav::AudioStreamWAV/AudioStreamWAV::4114863137900323528::1727456939::1741377367::1::::<><><>0<>0<>0a2870bb67f0e416091fe9e40b9d3064<>res://.godot/imported/MainMenu_Starbreaker.wav-c26976c807bca82ed34409bc03066f2f.sample::
-starbreaker - menu (chillin).mp3::AudioStreamMP3/AudioStreamMP3::316629612463601040::1735800565::1741377362::1::::<><><>0<>0<>430895d0dd04e83f1d8bee334a2c0cc3<>res://.godot/imported/starbreaker - menu (chillin).mp3-4e51e70cf10efaa326859e904781abfa.mp3str::
-::res://Game Folder/game_assets/Menus/MainMenu/BASE/Textures/::1743808375
-bg.png::CompressedTexture2D/CompressedTexture2D::389952676365411791::1743808374::1743808375::1::::<><><>0<>0<>e3cb900d67b62b16910d194696728bfe<>res://.godot/imported/bg.png-b868984b3f533efd93ea5ef24912c68b.ctex::
-::res://Game Folder/game_assets/Menus/MainMenu/GameOver/::1727460250
-::res://Game Folder/game_assets/Menus/MainMenu/GameOver/BASE/::1744819169
+MainMenu_Starbreaker.wav::AudioStreamWAV::4114863137900323528::1727456939::1788405248::1::::<><><>0<>0<>0a2870bb67f0e416091fe9e40b9d3064<>res://.godot/imported/MainMenu_Starbreaker.wav-c26976c807bca82ed34409bc03066f2f.sample::
+menu_astroid.tscn::PackedScene::716903882102145175::1788405259::0::1::::<><><>0<>0<><>::
+starbreaker - menu (chillin).mp3::AudioStreamMP3::316629612463601040::1735800565::1788405242::1::::<><><>0<>0<>430895d0dd04e83f1d8bee334a2c0cc3<>res://.godot/imported/starbreaker - menu (chillin).mp3-4e51e70cf10efaa326859e904781abfa.mp3str::
+::res://Game Folder/game_assets/Menus/MainMenu/BASE/Textures/::1788405243
+bg.png::CompressedTexture2D::389952676365411791::1743808374::1788405243::1::::<><><>0<>0<>354c0830f11db9ec412864024215ff8e<>res://.godot/imported/bg.png-b868984b3f533efd93ea5ef24912c68b.ctex::
+::res://Game Folder/game_assets/Menus/MainMenu/GameOver/::1759233487
+::res://Game Folder/game_assets/Menus/MainMenu/GameOver/BASE/::1788405259
 final_score.gd::GDScript/GDScript::5188679916097880324::1727475169::0::1::::<>RichTextLabel<><>0<>0<><>::
-GameOver.tscn::PackedScene/PackedScene::6733259392170002792::1744819169::0::1::::<><><>0<>0<><>::uid://b1rbffoke0vnr::::res://Game Folder/game_assets/Menus/Themes/MenuUI_Theme.tres<>uid://cem4aaklv0lae::::res://Game Folder/game_assets/Menus/MainMenu/GameOver/BASE/starbreaker - game over.mp3<>uid://cf6o2g72ifmy3::::res://Game Folder/game_assets/Menus/MainMenu/GameOver/BASE/final_score.gd<>uid://djpcqt67fwitc::::res://Game Folder/game_assets/Menus/MainMenu/GameOver/BASE/Starbreaker - Stage Clear.wav<>uid://cpqwt7n2r0v1m::::res://Game Folder/game_assets/Menus/Themes/TutorialDialogue/Pixeloid/ImpactFont.ttf
-starbreaker - game over.mp3::AudioStreamMP3/AudioStreamMP3::5080130083754168616::1734967429::1741377362::1::::<><><>0<>0<>9ffe7198cae2ee1fc897f93f9ee76d38<>res://.godot/imported/starbreaker - game over.mp3-5a9e3a47c74e2f15731412ee9b63a000.mp3str::
-Starbreaker - Stage Clear.wav::AudioStreamWAV/AudioStreamWAV::7822078364114581992::1729879242::1741377367::1::::<><><>0<>0<>f3e4274b6cf75765f9e5e97e1b4cf931<>res://.godot/imported/Starbreaker - Stage Clear.wav-d0545d7ffcde64a73a2bbd68a0070d45.sample::
-::res://Game Folder/game_assets/Menus/MainMenu/Sprites/::1742216307
-title.png::CompressedTexture2D/CompressedTexture2D::6101379059759407106::1730410005::1741377362::1::::<><><>0<>0<>46c511bbe45441679d7cc80dd2414f4f<>res://.godot/imported/title.png-6fb8723b05d1f456442af9cf8c02e497.ctex::
-Tres2b Melody.mp3::AudioStreamMP3/AudioStreamMP3::2722579358265946205::1742216307::1742216307::1::::<><><>0<>0<>14e74fb1ef0836bcb39667feb21cb8e5<>res://.godot/imported/Tres2b Melody.mp3-87a867485a8cac963b71a9cf339b586b.mp3str::
-::res://Game Folder/game_assets/Menus/SFX/::1725589683
-::res://Game Folder/game_assets/Menus/SFX/buttons/::1741377362
-block.ogg::AudioStreamOggVorbis/AudioStreamOggVorbis::6158974698566419593::1725283578::1741377362::1::::<><><>0<>0<>a5b7502740f368bd517bedac026c9338<>res://.godot/imported/block.ogg-052802984ff4e33525c9c224c3a48357.oggvorbisstr::
-cancel.ogg::AudioStreamOggVorbis/AudioStreamOggVorbis::8158406265757160202::1725283578::1741377362::1::::<><><>0<>0<>308e08f2bc4b3f7ab00a01989f346f39<>res://.godot/imported/cancel.ogg-8b10371b27ea141f06e40c7ba949202d.oggvorbisstr::
-click_on.ogg::AudioStreamOggVorbis/AudioStreamOggVorbis::3630020365415395262::1725283578::1741377362::1::::<><><>0<>0<>d547da0c6758d903227dc44f823dd029<>res://.godot/imported/click_on.ogg-9064f51533e03a9317dcef7eab917d49.oggvorbisstr::
-hoverover.ogg::AudioStreamOggVorbis/AudioStreamOggVorbis::588485280443997063::1725283578::1741377362::1::::<><><>0<>0<>09e430637b346dad1d54909c6c2f9e7f<>res://.godot/imported/hoverover.ogg-3af9b0083aaeed9e261b61331f71f91d.oggvorbisstr::
-unlock.ogg::AudioStreamOggVorbis/AudioStreamOggVorbis::3021027374024685545::1725283578::1741377362::1::::<><><>0<>0<>5323d705a39f98f65fd25ad571a3a279<>res://.godot/imported/unlock.ogg-a777e8e77b572fe3a162b4df8c4947a8.oggvorbisstr::
-::res://Game Folder/game_assets/Menus/StageSelect/::1742216299
-::res://Game Folder/game_assets/Menus/StageSelect/Base/::1742217224
-stage_select.tscn::PackedScene/PackedScene::7459822309676555579::1742217224::0::1::::<><><>0<>0<><>::uid://b1rbffoke0vnr::::res://Game Folder/game_assets/Menus/Themes/MenuUI_Theme.tres<>uid://cb7ckkc703no7::::res://Game Folder/game_components/button_component/global_button.gd<>uid://wge4fqipu3wj::::res://Game Folder/game_assets/Menus/StageSelect/Music/Tres2b Melody.mp3
-::res://Game Folder/game_assets/Menus/StageSelect/Music/::1742216329
-Tres2b Melody.mp3::AudioStreamMP3/AudioStreamMP3::1556835770273347957::1742216321::1742216329::1::::<><><>0<>0<>16170c88207f2d65d5eaaadc2185fbf7<>res://.godot/imported/Tres2b Melody.mp3-4fa0e5ec07b76ded5e4451d47be6bb70.mp3str::
-::res://Game Folder/game_assets/Menus/Themes/::1745161874
-MenuUI_Theme.tres::Theme/Theme::4246494970767969639::1745161874::0::1::::<><><>0<>0<><>::uid://tqmtgudiu7pk::::res://Game Folder/game_assets/Menus/Themes/TutorialDialogue/Pixeloid/UIFont.ttf
-Sprite-0002.png::CompressedTexture2D/CompressedTexture2D::6572765847266199103::1721828434::1741377362::1::::<><><>0<>0<>b9fe7ac072dae8989a8dd4f2c3da091f<>res://.godot/imported/Sprite-0002.png-26472ab1511d9358d890ae49c35110d3.ctex::
-::res://Game Folder/game_assets/Menus/Themes/TutorialDialogue/::1735753847
-::res://Game Folder/game_assets/Menus/Themes/TutorialDialogue/Pixeloid/::1741377362
-ImpactFont.ttf::FontFile/FontFile::5860075472026843468::1735754512::1741377362::1::::<><><>0<>0<>a4f72ff54553b914caeacc9bdc9006ab<>res://.godot/imported/ImpactFont.ttf-3cfd2c89ba08a4818910a1a8384232c1.fontdata::
-PixeloidMono-d94EV.ttf::FontFile/FontFile::3759690944337528605::1721823214::1741377362::1::::<><><>0<>0<>5485f2a581aaa2343a8fef5aac2957d2<>res://.godot/imported/PixeloidMono-d94EV.ttf-586c03292f3d94b8a7815a52b7ee5444.fontdata::
-PixeloidSans-mLxMm.ttf::FontFile/FontFile::1408916164217491923::1721823214::1741377362::1::::<><><>0<>0<>4f45272531795febc816269b0049c840<>res://.godot/imported/PixeloidSans-mLxMm.ttf-ccf16b72876798976108fe16ae8d2167.fontdata::
-PixeloidSansBold-PKnYd.ttf::FontFile/FontFile::5770964443849344321::1721823214::1741377362::1::::<><><>0<>0<>3fe1eca4d761787eedd30a35660aca39<>res://.godot/imported/PixeloidSansBold-PKnYd.ttf-9970b18128a44aca6fcf0f4310987d4d.fontdata::
-Placeholder.ttf::FontFile/FontFile::6469239726156746963::1735754073::1741377362::1::::<><><>0<>0<>7490d628b9df8a39aa2cda0c24cc0508<>res://.godot/imported/Placeholder.ttf-ef24b15297945ed29bb427997b587465.fontdata::
-UIFont.ttf::FontFile/FontFile::1367380953368972040::1735754574::1741377362::1::::<><><>0<>0<>daab60d269d7b17fa5a8d13b2e647a25<>res://.godot/imported/UIFont.ttf-f2cb20699f77c3b6b24374c660ca2f6f.fontdata::
-::res://Game Folder/game_assets/Player/::1745165875
-::res://Game Folder/game_assets/Player/Crosshair/::1741377362
-crosshair tile-export.png::CompressedTexture2D/CompressedTexture2D::5095866322228207783::1737557605::1741377362::1::::<><><>0<>0<>f6cacf467a440ccd2f4af37cfc33f0d1<>res://.godot/imported/crosshair tile-export.png-3c9398dc4d78e314eff068eb748230be.ctex::
-crosshair tile.png::CompressedTexture2D/CompressedTexture2D::3640913246783203926::1737557104::1741377362::1::::<><><>0<>0<>5d0223a280be84b82db237ab8357980b<>res://.godot/imported/crosshair tile.png-d38de9815db1601da4a99b9640048840.ctex::
-Crosshair.gd::GDScript/GDScript::5721073135350947797::1737557465::0::1::::<>Sprite2D<><>0<>0<><>::
-Crosshair.png::CompressedTexture2D/CompressedTexture2D::52023612921914357::1737476224::1741377362::1::::<><><>0<>0<>2f6be7098769e83c9a5121d4d13b05b5<>res://.godot/imported/Crosshair.png-17ee408e7dbff2c4dd20b1b57fa92ea1.ctex::
-extra_air.png::CompressedTexture2D/CompressedTexture2D::8324862512256017961::1737477134::1741377362::1::::<><><>0<>0<>df413daff82f498b6ae62462e01b5a25<>res://.godot/imported/extra_air.png-f3e34c4d071aac3eb6f4ed985b664152.ctex::
-line.png::CompressedTexture2D/CompressedTexture2D::1470550278772896153::1737477682::1741377362::1::::<><><>0<>0<>2a4605d6c583d60bbf55a1e009385253<>res://.godot/imported/line.png-217fb25b054a2f916add0335084e7cbf.ctex::
-::res://Game Folder/game_assets/Player/HUD/::1745202792
-healthbar.tscn::PackedScene/PackedScene::5980223098749007683::1744214058::0::1::::<><><>0<>0<><>::uid://bcc15vut0aln7::::res://Game Folder/game_assets/Player/HUD/hudhp_under.png<>uid://edjqeafbibyh::::res://Game Folder/game_assets/Player/HUD/hudhp_over.png<>uid://byd3r2b08il3x::::res://Game Folder/game_assets/Player/HUD/hudhp_prog.png<>uid://b1rbffoke0vnr::::res://Game Folder/game_assets/Menus/Themes/MenuUI_Theme.tres
-hud.tscn::PackedScene/PackedScene::2128857637718942207::1744214058::0::1::::<><><>0<>0<><>::uid://bm1xlgxrd1oa0::::res://release_ui.tscn<>uid://crg4nvhxx414j::::res://Game Folder/game_assets/Player/HUD/healthbar.tscn<>uid://d4fy5lnqtae8j::::res://Game Folder/game_assets/Player/HUD/scorebar.tscn<>uid://b1rbffoke0vnr::::res://Game Folder/game_assets/Menus/Themes/MenuUI_Theme.tres
-hudhp_over.png::CompressedTexture2D/CompressedTexture2D::287523743773915819::1743799281::1743799281::1::::<><><>0<>0<>231bb61c52520958d37d62e86be7009d<>res://.godot/imported/hudhp_over.png-2bd897e6f774ecae1d32f49421aa32e6.ctex::
-hudhp_prog.png::CompressedTexture2D/CompressedTexture2D::4078877919417472939::1743799281::1743799281::1::::<><><>0<>0<>1fb8d62b53cb066e35ca2de50fc8d20d<>res://.godot/imported/hudhp_prog.png-f1d8d6da52e86e8896c11525d617bd67.ctex::
-hudhp_under.png::CompressedTexture2D/CompressedTexture2D::2532560476889496310::1743799281::1743799281::1::::<><><>0<>0<>a09e3e217669aae17b7d7b920e7281f2<>res://.godot/imported/hudhp_under.png-98164ce1154e9e2e769829ddf69b0fa5.ctex::
-outlinecanvaslayer.gdshader::Shader::1162510161173198893::1745202792::0::1::::<><><>0<>0<><>::
-scorebar.tscn::PackedScene/PackedScene::9206571785587755115::1744214058::0::1::::<><><>0<>0<><>::uid://b1rbffoke0vnr::::res://Game Folder/game_assets/Menus/Themes/MenuUI_Theme.tres
-::res://Game Folder/game_assets/Player/Main/::1745202554
-Player.gd::GDScript/GDScript::2952406344344079040::1745200430::0::1::::Player<>Entity<><>0<>0<><>::
-Player.tscn::PackedScene::7834081089807760385::1745202554::0::1::::<><><>0<>0<><>::uid://bicfx3rt2dc3y::::res://Game Folder/game_assets/Player/Main/Player.gd<>uid://0g26oshcb22::::res://Game Folder/game_assets/Player/Crosshair/Crosshair.png<>uid://bql2an547gxi1::::res://Game Folder/game_components/entity_components/Health/health_component.gd<>uid://dquvjfksile86::::res://Game Folder/game_assets/Player/Crosshair/extra_air.png<>uid://3eh6xveo61nc::::res://Game Folder/game_components/entity_components/Knockback/knockback.gd<>uid://ceuqf56q32fjj::::res://Game Folder/game_assets/Player/Crosshair/crosshair tile-export.png<>uid://dkg2wqmgi3s02::::res://Game Folder/game_assets/Player/Sprites/starbreaker_death_128x128.png<>uid://btqhqcn4wj5v7::::res://Game Folder/game_assets/Player/Sprites/starbreaker_hit.png<>uid://cnrlid6cwjxj6::::res://Game Folder/game_assets/Player/Crosshair/Crosshair.gd<>uid://bc2c5788m7sua::::res://Game Folder/game_assets/Player/Sprites/starbreaker.png<>uid://2vucydg8ubg1::::res://Game Folder/game_assets/Player/Sprites/starbreaker_utility_recharge.png<>uid://deqlsf3ha0ly2::::res://Game Folder/game_assets/Player/Weapons/combo_system.tscn<>uid://c7b1r3nn8qhhg::::res://Game Folder/game_assets/Player/SFX/Hits/normal_hit.wav<>uid://dopt1osie47ud::::res://Game Folder/game_assets/Player/SFX/Hits/death.wav
-::res://Game Folder/game_assets/Player/SFX/::1745197305
-::res://Game Folder/game_assets/Player/SFX/Hits/::1745197311
-death.wav::AudioStreamWAV/AudioStreamWAV::8174072345330131027::1745197293::1745197311::1::::<><><>0<>0<>ba3108d1b22ac6ea34dfdadb4be64734<>res://.godot/imported/death.wav-4334371cddc5ccde5ac7609e02bb9eab.sample::
-normal_hit.wav::AudioStreamWAV/AudioStreamWAV::7022559233237267712::1730296943::1741377367::1::::<><><>0<>0<>6159f5b36d22f79ad5c79222c986d201<>res://.godot/imported/normal_hit.wav-f338a1e112fbaff7a359dc37e4b0a52f.sample::
-refunded.wav::AudioStreamWAV/AudioStreamWAV::5684221103414289515::1745166372::1745166372::1::::<><><>0<>0<>5d2988f20b9640d982e0a13e13720cfe<>res://.godot/imported/refunded.wav-f20cc3faae824c8d684db1b34839aa9c.sample::
-::res://Game Folder/game_assets/Player/Sprites/::1745199357
-Player.png::CompressedTexture2D/CompressedTexture2D::1088658402405964236::1726411513::1741377362::1::::<><><>0<>0<>e8a7a8000582b283ecec4ca49ae74a67<>res://.godot/imported/Player.png-0a36de01259f2f036169eee8a9cf7376.ctex::
-playerdeath.png::CompressedTexture2D/CompressedTexture2D::1624806319251832658::1719544728::1741377366::1::::<><><>0<>0<>9049ba9b1ce16a9aaf2bd35620c2ec80<>res://.godot/imported/playerdeath.png-9ac6bbe38d58979a93fe919691e79c97.ctex::
-playerhitsprite.png::CompressedTexture2D/CompressedTexture2D::3633299456444325388::1719544725::1741377364::1::::<><><>0<>0<>8385abd5d58f0de2ddfdebabd66382e2<>res://.godot/imported/playerhitsprite.png-4be8fb99f2784369241c6eaafef27d83.ctex::
-ship_ph.png::CompressedTexture2D/CompressedTexture2D::4463510908020048477::1719544728::1741377362::1::::<><><>0<>0<>be205fc3218972ab64b76c1169fa205c<>res://.godot/imported/ship_ph.png-05d25299e6a8cc8311caaa7d433e417c.ctex::
-starbreaker.png::CompressedTexture2D/CompressedTexture2D::2582713311373894160::1745164021::1745165315::1::::<><><>0<>0<>695a605f1389d00361122dd9fdb768f3<>res://.godot/imported/starbreaker.png-2e150ea02e785dd8134f769bb6e2ae29.ctex::
-Starbreaker_20xSprite.png::CompressedTexture2D/CompressedTexture2D::3572733074728478213::1730403231::1741377362::1::::<><><>0<>0<>18a58641ffce8eb8582a14376d44a44d<>res://.godot/imported/Starbreaker_20xSprite.png-e59d4365f202ea53311c4ae053e6802a.ctex::
-starbreaker_death_128x128.png::CompressedTexture2D/CompressedTexture2D::7875216259450268629::1745199356::1745199357::1::::<><><>0<>0<>ce6e25a2f18cbabe2de3ffde34c73c78<>res://.godot/imported/starbreaker_death_128x128.png-2c711a10ffa7d5980591487ec9602e42.ctex::
-Starbreaker_death_512x512.png::CompressedTexture2D/CompressedTexture2D::1592890668424423105::1730407859::1741377367::1::::<><><>0<>0<>6cbd5a20b740580c731e2999f256445f<>res://.godot/imported/Starbreaker_death_512x512.png-c6871e9af012487a255d856a6ceb393b.ctex::
-starbreaker_hit.png::CompressedTexture2D/CompressedTexture2D::3753492475009089898::1745196170::1745196171::1::::<><><>0<>0<>a37b2dd682c2b3e0c205086e386715bb<>res://.godot/imported/starbreaker_hit.png-f9e16c48c9071c312e8823304c96eb3c.ctex::
-Starbreaker_hit_42x37_42x37.png::CompressedTexture2D/CompressedTexture2D::2809441899750674432::1730403890::1741377362::1::::<><><>0<>0<>11721f8857e143066f2406dfec6e191d<>res://.godot/imported/Starbreaker_hit_42x37_42x37.png-14edec296199a4cc6701a395c2788eaf.ctex::
-starbreaker_utility_recharge.png::CompressedTexture2D/CompressedTexture2D::1939669888017584538::1745165235::1745165310::1::::<><><>0<>0<>d020107a76f426e40d4c40c39b11ce1f<>res://.godot/imported/starbreaker_utility_recharge.png-5bd70d377c798dff9e5e88b63a5c0361.ctex::
-::res://Game Folder/game_assets/Player/VFX/::1729798484
-::res://Game Folder/game_assets/Player/VFX/Action Particles/::1741377388
-Hit Particles.tscn::PackedScene/PackedScene::7966395770856410313::1741377388::0::1::::<><><>0<>0<><>::
-::res://Game Folder/game_assets/Player/VFX/Movement Particles/::1741378196
-movement-particles.png::CompressedTexture2D/CompressedTexture2D::605195954677465049::1729605305::1741377362::1::::<><><>0<>0<>9357bad381bf9445d555ad36ad6aad42<>res://.godot/imported/movement-particles.png-31b5e1028270a975d65023d1c108361e.ctex::
-mvt_particles.tscn::PackedScene/PackedScene::390482688370336640::1741378196::0::1::::<><><>0<>0<><>::uid://ivfqvh25uukv::::res://Game Folder/game_assets/Player/VFX/Movement Particles/movement-particles.png
-::res://Game Folder/game_assets/Player/Weapons/::1744947274
-combo_system.tscn::PackedScene/PackedScene::7473747807097426847::1744947274::0::1::::<><><>0<>0<><>::
-::res://Game Folder/game_assets/Player/Weapons/firing_modes/::1741610395
-::res://Game Folder/game_assets/Player/Weapons/firing_modes/Base/::1741384904
-firingmode_baseclass.gd::GDScript/GDScript::1581062383005127382::1741384904::0::1::::Weapon<>Node<><>0<>0<><>::
-::res://Game Folder/game_assets/Player/Weapons/firing_modes/Shotgun/::1745038569
-Shotgun.tscn::PackedScene/PackedScene::6269031418506671499::1745038569::0::1::::<><><>0<>0<><>::uid://bxrhsgdwv711w::::res://Game Folder/game_assets/Player/Weapons/firing_modes/Spray/Audio/sp_firing.wav
-ShotgunBullet.tscn::PackedScene/PackedScene::5854202304339983629::1741453155::0::1::::<><><>0<>0<><>::uid://bxu4vpyreyq67::::res://Game Folder/game_assets/Player/Weapons/firing_modes/Spray/Sprites/bullet1.png<>uid://cb4ed35sin5rx::::res://Game Folder/game_assets/Player/Weapons/firing_modes/Spray/Sprites/bullet_trails.png<>uid://ucfty02weqo2::::res://Game Folder/game_components/entity_components/Hitbox/hitbox.gd
-::res://Game Folder/game_assets/Player/Weapons/firing_modes/Slash/::1744947319
-Slash.tscn::PackedScene/PackedScene::9092840253753208475::1744947319::0::1::::<><><>0<>0<><>::uid://c0qsib2m70nmv::::res://Game Folder/game_components/entity_components/State Machine/stagemachine_parent.tscn<>uid://ucfty02weqo2::::res://Game Folder/game_components/entity_components/Hitbox/hitbox.gd
-::res://Game Folder/game_assets/Player/Weapons/firing_modes/Spray/::1741378925
-::res://Game Folder/game_assets/Player/Weapons/firing_modes/Spray/Audio/::1745163928
-sfx_death.ogg::AudioStreamOggVorbis/AudioStreamOggVorbis::4373879605932557527::1726409414::1741378925::1::::<><><>0<>0<>b71ac1f1c219d411f92a16545ccf52d8<>res://.godot/imported/sfx_death.ogg-de3b8db37e5b1007c111ff64f9b2c7dd.oggvorbisstr::
-sfx_spraysecondary.wav::AudioStreamWAV/AudioStreamWAV::6460427349431796922::1745162158::1745162159::1::::<><><>0<>0<>39adbe346c3f1160f910e51863f4a677<>res://.godot/imported/sfx_spraysecondary.wav-cd58256ea631e6a9f5f5bd41b526836e.sample::
-sp_firing.wav::AudioStreamWAV/AudioStreamWAV::4036315993229960642::1719544726::1741378925::1::::<><><>0<>0<>ae0e82b979e631a237d1a547e02d56e7<>res://.godot/imported/sp_firing.wav-04660003f9f75fd5b94f6962d7c9f0bd.sample::
-sp_hit.ogg::AudioStreamOggVorbis/AudioStreamOggVorbis::105309686268286613::1726326955::1741378925::1::::<><><>0<>0<>e948d36532dadbda93cb8c27726be988<>res://.godot/imported/sp_hit.ogg-b844eb3955065fd7e4f084160317c313.oggvorbisstr::
-::res://Game Folder/game_assets/Player/Weapons/firing_modes/Spray/Base/::1745202554
-bullet_effects.tscn::PackedScene::6275266014769866699::1745202554::0::1::::<><><>0<>0<><>::uid://cb4ed35sin5rx::::res://Game Folder/game_assets/Player/Weapons/firing_modes/Spray/Sprites/bullet_trails.png<>uid://baa1mmpigaqjc::::res://Game Folder/game_assets/Player/Weapons/firing_modes/Spray/Sprites/AttackConnect.png<>uid://brao2bap7hjx::::res://Game Folder/game_assets/Player/Weapons/firing_modes/Spray/Audio/sp_hit.ogg
-player_bullet.tscn::PackedScene::800977888302033377::1745202554::0::1::::<><><>0<>0<><>::uid://cb4ed35sin5rx::::res://Game Folder/game_assets/Player/Weapons/firing_modes/Spray/Sprites/bullet_trails.png<>uid://bxu4vpyreyq67::::res://Game Folder/game_assets/Player/Weapons/firing_modes/Spray/Sprites/bullet1.png<>uid://ucfty02weqo2::::res://Game Folder/game_components/entity_components/Hitbox/hitbox.gd
-secondary_projectile.tscn::PackedScene::4659854295385294921::1745202554::0::1::::<><><>0<>0<><>::uid://ucfty02weqo2::::res://Game Folder/game_components/entity_components/Hitbox/hitbox.gd<>uid://dkqybf3lvwv1e::::res://Game Folder/game_assets/Player/Weapons/firing_modes/Spray/Sprites/Starbreakerbullet.png<>uid://c51y82puqp6vt::::res://Game Folder/game_assets/Player/Weapons/firing_modes/Spray/Sprites/SecondaryFire_explosion.png
-spray_firingmode.tscn::PackedScene::392253197675307225::1745202554::0::1::::<><><>0<>0<><>::uid://bxrhsgdwv711w::::res://Game Folder/game_assets/Player/Weapons/firing_modes/Spray/Audio/sp_firing.wav<>uid://cybqkartw260u::::res://Game Folder/game_assets/Player/Weapons/firing_modes/Spray/Audio/sfx_spraysecondary.wav
-::res://Game Folder/game_assets/Player/Weapons/firing_modes/Spray/Sprites/::1745171803
-AttackConnect.png::CompressedTexture2D/CompressedTexture2D::2388021408855676052::1739683670::1741378925::1::::<><><>0<>0<>c491766af73c25c7cd1ade0f0d604ddb<>res://.godot/imported/AttackConnect.png-a1a67197f694bcd39825c8259e0483f7.ctex::
-bullet1.png::CompressedTexture2D/CompressedTexture2D::4043850762615540254::1719544729::1741378925::1::::<><><>0<>0<>ff48b894c25881d4be1cd863d8c7f559<>res://.godot/imported/bullet1.png-1724f8ee61a5a0d7b72e1ecb43d61fb8.ctex::
-bullet.png::CompressedTexture2D/CompressedTexture2D::5711620140628618201::1719544729::1741378925::1::::<><><>0<>0<>95ceebdcc1c8fe0e2f3acad77fed3a27<>res://.godot/imported/bullet.png-9285aaa0d1a963b281d8f14eec7e6887.ctex::
-bullet_particles.png::CompressedTexture2D/CompressedTexture2D::6039163907217776703::1719544726::1741378925::1::::<><><>0<>0<>a81df793ff6a59a4d90fd9ce42ddfd2d<>res://.godot/imported/bullet_particles.png-e95a319837390de569adfa8963ce93ca.ctex::
-bullet_trails.png::CompressedTexture2D/CompressedTexture2D::4903146909071759609::1739680860::1741378925::1::::<><><>0<>0<>1a4f56caf30beee1f634414715b8505f<>res://.godot/imported/bullet_trails.png-bfff6f986bda07b1581e925679037f81.ctex::
-SecondaryFire_explosion.png::CompressedTexture2D/CompressedTexture2D::6933698079391220625::1745171802::1745171803::1::::<><><>0<>0<>3a727cbf52dbc0b7af1d92dccdfac0e0<>res://.godot/imported/SecondaryFire_explosion.png-b1cf63a9275e2dc664b92764faa68ae7.ctex::
-Starbreakerbullet.png::CompressedTexture2D/CompressedTexture2D::7895639831544900396::1733757542::1741378925::1::::<><><>0<>0<>6d838649b077bb150e6e1c2641e7609b<>res://.godot/imported/Starbreakerbullet.png-797582154e1af3406230ea5ca6fd7252.ctex::
-::res://Game Folder/game_assets/Player/Weapons/utility/::1741388112
-::res://Game Folder/game_assets/Player/Weapons/utility/Shine/::1743858745
-Shine.tscn::PackedScene/PackedScene::8326283311429085603::1743858745::0::1::::<><><>0<>0<><>::uid://c0qsib2m70nmv::::res://Game Folder/game_components/entity_components/State Machine/stagemachine_parent.tscn
-use.mp3::AudioStreamMP3/AudioStreamMP3::7666064442724902426::1727980470::1741388113::1::::<><><>0<>0<>25b955e38ec5d705888bf6ad2e734051<>res://.godot/imported/use.mp3-c33ac3b129fb0cd9b031e2398e534079.mp3str::
-::res://Game Folder/game_assets/Player/Weapons/utility/Zip-Dash/::1745202554
-zipdash.tscn::PackedScene::4133549446741094533::1745202554::0::1::::<><><>0<>0<><>::uid://ucfty02weqo2::::res://Game Folder/game_components/entity_components/Hitbox/hitbox.gd<>uid://c0qsib2m70nmv::::res://Game Folder/game_components/entity_components/State Machine/stagemachine_parent.tscn<>uid://cm8qj5rk6jeit::::res://Game Folder/game_assets/Player/SFX/Hits/refunded.wav
-::res://Game Folder/game_assets/Shaders/::1745202792
-flashshader.gdshader::Shader::4502635920818094822::1745202792::0::1::::<><><>0<>0<><>::
-shockwave.gdshader::Shader::5430885711036843298::1745202792::0::1::::<><><>0<>0<><>::
-::res://Game Folder/game_assets/Stages/::1744210123
-::res://Game Folder/game_assets/Stages/00 - BASE/::1744817940
-base_stage_script.gd::GDScript/GDScript::5614522691724922742::1744817940::0::1::::StageBase<>Node2D<><>0<>0<><>::
-navigation_space.tscn::PackedScene/PackedScene::4963078442958141229::1741377390::0::1::::<><><>0<>0<><>::
-::res://Game Folder/game_assets/Stages/00 - BASE/lvl_manager/::1742045925
-lvl_manager.tscn::PackedScene/PackedScene::5408972284564087034::1742045925::0::1::::<><><>0<>0<><>::
-::res://Game Folder/game_assets/Stages/00 - BASE/lvl_manager/walls/::1741377390
-wall_collisions.tscn::PackedScene/PackedScene::5143526642096431684::1741377390::0::1::::<><><>0<>0<><>::
-::res://Game Folder/game_assets/Stages/01 - Tres-2B/::1745202554
-Tres-2B.tscn::PackedScene::754555426406779066::1745202554::0::1::::<><><>0<>0<><>::uid://dfcd14lp8fxca::::res://Game Folder/game_assets/Stages/01 - Tres-2B/Music/tres2b.mp3<>uid://j8na7wf2jjuj::::res://Game Folder/game_assets/Stages/01 - Tres-2B/Obstacles/pathed_asetroid_belt.tscn<>uid://dfepk5fmqyutd::::res://Game Folder/game_assets/Enemies/Tres-2B/Skeleshot/enemy.tscn<>uid://bpcrg0v37qi1y::::res://Game Folder/game_assets/Stages/01 - Tres-2B/Obstacles/pathed_asetroid_belt_sect2.tscn<>uid://ccyfgaostrrk4::::res://Game Folder/game_assets/Stages/00 - BASE/navigation_space.tscn<>uid://bmehsjqlfnqij::::res://Game Folder/game_assets/Enemies/Tres-2B/Trishooter/trishooter.tscn<>uid://2kuv342uj1hh::::res://Game Folder/game_assets/Enemies/Tres-2B/Skelazor/LZR_enemy.tscn<>uid://bf6somwj76fiy::::res://Game Folder/game_assets/Stages/01 - Tres-2B/Obstacles/asetroid_belt.tscn<>uid://d2k6dxwe5v7l1::::res://Game Folder/game_assets/Enemies/Tres-2B/Cosma-Turret/cosmaturret.tscn<>uid://dy2lu7u6xhhkf::::res://Game Folder/game_assets/Enemies/Tres-2B/SpiralTurret/spiral_turret.tscn<>uid://cs4mtsd6tqfmw::::res://Game Folder/game_components/camera_component/Camera/camera_base.gd<>uid://cx7cxq8yx4ssa::::res://Game Folder/game_assets/Stages/01 - Tres-2B/Boss/Items/HealthBox.tscn<>uid://b2j62op6kxc6c::::res://Game Folder/game_assets/Stages/01 - Tres-2B/Boss/Timothy/TimothyBoss.tscn
-::res://Game Folder/game_assets/Stages/01 - Tres-2B/Boss/::1744299757
-::res://Game Folder/game_assets/Stages/01 - Tres-2B/Boss/Items/::1744643063
-HealthBox.tscn::PackedScene/PackedScene::6453408258910700484::1744643063::0::1::::<><><>0<>0<><>::uid://dwysrbybeu02u::::res://Game Folder/game_assets/Stages/01 - Tres-2B/Boss/Items/placeholder_medkit.png<>uid://ucfty02weqo2::::res://Game Folder/game_components/entity_components/Hitbox/hitbox.gd
-placeholder_medkit.png::CompressedTexture2D/CompressedTexture2D::8754085031229882638::1744210649::1744210649::1::::<><><>0<>0<>b4325079dafbf23a7a3957af2e0b5192<>res://.godot/imported/placeholder_medkit.png-8047380e223a10110ef087ce939e4f35.ctex::
-::res://Game Folder/game_assets/Stages/01 - Tres-2B/Boss/Timothy/::1745195000
-TimothyBoss.tscn::PackedScene/PackedScene::4302030064839443104::1745195000::0::1::::<><><>0<>0<><>::uid://bql2an547gxi1::::res://Game Folder/game_components/entity_components/Health/health_component.gd<>uid://chx8xroi3hih8::::res://Game Folder/game_components/entity_components/Hurtbox/hurtbox.gd<>uid://bgspc6d22nb3e::::res://Game Folder/game_assets/Stages/01 - Tres-2B/Boss/Timothy/Sprites/ph_sprite.png<>uid://8a1bfnc6r587::::res://Game Folder/game_components/shader_components/hitflash_component.gd<>uid://c0qsib2m70nmv::::res://Game Folder/game_components/entity_components/State Machine/stagemachine_parent.tscn<>uid://ucfty02weqo2::::res://Game Folder/game_components/entity_components/Hitbox/hitbox.gd<>uid://bec7dyabqg5qy::::res://Game Folder/game_assets/Stages/01 - Tres-2B/Boss/Timothy/Sprites/mono_fingergun.png<>uid://b2rr1cp8pqyop::::res://Game Folder/game_assets/Stages/01 - Tres-2B/Boss/Timothy/Sprites/boom.png<>uid://3rku5qgtnjbx::::res://Game Folder/game_assets/Stages/01 - Tres-2B/Boss/Timothy/Music/boomsfx.mp3<>uid://8c11pb2aymuv::::res://Game Folder/game_assets/Stages/01 - Tres-2B/Boss/Timothy/Music/starbreaker_boss.wav<>uid://0kio0wlrhq54::::res://Game Folder/game_assets/Stages/01 - Tres-2B/Boss/Timothy/Music/mus_badnote1.wav
-::res://Game Folder/game_assets/Stages/01 - Tres-2B/Boss/Timothy/Bullet/::1745195000
-tim_bullet.tscn::PackedScene/PackedScene::2920015443699985247::1745195000::0::1::::<><><>0<>0<><>::uid://ioxhgod58e5::::res://Game Folder/game_assets/Stages/01 - Tres-2B/Boss/Timothy/Sprites/tim_bullet.png<>uid://ucfty02weqo2::::res://Game Folder/game_components/entity_components/Hitbox/hitbox.gd
-::res://Game Folder/game_assets/Stages/01 - Tres-2B/Boss/Timothy/Music/::1744942306
-boomsfx.mp3::AudioStreamMP3/AudioStreamMP3::2001026530205584821::1744817196::1744817200::1::::<><><>0<>0<>3cfb53bb5ca59d1b906099e138782ecf<>res://.godot/imported/boomsfx.mp3-432e65799145fad8357b88042e34ec8d.mp3str::
-mus_badnote1.wav::AudioStreamWAV/AudioStreamWAV::1775876953140460417::1744942306::1744942306::1::::<><><>0<>0<>06d9b2663e3c9ce3f8534f0da091806e<>res://.godot/imported/mus_badnote1.wav-a59f1c9913202f8036ec52020d2872a0.sample::
-starbreaker_boss.wav::AudioStreamWAV/AudioStreamWAV::2321986458639414477::1744299753::1744473281::1::::<><><>0<>0<>7d470908eae163eba1304014bc7d3bfd<>res://.godot/imported/starbreaker_boss.wav-1c49264469a8125ac1582b6e243c18fb.sample::
-Starbreaker_VsTimothy.wav::AudioStreamWAV/AudioStreamWAV::809291538072825312::1744212533::1744212538::1::::<><><>0<>0<>f6859c0d111b0634c94c7071e38a60e2<>res://.godot/imported/Starbreaker_VsTimothy.wav-f4536e4c2ab09003ba34df25c09b1b9e.sample::
-::res://Game Folder/game_assets/Stages/01 - Tres-2B/Boss/Timothy/Sprites/::1744816292
-boom.png::CompressedTexture2D/CompressedTexture2D::4317692632996386459::1744816291::1744816292::1::::<><><>0<>0<>bbb84ba030f645764de92509ec11a961<>res://.godot/imported/boom.png-0da34c6399785671d8693b1052b3cb8f.ctex::
-mono_fingergun.png::CompressedTexture2D/CompressedTexture2D::2673254375531083008::1744636435::1744636456::1::::<><><>0<>0<>4e495f1eafa16ce8aaf54d5bc84d7adc<>res://.godot/imported/mono_fingergun.png-448c81c061f3cb85187b7e089210d32e.ctex::
-ph_sprite.png::CompressedTexture2D/CompressedTexture2D::2845628505695296376::1744212659::1744212673::1::::<><><>0<>0<>37e95004a317a81741315caf5a949cbc<>res://.godot/imported/ph_sprite.png-cdad85e518bc809bfa74e199f7d52ff9.ctex::
-tim_bullet.png::CompressedTexture2D/CompressedTexture2D::17406510764621194::1744637441::1744637442::1::::<><><>0<>0<>31729d2ec51704fb53b66ac0b40417bd<>res://.godot/imported/tim_bullet.png-cece24a5e6559afe4247286095f55249.ctex::
-::res://Game Folder/game_assets/Stages/01 - Tres-2B/Effects/::1744636448
-backgrounds.tscn::PackedScene/PackedScene::5679241373525866937::1741378196::0::1::::<><><>0<>0<><>::uid://cgmrpphio3w5a::::res://Game Folder/game_assets/Stages/01 - Tres-2B/Sprites/Background/360_F_179077796_P6UNHX6KBpb1hITJSF1gN173qw4GF98U.jpg
-graphics_&_tone.tscn::PackedScene/PackedScene::2890311586008486833::1741377390::0::1::::<><><>0<>0<><>::
-::res://Game Folder/game_assets/Stages/01 - Tres-2B/Music/::1741378149
-tres2b.mp3::AudioStreamMP3/AudioStreamMP3::7514565147293267704::1741377126::1741377362::1::::<><><>0<>0<>a5d20b3ab7190a8fbb7d80f2660216ab<>res://.godot/imported/tres2b.mp3-4e40afa5d4ec75f43110a1bc5f3cbfd7.mp3str::
-::res://Game Folder/game_assets/Stages/01 - Tres-2B/Obstacles/::1744819169
-asetroid.tscn::PackedScene/PackedScene::4725880883526235511::1743866046::0::1::::<><><>0<>0<><>::uid://cqexw4iganr5g::::res://Game Folder/game_assets/Enemies/Tres-2B/Skeleshot/Sprites/default.png<>uid://ucfty02weqo2::::res://Game Folder/game_components/entity_components/Hitbox/hitbox.gd<>uid://chx8xroi3hih8::::res://Game Folder/game_components/entity_components/Hurtbox/hurtbox.gd<>uid://bql2an547gxi1::::res://Game Folder/game_components/entity_components/Health/health_component.gd
-asetroid_belt.tscn::PackedScene/PackedScene::2802479183962385876::1744819169::0::1::::<><><>0<>0<><>::
-pathed_asetroid_belt.tscn::PackedScene/PackedScene::700615094528752877::1743866046::0::1::::<><><>0<>0<><>::
-pathed_asetroid_belt_sect2.tscn::PackedScene/PackedScene::3444426344252405612::1743866046::0::1::::<><><>0<>0<><>::
-::res://Game Folder/game_assets/Stages/01 - Tres-2B/Obstacles/Gas Comets/::1723745262
-::res://Game Folder/game_assets/Stages/01 - Tres-2B/Obstacles/Gas Comets/Base/::1741378208
-Gas Comets.tscn::PackedScene/PackedScene::1359693634918737265::1741378208::0::1::::<><><>0<>0<><>::uid://f37ieuipj0vh::::res://Game Folder/game_components/collision_component/Databox/databox.gd<>uid://fll005ijx1el::::res://Game Folder/game_assets/Stages/01 - Tres-2B/Obstacles/Sprites/comet.png<>uid://dvqrhbjhh7g83::::res://Game Folder/game_assets/Stages/01 - Tres-2B/Obstacles/Sprites/Warn_signs/offscreen_indicator.png<>uid://d1qgp2wevag1o::::res://Game Folder/game_assets/Stages/01 - Tres-2B/Obstacles/Sprites/bone_fragments_spr.png<>uid://q0bg472wrv17::::res://Game Folder/game_assets/Stages/01 - Tres-2B/Obstacles/Sprites/Warn_signs/warn_sign.png
+GameOver.tscn::PackedScene::6733259392170002792::1788405259::0::1::::<><><>0<>0<><>::uid://b1rbffoke0vnr::::res://Game Folder/game_assets/Menus/Themes/MenuUI_Theme.tres<>uid://cem4aaklv0lae::::res://Game Folder/game_assets/Menus/MainMenu/GameOver/BASE/starbreaker - game over.mp3<>uid://cf6o2g72ifmy3::::res://Game Folder/game_assets/Menus/MainMenu/GameOver/BASE/final_score.gd<>uid://djpcqt67fwitc::::res://Game Folder/game_assets/Menus/MainMenu/GameOver/BASE/Starbreaker - Stage Clear.wav<>uid://cpqwt7n2r0v1m::::res://Game Folder/game_assets/Menus/Themes/TutorialDialogue/Pixeloid/ImpactFont.ttf
+starbreaker - game over.mp3::AudioStreamMP3::5080130083754168616::1734967429::1788405242::1::::<><><>0<>0<>9ffe7198cae2ee1fc897f93f9ee76d38<>res://.godot/imported/starbreaker - game over.mp3-5a9e3a47c74e2f15731412ee9b63a000.mp3str::
+Starbreaker - Stage Clear.wav::AudioStreamWAV::7822078364114581992::1729879242::1788405248::1::::<><><>0<>0<>f3e4274b6cf75765f9e5e97e1b4cf931<>res://.godot/imported/Starbreaker - Stage Clear.wav-d0545d7ffcde64a73a2bbd68a0070d45.sample::
+::res://Game Folder/game_assets/Menus/MainMenu/Sprites/::1788405242
+desginstarbreaker.svg::CompressedTexture2D::1990715132992555093::1775312819::1788405242::1::::<><><>0<>0<>215a2c21d8fd82812963ddac58779d3d<>res://.godot/imported/desginstarbreaker.svg-10bab16b15661247a0b9cdfd36544ba1.ctex::
+title.png::CompressedTexture2D::6101379059759407106::1730410005::1788405242::1::::<><><>0<>0<>939d9efc2cbb8e12f12299ac4a81744d<>res://.godot/imported/title.png-6fb8723b05d1f456442af9cf8c02e497.ctex::
+Tres2b Melody.mp3::AudioStreamMP3::2722579358265946205::1742216307::1788405242::1::::<><><>0<>0<>14e74fb1ef0836bcb39667feb21cb8e5<>res://.godot/imported/Tres2b Melody.mp3-87a867485a8cac963b71a9cf339b586b.mp3str::
+::res://Game Folder/game_assets/Menus/SFX/::1759233487
+::res://Game Folder/game_assets/Menus/SFX/buttons/::1788405242
+block.ogg::AudioStreamOggVorbis::6158974698566419593::1725283578::1788405242::1::::<><><>0<>0<>a5b7502740f368bd517bedac026c9338<>res://.godot/imported/block.ogg-052802984ff4e33525c9c224c3a48357.oggvorbisstr::
+cancel.ogg::AudioStreamOggVorbis::8158406265757160202::1725283578::1788405242::1::::<><><>0<>0<>308e08f2bc4b3f7ab00a01989f346f39<>res://.godot/imported/cancel.ogg-8b10371b27ea141f06e40c7ba949202d.oggvorbisstr::
+click_on.ogg::AudioStreamOggVorbis::3630020365415395262::1725283578::1788405242::1::::<><><>0<>0<>d547da0c6758d903227dc44f823dd029<>res://.godot/imported/click_on.ogg-9064f51533e03a9317dcef7eab917d49.oggvorbisstr::
+hoverover.ogg::AudioStreamOggVorbis::588485280443997063::1725283578::1788405242::1::::<><><>0<>0<>09e430637b346dad1d54909c6c2f9e7f<>res://.godot/imported/hoverover.ogg-3af9b0083aaeed9e261b61331f71f91d.oggvorbisstr::
+unlock.ogg::AudioStreamOggVorbis::3021027374024685545::1725283578::1788405242::1::::<><><>0<>0<>5323d705a39f98f65fd25ad571a3a279<>res://.godot/imported/unlock.ogg-a777e8e77b572fe3a162b4df8c4947a8.oggvorbisstr::
+::res://Game Folder/game_assets/Menus/StageSelect/::1759233487
+::res://Game Folder/game_assets/Menus/StageSelect/Base/::1788974896
+stage_select.tscn::PackedScene::7459822309676555579::1788974896::0::1::::<><><>0<>0<><>::
+::res://Game Folder/game_assets/Menus/StageSelect/Music/::1788405242
+Stage Select - Tres-2B.ogg::AudioStreamOggVorbis::7691257333909123251::1775424405::1788405242::1::::<><><>0<>0<>4d0050bf4081d89802194979903e0fd0<>res://.godot/imported/Stage Select - Tres-2B.ogg-cb0ef2407529f211587011861226fb3f.oggvorbisstr::
+Tres2b Melody.mp3::AudioStreamMP3::1556835770273347957::1742216321::1788405242::1::::<><><>0<>0<>16170c88207f2d65d5eaaadc2185fbf7<>res://.godot/imported/Tres2b Melody.mp3-4fa0e5ec07b76ded5e4451d47be6bb70.mp3str::
+::res://Game Folder/game_assets/Menus/Themes/::1789744819
+MenuUI_Theme.tres::Theme::4246494970767969639::1789744819::0::1::::<><><>0<>0<><>::uid://tqmtgudiu7pk::::res://Game Folder/game_assets/Menus/Themes/TutorialDialogue/Pixeloid/UIFont.ttf
+Sprite-0002.png::CompressedTexture2D::6572765847266199103::1721828434::1788405242::1::::<><><>0<>0<>7e6580dbb2f6601729f8f43e1a15cf5c<>res://.godot/imported/Sprite-0002.png-26472ab1511d9358d890ae49c35110d3.ctex::
+::res://Game Folder/game_assets/Menus/Themes/TutorialDialogue/::1759233487
+::res://Game Folder/game_assets/Menus/Themes/TutorialDialogue/Pixeloid/::1788405242
+ImpactFont.ttf::FontFile::5860075472026843468::1735754512::1788405242::1::::<><><>0<>0<>5ecf884731f84e3b4ac438eed9ca5219<>res://.godot/imported/ImpactFont.ttf-3cfd2c89ba08a4818910a1a8384232c1.fontdata::
+PixeloidMono-d94EV.ttf::FontFile::3759690944337528605::1721823214::1788405242::1::::<><><>0<>0<>d2abbf0ae5d9145a600ed58b8864dadb<>res://.godot/imported/PixeloidMono-d94EV.ttf-586c03292f3d94b8a7815a52b7ee5444.fontdata::
+PixeloidSans-mLxMm.ttf::FontFile::1408916164217491923::1721823214::1788405242::1::::<><><>0<>0<>a70bba57aab77d73fd64b765648c21b8<>res://.godot/imported/PixeloidSans-mLxMm.ttf-ccf16b72876798976108fe16ae8d2167.fontdata::
+PixeloidSansBold-PKnYd.ttf::FontFile::5770964443849344321::1721823214::1788405242::1::::<><><>0<>0<>00dd91ee4675825de9ad4a8a0a7257f7<>res://.godot/imported/PixeloidSansBold-PKnYd.ttf-9970b18128a44aca6fcf0f4310987d4d.fontdata::
+Placeholder.ttf::FontFile::6469239726156746963::1735754073::1788405242::1::::<><><>0<>0<>7ad319a40d7b9257fa8d32acb300064d<>res://.godot/imported/Placeholder.ttf-ef24b15297945ed29bb427997b587465.fontdata::
+UIFont.ttf::FontFile::1367380953368972040::1735754574::1788405242::1::::<><><>0<>0<>ac435cdb4bc1c3cd84f12be8aba4f769<>res://.godot/imported/UIFont.ttf-f2cb20699f77c3b6b24374c660ca2f6f.fontdata::
+::res://Game Folder/game_assets/Player/::1769007719
+::res://Game Folder/game_assets/Player/Breaker/::1768678321
+breakerbase.gd::GDScript::6261583119009009791::1768673561::0::1::::Breaker<>Node<><>0<>0<><>::
+::res://Game Folder/game_assets/Player/Breaker/LZ-R/::1788405260
+lz_r.tscn::PackedScene::8404392141208917280::1788405260::0::1::::<><><>0<>0<><>::
+::res://Game Folder/game_assets/Player/Breaker/Starman/::1788405260
+starman.tscn::PackedScene::3871344110469555803::1788405260::0::1::::<><><>0<>0<><>::uid://byl5crghiev7l::::res://Game Folder/game_assets/Player/Breaker/Starman/starman_music.ogg
+starman_music.ogg::AudioStreamOggVorbis::4095487070166039711::1768676676::1788405242::1::::<><><>0<>0<>7fc38383efb01d7f05e3f4c057918206<>res://.godot/imported/starman_music.ogg-eb6b936c90c1c80c625db320beb4b1b0.oggvorbisstr::
+::res://Game Folder/game_assets/Player/HUD/::1789744819
+gameover.tscn::PackedScene::706767864335651574::1788405260::0::1::::<><><>0<>0<><>::uid://cem4aaklv0lae::::res://Game Folder/game_assets/Menus/MainMenu/GameOver/BASE/starbreaker - game over.mp3
+healthbar.tscn::PackedScene::5980223098749007683::1788405260::0::1::::<><><>0<>0<><>::uid://bcc15vut0aln7::::res://Game Folder/game_assets/Player/HUD/hudhp_under.png<>uid://edjqeafbibyh::::res://Game Folder/game_assets/Player/HUD/hudhp_over.png<>uid://byd3r2b08il3x::::res://Game Folder/game_assets/Player/HUD/hudhp_prog.png<>uid://b1rbffoke0vnr::::res://Game Folder/game_assets/Menus/Themes/MenuUI_Theme.tres
+hud.tscn::PackedScene::2128857637718942207::1788405261::0::1::::<><><>0<>0<><>::uid://bm1xlgxrd1oa0::::res://release_ui.tscn<>uid://crg4nvhxx414j::::res://Game Folder/game_assets/Player/HUD/healthbar.tscn<>uid://d4fy5lnqtae8j::::res://Game Folder/game_assets/Player/HUD/scorebar.tscn<>uid://b1rbffoke0vnr::::res://Game Folder/game_assets/Menus/Themes/MenuUI_Theme.tres
+hudhp_over.png::CompressedTexture2D::287523743773915819::1743799281::1788405242::1::::<><><>0<>0<>1add8295d5c5ad840046f1d6684d28d9<>res://.godot/imported/hudhp_over.png-2bd897e6f774ecae1d32f49421aa32e6.ctex::
+hudhp_prog.png::CompressedTexture2D::4078877919417472939::1743799281::1788405243::1::::<><><>0<>0<>840de4c4810ca08a1959c1eea4d25727<>res://.godot/imported/hudhp_prog.png-f1d8d6da52e86e8896c11525d617bd67.ctex::
+hudhp_under.png::CompressedTexture2D::2532560476889496310::1743799281::1788405243::1::::<><><>0<>0<>d69484305072786e84997cef8b409a9a<>res://.godot/imported/hudhp_under.png-98164ce1154e9e2e769829ddf69b0fa5.ctex::
+outlinecanvaslayer.gdshader::Shader::1162510161173198893::1789744819::0::1::::<><><>0<>0<><>::
+scorebar.tscn::PackedScene::9206571785587755115::1788405261::0::1::::<><><>0<>0<><>::uid://b1rbffoke0vnr::::res://Game Folder/game_assets/Menus/Themes/MenuUI_Theme.tres
+::res://Game Folder/game_assets/Player/LoadoutPickup/::1769007725
+::res://Game Folder/game_assets/Player/LoadoutPickup/Pickup/::1788405261
+loadout_pickup.tscn::PackedScene::3458948866322277121::1788405261::0::1::::<><><>0<>0<><>::uid://43q2dls58su3::::res://Game Folder/game_assets/Player/LoadoutPickup/Pickup/Sprites/Pickupsprite_1.png<>uid://bql2an547gxi1::::res://Game Folder/game_components/entity_components/Health/health_component.gd<>uid://chx8xroi3hih8::::res://Game Folder/game_components/entity_components/Hurtbox/hurtbox.gd
+::res://Game Folder/game_assets/Player/LoadoutPickup/Pickup/Sprites/::1788405243
+Pickupsprite_1.png::CompressedTexture2D::2094298906358453748::1769008538::1788405243::1::::<><><>0<>0<>22c72420a163da586f4d33fd73044c0c<>res://.godot/imported/Pickupsprite_1.png-fe79a9bcf4bed582a90ba23feb3b0bde.ctex::
+::res://Game Folder/game_assets/Player/Main/::1789568187
+Player.gd::GDScript::2952406344344079040::1789568187::0::1::::Player<>Entity<><>0<>0<><>::
+Player.tscn::PackedScene::7834081089807760385::1789568187::0::1::::<><><>0<>0<><>::uid://bicfx3rt2dc3y::::res://Game Folder/game_assets/Player/Main/Player.gd<>uid://bql2an547gxi1::::res://Game Folder/game_components/entity_components/Health/health_component.gd<>uid://dkg2wqmgi3s02::::res://Game Folder/game_assets/Player/Sprites/starbreaker_death_128x128.png<>uid://btqhqcn4wj5v7::::res://Game Folder/game_assets/Player/Sprites/starbreaker_hit.png<>uid://chx8xroi3hih8::::res://Game Folder/game_components/entity_components/Hurtbox/hurtbox.gd<>uid://bc2c5788m7sua::::res://Game Folder/game_assets/Player/Sprites/starbreaker.png<>uid://2vucydg8ubg1::::res://Game Folder/game_assets/Player/Sprites/starbreaker_utility_recharge.png
+::res://Game Folder/game_assets/Player/Passive/::1768724333
+::res://Game Folder/game_assets/Player/Passive/Base/::1768720517
+passive_base.gd::GDScript::184822795998240220::1768720517::0::1::::Passive<>Node<><>0<>0<><>::
+::res://Game Folder/game_assets/Player/Passive/Heal Passive/::1788405262
+Heal.tscn::PackedScene::6155323699361791946::1788405262::0::1::::<><><>0<>0<><>::
+::res://Game Folder/game_assets/Player/Passive/Man Passive/::1788405262
+man_passive.tscn::PackedScene::4454326373437253139::1788405262::0::1::::<><><>0<>0<><>::uid://xt8m2ckw0d2u::::res://Game Folder/game_assets/Player/Passive/Man Passive/Sprites/tether.png<>uid://bsbwxli4hnpen::::res://Game Folder/game_assets/Player/Passive/Man Passive/Sprites/manpassive.png<>uid://ucfty02weqo2::::res://Game Folder/game_components/entity_components/Hitbox/hitbox.gd<>uid://c68up3qvmwiby::::res://Game Folder/game_assets/Player/Passive/Man Passive/Audio/Punch/man_punch_0.wav<>uid://ns24rk2tr24p::::res://Game Folder/game_assets/Player/Passive/Man Passive/Audio/Punch/man_punch_1.wav<>uid://7wkt5k46irgk::::res://Game Folder/game_assets/Player/Passive/Man Passive/Audio/Punch/man_punch_2.wav<>uid://bnqvjpmy0lj1w::::res://Game Folder/game_assets/Player/Passive/Man Passive/Audio/Punch/man_punch_3.wav<>uid://csh80011xs8lf::::res://Game Folder/game_assets/Player/Passive/Man Passive/Audio/Shotgun/manshotgun_fire0.wav<>uid://cvkthunjptte4::::res://Game Folder/game_assets/Player/Passive/Man Passive/Audio/Shotgun/manshotgun_fire1.wav<>uid://qd504jh87vp8::::res://Game Folder/game_assets/Player/Passive/Man Passive/Audio/Shotgun/manshotgun_fire2.wav<>uid://pa0clymg2fuj::::res://Game Folder/game_assets/Player/Passive/Man Passive/Audio/Lunge/Swooshes, Swish, Rope, Thick, Whoosh, Fast x3 SND40875 4.wav<>uid://bavn7r8234eh0::::res://Game Folder/game_assets/Player/Passive/Man Passive/Audio/Lunge/Swooshes, Swish, Rope, Thick, Whoosh, Fast x3 SND40875 5.wav<>uid://crdgpwvp3if02::::res://Game Folder/game_assets/Player/Passive/Man Passive/Audio/ShotgunHit/Metal, Impact, Luthiers Workshop, Jewelry Hammer, Bench Anvil, Tight Resonant Hit SND149391 1.wav<>uid://clx6k38g47gdd::::res://Game Folder/game_assets/Player/Passive/Man Passive/Audio/ShotgunHit/Metal, Impact, Luthiers Workshop, Jewelry Hammer, Bench Anvil, Tight Resonant Hit SND149391 2.wav<>uid://dm4pmwtp5gxpg::::res://Game Folder/game_assets/Player/Passive/Man Passive/Audio/ShotgunHit/Metal, Impact, Luthiers Workshop, Jewelry Hammer, Bench Anvil, Tight Resonant Hit SND149391 3.wav<>uid://bpjrb6d40bcor::::res://Game Folder/game_assets/Player/Passive/Man Passive/Audio/ShotgunHit/Metal, Impact, Luthiers Workshop, Jewelry Hammer, Bench Anvil, Tight Resonant Hit SND149391.wav
+man__shotgunprojectile.tscn::PackedScene::4953845935005075038::1788405262::0::1::::<><><>0<>0<><>::uid://ucfty02weqo2::::res://Game Folder/game_components/entity_components/Hitbox/hitbox.gd
+::res://Game Folder/game_assets/Player/Passive/Man Passive/Audio/::1768764200
+::res://Game Folder/game_assets/Player/Passive/Man Passive/Audio/Lunge/::1788405248
+Swooshes, Swish, Rope, Thick, Whoosh, Fast x3 SND40875 4.wav::AudioStreamWAV::1054354766363925501::1768763116::1788405248::1::::<><><>0<>0<>9c27636f08cf4a89c5b8eacd926a42d7<>res://.godot/imported/Swooshes, Swish, Rope, Thick, Whoosh, Fast x3 SND40875 4.wav-ed922e4e97f9c07d092e789bfda1d8c8.sample::
+Swooshes, Swish, Rope, Thick, Whoosh, Fast x3 SND40875 5.wav::AudioStreamWAV::2430620027980093791::1768763125::1788405248::1::::<><><>0<>0<>f88ca018f6924b8f912dffcf0f4f55b3<>res://.godot/imported/Swooshes, Swish, Rope, Thick, Whoosh, Fast x3 SND40875 5.wav-3085a328891f29879db4d09c2079fabd.sample::
+::res://Game Folder/game_assets/Player/Passive/Man Passive/Audio/Punch/::1788405248
+man_punch_0.wav::AudioStreamWAV::7018062609154809962::1768762754::1788405248::1::::<><><>0<>0<>a3e08f47f32e95b4450e6c7a35803ea0<>res://.godot/imported/man_punch_0.wav-9f76606dca5aa8ed84365ffd0cb448ac.sample::
+man_punch_1.wav::AudioStreamWAV::951305823293277293::1768762759::1788405248::1::::<><><>0<>0<>b6edaff5f49f2e7d7cdb57bd95691763<>res://.godot/imported/man_punch_1.wav-e900fc064af45b75fa4efc50e935715e.sample::
+man_punch_2.wav::AudioStreamWAV::2292101999526145514::1768762769::1788405248::1::::<><><>0<>0<>fe2d9d0d902de13472cbcd5142d299d2<>res://.godot/imported/man_punch_2.wav-5b5c9a0a4941014f0d8970dd8680d9c3.sample::
+man_punch_3.wav::AudioStreamWAV::3333197631557925654::1768762764::1788405248::1::::<><><>0<>0<>13b0436d6317783b1559c94147f45cdc<>res://.godot/imported/man_punch_3.wav-3b05783d38e3d7af539d95649ef462c8.sample::
+::res://Game Folder/game_assets/Player/Passive/Man Passive/Audio/Shotgun/::1788405248
+manshotgun_fire0.wav::AudioStreamWAV::6052740857219590335::1768762919::1788405248::1::::<><><>0<>0<>d51269966c28daf80ac250e0bbb96d73<>res://.godot/imported/manshotgun_fire0.wav-f135c7f8afd7da461a087647fd62325b.sample::
+manshotgun_fire1.wav::AudioStreamWAV::6268618055724570073::1768762945::1788405248::1::::<><><>0<>0<>f21a824002e0397430ffc31c272b3686<>res://.godot/imported/manshotgun_fire1.wav-fe2b3d8554d555bbe58b1cc4c0328bd0.sample::
+manshotgun_fire2.wav::AudioStreamWAV::1131082323545137315::1768762923::1788405248::1::::<><><>0<>0<>4eeb6e535f798e1256550a24a46cda57<>res://.godot/imported/manshotgun_fire2.wav-90b437f7c7142d3bd9a649a5c1ccffef.sample::
+::res://Game Folder/game_assets/Player/Passive/Man Passive/Audio/ShotgunHit/::1788405248
+Metal, Impact, Luthiers Workshop, Jewelry Hammer, Bench Anvil, Tight Resonant Hit SND149391 1.wav::AudioStreamWAV::5972637120033969953::1768764212::1788405248::1::::<><><>0<>0<>a44f2952e55e9084cd3ff369af8c5006<>res://.godot/imported/Metal, Impact, Luthiers Workshop, Jewelry Hammer, Bench Anvil, Tight Resonant Hit SND149391 1.wav-df0efc247f47e5bf19f724f496fbc4d1.sample::
+Metal, Impact, Luthiers Workshop, Jewelry Hammer, Bench Anvil, Tight Resonant Hit SND149391 2.wav::AudioStreamWAV::5594300942407723345::1768764217::1788405248::1::::<><><>0<>0<>5ed47a1d2c4293d124da8f2d974a84da<>res://.godot/imported/Metal, Impact, Luthiers Workshop, Jewelry Hammer, Bench Anvil, Tight Resonant Hit SND149391 2.wav-6bb0ea1c16f06cc50ed107fea1aaa98e.sample::
+Metal, Impact, Luthiers Workshop, Jewelry Hammer, Bench Anvil, Tight Resonant Hit SND149391 3.wav::AudioStreamWAV::8062328499608652432::1768764222::1788405248::1::::<><><>0<>0<>0420e3bf5f938270e391e6cd6f805aa6<>res://.godot/imported/Metal, Impact, Luthiers Workshop, Jewelry Hammer, Bench Anvil, Tight Resonant Hit SND149391 3.wav-dc118ae66b751ef843cd29ed4fe4dc0a.sample::
+Metal, Impact, Luthiers Workshop, Jewelry Hammer, Bench Anvil, Tight Resonant Hit SND149391.wav::AudioStreamWAV::3458868346930405101::1768764206::1788405248::1::::<><><>0<>0<>2963e223b8ae2b06dadb14e9806bc8e4<>res://.godot/imported/Metal, Impact, Luthiers Workshop, Jewelry Hammer, Bench Anvil, Tight Resonant Hit SND149391.wav-dcf160bfa319acf247a9b94c45baa3f0.sample::
+::res://Game Folder/game_assets/Player/Passive/Man Passive/Sprites/::1788405242
+manpassive.png::CompressedTexture2D::3653261685475215561::1768725452::1788405242::1::::<><><>0<>0<>4df7b7c6420c5317433771cfa689cf39<>res://.godot/imported/manpassive.png-380488d5439728624f735c25a126cada.ctex::
+tether.png::CompressedTexture2D::1655593092994835998::1768764065::1788405242::1::::<><><>0<>0<>6b7c2087a493c92cd55f65d9855fcdd7<>res://.godot/imported/tether.png-16753612842dca3ce53772e2113c3a0c.ctex::
+::res://Game Folder/game_assets/Player/SFX/::1759233487
+::res://Game Folder/game_assets/Player/SFX/Hits/::1788405248
+death.wav::AudioStreamWAV::8174072345330131027::1745197293::1788405248::1::::<><><>0<>0<>ba3108d1b22ac6ea34dfdadb4be64734<>res://.godot/imported/death.wav-4334371cddc5ccde5ac7609e02bb9eab.sample::
+normal_hit.wav::AudioStreamWAV::7022559233237267712::1730296943::1788405248::1::::<><><>0<>0<>6159f5b36d22f79ad5c79222c986d201<>res://.godot/imported/normal_hit.wav-f338a1e112fbaff7a359dc37e4b0a52f.sample::
+refunded.wav::AudioStreamWAV::5684221103414289515::1745166372::1788405248::1::::<><><>0<>0<>5d2988f20b9640d982e0a13e13720cfe<>res://.godot/imported/refunded.wav-f20cc3faae824c8d684db1b34839aa9c.sample::
+::res://Game Folder/game_assets/Player/Ship/::1768668711
+ship_base.gd::GDScript::174433351267293512::1768666486::0::1::::Ship<>Node<><>0<>0<><>::
+::res://Game Folder/game_assets/Player/Ship/Advanced/::1788405262
+advanced.tscn::PackedScene::2956875056018580083::1788405262::0::1::::<><><>0<>0<><>::
+::res://Game Folder/game_assets/Player/Ship/Classic/::1788405263
+classicship.tscn::PackedScene::4052860117363994800::1788405263::0::1::::<><><>0<>0<><>::
+::res://Game Folder/game_assets/Player/Ship/Stealth/::1788405263
+ship_stealth.tscn::PackedScene::3466402200346600401::1788405263::0::1::::<><><>0<>0<><>::
+::res://Game Folder/game_assets/Player/Sprites/::1788405247
+Player.png::CompressedTexture2D::1088658402405964236::1726411513::1788405242::1::::<><><>0<>0<>6e060823374ca158e3f6ecf5d855382e<>res://.godot/imported/Player.png-0a36de01259f2f036169eee8a9cf7376.ctex::
+playerdeath.png::CompressedTexture2D::1624806319251832658::1719544728::1788405246::1::::<><><>0<>0<>07c5652b877d7259c6e098dc39ede159<>res://.godot/imported/playerdeath.png-9ac6bbe38d58979a93fe919691e79c97.ctex::
+playerhitsprite.png::CompressedTexture2D::3633299456444325388::1719544725::1788405245::1::::<><><>0<>0<>ab3ea9e9865f2c2a5c75e6663ffa0f6a<>res://.godot/imported/playerhitsprite.png-4be8fb99f2784369241c6eaafef27d83.ctex::
+ship_ph.png::CompressedTexture2D::4463510908020048477::1719544728::1788405242::1::::<><><>0<>0<>a2f44ff764812f5b2b8456c49d502b48<>res://.godot/imported/ship_ph.png-05d25299e6a8cc8311caaa7d433e417c.ctex::
+starbreaker.png::CompressedTexture2D::2582713311373894160::1745164021::1788405242::1::::<><><>0<>0<>7aac8853b5254fa4e67d2ec7b46366c1<>res://.godot/imported/starbreaker.png-2e150ea02e785dd8134f769bb6e2ae29.ctex::
+Starbreaker_20xSprite.png::CompressedTexture2D::3572733074728478213::1730403231::1788405242::1::::<><><>0<>0<>cd0e055fd483c0a92a05ba3d2a896cf7<>res://.godot/imported/Starbreaker_20xSprite.png-e59d4365f202ea53311c4ae053e6802a.ctex::
+starbreaker_death_128x128.png::CompressedTexture2D::7875216259450268629::1745199356::1788405243::1::::<><><>0<>0<>c98914bac23526ac135d0bcf2e872747<>res://.godot/imported/starbreaker_death_128x128.png-2c711a10ffa7d5980591487ec9602e42.ctex::
+Starbreaker_death_512x512.png::CompressedTexture2D::1592890668424423105::1730407859::1788405247::1::::<><><>0<>0<>ad2eca1782bfc83087428cd5c15e58dd<>res://.godot/imported/Starbreaker_death_512x512.png-c6871e9af012487a255d856a6ceb393b.ctex::
+starbreaker_hit.png::CompressedTexture2D::3753492475009089898::1745196170::1788405242::1::::<><><>0<>0<>9db887cd799320be463449e36210df60<>res://.godot/imported/starbreaker_hit.png-f9e16c48c9071c312e8823304c96eb3c.ctex::
+Starbreaker_hit_42x37_42x37.png::CompressedTexture2D::2809441899750674432::1730403890::1788405242::1::::<><><>0<>0<>85c32c7ba6c82259cdd5e1253e07b084<>res://.godot/imported/Starbreaker_hit_42x37_42x37.png-14edec296199a4cc6701a395c2788eaf.ctex::
+starbreaker_utility_recharge.png::CompressedTexture2D::1939669888017584538::1745165235::1788405242::1::::<><><>0<>0<>865a15488e7648addf444d3c1cce770b<>res://.godot/imported/starbreaker_utility_recharge.png-5bd70d377c798dff9e5e88b63a5c0361.ctex::
+::res://Game Folder/game_assets/Player/VFX/::1759233488
+::res://Game Folder/game_assets/Player/VFX/Action Particles/::1788405263
+Hit Particles.tscn::PackedScene::7966395770856410313::1788405263::0::1::::<><><>0<>0<><>::
+::res://Game Folder/game_assets/Player/VFX/Movement Particles/::1788405265
+movement-particles.png::CompressedTexture2D::605195954677465049::1729605305::1788405242::1::::<><><>0<>0<>7cee6104494582765c404a298ba25f92<>res://.godot/imported/movement-particles.png-31b5e1028270a975d65023d1c108361e.ctex::
+mvt_particles.tscn::PackedScene::390482688370336640::1788405265::0::1::::<><><>0<>0<><>::uid://ivfqvh25uukv::::res://Game Folder/game_assets/Player/VFX/Movement Particles/movement-particles.png
+::res://Game Folder/game_assets/Player/Weapons/::1788405265
+combo_system.tscn::PackedScene::7473747807097426847::1788405265::0::1::::<><><>0<>0<><>::
+::res://Game Folder/game_assets/Player/Weapons/firing_modes/::1768689462
+::res://Game Folder/game_assets/Player/Weapons/firing_modes/Base/::1768686064
+weapon_base.gd::GDScript::1581062383005127382::1768686064::0::1::::Weapon<>Node<><>0<>0<><>::
+::res://Game Folder/game_assets/Player/Weapons/firing_modes/Railcannon/::1759233488
+::res://Game Folder/game_assets/Player/Weapons/firing_modes/Railcannon/Audio/::1788405248
+railcannon_charge.ogg::AudioStreamOggVorbis::7855848597358389453::1768701894::1788405242::1::::<><><>0<>0<>75830353b3239a7637fcc34dc3cae484<>res://.godot/imported/railcannon_charge.ogg-06dbc0be5455a6caa4211c8a482ddbde.oggvorbisstr::
+railcannon_charge_atmos.ogg::AudioStreamOggVorbis::4038809820137541366::1768702590::1788405242::1::::<><><>0<>0<>1a04384e1ce9ce6167923f50e495b9e9<>res://.godot/imported/railcannon_charge_atmos.ogg-1226a21f8840241de0f38fd1870f076b.oggvorbisstr::
+railcannon_fullcharge.ogg::AudioStreamOggVorbis::8840107905064592974::1768703536::1788405242::1::::<><><>0<>0<>96102f884d8e47b4d32305763a0b7ae3<>res://.godot/imported/railcannon_fullcharge.ogg-54c605de36ace796d26ac8b435e3df60.oggvorbisstr::
+railcannon_secondaryfire.ogg::AudioStreamOggVorbis::3477898397915890939::1768703842::1788405242::1::::<><><>0<>0<>016b2da0649f12ecf1e5447a73e73905<>res://.godot/imported/railcannon_secondaryfire.ogg-b7607d1c044b330610eb6cae63f4fdfc.oggvorbisstr::
+sfx_spraysecondary.wav::AudioStreamWAV::6460427349431796922::1745162158::1788405248::1::::<><><>0<>0<>b505f7207bb96fee35ad0449f5eb7661<>res://.godot/imported/sfx_spraysecondary.wav-34de7640e1f7384ab2f9013b2e96ce21.sample::
+sp_firing.wav::AudioStreamWAV::4036315993229960642::1719544726::1788405248::1::::<><><>0<>0<>dea961dc6ca4c5425bd184c041d82767<>res://.godot/imported/sp_firing.wav-2d139cb97eed1b1573058f9905cf7138.sample::
+::res://Game Folder/game_assets/Player/Weapons/firing_modes/Railcannon/Base/::1789571453
+bullet_effects.tscn::PackedScene::6275266014769866699::1788405266::0::1::::<><><>0<>0<><>::uid://cb4ed35sin5rx::::res://Game Folder/game_assets/Player/Weapons/firing_modes/Railcannon/Sprites/bullet_trails.png<>uid://baa1mmpigaqjc::::res://Game Folder/game_assets/Player/Weapons/firing_modes/Railcannon/Sprites/AttackConnect.png
+railcannon_primary_bullet.tscn::PackedScene::800977888302033377::1789571453::0::1::::<><><>0<>0<><>::uid://bxu4vpyreyq67::::res://Game Folder/game_assets/Player/Weapons/firing_modes/Railcannon/Sprites/bullet1.png<>uid://cb4ed35sin5rx::::res://Game Folder/game_assets/Player/Weapons/firing_modes/Railcannon/Sprites/bullet_trails.png<>uid://ucfty02weqo2::::res://Game Folder/game_components/entity_components/Hitbox/hitbox.gd<>uid://bxhw6dnb6fuqm::::res://Game Folder/game_components/entity_components/Hitbox/HitboxData.gd
+railcannon_weapon.tscn::PackedScene::392253197675307225::1788405266::0::1::::<><><>0<>0<><>::uid://bxrhsgdwv711w::::res://Game Folder/game_assets/Player/Weapons/firing_modes/Railcannon/Audio/sp_firing.wav<>uid://d3in8hfbxdaci::::res://Game Folder/game_assets/Player/Weapons/firing_modes/Railcannon/Sprites/railcannon_secondaryfire.png<>uid://baa1mmpigaqjc::::res://Game Folder/game_assets/Player/Weapons/firing_modes/Railcannon/Sprites/AttackConnect.png<>uid://bpsyqjeosvi7t::::res://Game Folder/game_assets/Player/Weapons/firing_modes/Railcannon/Audio/railcannon_secondaryfire.ogg<>uid://dj6oxcrpjl3gj::::res://Game Folder/game_assets/Player/Weapons/firing_modes/Railcannon/Audio/railcannon_charge.ogg<>uid://dx7hjyg2ws0tu::::res://Game Folder/game_assets/Player/Weapons/firing_modes/Railcannon/Audio/railcannon_fullcharge.ogg<>uid://bxsouwpqfjq4e::::res://Game Folder/game_assets/Player/Weapons/firing_modes/Railcannon/Audio/railcannon_charge_atmos.ogg
+secondary_projectile.tscn::PackedScene::4659854295385294921::1788405267::0::1::::<><><>0<>0<><>::uid://ucfty02weqo2::::res://Game Folder/game_components/entity_components/Hitbox/hitbox.gd<>uid://dkqybf3lvwv1e::::res://Game Folder/game_assets/Player/Weapons/firing_modes/Railcannon/Sprites/Starbreakerbullet.png<>uid://c51y82puqp6vt::::res://Game Folder/game_assets/Player/Weapons/firing_modes/Railcannon/Sprites/SecondaryFire_explosion.png
+::res://Game Folder/game_assets/Player/Weapons/firing_modes/Railcannon/Sprites/::1788405242
+AttackConnect.png::CompressedTexture2D::2388021408855676052::1739683670::1788405242::1::::<><><>0<>0<>3195ef3520d086890d16f36b9ff034e9<>res://.godot/imported/AttackConnect.png-0d0c1727aecfc8a2c17d35800760d0ed.ctex::
+bullet1.png::CompressedTexture2D::4043850762615540254::1719544729::1788405242::1::::<><><>0<>0<>7c518a1697ac08d9a1b28a1c8ad72c32<>res://.godot/imported/bullet1.png-5d577f3e5cf3a0831d8299167251fe13.ctex::
+bullet.png::CompressedTexture2D::5711620140628618201::1719544729::1788405242::1::::<><><>0<>0<>25e96f8add0dd6917d52a6a28101cdd6<>res://.godot/imported/bullet.png-d5096a0792d32d3dba89b40139c272d8.ctex::
+bullet_particles.png::CompressedTexture2D::6039163907217776703::1719544726::1788405242::1::::<><><>0<>0<>2c64aaf2f6b8d481b8f0c127246446f9<>res://.godot/imported/bullet_particles.png-b968284e0545303fd1296ad21920475f.ctex::
+bullet_trails.png::CompressedTexture2D::4903146909071759609::1739680860::1788405242::1::::<><><>0<>0<>aef0dc9a1c8747550c3e72a952696bc2<>res://.godot/imported/bullet_trails.png-e6334ee7bb64f524bb6219d076a651b6.ctex::
+railcannon_secondaryfire.png::CompressedTexture2D::9141913322545275956::1768692518::1788405242::1::::<><><>0<>0<>18ecfc81ac152dcd58a085a22ab4172a<>res://.godot/imported/railcannon_secondaryfire.png-755099376ae2245c3aea8e057e917984.ctex::
+SecondaryFire_explosion.png::CompressedTexture2D::6933698079391220625::1745171802::1788405242::1::::<><><>0<>0<>bd4d6c223fd8c8226f0892b615f790c8<>res://.godot/imported/SecondaryFire_explosion.png-fd792d84f9cf026f29a9247f75e0d255.ctex::
+Starbreakerbullet.png::CompressedTexture2D::7895639831544900396::1733757542::1788405242::1::::<><><>0<>0<>6d0c0e3c412be22d0df87ce30c17d401<>res://.godot/imported/Starbreakerbullet.png-f54a1569fd497763038eddd20499514f.ctex::
+::res://Game Folder/game_assets/Player/Weapons/firing_modes/Shotgun/::1788405269
+Shotgun.tscn::PackedScene::6269031418506671499::1788405269::0::1::::<><><>0<>0<><>::uid://bxrhsgdwv711w::::res://Game Folder/game_assets/Player/Weapons/firing_modes/Railcannon/Audio/sp_firing.wav
+ShotgunBullet.tscn::PackedScene::5854202304339983629::1788405269::0::1::::<><><>0<>0<><>::uid://bxu4vpyreyq67::::res://Game Folder/game_assets/Player/Weapons/firing_modes/Railcannon/Sprites/bullet1.png<>uid://cb4ed35sin5rx::::res://Game Folder/game_assets/Player/Weapons/firing_modes/Railcannon/Sprites/bullet_trails.png<>uid://ucfty02weqo2::::res://Game Folder/game_components/entity_components/Hitbox/hitbox.gd
+::res://Game Folder/game_assets/Player/Weapons/firing_modes/Slash/::1788405269
+Slash.tscn::PackedScene::9092840253753208475::1788405269::0::1::::<><><>0<>0<><>::uid://c0qsib2m70nmv::::res://Game Folder/game_components/entity_components/State Machine/stagemachine_parent.tscn<>uid://ucfty02weqo2::::res://Game Folder/game_components/entity_components/Hitbox/hitbox.gd
+::res://Game Folder/game_assets/Player/Weapons/utility/::1759233488
+::res://Game Folder/game_assets/Player/Weapons/utility/Shine/::1788405270
+Shine.tscn::PackedScene::8326283311429085603::1788405270::0::1::::<><><>0<>0<><>::uid://c0qsib2m70nmv::::res://Game Folder/game_components/entity_components/State Machine/stagemachine_parent.tscn
+use.mp3::AudioStreamMP3::7666064442724902426::1727980470::1788405242::1::::<><><>0<>0<>25b955e38ec5d705888bf6ad2e734051<>res://.godot/imported/use.mp3-c33ac3b129fb0cd9b031e2398e534079.mp3str::
+::res://Game Folder/game_assets/Player/Weapons/utility/Zip-Dash/::1788405270
+zipdash.tscn::PackedScene::4133549446741094533::1788405270::0::1::::<><><>0<>0<><>::uid://ucfty02weqo2::::res://Game Folder/game_components/entity_components/Hitbox/hitbox.gd<>uid://c0qsib2m70nmv::::res://Game Folder/game_components/entity_components/State Machine/stagemachine_parent.tscn<>uid://cm8qj5rk6jeit::::res://Game Folder/game_assets/Player/SFX/Hits/refunded.wav
+::res://Game Folder/game_assets/Stages/::1775158700
+::res://Game Folder/game_assets/Stages/00 - BASE/::1788405270
+base_stage_script.gd::GDScript::5614522691724922742::1777077754::0::1::::StageBase<>Node2D<><>0<>0<><>::
+navigation_space.tscn::PackedScene::4963078442958141229::1788405270::0::1::::<><><>0<>0<><>::
+StageEnemyData.gd::GDScript::1736250400829834109::1776382704::0::1::::StageEnemyData<>Resource<><>0<>0<><>::
+::res://Game Folder/game_assets/Stages/00 - BASE/lvl_manager/::1788405270
+lvl_manager.tscn::PackedScene::5408972284564087034::1788405270::0::1::::<><><>0<>0<><>::
+::res://Game Folder/game_assets/Stages/00 - BASE/lvl_manager/walls/::1788405271
+wall_collisions.tscn::PackedScene::5143526642096431684::1788405271::0::1::::<><><>0<>0<><>::
+::res://Game Folder/game_assets/Stages/01 - Tres-2B/::1788405271
+Tres-2B.tscn::PackedScene::754555426406779066::1788405271::0::1::::<><><>0<>0<><>::uid://dfcd14lp8fxca::::res://Game Folder/game_assets/Stages/01 - Tres-2B/Music/tres2b.mp3<>uid://dfepk5fmqyutd::::res://Game Folder/game_assets/Enemies/Tres-2B/Skeleshot/enemy.tscn
+::res://Game Folder/game_assets/Stages/01 - Tres-2B/Boss/::1759233488
+::res://Game Folder/game_assets/Stages/01 - Tres-2B/Boss/Items/::1788405272
+HealthBox.tscn::PackedScene::6453408258910700484::1788405272::0::1::::<><><>0<>0<><>::uid://dwysrbybeu02u::::res://Game Folder/game_assets/Stages/01 - Tres-2B/Boss/Items/placeholder_medkit.png<>uid://ucfty02weqo2::::res://Game Folder/game_components/entity_components/Hitbox/hitbox.gd
+placeholder_medkit.png::CompressedTexture2D::8754085031229882638::1744210649::1788405242::1::::<><><>0<>0<>e16321139108b0cf57475c73ea190454<>res://.godot/imported/placeholder_medkit.png-8047380e223a10110ef087ce939e4f35.ctex::
+::res://Game Folder/game_assets/Stages/01 - Tres-2B/Boss/Timothy/::1788405274
+TimothyBoss.tscn::PackedScene::4302030064839443104::1788405274::0::1::::<><><>0<>0<><>::uid://bql2an547gxi1::::res://Game Folder/game_components/entity_components/Health/health_component.gd<>uid://chx8xroi3hih8::::res://Game Folder/game_components/entity_components/Hurtbox/hurtbox.gd<>uid://bgspc6d22nb3e::::res://Game Folder/game_assets/Stages/01 - Tres-2B/Boss/Timothy/Sprites/ph_sprite.png<>uid://c0qsib2m70nmv::::res://Game Folder/game_components/entity_components/State Machine/stagemachine_parent.tscn<>uid://ucfty02weqo2::::res://Game Folder/game_components/entity_components/Hitbox/hitbox.gd<>uid://bec7dyabqg5qy::::res://Game Folder/game_assets/Stages/01 - Tres-2B/Boss/Timothy/Sprites/mono_fingergun.png<>uid://b2rr1cp8pqyop::::res://Game Folder/game_assets/Stages/01 - Tres-2B/Boss/Timothy/Sprites/boom.png<>uid://3rku5qgtnjbx::::res://Game Folder/game_assets/Stages/01 - Tres-2B/Boss/Timothy/Music/boomsfx.mp3<>uid://8c11pb2aymuv::::res://Game Folder/game_assets/Stages/01 - Tres-2B/Boss/Timothy/Music/starbreaker_boss.wav<>uid://0kio0wlrhq54::::res://Game Folder/game_assets/Stages/01 - Tres-2B/Boss/Timothy/Music/mus_badnote1.wav
+::res://Game Folder/game_assets/Stages/01 - Tres-2B/Boss/Timothy/Bullet/::1788405276
+tim_bullet.tscn::PackedScene::2920015443699985247::1788405276::0::1::::<><><>0<>0<><>::uid://ioxhgod58e5::::res://Game Folder/game_assets/Stages/01 - Tres-2B/Boss/Timothy/Sprites/tim_bullet.png<>uid://ucfty02weqo2::::res://Game Folder/game_components/entity_components/Hitbox/hitbox.gd
+::res://Game Folder/game_assets/Stages/01 - Tres-2B/Boss/Timothy/Music/::1788405249
+boomsfx.mp3::AudioStreamMP3::2001026530205584821::1744817196::1788405242::1::::<><><>0<>0<>3cfb53bb5ca59d1b906099e138782ecf<>res://.godot/imported/boomsfx.mp3-432e65799145fad8357b88042e34ec8d.mp3str::
+mus_badnote1.wav::AudioStreamWAV::1775876953140460417::1744942306::1788405248::1::::<><><>0<>0<>06d9b2663e3c9ce3f8534f0da091806e<>res://.godot/imported/mus_badnote1.wav-a59f1c9913202f8036ec52020d2872a0.sample::
+starbreaker_boss.wav::AudioStreamWAV::2321986458639414477::1744299753::1788405249::1::::<><><>0<>0<>7d470908eae163eba1304014bc7d3bfd<>res://.godot/imported/starbreaker_boss.wav-1c49264469a8125ac1582b6e243c18fb.sample::
+Starbreaker_VsTimothy.wav::AudioStreamWAV::809291538072825312::1744212533::1788405248::1::::<><><>0<>0<>f6859c0d111b0634c94c7071e38a60e2<>res://.godot/imported/Starbreaker_VsTimothy.wav-f4536e4c2ab09003ba34df25c09b1b9e.sample::
+::res://Game Folder/game_assets/Stages/01 - Tres-2B/Boss/Timothy/Sprites/::1788405243
+boom.png::CompressedTexture2D::4317692632996386459::1744816291::1788405243::1::::<><><>0<>0<>9e6418300131f6c762441260b9241787<>res://.godot/imported/boom.png-0da34c6399785671d8693b1052b3cb8f.ctex::
+mono_fingergun.png::CompressedTexture2D::2673254375531083008::1744636435::1788405242::1::::<><><>0<>0<>a3f5e0e168beeaa188adad4fee9b80bc<>res://.godot/imported/mono_fingergun.png-448c81c061f3cb85187b7e089210d32e.ctex::
+ph_sprite.png::CompressedTexture2D::2845628505695296376::1744212659::1788405242::1::::<><><>0<>0<>e2b571e46b92db4c6a176dd053ece5d6<>res://.godot/imported/ph_sprite.png-cdad85e518bc809bfa74e199f7d52ff9.ctex::
+tim_bullet.png::CompressedTexture2D::17406510764621194::1744637441::1788405242::1::::<><><>0<>0<>b78a88ac16d21e30e61b595195dd831e<>res://.godot/imported/tim_bullet.png-cece24a5e6559afe4247286095f55249.ctex::
+::res://Game Folder/game_assets/Stages/01 - Tres-2B/Effects/::1788405277
+backgrounds.tscn::PackedScene::5679241373525866937::1788405276::0::1::::<><><>0<>0<><>::uid://cgmrpphio3w5a::::res://Game Folder/game_assets/Stages/01 - Tres-2B/Sprites/Background/360_F_179077796_P6UNHX6KBpb1hITJSF1gN173qw4GF98U.jpg
+graphics_&_tone.tscn::PackedScene::2890311586008486833::1788405277::0::1::::<><><>0<>0<><>::
+::res://Game Folder/game_assets/Stages/01 - Tres-2B/Music/::1788405242
+tres2b.mp3::AudioStreamMP3::7514565147293267704::1741377126::1788405242::1::::<><><>0<>0<>a5d20b3ab7190a8fbb7d80f2660216ab<>res://.godot/imported/tres2b.mp3-4e40afa5d4ec75f43110a1bc5f3cbfd7.mp3str::
+::res://Game Folder/game_assets/Stages/01 - Tres-2B/Obstacles/::1788405277
+asetroid.tscn::PackedScene::4725880883526235511::1788405277::0::1::::<><><>0<>0<><>::uid://cqexw4iganr5g::::res://Game Folder/game_assets/Enemies/Tres-2B/Skeleshot/Sprites/default.png<>uid://ucfty02weqo2::::res://Game Folder/game_components/entity_components/Hitbox/hitbox.gd<>uid://chx8xroi3hih8::::res://Game Folder/game_components/entity_components/Hurtbox/hurtbox.gd<>uid://bql2an547gxi1::::res://Game Folder/game_components/entity_components/Health/health_component.gd
+asetroid_belt.tscn::PackedScene::2802479183962385876::1788405277::0::1::::<><><>0<>0<><>::
+pathed_asetroid_belt.tscn::PackedScene::700615094528752877::1788405277::0::1::::<><><>0<>0<><>::
+pathed_asetroid_belt_sect2.tscn::PackedScene::3444426344252405612::1788405277::0::1::::<><><>0<>0<><>::
+::res://Game Folder/game_assets/Stages/01 - Tres-2B/Obstacles/Gas Comets/::1759233488
+::res://Game Folder/game_assets/Stages/01 - Tres-2B/Obstacles/Gas Comets/Base/::1788405278
+Gas Comets.tscn::PackedScene::1359693634918737265::1788405278::0::1::::<><><>0<>0<><>::uid://f37ieuipj0vh::::res://Game Folder/game_components/collision_component/Databox/databox.gd<>uid://fll005ijx1el::::res://Game Folder/game_assets/Stages/01 - Tres-2B/Obstacles/Sprites/comet.png<>uid://dvqrhbjhh7g83::::res://Game Folder/game_assets/Stages/01 - Tres-2B/Obstacles/Sprites/Warn_signs/offscreen_indicator.png<>uid://d1qgp2wevag1o::::res://Game Folder/game_assets/Stages/01 - Tres-2B/Obstacles/Sprites/bone_fragments_spr.png<>uid://q0bg472wrv17::::res://Game Folder/game_assets/Stages/01 - Tres-2B/Obstacles/Sprites/Warn_signs/warn_sign.png
 ::res://Game Folder/game_assets/Stages/01 - Tres-2B/Obstacles/pathedasetroids/::1743864686
-::res://Game Folder/game_assets/Stages/01 - Tres-2B/Obstacles/Sprites/::1743864691
-bone_fragments_spr.png::CompressedTexture2D/CompressedTexture2D::9017594570924237418::1720442825::1741377362::1::::<><><>0<>0<>97952045ab62d8952eca68f53638373e<>res://.godot/imported/bone_fragments_spr.png-50465d1950a48057c47e0646feae634e.ctex::
-comet.png::CompressedTexture2D/CompressedTexture2D::374366265057203651::1723745731::1741377362::1::::<><><>0<>0<>b968a20e3eae90765d26e97e752736af<>res://.godot/imported/comet.png-2d502a03bff7211c9bb4400439e52f2b.ctex::
-::res://Game Folder/game_assets/Stages/01 - Tres-2B/Obstacles/Sprites/Warn_signs/::1741377362
-offscreen_indicator.png::CompressedTexture2D/CompressedTexture2D::8667302567732561830::1723762392::1741377362::1::::<><><>0<>0<>1342626b700efc751ca3a60afa62fb0b<>res://.godot/imported/offscreen_indicator.png-544256a523be99b4d79c65bbdc622c83.ctex::
-warn_sign.png::CompressedTexture2D/CompressedTexture2D::1174703947683953072::1723762392::1741377362::1::::<><><>0<>0<>79fce2204e053522d04fbd62dde499c8<>res://.godot/imported/warn_sign.png-1ec25d770c6de5182dc44aad85a5e28b.ctex::
-::res://Game Folder/game_assets/Stages/01 - Tres-2B/Sprites/::1723842916
-::res://Game Folder/game_assets/Stages/01 - Tres-2B/Sprites/Background/::1741377362
-360_F_179077796_P6UNHX6KBpb1hITJSF1gN173qw4GF98U.jpg::CompressedTexture2D/CompressedTexture2D::5219806737095919188::1723843169::1741377362::1::::<><><>0<>0<>ea676cfc36623ef8bf77921d8049e70c<>res://.godot/imported/360_F_179077796_P6UNHX6KBpb1hITJSF1gN173qw4GF98U.jpg-dab890b0040d783016f1cd76f2cbbc83.ctex::
-::res://Game Folder/game_components/::1744441949
-::res://Game Folder/game_components/bullet_components/::1719544726
-::res://Game Folder/game_components/bullet_components/Projectile Class/::1745167865
-base_bullet.gd::GDScript/GDScript::5878979185268264723::1745167865::0::1::::Projectile<>CharacterBody2D<><>0<>0<><>::
-base_bullet.tscn::PackedScene/PackedScene::7272278000769798785::1741378925::0::1::::<><><>0<>0<><>::uid://cp026tcaij1c6::::res://Game Folder/game_components/bullet_components/Projectile Class/base_bullet.gd<>uid://csbofagkbecjv::::res://Game Folder/game_assets/Player/Weapons/firing_modes/Spray/Sprites/bullet_particles.png
-::res://Game Folder/game_components/bullet_pattern_gen/::1741378208
+::res://Game Folder/game_assets/Stages/01 - Tres-2B/Obstacles/Sprites/::1788405242
+bone_fragments_spr.png::CompressedTexture2D::9017594570924237418::1720442825::1788405242::1::::<><><>0<>0<>97dd73a470c95c4fc43f790a8bc678b6<>res://.godot/imported/bone_fragments_spr.png-50465d1950a48057c47e0646feae634e.ctex::
+comet.png::CompressedTexture2D::374366265057203651::1723745731::1788405242::1::::<><><>0<>0<>83a24368823b3f796ebe9ea27159d23f<>res://.godot/imported/comet.png-2d502a03bff7211c9bb4400439e52f2b.ctex::
+::res://Game Folder/game_assets/Stages/01 - Tres-2B/Obstacles/Sprites/Warn_signs/::1788405242
+offscreen_indicator.png::CompressedTexture2D::8667302567732561830::1723762392::1788405242::1::::<><><>0<>0<>9e8c14e5f1cc74452cff13a5e5c1514e<>res://.godot/imported/offscreen_indicator.png-544256a523be99b4d79c65bbdc622c83.ctex::
+warn_sign.png::CompressedTexture2D::1174703947683953072::1723762392::1788405242::1::::<><><>0<>0<>6e7e12b4e11d69ad434a678bb2cc1b37<>res://.godot/imported/warn_sign.png-1ec25d770c6de5182dc44aad85a5e28b.ctex::
+::res://Game Folder/game_assets/Stages/01 - Tres-2B/Sprites/::1759233488
+::res://Game Folder/game_assets/Stages/01 - Tres-2B/Sprites/Background/::1788405242
+360_F_179077796_P6UNHX6KBpb1hITJSF1gN173qw4GF98U.jpg::CompressedTexture2D::5219806737095919188::1723843169::1788405242::1::::<><><>0<>0<>039f26fe7a4fa36058b12a70ee26ef65<>res://.godot/imported/360_F_179077796_P6UNHX6KBpb1hITJSF1gN173qw4GF98U.jpg-dab890b0040d783016f1cd76f2cbbc83.ctex::
+::res://Game Folder/game_assets/Stages/02 - Tau Bootis/::1775158705
+::res://Game Folder/game_assets/Stages/02 - Tau Bootis/Music/::1788405242
+Stage Select - Tau Bootis-B WIP.mp3::AudioStreamMP3::6163253030431702030::1775158762::1788405242::1::::<><><>0<>0<>824d1125100eeae5355ce1a3da483a18<>res://.godot/imported/Stage Select - Tau Bootis-B WIP.mp3-57207a78d0d797cf46c36583aa0c9194.mp3str::
+Starbreaker - Tau Bootis-B.mp3::AudioStreamMP3::5718544536107029369::1775158762::1788405242::1::::<><><>0<>0<>69b659911619c76c79c4f914bdb791e6<>res://.godot/imported/Starbreaker - Tau Bootis-B.mp3-46d2878427249a9bc45fbeba7895a983.mp3str::
+::res://Game Folder/game_assets/Stages/02 - Tau Bootis/Music/Misc/::1788405242
+Panic.ogg::AudioStreamOggVorbis::5331298940306103428::1775160202::1788405242::1::::<><><>0<>0<>8da303c4e6308055bcc0e610c6caf42d<>res://.godot/imported/Panic.ogg-3e6b4c379365587d323d4a1e472f2bfb.oggvorbisstr::
+::res://Game Folder/game_components/::1767450808
+::res://Game Folder/game_components/bullet_components/::1759233488
+::res://Game Folder/game_components/bullet_components/Projectile Class/::1788405279
+base_bullet.gd::GDScript::5878979185268264723::1777812225::0::1::::Projectile<>CharacterBody2D<><>0<>0<><>::
+base_bullet.tscn::PackedScene::7272278000769798785::1788405279::0::1::::<><><>0<>0<><>::uid://cp026tcaij1c6::::res://Game Folder/game_components/bullet_components/Projectile Class/base_bullet.gd<>uid://csbofagkbecjv::::res://Game Folder/game_assets/Player/Weapons/firing_modes/Railcannon/Sprites/bullet_particles.png
+::res://Game Folder/game_components/bullet_pattern_gen/::1788405280
 bpm.gd::GDScript/GDScript::2174594778033583599::1741377126::0::1::::BulletPatternGenerator<>Node2D<><>0<>0<><>::
-bpm.tscn::PackedScene/PackedScene::1486292285237146902::1741378208::0::1::::<><><>0<>0<><>::uid://58ni1trppkhr::::res://Game Folder/game_components/bullet_pattern_gen/bpm.gd
-::res://Game Folder/game_components/button_component/::1742215450
+bpm.tscn::PackedScene::1486292285237146902::1788405280::0::1::::<><><>0<>0<><>::uid://58ni1trppkhr::::res://Game Folder/game_components/bullet_pattern_gen/bpm.gd
+::res://Game Folder/game_components/button_component/::1759233488
 global_button.gd::GDScript/GDScript::4909230120890297504::1742215450::0::1::::CustomButton<>Button<><>0<>0<><>::
-::res://Game Folder/game_components/camera_component/::1719544726
-::res://Game Folder/game_components/camera_component/Camera/::1743797887
-camera_base.gd::GDScript/GDScript::6096870993225148562::1743796531::0::1::::juicycamera_component<>Camera2D<><>0<>0<><>::
-camera_base.tscn::PackedScene/PackedScene::6028668897143565104::1743797887::0::1::::<><><>0<>0<><>::uid://cs4mtsd6tqfmw::::res://Game Folder/game_components/camera_component/Camera/camera_base.gd
-::res://Game Folder/game_components/collision_component/::1719544726
-::res://Game Folder/game_components/collision_component/Databox/::1741378208
-databox.gd::GDScript/GDScript::410704266797002349::1730652171::0::1::::Databox<>Area2D<><>0<>0<><>::
-databox.tscn::PackedScene/PackedScene::6311644672742054547::1741378208::0::1::::<><><>0<>0<><>::uid://f37ieuipj0vh::::res://Game Folder/game_components/collision_component/Databox/databox.gd
-::res://Game Folder/game_components/entity_components/::1741378264
-::res://Game Folder/game_components/entity_components/Entity/::1741378260
-entity_base.gd::GDScript/GDScript::8002146111621600520::1726269870::0::1::::Entity<>CharacterBody2D<><>0<>0<><>::
-::res://Game Folder/game_components/entity_components/Entity/Enemy/::1745202752
+::res://Game Folder/game_components/camera_component/::1759233488
+::res://Game Folder/game_components/camera_component/Camera/::1788405280
+camera_base.gd::GDScript::6096870993225148562::1775802983::0::1::::CameraController<>Camera2D<><>0<>0<><>::
+camera_base.tscn::PackedScene::6028668897143565104::1788405280::0::1::::<><><>0<>0<><>::uid://cs4mtsd6tqfmw::::res://Game Folder/game_components/camera_component/Camera/camera_base.gd
+::res://Game Folder/game_components/collision_component/::1759233488
+::res://Game Folder/game_components/collision_component/Databox/::1788405280
+databox.gd::GDScript::410704266797002349::1768507088::0::1::::Databox<>Area2D<><>0<>0<><>::
+databox.tscn::PackedScene::6311644672742054547::1788405280::0::1::::<><><>0<>0<><>::uid://f37ieuipj0vh::::res://Game Folder/game_components/collision_component/Databox/databox.gd
+::res://Game Folder/game_components/entity_components/::1776983375
+::res://Game Folder/game_components/entity_components/Entity/::1789497852
+entity_base.gd::GDScript::8002146111621600520::1789497852::0::1::::Entity<>CharacterBody2D<><>0<>0<><>::
+::res://Game Folder/game_components/entity_components/Entity/Enemy/::1777812280
 boss_base.gd::GDScript/GDScript::8839320055154992523::1732634781::0::1::::Boss<>Entity<><>0<>0<><>::
-enemy_base.gd::GDScript::539777309637935825::1745202752::0::1::::Enemy<>Entity<><>0<>0<><>::
-::res://Game Folder/game_components/entity_components/Health/::1743802741
-HealthComponent.tscn::PackedScene/PackedScene::8578227504937461830::1743802741::0::1::::<><><>0<>0<><>::uid://bql2an547gxi1::::res://Game Folder/game_components/entity_components/Health/health_component.gd
-health_component.gd::GDScript/GDScript::3533790426509308374::1736747147::0::1::::HealthComponent<>Node<><>0<>0<><>::
-::res://Game Folder/game_components/entity_components/Hitbox/::1745125260
-hitbox.gd::GDScript/GDScript::1408244443753638487::1745125260::0::1::::HitboxComponent<>Area2D<><>0<>0<><>::
-Hitbox.tscn::PackedScene/PackedScene::5786881489030150340::1741378264::0::1::::<><><>0<>0<><>::uid://ucfty02weqo2::::res://Game Folder/game_components/entity_components/Hitbox/hitbox.gd
-hitbox_data.gd::GDScript/GDScript::6536490640659776091::1719544726::0::1::::HitboxData<>Resource<><>0<>0<><>::
-::res://Game Folder/game_components/entity_components/Hurtbox/::1741378264
-hurtbox.gd::GDScript/GDScript::5313689610142309287::1736747696::0::1::::HurtboxComponent<>Area2D<><>0<>0<><>::
-HurtboxComponent.tscn::PackedScene/PackedScene::4779496129461814579::1741378264::0::1::::<><><>0<>0<><>::uid://chx8xroi3hih8::::res://Game Folder/game_components/entity_components/Hurtbox/hurtbox.gd
-::res://Game Folder/game_components/entity_components/Knockback/::1744943463
-knockback.gd::GDScript/GDScript::1974026752121208252::1744943463::0::1::::KnockbackComponent<>Node2D<><>0<>0<><>::
-KnockbackComponent.tscn::PackedScene/PackedScene::1547074105292351933::1741378264::0::1::::<><><>0<>0<><>::uid://3eh6xveo61nc::::res://Game Folder/game_components/entity_components/Knockback/knockback.gd
-::res://Game Folder/game_components/entity_components/State Machine/::1745202554
-stagemachine_parent.tscn::PackedScene::6561699789445058921::1745202554::0::1::::<><><>0<>0<><>::
-state_base.gd::GDScript/GDScript::235705522679048652::1741385337::0::1::::State<>Node<><>0<>0<><>::
-::res://Game Folder/game_components/global_components/::1726582365
-::res://Game Folder/game_components/global_components/Damage Display/::1741378196
-DamageDisplay.tscn::PackedScene/PackedScene::2773445572105833772::1741378196::0::1::::<><><>0<>0<><>::uid://b1rbffoke0vnr::::res://Game Folder/game_assets/Menus/Themes/MenuUI_Theme.tres
-::res://Game Folder/game_components/global_components/ScoreManager/::1741378196
-Level_ScoreManager.tscn::PackedScene/PackedScene::1228539315339653325::1741378196::0::1::::<><><>0<>0<><>::uid://b1rbffoke0vnr::::res://Game Folder/game_assets/Menus/Themes/MenuUI_Theme.tres
-ScoreEventBus.gd::GDScript/GDScript::6570117759329744698::1741377126::0::1::::<>Node<><>0<>0<><>::
-::res://Game Folder/game_components/global_components/Scripts/::1745197750
+enemy_base.gd::GDScript::539777309637935825::1777812280::0::1::::Enemy<>Entity<><>0<>0<><>::
+::res://Game Folder/game_components/entity_components/Health/::1788405280
+HealthComponent.tscn::PackedScene::8578227504937461830::1788405280::0::1::::<><><>0<>0<><>::uid://bql2an547gxi1::::res://Game Folder/game_components/entity_components/Health/health_component.gd
+health_component.gd::GDScript::3533790426509308374::1777071823::0::1::::Health<>Node<><>0<>0<><>::
+::res://Game Folder/game_components/entity_components/Hitbox/::1788405280
+hitbox.gd::GDScript::1408244443753638487::1777000167::0::1::::Hitbox<>Area2D<><>0<>0<><>::
+Hitbox.tscn::PackedScene::5786881489030150340::1788405280::0::1::::<><><>0<>0<><>::uid://ucfty02weqo2::::res://Game Folder/game_components/entity_components/Hitbox/hitbox.gd<>uid://bxhw6dnb6fuqm::::res://Game Folder/game_components/entity_components/Hitbox/HitboxData.gd
+HitboxData.gd::GDScript::4016606042837768180::1776985041::0::1::::HitboxData<>Resource<><>0<>0<><>::
+::res://Game Folder/game_components/entity_components/Hurtbox/::1788405281
+hurtbox.gd::GDScript::5313689610142309287::1776991531::0::1::::Hurtbox<>Area2D<><>0<>0<><>::
+Hurtbox.tscn::PackedScene::4779496129461814579::1788405281::0::1::::<><><>0<>0<><>::uid://chx8xroi3hih8::::res://Game Folder/game_components/entity_components/Hurtbox/hurtbox.gd
+::res://Game Folder/game_components/entity_components/Knockback/::1788405281
+knockback.gd::GDScript::1974026752121208252::1768407788::0::1::::KnockbackComponent<>Node<><>0<>0<><>::
+KnockbackComponent.tscn::PackedScene::1547074105292351933::1788405281::0::1::::<><><>0<>0<><>::uid://3eh6xveo61nc::::res://Game Folder/game_components/entity_components/Knockback/knockback.gd
+::res://Game Folder/game_components/entity_components/State Machine/::1788405281
+stagemachine_parent.tscn::PackedScene::6561699789445058921::1788405281::0::1::::<><><>0<>0<><>::
+state_base.gd::GDScript::235705522679048652::1775788933::0::1::::State<>Node<><>0<>0<><>::
+::res://Game Folder/game_components/entity_components/StatusEffects/::1788405281
+StatusEffect.tscn::PackedScene::6320440263383507367::1788405281::0::1::::<><><>0<>0<><>::uid://b0xr14yc30kb3::::res://Game Folder/game_components/entity_components/StatusEffects/status_effect.gd
+status_effect.gd::GDScript::4189702642887585326::1776988519::0::1::::StatusEffect<>Node<><>0<>0<><>::
+::res://Game Folder/game_components/entity_components/StatusEffects/variants/::1788405281
+Slowness.tscn::PackedScene::7395934987936679867::1788405281::0::1::::<><><>0<>0<><>::
+Stunned.tscn::PackedScene::2893720937712519875::1788405281::0::1::::<><><>0<>0<><>::
+::res://Game Folder/game_components/global_components/::1759233488
+::res://Game Folder/game_components/global_components/Damage Display/::1788405282
+DamageDisplay.tscn::PackedScene::2773445572105833772::1788405282::0::1::::<><><>0<>0<><>::uid://b1rbffoke0vnr::::res://Game Folder/game_assets/Menus/Themes/MenuUI_Theme.tres
+::res://Game Folder/game_components/global_components/ScoreManager/::1788405282
+Level_ScoreManager.tscn::PackedScene::1228539315339653325::1788405282::0::1::::<><><>0<>0<><>::uid://b1rbffoke0vnr::::res://Game Folder/game_assets/Menus/Themes/MenuUI_Theme.tres
+ScoreEventBus.gd::GDScript::6570117759329744698::1775785505::0::1::::<>Node<><>0<>0<><>::
+::res://Game Folder/game_components/global_components/Scripts/::1789572991
 cache.gd::GDScript/GDScript::734331934407774854::1737472387::0::1::::<>Node<><>0<>0<><>::
-events.gd::GDScript/GDScript::8886738111526989167::1744818247::0::1::::<>Node<><>0<>0<><>::
-global.gd::GDScript/GDScript::8231195175863671314::1743801225::0::1::::<>Node<><>0<>0<><>::
-options.gd::GDScript/GDScript::7505023854669694371::1737562949::0::1::::<>Node<><>0<>0<><>::
-utils.gd::GDScript/GDScript::4490661917708429911::1745197750::0::1::::<>Node<><>0<>0<><>::
-::res://Game Folder/game_components/global_loading/::1743808696
-3. clearresults.wav::AudioStreamWAV/AudioStreamWAV::7430903483264073212::1727190371::1741378208::1::::<><><>0<>0<>f5a3e8b489c0163dc9cd5716f91a3e08<>res://.godot/imported/3. clearresults.wav-dad511878ec652df8b74ddcc43f6d352.sample::
-loading.tscn::PackedScene/PackedScene::6857406414064403863::1743808696::0::1::::<><><>0<>0<><>::uid://b1rbffoke0vnr::::res://Game Folder/game_assets/Menus/Themes/MenuUI_Theme.tres<>uid://ccikbbrr1mfeq::::res://Game Folder/game_components/global_loading/unlock.ogg
-unlock.ogg::AudioStreamOggVorbis/AudioStreamOggVorbis::4930343112008964364::1725581285::1741378208::1::::<><><>0<>0<>33d44f16e4b6045d6cfe2270f01c118d<>res://.godot/imported/unlock.ogg-e7590149d2456617e1769a0a442697f7.oggvorbisstr::
-::res://Game Folder/game_components/shaders/::1745197600
-hitflash.tres::VisualShader/VisualShader::2343136472766962340::1745197600::0::1::::<><><>0<>0<><>::
-::res://Game Folder/game_components/shader_components/::1744444009
-hitflash_component.gd::GDScript/GDScript::2317812550493111026::1744443835::0::1::::HitFlashComponent<>Node<><>0<>0<><>::
-shockwave_component.gd::GDScript/GDScript::8099902944499559228::1744444009::0::1::::shockwave_component<>Node<><>0<>0<><>::
-::res://z_Export/::1745198020
-default_bus_layout.tres::AudioBusLayout/AudioBusLayout::4798454958987988914::1745198020::0::1::::<><><>0<>0<><>::
+events.gd::GDScript::8886738111526989167::1776998077::0::1::::<>Node<><>0<>0<><>::
+global.gd::GDScript::8231195175863671314::1789568177::0::1::::<>Node<><>0<>0<><>::
+options.gd::GDScript::7505023854669694371::1789140217::0::1::::<>Node<><>0<>0<><>::
+personalization.gd::GDScript::3234110426891185255::1777812076::0::1::::<>Node<><>0<>0<><>::
+utils.gd::GDScript::4490661917708429911::1789572991::0::1::::<>Node<><>0<>0<><>::
+::res://Game Folder/game_components/global_loading/::1788405282
+3. clearresults.wav::AudioStreamWAV::7430903483264073212::1727190371::1788405248::1::::<><><>0<>0<>f5a3e8b489c0163dc9cd5716f91a3e08<>res://.godot/imported/3. clearresults.wav-dad511878ec652df8b74ddcc43f6d352.sample::
+loading.tscn::PackedScene::6857406414064403863::1788405282::0::1::::<><><>0<>0<><>::uid://b1rbffoke0vnr::::res://Game Folder/game_assets/Menus/Themes/MenuUI_Theme.tres<>uid://ccikbbrr1mfeq::::res://Game Folder/game_components/global_loading/unlock.ogg
+unlock.ogg::AudioStreamOggVorbis::4930343112008964364::1725581285::1788405242::1::::<><><>0<>0<>33d44f16e4b6045d6cfe2270f01c118d<>res://.godot/imported/unlock.ogg-e7590149d2456617e1769a0a442697f7.oggvorbisstr::
+::res://z_Export/::1789495172
+default_bus_layout.tres::AudioBusLayout::4798454958987988914::1789495172::0::1::::<><><>0<>0<><>::
 export_presets.cfg::TextFile/TextFile::-1::1715692358::0::1::::<><><>0<>0<><>::

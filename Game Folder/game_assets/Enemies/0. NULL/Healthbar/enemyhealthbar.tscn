@@ -1,0 +1,91 @@
+[gd_scene format=3 uid="uid://dpao1b3klbe5x"]
+
+[sub_resource type="Gradient" id="Gradient_3qnck"]
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 1)
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_p65pr"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_843sn"]
+width = 8
+height = 1
+noise = SubResource("FastNoiseLite_p65pr")
+color_ramp = SubResource("Gradient_3qnck")
+
+[sub_resource type="Gradient" id="Gradient_4d2eh"]
+colors = PackedColorArray(1, 0, 0, 1, 1, 0, 0, 1)
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_4d2eh"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_3qnck"]
+width = 8
+height = 1
+noise = SubResource("FastNoiseLite_4d2eh")
+color_ramp = SubResource("Gradient_4d2eh")
+
+[sub_resource type="GDScript" id="GDScript_4d2eh"]
+script/source = "extends TextureProgressBar
+var target : Enemy
+var y_offset := 0.0
+var original_position = Vector2.ZERO
+var shake_scalar = 0.0
+@export var display_duration = 3.5
+@onready var current_time =  0.0
+
+func _ready() -> void:
+	await get_tree().physics_frame
+	self.hide()
+	target = get_parent()
+	target.entity_hit.connect(func(_entity : Entity): show(); current_time = 0.0)
+	target.entity_death.connect(func(_entity : Entity): hide())
+	value = target.current_health
+	max_value = target.maximum_health
+	position.y = y_offset
+	original_position = position
+
+func _physics_process(_delta: float) -> void:
+	update()
+	shake(_delta)
+	if current_time < display_duration and visible:
+		current_time += _delta
+	if current_time >= display_duration and visible:
+		hide()
+
+func update():
+	if target:
+		self.value = target.current_health
+		self.max_value = target.maximum_health
+
+func shake(_delta : float):
+	position.x = original_position.x + randi_range(-shake_scalar, shake_scalar)
+	position.y = original_position.y + randi_range(-shake_scalar / 1.3, shake_scalar / 1.3)
+	shake_scalar -= _delta * 5.0
+	shake_scalar = clamp(shake_scalar, 0.0, 3.5)
+	if shake_scalar <= 0.0:
+		position = original_position
+
+func value_changed(_value: float) -> void:
+	shake_scalar += 1.0
+"
+
+[node name="EnemyHealthbar" type="TextureProgressBar" unique_id=880604950]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -4.0
+offset_top = -0.5
+offset_right = 4.0
+offset_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset_ratio = Vector2(0.5, 0.5)
+step = 5.0
+value = 60.0
+rounded = true
+allow_lesser = true
+texture_under = SubResource("NoiseTexture2D_843sn")
+texture_progress = SubResource("NoiseTexture2D_3qnck")
+script = SubResource("GDScript_4d2eh")
+
+[connection signal="value_changed" from="." to="." method="value_changed"]

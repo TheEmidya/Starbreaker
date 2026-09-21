@@ -1,4 +1,4 @@
-extends Node2D  # Inherit from Node2D
+extends Node  # Inherit from Node2D
 class_name KnockbackComponent  # Custom class name for better clarity
 
 signal is_taking_knockback(duration : float)  # Signal for when knockback is happening

@@ -1,7 +1,7 @@
-[gd_scene load_steps=10 format=3 uid="uid://cpn24ejqvxg6p"]
+[gd_scene format=3 uid="uid://cpn24ejqvxg6p"]
 
-[ext_resource type="Texture2D" uid="uid://bxu4vpyreyq67" path="res://Game Folder/game_assets/Player/Weapons/firing_modes/Spray/Sprites/bullet1.png" id="1_ycgi2"]
-[ext_resource type="Texture2D" uid="uid://cb4ed35sin5rx" path="res://Game Folder/game_assets/Player/Weapons/firing_modes/Spray/Sprites/bullet_trails.png" id="2_abagg"]
+[ext_resource type="Texture2D" uid="uid://bxu4vpyreyq67" path="res://Game Folder/game_assets/Player/Weapons/firing_modes/Railcannon/Sprites/bullet1.png" id="1_ycgi2"]
+[ext_resource type="Texture2D" uid="uid://cb4ed35sin5rx" path="res://Game Folder/game_assets/Player/Weapons/firing_modes/Railcannon/Sprites/bullet_trails.png" id="2_abagg"]
 [ext_resource type="Script" uid="uid://ucfty02weqo2" path="res://Game Folder/game_components/entity_components/Hitbox/hitbox.gd" id="3_gndls"]
 
 [sub_resource type="GDScript" id="GDScript_hdpxr"]
@@ -64,7 +64,7 @@ anim_speed_max = 1.0
 [sub_resource type="CircleShape2D" id="CircleShape2D_wv04o"]
 resource_local_to_scene = true
 
-[node name="ShotgunBullet" type="CharacterBody2D" node_paths=PackedStringArray("hitbox")]
+[node name="ShotgunBullet" type="CharacterBody2D" unique_id=1027077844 node_paths=PackedStringArray("hitbox")]
 motion_mode = 1
 script = SubResource("GDScript_hdpxr")
 bullet_duration = 0.2
@@ -72,11 +72,11 @@ speed = 700.0
 hitbox = NodePath("HitboxComponent")
 metadata/_custom_type_script = "uid://cp026tcaij1c6"
 
-[node name="Sprite" type="Sprite2D" parent="."]
+[node name="Sprite" type="Sprite2D" parent="." unique_id=1236842111]
 texture_filter = 1
 texture = ExtResource("1_ycgi2")
 
-[node name="BulletParticleTrail" type="GPUParticles2D" parent="."]
+[node name="BulletParticleTrail" type="GPUParticles2D" parent="." unique_id=228147848]
 y_sort_enabled = true
 texture_filter = 1
 material = SubResource("CanvasItemMaterial_yb4c2")
@@ -89,19 +89,15 @@ fract_delta = false
 draw_order = 0
 process_material = SubResource("ParticleProcessMaterial_nm4c3")
 
-[node name="HitboxComponent" type="Area2D" parent="." node_paths=PackedStringArray("parent") groups=["player"]]
+[node name="HitboxComponent" type="Area2D" parent="." unique_id=868971434 groups=["player"]]
 collision_layer = 8
 collision_mask = 5
 script = ExtResource("3_gndls")
-parent = NodePath("..")
-damage = -40.0
-knockback_amount = 3000.0
-knockback_stun_duration = 0.3
 
-[node name="Collision" type="CollisionShape2D" parent="HitboxComponent"]
+[node name="Collision" type="CollisionShape2D" parent="HitboxComponent" unique_id=1991235180]
 shape = SubResource("CircleShape2D_wv04o")
 
-[node name="Timer" type="Timer" parent="."]
+[node name="Timer" type="Timer" parent="." unique_id=1226456904]
 process_callback = 0
 wait_time = 1.03
 

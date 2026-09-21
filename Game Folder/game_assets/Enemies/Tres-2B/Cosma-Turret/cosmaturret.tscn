@@ -1,8 +1,7 @@
-[gd_scene load_steps=21 format=3 uid="uid://d2k6dxwe5v7l1"]
+[gd_scene format=3 uid="uid://d2k6dxwe5v7l1"]
 
 [ext_resource type="Script" uid="uid://chx8xroi3hih8" path="res://Game Folder/game_components/entity_components/Hurtbox/hurtbox.gd" id="1_6hnih"]
 [ext_resource type="Texture2D" uid="uid://cxvpobaioil4n" path="res://Game Folder/game_assets/Enemies/Tres-2B/Cosma-Turret/Cosma-Turret.png" id="1_6p10k"]
-[ext_resource type="Shader" uid="uid://8nbd6mrasp3a" path="res://Game Folder/game_components/shaders/hitflash.tres" id="1_h7o5c"]
 [ext_resource type="Script" uid="uid://bql2an547gxi1" path="res://Game Folder/game_components/entity_components/Health/health_component.gd" id="2_jg0yl"]
 [ext_resource type="PackedScene" uid="uid://c0qsib2m70nmv" path="res://Game Folder/game_components/entity_components/State Machine/stagemachine_parent.tscn" id="3_q665o"]
 
@@ -14,26 +13,13 @@ script/source = "extends Enemy
 @export var shot_interval := 0.2
 
 @onready var firerate_timer: Timer = $Firerate
-@onready var hurtbox: HurtboxComponent = $HurtboxComponent
 @onready var hit: State = $StateMachine/Hit
 @onready var death: State = $StateMachine/Death
 @onready var state_machine: Node = $StateMachine
-
-
-func on_hit(amount, colliding_hitbox) -> void:
-	state_machine.current_state.Transistioned.emit(state_machine.current_state, state_machine.hit_state.name)
-	score_event.update_score(OnHit_score)
-
-func on_death(amount, colliding_hitbox) -> void:
-	state_machine.current_state.Transistioned.emit(state_machine.current_state, state_machine.death_state.name)
-	score_event.update_score(OnDeath_score)
 "
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_ywqrl"]
 resource_local_to_scene = true
-shader = ExtResource("1_h7o5c")
-shader_parameter/enabled = false
-shader_parameter/Tint = Color(1, 1, 1, 1)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0miyv"]
 size = Vector2(40, 40)
@@ -228,74 +214,64 @@ _data = {
 &"hitflash": SubResource("Animation_68ina")
 }
 
-[node name="Enemy" type="CharacterBody2D" groups=["enemy"]]
+[node name="Enemy" type="CharacterBody2D" unique_id=1923626434 groups=["enemy"]]
 motion_mode = 1
 script = SubResource("GDScript_eqsky")
 
-[node name="Sprite" type="Sprite2D" parent="."]
+[node name="Sprite" type="Sprite2D" parent="." unique_id=571522783]
 material = SubResource("ShaderMaterial_ywqrl")
 rotation = 6.28319
 texture = ExtResource("1_6p10k")
 
-[node name="Firerate" type="Timer" parent="."]
+[node name="Firerate" type="Timer" parent="." unique_id=112703200]
 process_callback = 0
 wait_time = 3.0
 one_shot = true
 
-[node name="HealthComponent" type="Node" parent="."]
+[node name="HealthComponent" type="Node" parent="." unique_id=83703076]
 script = ExtResource("2_jg0yl")
-maximum_health = 5139.0
+maximum_health = 9999.0
 
-[node name="HurtboxComponent" type="Area2D" parent="." node_paths=PackedStringArray("parent", "health")]
+[node name="HurtboxComponent" type="Area2D" parent="." unique_id=183465692]
 collision_layer = 5
 collision_mask = 9
 script = ExtResource("1_6hnih")
-parent = NodePath("..")
-health = NodePath("../HealthComponent")
 
-[node name="Collision" type="CollisionShape2D" parent="HurtboxComponent"]
+[node name="Collision" type="CollisionShape2D" parent="HurtboxComponent" unique_id=1570825308]
 shape = SubResource("RectangleShape2D_0miyv")
 
-[node name="StateMachine" parent="." node_paths=PackedStringArray("parent", "intial_state", "hit_state", "death_state") instance=ExtResource("3_q665o")]
+[node name="StateMachine" parent="." unique_id=57186726 node_paths=PackedStringArray("parent", "intial_state") instance=ExtResource("3_q665o")]
 parent = NodePath("..")
 intial_state = NodePath("Idle")
-hit_state = NodePath("Hit")
-death_state = NodePath("Death")
 
-[node name="Appear" type="Node" parent="StateMachine" node_paths=PackedStringArray("parent")]
+[node name="Appear" type="Node" parent="StateMachine" unique_id=400466913 node_paths=PackedStringArray("parent")]
 script = SubResource("GDScript_jiot5")
 parent = NodePath("../..")
 
-[node name="Idle" type="Node" parent="StateMachine" node_paths=PackedStringArray("parent")]
+[node name="Idle" type="Node" parent="StateMachine" unique_id=525282702 node_paths=PackedStringArray("parent")]
 script = SubResource("GDScript_a1rtw")
 parent = NodePath("../..")
 
-[node name="Shoot" type="Node" parent="StateMachine" node_paths=PackedStringArray("parent")]
+[node name="Shoot" type="Node" parent="StateMachine" unique_id=211913168 node_paths=PackedStringArray("parent")]
 script = SubResource("GDScript_btgbj")
 parent = NodePath("../..")
 
-[node name="Hit" type="Node" parent="StateMachine" node_paths=PackedStringArray("sprite_override", "parent")]
+[node name="Hit" type="Node" parent="StateMachine" unique_id=2067765730 node_paths=PackedStringArray("sprite_override", "parent")]
 script = SubResource("GDScript_6p5mk")
 sprite_override = NodePath("../../Sprite")
 parent = NodePath("../..")
 
-[node name="Death" type="Node" parent="StateMachine" node_paths=PackedStringArray("parent")]
+[node name="Death" type="Node" parent="StateMachine" unique_id=14543922 node_paths=PackedStringArray("parent")]
 script = SubResource("GDScript_bfy8o")
 parent = NodePath("../..")
 
-[node name="Hardmode" type="Node" parent="."]
+[node name="Hardmode" type="Node" parent="." unique_id=1297298902]
 script = SubResource("GDScript_1iqck")
 
-[node name="Animation" type="AnimationPlayer" parent="."]
-libraries = {
-&"": SubResource("AnimationLibrary_37lp5")
-}
+[node name="Animation" type="AnimationPlayer" parent="." unique_id=1198518406]
+libraries/ = SubResource("AnimationLibrary_37lp5")
 
-[node name="Hitflash Animation" type="AnimationPlayer" parent="."]
-libraries = {
-&"": SubResource("AnimationLibrary_werbc")
-}
+[node name="Hitflash Animation" type="AnimationPlayer" parent="." unique_id=1434984654]
+libraries/ = SubResource("AnimationLibrary_werbc")
 
 [connection signal="timeout" from="Firerate" to="StateMachine/Idle" method="firerate_timeout"]
-[connection signal="death" from="HealthComponent" to="." method="on_death"]
-[connection signal="on_hit" from="HealthComponent" to="." method="on_hit"]

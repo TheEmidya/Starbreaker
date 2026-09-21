@@ -1,0 +1,18 @@
+[gd_scene format=3 uid="uid://bhh0fqgstk7wx"]
+
+[sub_resource type="GDScript" id="GDScript_41r72"]
+script/source = "extends StatusEffect
+
+func _ready() -> void:
+	target.is_stunned = true
+
+func _exit_tree() -> void:
+	target.is_stunned = false
+	super()
+"
+
+[node name="Stunned" type="Node" unique_id=1326542082]
+script = SubResource("GDScript_41r72")
+effect_name = "Stunned"
+effect_description = "Target cannot move throughout the duration."
+metadata/_custom_type_script = "uid://b0xr14yc30kb3"

@@ -1,6 +1,6 @@
-[gd_scene load_steps=2 format=3 uid="uid://duhmfhxqltebm"]
+[gd_scene format=3 uid="uid://duhmfhxqltebm"]
 
 [ext_resource type="Script" uid="uid://bql2an547gxi1" path="res://Game Folder/game_components/entity_components/Health/health_component.gd" id="1_w10k0"]
 
-[node name="HealthComponent" type="Node"]
+[node name="HealthComponent" type="Node" unique_id=2065087441]
 script = ExtResource("1_w10k0")

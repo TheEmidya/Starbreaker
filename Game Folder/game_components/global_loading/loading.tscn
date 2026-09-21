@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://c4x1qm6djaif4"]
+[gd_scene format=3 uid="uid://c4x1qm6djaif4"]
 
 [ext_resource type="Theme" uid="uid://b1rbffoke0vnr" path="res://Game Folder/game_assets/Menus/Themes/MenuUI_Theme.tres" id="1_n23vh"]
 [ext_resource type="AudioStream" uid="uid://ccikbbrr1mfeq" path="res://Game Folder/game_components/global_loading/unlock.ogg" id="2_rvmjo"]
@@ -235,7 +235,7 @@ _data = {
 &"RESET": SubResource("Animation_5tlhk")
 }
 
-[node name="Loading_Visuals" type="Control"]
+[node name="Loading_Visuals" type="Control" unique_id=955213570]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -246,7 +246,7 @@ mouse_filter = 1
 theme = ExtResource("1_n23vh")
 script = SubResource("GDScript_grgq3")
 
-[node name="Tip_prompt" type="RichTextLabel" parent="."]
+[node name="Tip_prompt" type="RichTextLabel" parent="." unique_id=290005786]
 layout_mode = 0
 offset_left = 8.0
 offset_top = 296.0
@@ -255,7 +255,7 @@ offset_bottom = 312.0
 text = "Tip:"
 scroll_active = false
 
-[node name="Tip" type="RichTextLabel" parent="."]
+[node name="Tip" type="RichTextLabel" parent="." unique_id=1691402005]
 layout_mode = 0
 offset_left = 8.0
 offset_top = 312.0
@@ -265,7 +265,7 @@ text = "Killing enemies in quick succession will dramatically increase your scor
 scroll_active = false
 script = SubResource("GDScript_xye5f")
 
-[node name="BlackBackground" type="ColorRect" parent="."]
+[node name="BlackBackground" type="ColorRect" parent="." unique_id=98586008]
 visible = false
 z_index = 4095
 layout_mode = 1
@@ -277,7 +277,7 @@ grow_vertical = 2
 mouse_filter = 1
 color = Color(0, 0, 0, 1)
 
-[node name="Throbber" type="ProgressBar" parent="."]
+[node name="Throbber" type="ProgressBar" parent="." unique_id=1559652170]
 process_mode = 3
 process_priority = 1
 process_thread_group = 1
@@ -299,14 +299,11 @@ grow_vertical = 0
 theme = ExtResource("1_n23vh")
 value = 92.0
 
-[node name="Animation" type="AnimationPlayer" parent="."]
-libraries = {
-&"": SubResource("AnimationLibrary_xlna1")
-}
-autoplay = "RESET"
+[node name="Animation" type="AnimationPlayer" parent="." unique_id=1625437383]
+libraries/ = SubResource("AnimationLibrary_xlna1")
+autoplay = &"RESET"
 speed_scale = 10.0
 
-[node name="Finished" type="AudioStreamPlayer" parent="."]
+[node name="Finished" type="AudioStreamPlayer" parent="." unique_id=909159212]
 stream = ExtResource("2_rvmjo")
 volume_db = -80.0
-bus = &"SFX"

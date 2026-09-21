@@ -1,8 +1,8 @@
 extends Camera2D
-class_name juicycamera_component
+class_name CameraController
 
 @export_category("Zoom Variables")
-@export_range(-10.0, 10.0, 0.1) var initial_zoom_value := 2.5
+@export_range(-10.0, 10.0, 0.1) var initial_zoom_value := 1.0
 const DEFAULT_ZOOM_DURATION := 0.05
 
 @export_category("Shake Variables")  
@@ -17,11 +17,7 @@ func _ready() -> void:
 	events.camera_zoom.connect(impact_zoom, 3)
 	events.camera_freezeframe.connect(freezeframe, 2)
 	
-	# Sets the global camera to itself.
-	global.camera = self
-	# Sets the anchor to drag_center for the zoom-in feature to work without a position.
-	anchor_mode = anchor
-	# Sets the zoom to its default value.
+	anchor_mode = Camera2D.ANCHOR_MODE_FIXED_TOP_LEFT
 	self.zoom = Vector2(initial_zoom_value, initial_zoom_value)
 
 func _physics_process(_delta: float) -> void:

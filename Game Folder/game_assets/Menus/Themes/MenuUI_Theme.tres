@@ -1,4 +1,4 @@
-[gd_resource type="Theme" load_steps=4 format=3 uid="uid://b1rbffoke0vnr"]
+[gd_resource type="Theme" format=3 uid="uid://b1rbffoke0vnr"]
 
 [ext_resource type="FontFile" uid="uid://tqmtgudiu7pk" path="res://Game Folder/game_assets/Menus/Themes/TutorialDialogue/Pixeloid/UIFont.ttf" id="1_335fd"]
 
@@ -36,6 +36,7 @@ Button/constants/align_to_largest_stylebox = 0
 Button/constants/h_separation = 0
 Button/constants/icon_max_width = 0
 Button/constants/outline_size = 0
+Button/font_sizes/font_size = 23
 Label/colors/font_outline_color = Color(0, 0, 0, 0)
 Label/constants/outline_size = 0
 Label/font_sizes/font_size = 30

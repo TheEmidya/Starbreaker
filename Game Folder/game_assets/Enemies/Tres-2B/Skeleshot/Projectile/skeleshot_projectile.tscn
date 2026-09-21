@@ -1,0 +1,52 @@
+[gd_scene format=3 uid="uid://cdpetihhkyxw4"]
+
+[ext_resource type="Script" uid="uid://ucfty02weqo2" path="res://Game Folder/game_components/entity_components/Hitbox/hitbox.gd" id="2_2d0bm"]
+[ext_resource type="Script" uid="uid://bxhw6dnb6fuqm" path="res://Game Folder/game_components/entity_components/Hitbox/HitboxData.gd" id="2_id6yo"]
+
+[sub_resource type="GDScript" id="GDScript_648ul"]
+script/source = "extends Projectile
+var direction := Vector2.ZERO
+@onready var sprite = $Sprite
+
+func _physics_process(_delta: float) -> void:
+	velocity = direction * speed
+	sprite.rotation_degrees += speed
+	move_and_slide()
+"
+
+[sub_resource type="Gradient" id="Gradient_2d0bm"]
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 1)
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_id6yo"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_w6hqy"]
+width = 10
+height = 10
+noise = SubResource("FastNoiseLite_id6yo")
+color_ramp = SubResource("Gradient_2d0bm")
+
+[sub_resource type="Resource" id="Resource_w6hqy"]
+script = ExtResource("2_id6yo")
+metadata/_custom_type_script = "uid://bxhw6dnb6fuqm"
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_id6yo"]
+radius = 5.0990195
+
+[node name="SkeleshotProjectile" type="CharacterBody2D" unique_id=444562899 node_paths=PackedStringArray("hitbox")]
+collision_layer = 16
+collision_mask = 2
+script = SubResource("GDScript_648ul")
+speed = 250.0
+hitbox = NodePath("Hitbox")
+metadata/_custom_type_script = "uid://cp026tcaij1c6"
+
+[node name="Sprite" type="Sprite2D" parent="." unique_id=1185960572]
+texture = SubResource("NoiseTexture2D_w6hqy")
+
+[node name="Hitbox" type="Area2D" parent="." unique_id=1459959910]
+script = ExtResource("2_2d0bm")
+hitbox_data = SubResource("Resource_w6hqy")
+metadata/_custom_type_script = "uid://ucfty02weqo2"
+
+[node name="Collision" type="CollisionShape2D" parent="Hitbox" unique_id=584421199]
+shape = SubResource("CircleShape2D_id6yo")

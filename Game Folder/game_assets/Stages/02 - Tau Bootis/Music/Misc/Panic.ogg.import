@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://ch7rykd8tiwoa"
+path="res://.godot/imported/Panic.ogg-3e6b4c379365587d323d4a1e472f2bfb.oggvorbisstr"
+
+[deps]
+
+source_file="res://Game Folder/game_assets/Stages/02 - Tau Bootis/Music/Misc/Panic.ogg"
+dest_files=["res://.godot/imported/Panic.ogg-3e6b4c379365587d323d4a1e472f2bfb.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4
