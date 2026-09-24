@@ -2,8 +2,12 @@
 
 [ext_resource type="Script" uid="uid://i0ke4rspankj" path="res://assets/scripts/classes/StageClass.gd" id="1_6t8dt"]
 [ext_resource type="AudioStream" uid="uid://cwa6hu4v1ftsh" path="res://assets/audio/music/mus_stage1.ogg" id="2_6qrhd"]
+[ext_resource type="PackedScene" uid="uid://cce4jvuvkkjwr" path="res://assets/scenes/entity/enemy/skeleshot/skelebot.tscn" id="3_yqfy3"]
 
 [node name="StageTres2b" type="Node2D" unique_id=461584369]
 script = ExtResource("1_6t8dt")
 music_file = ExtResource("2_6qrhd")
 metadata/_custom_type_script = "uid://i0ke4rspankj"
+
+[node name="Skelebot" parent="." unique_id=2010947124 instance=ExtResource("3_yqfy3")]
+position = Vector2(432, 136)

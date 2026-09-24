@@ -5,7 +5,7 @@ signal player_exit_focus()
 
 @onready var entity_movement_class: EntityMovementClass = %EntityMovementClass
 @onready var entity_health_class: EntityHealthClass = %EntityHealthClass
-@onready var player_weapon: Node2D = $PlayerWeapon
+@onready var player_weapon: Node2D = $PlayerSprayWeapon
 
 @onready var crosshair: AnimatedSprite2D = %Crosshair
 @onready var ui_charge_meter: TextureProgressBar = %ui_charge_meter
@@ -27,6 +27,10 @@ func _physics_process(delta: float) -> void:
 	crosshair_update(delta)
 	entity_movement_class.move(Input.get_vector("move_left", "move_right", "move_up", "move_down"), delta)
 
+func _process(_delta: float) -> void:
+	weapon_input_handler()
+	focus_mode_handler()
+
 func crosshair_update(delta : float):
 	if entity_movement_class.entity_is_immovable:
 		return
@@ -40,28 +44,23 @@ func look_toward_mouse(delta : float):
 	var final_mouse_pos = (crosshair.global_position - global_position).angle()
 	self.rotation = lerp_angle(self.rotation, final_mouse_pos, mouse_turn_weight * delta)
 
-func _unhandled_input(event: InputEvent) -> void:
-	focus_mode_handler(event)
-	weapon_input_handler(event)
 
-func focus_mode_handler(event : InputEvent):
-	if entity_movement_class.entity_is_immovable:
-		return
-	
-	if event.is_action_pressed("slow"):
+func focus_mode_handler():
+	if Input.is_action_just_pressed("slow"):
 		player_enter_focus.emit()
+		$Sprite.hide()
 		entity_multipliers.speed_multiplier /= focus_mode_multiplier
-	
-	if event.is_action_released("slow"):
+	if Input.is_action_just_released("slow"):
+		$Sprite.show()
 		player_exit_focus.emit()
 		entity_multipliers.speed_multiplier *= focus_mode_multiplier
 
-func weapon_input_handler(event : InputEvent):
+func weapon_input_handler():
 	if entity_movement_class.entity_is_immovable:
 		return
 	
-	if event.is_action_pressed("primary"):
+	if Input.is_action_pressed("primary"):
 		player_weapon.primary_fire_current_weapon()
 	
-	if event.is_action_pressed("secondary"):
+	if Input.is_action_pressed("secondary"):
 		player_weapon.secondary_fire_current_weapon()

@@ -1,0 +1,50 @@
+[gd_scene format=3 uid="uid://d20jmyvfiqcfl"]
+
+[sub_resource type="GDScript" id="GDScript_1uw78"]
+script/source = "extends PlayerWeaponClass
+
+@onready var can_fire_weapon : bool = false:
+	get():
+		return current_firerate >= firerate
+@export var firerate : float = 0.65
+@onready var current_firerate : float = firerate
+var bullet_pos = 0
+@onready var bullet_spawn_1: Marker2D = $bullet_spawn1
+@onready var bullet_spawn_2: Marker2D = $bullet_spawn2
+
+func _physics_process(delta: float) -> void:
+	if current_firerate > firerate:
+		return
+	current_firerate += delta
+
+func primary_fire_current_weapon():
+	if !can_fire_weapon:
+		return
+	current_firerate = 0
+	
+	var primary_bullet = load_bullet(bullet_uid) as ProjectileClass
+	primary_bullet.projectile_direction = (player_entity.crosshair.global_position - player_entity.global_position).normalized()
+	primary_bullet.global_position = bullet_pos_handler()
+	global.add_child(primary_bullet, true)
+
+func bullet_pos_handler() -> Vector2:
+	bullet_pos = wrapi(bullet_pos, 0, 2)
+	var final_pos = Vector2.ZERO
+	match bullet_pos:
+		0:
+			final_pos = bullet_spawn_1.global_position
+		1:
+			final_pos += bullet_spawn_2.global_position
+	bullet_pos += 1
+	return final_pos
+"
+
+[node name="PlayerWeapon" type="Node2D" unique_id=1049801715]
+script = SubResource("GDScript_1uw78")
+firerate = 0.12
+
+[node name="bullet_spawn1" type="Marker2D" parent="." unique_id=530747561]
+position = Vector2(3, -8)
+
+[node name="bullet_spawn2" type="Marker2D" parent="." unique_id=143902958]
+position = Vector2(3, 8)

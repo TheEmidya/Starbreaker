@@ -1,0 +1,26 @@
+[gd_scene format=3 uid="uid://cce4jvuvkkjwr"]
+
+[ext_resource type="PackedScene" uid="uid://dyqux7x00kasq" path="res://assets/scenes/entity/enemy/base/enemybase.tscn" id="1_x88fq"]
+
+[sub_resource type="GDScript" id="GDScript_tl0nl"]
+script/source = "extends EnemyEntityClass
+"
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_x88fq"]
+
+[node name="Skelebot" unique_id=2010947124 instance=ExtResource("1_x88fq")]
+script = SubResource("GDScript_tl0nl")
+
+[node name="EntityMovementClass" parent="." index="0" unique_id=775630230]
+unique_name_in_owner = true
+
+[node name="EntityHealthClass" parent="." index="1" unique_id=1922871730]
+unique_name_in_owner = true
+entity_max_health = 200.0
+
+[node name="HurtboxClass" parent="." index="2" unique_id=405271929]
+unique_name_in_owner = true
+
+[node name="Collision" parent="HurtboxClass" index="0" unique_id=1760161592]
+shape = SubResource("RectangleShape2D_x88fq")
+debug_color = Color(0.724514, 0, 0.26808983, 0.41960785)

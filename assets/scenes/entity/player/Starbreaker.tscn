@@ -7,6 +7,7 @@
 [ext_resource type="Script" uid="uid://bur4rwjvq20ro" path="res://assets/scripts/classes/EntityHealthClass.gd" id="5_mcrra"]
 [ext_resource type="Texture2D" uid="uid://b7gq70653v4f6" path="res://assets/sprites/player/misc/spr_player_crosshair.png" id="6_xx37r"]
 [ext_resource type="Script" uid="uid://h3l8mr8338cm" path="res://assets/scripts/classes/HurtboxClass.gd" id="7_ktt2r"]
+[ext_resource type="PackedScene" uid="uid://d20jmyvfiqcfl" path="res://assets/scenes/entity/player/weapon_scenes/spray/spray_weapon_scene.tscn" id="8_1uw78"]
 
 [sub_resource type="Resource" id="Resource_1q4qq"]
 script = ExtResource("2_57hji")
@@ -77,25 +78,6 @@ color_ramp = SubResource("Gradient_1uw78")
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ktt2r"]
 radius = 1.0
-
-[sub_resource type="GDScript" id="GDScript_ktt2r"]
-script/source = "extends Node2D
-
-@export var player_entity : PlayerEntityClass
-@export_enum(\"SPRAY\", \"RAILGUN\", \"SWORD\") var current_weapon = \"SPRAY\"
-
-func _ready() -> void:
-	setup_weapons()
-
-func setup_weapons():
-	pass
-
-func primary_fire_current_weapon():
-	print('FIRE!')
-
-func secondary_fire_current_weapon():
-	print('FIRE! (2)')
-"
 
 [node name="Starbreaker" type="CharacterBody2D" unique_id=105214128]
 motion_mode = 1
@@ -175,7 +157,6 @@ texture_under = SubResource("NoiseTexture2D_xx37r")
 texture_progress = SubResource("NoiseTexture2D_1uw78")
 
 [node name="HurtboxClass" type="Area2D" parent="." unique_id=547355753 node_paths=PackedStringArray("entity_health")]
-collision_layer = 0
 collision_mask = 8
 script = ExtResource("7_ktt2r")
 entity_health = NodePath("../EntityHealthClass")
@@ -183,6 +164,6 @@ entity_health = NodePath("../EntityHealthClass")
 [node name="Collision" type="CollisionShape2D" parent="HurtboxClass" unique_id=2145024779]
 shape = SubResource("CircleShape2D_ktt2r")
 
-[node name="PlayerWeapon" type="Node2D" parent="." unique_id=335368556 node_paths=PackedStringArray("player_entity")]
-script = SubResource("GDScript_ktt2r")
+[node name="PlayerSprayWeapon" parent="." unique_id=1630624049 node_paths=PackedStringArray("player_entity") instance=ExtResource("8_1uw78")]
+firerate = 0.21
 player_entity = NodePath("..")

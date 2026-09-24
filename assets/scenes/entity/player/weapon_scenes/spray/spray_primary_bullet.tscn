@@ -1,0 +1,77 @@
+[gd_scene format=3 uid="uid://ce0k7ggqwaxbd"]
+
+[ext_resource type="Script" uid="uid://bqknoi4t0h2p0" path="res://assets/scripts/classes/EntityMovementClass.gd" id="1_fr5eu"]
+[ext_resource type="Script" uid="uid://cs4br51hr00rr" path="res://assets/scripts/classes/EntityMultipliersClass.gd" id="1_tl0nl"]
+[ext_resource type="Texture2D" uid="uid://bxu4vpyreyq67" path="res://Game Folder/game_assets/Player/Weapons/firing_modes/Railcannon/Sprites/bullet1.png" id="1_x03mc"]
+[ext_resource type="Script" uid="uid://cynqlgq74737b" path="res://assets/scripts/classes/HitboxClass.gd" id="2_k8bg7"]
+[ext_resource type="Script" uid="uid://pm27eri1ypa2" path="res://assets/scripts/classes/HitboxDamageResource.gd" id="4_tl0nl"]
+
+[sub_resource type="GDScript" id="GDScript_x03mc"]
+script/source = "extends ProjectileClass
+var projectile_direction := Vector2.UP
+@onready var entity_movement_class: EntityMovementClass = %EntityMovementClass
+
+func _ready() -> void:
+	$HitboxClass.hitbox_connection.connect(on_connection, 1)
+
+func _physics_process(delta: float) -> void:
+	entity_movement_class.move(projectile_direction, delta)
+
+func on_connection(_hurtbox : HurtboxClass):
+	queue_free()
+"
+
+[sub_resource type="Resource" id="Resource_1uw78"]
+script = ExtResource("1_tl0nl")
+metadata/_custom_type_script = "uid://cs4br51hr00rr"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_k8bg7"]
+atlas = ExtResource("1_x03mc")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_hsus7"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_k8bg7")
+}],
+"loop": 1,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="Resource" id="Resource_fr5eu"]
+script = ExtResource("4_tl0nl")
+damage_amount = 25
+knockback_amount = 75
+metadata/_custom_type_script = "uid://pm27eri1ypa2"
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_1uw78"]
+
+[node name="PlayerSprayProjectile" type="CharacterBody2D" unique_id=1515086155]
+collision_layer = 2
+collision_mask = 4
+script = SubResource("GDScript_x03mc")
+entity_multipliers = SubResource("Resource_1uw78")
+
+[node name="EntityMovementClass" type="Node" parent="." unique_id=508693437 node_paths=PackedStringArray("entity")]
+unique_name_in_owner = true
+script = ExtResource("1_fr5eu")
+entity = NodePath("..")
+entity_movement_speed = 500.0
+entity_acceleration = 500.0
+metadata/_custom_type_script = "uid://bqknoi4t0h2p0"
+
+[node name="ProjectileSprite" type="AnimatedSprite2D" parent="." unique_id=2138668167]
+sprite_frames = SubResource("SpriteFrames_hsus7")
+
+[node name="HitboxClass" type="Area2D" parent="." unique_id=2134360706 node_paths=PackedStringArray("entity")]
+collision_layer = 2
+collision_mask = 4
+script = ExtResource("2_k8bg7")
+entity = NodePath("..")
+hitbox_data = SubResource("Resource_fr5eu")
+metadata/_custom_type_script = "uid://cynqlgq74737b"
+
+[node name="Collision" type="CollisionShape2D" parent="HitboxClass" unique_id=2051441932]
+shape = SubResource("CircleShape2D_1uw78")

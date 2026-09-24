@@ -1,0 +1,2 @@
+extends EntityClass
+class_name ProjectileClass
