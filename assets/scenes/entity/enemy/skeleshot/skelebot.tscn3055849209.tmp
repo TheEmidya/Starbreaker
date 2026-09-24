@@ -1,0 +1,73 @@
+[gd_scene format=3 uid="uid://cce4jvuvkkjwr"]
+
+[ext_resource type="PackedScene" uid="uid://dyqux7x00kasq" path="res://assets/scenes/entity/enemy/base/enemybase.tscn" id="1_x88fq"]
+[ext_resource type="Script" uid="uid://juh3p6opw04v" path="res://assets/scripts/classes/StateMachineClass.gd" id="2_cu4nj"]
+
+[sub_resource type="GDScript" id="GDScript_tl0nl"]
+script/source = "extends EnemyEntityClass
+"
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_yqfy3"]
+radius = 4.1231055
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_x88fq"]
+
+[sub_resource type="GDScript" id="GDScript_cu4nj"]
+script/source = "extends StateClass
+@onready var ai_navigation: NavigationAgent2D = %AI_Navigation
+@onready var entity: EnemyEntityClass = $\"../..\"
+
+func physics_update(_delta):
+	ai_navigation.target_position = global.player.global_position
+	if ai_navigation.is_navigation_finished():
+		return
+	
+	var next_point = ai_navigation.get_next_path_position()
+	var direction = (next_point - entity.global_position).normalized()
+	var desired_velocity = entity.velocity.move_toward(direction * entity.entity_movement_class.entity_movement_speed, entity.entity_movement_class.entity_acceleration)
+	
+	ai_navigation.set_velocity(desired_velocity)
+
+func _on_ai_navigation_velocity_computed(safe_velocity: Vector2) -> void:
+	entity.velocity = safe_velocity
+	print(entity.velocity, safe_velocity)
+"
+
+[node name="Skelebot" unique_id=2010947124 instance=ExtResource("1_x88fq")]
+collision_layer = 0
+script = SubResource("GDScript_tl0nl")
+
+[node name="Collision" type="CollisionShape2D" parent="." index="0" unique_id=1833679080]
+shape = SubResource("CircleShape2D_yqfy3")
+
+[node name="EntityMovementClass" parent="." index="1" unique_id=775630230]
+unique_name_in_owner = true
+entity_movement_speed = 75.0
+entity_acceleration = 8.0
+
+[node name="EntityHealthClass" parent="." index="2" unique_id=1922871730]
+unique_name_in_owner = true
+entity_max_health = 200.0
+
+[node name="HurtboxClass" parent="." index="3" unique_id=405271929]
+unique_name_in_owner = true
+
+[node name="Collision" parent="HurtboxClass" index="0" unique_id=1760161592]
+shape = SubResource("RectangleShape2D_x88fq")
+debug_color = Color(0.724514, 0, 0.26808983, 0.41960785)
+
+[node name="AI_Navigation" type="NavigationAgent2D" parent="." index="4" unique_id=496381313]
+unique_name_in_owner = true
+avoidance_enabled = true
+debug_enabled = true
+
+[node name="StateMachineClass" type="Node" parent="." index="5" unique_id=1417261752 node_paths=PackedStringArray("intial_state")]
+script = ExtResource("2_cu4nj")
+intial_state = NodePath("int")
+metadata/_custom_type_script = "uid://juh3p6opw04v"
+
+[node name="int" type="Node" parent="StateMachineClass" index="0" unique_id=1702393494]
+script = SubResource("GDScript_cu4nj")
+metadata/_custom_type_script = "uid://dmgbhcexe6fw"
+
+[connection signal="velocity_computed" from="AI_Navigation" to="StateMachineClass/int" method="_on_ai_navigation_velocity_computed"]

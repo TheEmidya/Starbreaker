@@ -3,7 +3,6 @@
 [ext_resource type="Script" uid="uid://chx8xroi3hih8" path="res://Game Folder/game_components/entity_components/Hurtbox/hurtbox.gd" id="1_6hnih"]
 [ext_resource type="Texture2D" uid="uid://cxvpobaioil4n" path="res://Game Folder/game_assets/Enemies/Tres-2B/Cosma-Turret/Cosma-Turret.png" id="1_6p10k"]
 [ext_resource type="Script" uid="uid://bql2an547gxi1" path="res://Game Folder/game_components/entity_components/Health/health_component.gd" id="2_jg0yl"]
-[ext_resource type="PackedScene" uid="uid://c0qsib2m70nmv" path="res://Game Folder/game_components/entity_components/State Machine/stagemachine_parent.tscn" id="3_q665o"]
 
 [sub_resource type="GDScript" id="GDScript_eqsky"]
 script/source = "extends Enemy
@@ -13,9 +12,6 @@ script/source = "extends Enemy
 @export var shot_interval := 0.2
 
 @onready var firerate_timer: Timer = $Firerate
-@onready var hit: State = $StateMachine/Hit
-@onready var death: State = $StateMachine/Death
-@onready var state_machine: Node = $StateMachine
 "
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_ywqrl"]
@@ -23,98 +19,6 @@ resource_local_to_scene = true
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0miyv"]
 size = Vector2(40, 40)
-
-[sub_resource type="GDScript" id="GDScript_jiot5"]
-script/source = "extends State
-
-
-func physics_update(_delta):
-	var target = parent.transform.looking_at(global.player.global_position + (global.player.velocity.normalized() * abs(parent.global_position.distance_to(global.player.global_position)) / 1.25))
-	parent.transform = parent.transform.interpolate_with(target, 20 * _delta)
-"
-
-[sub_resource type="GDScript" id="GDScript_a1rtw"]
-script/source = "extends State
-
-func enter():
-	await get_tree().create_timer(0.5).timeout
-	parent.firerate_timer.start(3.0)
-	parent.firerate_timer.connect(\"timeout\", firerate_timeout, 0)
-
-func physics_update(_delta):
-	var target = parent.transform.looking_at(global.player.global_position + (global.player.velocity.normalized() * abs(parent.global_position.distance_to(global.player.global_position)) / 1.25))
-	parent.transform = parent.transform.interpolate_with(target, 20 * _delta)
-
-func firerate_timeout():
-	emit_signal(\"Transistioned\", self, $\"../Shoot\".name)
-
-func exit():
-	parent.firerate_timer.stop()
-"
-
-[sub_resource type="GDScript" id="GDScript_btgbj"]
-script/source = "extends State
-
-const BULLET_COSMATURRET = preload(\"res://Game Folder/game_assets/Enemies/Tres-2B/Cosma-Turret/Bullet/bullet_cosma-turret.tscn\")
-
-func enter():
-	shoot_at_target()
-
-func physics_update(_delta):
-	var target = parent.transform.looking_at(global.player.global_position + (global.player.velocity.normalized() * abs(parent.global_position.distance_to(global.player.global_position)) / 1.25))
-	parent.transform = parent.transform.interpolate_with(target, 20 * _delta)
-
-func shoot_at_target():
-	for i in owner.shot_burst:
-		i = BULLET_COSMATURRET.instantiate()
-		await get_tree().create_timer(parent.shot_interval).timeout
-		global.EntityManager.add_child(i)
-		i.global_position = owner.global_position
-		i.rotation = parent.transform.get_rotation()
-	emit_signal(\"Transistioned\", self, $\"../Idle\".name)
-"
-
-[sub_resource type="GDScript" id="GDScript_6p5mk"]
-script/source = "extends State
-@onready var hitflash_animation: AnimationPlayer = $\"../../Hitflash Animation\"
-@onready var animation: AnimationPlayer = $\"../../Animation\"
-@export var sprite_override = Sprite2D
-var trauma = 0.5
-
-func delay_frame():
-	OS.delay_msec(10)
-
-func shake_sprite(delta):
-	trauma = lerp(trauma, 0.0, delta * 10)
-	sprite_override.offset = Vector2(randf_range(-trauma, trauma), randf_range(-trauma, trauma))
-
-func enter():
-	parent.rotate(randi_range(-360, 360))
-	trauma = 15.0
-	hitflash_animation.stop()
-	animation.stop()
-	hitflash_animation.play(\"hitflash\")
-	animation.play(\"hit\")
-
-
-func physics_update(delta):
-	shake_sprite(delta)
-
-func back_to_idle():
-	Transistioned.emit(self, $\"../Idle\".name)
-
-func exit():
-	sprite_override.offset = Vector2.ZERO
-"
-
-[sub_resource type="GDScript" id="GDScript_bfy8o"]
-script/source = "extends State
-
-
-func enter():
-	parent.hurtbox.queue_free()
-	parent.queue_free()
-"
 
 [sub_resource type="GDScript" id="GDScript_1iqck"]
 script/source = "extends Node
@@ -152,23 +56,6 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
 "values": [Vector2(0.5, 0.5), Vector2(1.1, 1.1), Vector2(1, 1)]
-}
-tracks/1/type = "method"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("StateMachine/Hit")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0.01, 0.2),
-"transitions": PackedFloat32Array(1, 1),
-"values": [{
-"args": [],
-"method": &"delay_frame"
-}, {
-"args": [],
-"method": &"back_to_idle"
-}]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_37lp5"]
@@ -240,31 +127,6 @@ script = ExtResource("1_6hnih")
 [node name="Collision" type="CollisionShape2D" parent="HurtboxComponent" unique_id=1570825308]
 shape = SubResource("RectangleShape2D_0miyv")
 
-[node name="StateMachine" parent="." unique_id=57186726 node_paths=PackedStringArray("parent", "intial_state") instance=ExtResource("3_q665o")]
-parent = NodePath("..")
-intial_state = NodePath("Idle")
-
-[node name="Appear" type="Node" parent="StateMachine" unique_id=400466913 node_paths=PackedStringArray("parent")]
-script = SubResource("GDScript_jiot5")
-parent = NodePath("../..")
-
-[node name="Idle" type="Node" parent="StateMachine" unique_id=525282702 node_paths=PackedStringArray("parent")]
-script = SubResource("GDScript_a1rtw")
-parent = NodePath("../..")
-
-[node name="Shoot" type="Node" parent="StateMachine" unique_id=211913168 node_paths=PackedStringArray("parent")]
-script = SubResource("GDScript_btgbj")
-parent = NodePath("../..")
-
-[node name="Hit" type="Node" parent="StateMachine" unique_id=2067765730 node_paths=PackedStringArray("sprite_override", "parent")]
-script = SubResource("GDScript_6p5mk")
-sprite_override = NodePath("../../Sprite")
-parent = NodePath("../..")
-
-[node name="Death" type="Node" parent="StateMachine" unique_id=14543922 node_paths=PackedStringArray("parent")]
-script = SubResource("GDScript_bfy8o")
-parent = NodePath("../..")
-
 [node name="Hardmode" type="Node" parent="." unique_id=1297298902]
 script = SubResource("GDScript_1iqck")
 
@@ -273,5 +135,3 @@ libraries/ = SubResource("AnimationLibrary_37lp5")
 
 [node name="Hitflash Animation" type="AnimationPlayer" parent="." unique_id=1434984654]
 libraries/ = SubResource("AnimationLibrary_werbc")
-
-[connection signal="timeout" from="Firerate" to="StateMachine/Idle" method="firerate_timeout"]

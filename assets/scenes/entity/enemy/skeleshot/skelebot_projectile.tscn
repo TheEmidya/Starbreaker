@@ -1,0 +1,15 @@
+[gd_scene format=3 uid="uid://naow6olch2jr"]
+
+[ext_resource type="Script" uid="uid://digwwc1q25xw4" path="res://assets/scripts/classes/ProjectileClass.gd" id="1_4n3ek"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_42vi5"]
+radius = 6.0
+
+[node name="ProjectileClass" type="CharacterBody2D" unique_id=1886283257]
+collision_layer = 0
+script = ExtResource("1_4n3ek")
+metadata/_custom_type_script = "uid://digwwc1q25xw4"
+
+[node name="Collision" type="CollisionShape2D" parent="." unique_id=893628703]
+shape = SubResource("CircleShape2D_42vi5")
+debug_color = Color(0.7712309, 0.41615048, 0.42607158, 0.41960785)

@@ -4,6 +4,11 @@
 [ext_resource type="AudioStream" uid="uid://cwa6hu4v1ftsh" path="res://assets/audio/music/mus_stage1.ogg" id="2_6qrhd"]
 [ext_resource type="PackedScene" uid="uid://cce4jvuvkkjwr" path="res://assets/scenes/entity/enemy/skeleshot/skelebot.tscn" id="3_yqfy3"]
 
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_5wmqw"]
+vertices = PackedVector2Array(758, 438, -118, 438, -118, -54, 758, -54)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(-128, -64, 768, -64, 768, 448, -128, 448)])
+
 [node name="StageTres2b" type="Node2D" unique_id=461584369]
 script = ExtResource("1_6t8dt")
 music_file = ExtResource("2_6qrhd")
@@ -11,3 +16,12 @@ metadata/_custom_type_script = "uid://i0ke4rspankj"
 
 [node name="Skelebot" parent="." unique_id=2010947124 instance=ExtResource("3_yqfy3")]
 position = Vector2(432, 136)
+
+[node name="Skelebot2" parent="." unique_id=534939129 instance=ExtResource("3_yqfy3")]
+position = Vector2(360, 216)
+
+[node name="Skelebot3" parent="." unique_id=626146885 instance=ExtResource("3_yqfy3")]
+position = Vector2(248, 264)
+
+[node name="NavigationRegion2D" type="NavigationRegion2D" parent="." unique_id=258360612]
+navigation_polygon = SubResource("NavigationPolygon_5wmqw")

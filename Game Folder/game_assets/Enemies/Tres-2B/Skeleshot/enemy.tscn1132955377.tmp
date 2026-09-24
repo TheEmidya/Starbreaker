@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://bpf2md5esgawm" path="res://Game Folder/game_assets/Enemies/Tres-2B/Skeleshot/enemy.gd" id="1_t7cul"]
 [ext_resource type="Texture2D" uid="uid://d03ccb6618p5d" path="res://Game Folder/game_assets/Enemies/Tres-2B/Skeleshot/Sprites/shoot.png" id="1_vsosa"]
 [ext_resource type="Texture2D" uid="uid://cwwn34618nmuy" path="res://Game Folder/game_assets/Enemies/Tres-2B/Skeleshot/Sprites/death.png" id="2_3ivxn"]
+[ext_resource type="PackedScene" uid="uid://c0qsib2m70nmv" path="res://assets/scenes/misc/state machine/stagemachine.tscn" id="2_lgqps"]
 [ext_resource type="Texture2D" uid="uid://0giwyh1og78x" path="res://Game Folder/game_assets/Enemies/Tres-2B/Skeleshot/Sprites/hit.png" id="2_vrino"]
 [ext_resource type="Texture2D" uid="uid://cipnnf6ne6or4" path="res://Game Folder/game_assets/Enemies/Tres-2B/Skeleshot/Sprites/spawn.png" id="3_kvhsi"]
 [ext_resource type="Script" uid="uid://chx8xroi3hih8" path="res://Game Folder/game_components/entity_components/Hurtbox/hurtbox.gd" id="5_alwm2"]
@@ -1188,6 +1189,269 @@ metadata/_custom_type_script = "uid://bxhw6dnb6fuqm"
 [sub_resource type="CircleShape2D" id="CircleShape2D_el4kx"]
 radius = 9.0
 
+[sub_resource type="GDScript" id="GDScript_rrcrv"]
+script/source = "extends StateClass
+@onready var sprite: AnimatedSprite2D = $\"../../Sprite\"
+@onready var state_owner: Enemy = $\"../..\"
+@export var spawn_speed = 1.0
+@onready var entity_hitbox: Hitbox = $\"../../Hitbox\"
+
+
+func enter():
+	state_owner.entity_hurtbox.is_hurtbox_disabled = true
+	entity_hitbox.is_hitbox_disabled  = true
+	sprite.play(\"spawn\", spawn_speed)
+	await sprite.animation_finished
+	Transistioned.emit(self, \"Chasing\")
+
+func exit():
+	entity_hitbox.is_hitbox_disabled = false
+	state_owner.entity_hurtbox.is_hurtbox_disabled = false
+"
+
+[sub_resource type="GDScript" id="GDScript_5wiu6"]
+resource_name = "idle"
+script/source = "extends State
+@onready var sprite: AnimatedSprite2D = $\"../../Sprite\"
+@onready var state_owner: Enemy = $\"../..\"
+
+var new_velocity := Vector2.ZERO
+@onready var path_position = Vector2.ZERO
+@export var chasing_speed = 25.0
+@onready var current_tick_time = 0.0
+@export var tickrate = 0.5
+@onready var current_attack_time = 0.0
+@export var attackrate = 3.5 + randf_range(-0.5, 0.5)
+
+func _ready() -> void:
+	state_owner.ai_navigation.velocity_computed.connect(ai_computed, 1)
+
+func enter():
+	sprite.play(\"chase\")
+	state_owner.ai_navigation.target_position = global.player.global_position
+
+func physics_update(_delta):
+	if !state_owner.is_stunned and !state_owner.is_flying:
+		var target_position_range = global.player.global_position + (Vector2.LEFT * 15).rotated(randf_range(-PI, PI))
+		
+		current_tick_time += _delta
+		if current_tick_time > tickrate:
+			current_tick_time = 0 + randf_range(0, 0.5)
+			state_owner.ai_navigation.target_position = target_position_range
+		
+		path_position = state_owner.ai_navigation.get_next_path_position()
+		new_velocity = state_owner.global_position.direction_to(path_position) * chasing_speed
+		state_owner.ai_navigation.set_velocity(new_velocity)
+		
+		if state_owner.current_health < state_owner.maximum_health * 0.35:
+			Transistioned.emit(self, \"Running\")
+		
+		current_attack_time += _delta
+		if current_attack_time > attackrate:
+			attack()
+
+func ai_computed(safe_velocity : Vector2):
+	if !state_owner.is_stunned and !state_owner.is_flying:
+		state_owner.velocity = safe_velocity
+
+func exit():
+	state_owner.ai_navigation.set_velocity(Vector2.ZERO)
+	current_attack_time = 0
+	current_tick_time = 0
+
+func attack():
+	if state_owner.global_position.distance_to(global.player.global_position) < 45.0:
+		Transistioned.emit(self, \"ChargingBite\")
+	if state_owner.global_position.distance_to(global.player.global_position) > 45.0:
+		Transistioned.emit(self, \"ChargingShot\")
+"
+
+[sub_resource type="GDScript" id="GDScript_dtdju"]
+script/source = "extends State
+@onready var sprite: AnimatedSprite2D = $\"../../Sprite\"
+@onready var state_owner: Enemy = $\"../..\"
+
+var new_velocity := Vector2.ZERO
+@onready var path_position = Vector2.ZERO
+@export var chasing_speed = 25.0
+@onready var current_tick_time = 0.0
+@export var tickrate = 0.5
+@onready var current_attack_time = 0.0
+@export var attackrate = 3.5 + randf_range(-2.0, 2.0)
+
+func enter():
+	sprite.play(\"chase\")
+	state_owner.ai_navigation.target_position = global.player.global_position
+
+func physics_update(_delta):
+	if !state_owner.is_stunned and !state_owner.is_flying:
+		path_position = state_owner.ai_navigation.get_next_path_position()
+		
+		if state_owner.current_health > state_owner.maximum_health * 0.35:
+			Transistioned.emit(self, \"Chasing\")
+		
+		if state_owner.global_position.distance_to(global.player.global_position) < 120:
+			new_velocity = state_owner.global_position.direction_to(path_position) * -chasing_speed
+		elif state_owner.global_position.distance_to(global.player.global_position) > 160:
+			new_velocity = state_owner.global_position.direction_to(path_position) * chasing_speed
+		elif state_owner.global_position.distance_to(global.player.global_position) > 120:
+			new_velocity = Vector2.ZERO
+		
+		state_owner.ai_navigation.set_velocity(new_velocity)
+		
+		current_tick_time += _delta
+		if current_tick_time > tickrate:
+			state_owner.ai_navigation.target_position = global.player.global_position
+		
+		
+		current_attack_time += _delta
+		if current_attack_time > tickrate:
+			attack()
+
+func exit():
+	current_tick_time = 0
+	current_attack_time = 0.0
+	state_owner.ai_navigation.set_velocity(Vector2.ZERO)
+
+func attack():
+		if state_owner.global_position.distance_to(global.player.global_position) <= 45.0:
+			Transistioned.emit(self, \"ChargingBite\")
+		if state_owner.global_position.distance_to(global.player.global_position) > 45.0:
+			Transistioned.emit(self, \"ChargingShot\")
+"
+
+[sub_resource type="GDScript" id="GDScript_rnofh"]
+resource_name = "hit_state"
+script/source = "extends State
+@onready var state_owner: Enemy = $\"../..\"
+@onready var sprite: AnimatedSprite2D = $\"../../Sprite\"
+@export var animation_speed := 1.0
+
+func _ready() -> void:
+	state_owner.entity_hit.connect(func(_entity : Entity): Transistioned.emit(get_parent().current_state, \"Hit\"), 1)
+
+func enter():
+	sprite.play(\"hit\", animation_speed)
+	state_owner.material.set_shader_parameter(\"hit_opacity\", 1.0)
+	
+	await sprite.animation_finished
+	
+	await get_tree().create_timer(0.3, false, true, false).timeout
+	
+	self.Transistioned.emit(self, \"Chasing\")
+
+func exit():
+	state_owner.material.set_shader_parameter(\"hit_opacity\", 0.0)
+"
+
+[sub_resource type="GDScript" id="GDScript_2nrcc"]
+resource_name = "death_state"
+script/source = "extends State
+@onready var state_owner: Enemy = $\"../..\"
+@onready var sprite: AnimatedSprite2D = $\"../../Sprite\"
+@export var animation_speed := 1.0
+@onready var entity_hitbox: Hitbox = $\"../../Hitbox\"
+
+func _ready() -> void:
+	state_owner.entity_death.connect(func(_entity : Entity): Transistioned.emit(get_parent().current_state, \"Death\"), 1)
+
+func enter():
+	sprite.play(\"death\", animation_speed)
+	state_owner.is_flying = false
+	state_owner.entity_hurtbox.is_hurtbox_disabled = true
+	entity_hitbox.is_hitbox_disabled  = true
+	await sprite.animation_finished
+	state_owner.queue_free()
+
+func physics_update(_delta):
+	parent.velocity = Vector2.ZERO
+"
+
+[sub_resource type="GDScript" id="GDScript_ehvip"]
+script/source = "extends State
+@export var charge_speed := 1.5
+@onready var current_time := 0.0
+
+func physics_update(_delta):
+	current_time += _delta
+	if current_time >= charge_speed:
+		Transistioned.emit(self, \"Bite\")
+
+func exit():
+	current_time = 0
+"
+
+[sub_resource type="GDScript" id="GDScript_mgxmf"]
+script/source = "extends State
+@onready var player_position = Vector2.ZERO
+@onready var movement_direction = Vector2.ZERO
+@export var bite_distance := 575.0
+@export var bite_duration := 1.0
+@onready var current_time := 0.0
+@onready var state_owner: Enemy = $\"../..\"
+
+func enter():
+	player_position = global.player.global_position
+	state_owner.ai_navigation.avoidance_enabled = false
+	movement_direction = state_owner.global_position.direction_to(player_position).normalized() * bite_distance
+
+func physics_update(_delta):
+	state_owner.velocity = state_owner.velocity.lerp(movement_direction, 2.6 * _delta)
+	current_time += _delta
+	if current_time >= bite_duration:
+		current_time = 0.0
+		Transistioned.emit(self, \"BiteRecovery\")
+
+func exit():
+	state_owner.ai_navigation.avoidance_enabled = true
+"
+
+[sub_resource type="GDScript" id="GDScript_hygbs"]
+script/source = "extends State
+@onready var current_time = 0.0
+@export var state_duration := 1.5
+
+func physics_update(_delta):
+	current_time += _delta
+	if current_time >= state_duration:
+		current_time = 0.0
+		Transistioned.emit(self, \"Running\")
+"
+
+[sub_resource type="GDScript" id="GDScript_f1ahw"]
+script/source = "extends State
+@export var charge_speed := 1.5
+@onready var current_time := 0.0
+
+func physics_update(_delta):
+	current_time += _delta
+	if current_time >= charge_speed:
+		Transistioned.emit(self, \"Shoot\")
+
+func exit():
+	current_time = 0
+"
+
+[sub_resource type="GDScript" id="GDScript_8x32q"]
+script/source = "extends State
+var player_position = Vector2.ZERO
+@onready var state_owner: Enemy = $\"../..\"
+
+
+func enter():
+	player_position = global.player.global_position
+	shoot()
+
+func shoot():
+	var _projectile = state_owner.PROJECTILE_PATH as PackedScene
+	var projectile = _projectile.instantiate()
+	projectile.global_position = state_owner.global_position
+	projectile.direction = state_owner.global_position.direction_to(player_position).normalized()
+	global.add_child(projectile)
+	await get_tree().physics_frame
+	Transistioned.emit(self, \"Chasing\")
+"
+
 [node name="Enemy" type="CharacterBody2D" unique_id=358907931 node_paths=PackedStringArray("ai_navigation", "entity_hurtbox")]
 material = SubResource("ShaderMaterial_ehvip")
 collision_layer = 0
@@ -1249,3 +1513,61 @@ debug_color = Color(1, 0, 0, 0.1)
 [node name="Bite" type="AudioStreamPlayer" parent="SFX" unique_id=1974158543]
 
 [node name="Charge" type="AudioStreamPlayer" parent="SFX" unique_id=572993905]
+
+[node name="StateMachine" parent="." unique_id=432647556 node_paths=PackedStringArray("intial_state") instance=ExtResource("2_lgqps")]
+intial_state = NodePath("Spawning")
+
+[node name="Spawning" type="Node" parent="StateMachine" unique_id=835941974]
+script = SubResource("GDScript_rrcrv")
+spawn_speed = 1.7
+
+[node name="Chasing" type="Node" parent="StateMachine" unique_id=1744086721 node_paths=PackedStringArray("parent")]
+script = SubResource("GDScript_5wiu6")
+chasing_speed = 45.0
+parent = NodePath("../..")
+
+[node name="Running" type="Node" parent="StateMachine" unique_id=1210780258 node_paths=PackedStringArray("parent")]
+script = SubResource("GDScript_dtdju")
+chasing_speed = 90.0
+tickrate = 0.2
+parent = NodePath("../..")
+
+[node name="Hit" type="Node" parent="StateMachine" unique_id=1189951457 node_paths=PackedStringArray("parent")]
+script = SubResource("GDScript_rnofh")
+animation_speed = 1.5
+parent = NodePath("../..")
+
+[node name="Death" type="Node" parent="StateMachine" unique_id=982700977 node_paths=PackedStringArray("parent")]
+script = SubResource("GDScript_2nrcc")
+animation_speed = 1.2
+parent = NodePath("../..")
+
+[node name="ChargingBite" type="Node" parent="StateMachine" unique_id=1305688126 node_paths=PackedStringArray("parent")]
+script = SubResource("GDScript_ehvip")
+charge_speed = 1.2
+parent = NodePath("../..")
+metadata/_custom_type_script = "uid://dmgbhcexe6fw"
+
+[node name="Bite" type="Node" parent="StateMachine" unique_id=228159093 node_paths=PackedStringArray("parent")]
+script = SubResource("GDScript_mgxmf")
+bite_distance = 870.0
+bite_duration = 0.4
+parent = NodePath("../..")
+metadata/_custom_type_script = "uid://dmgbhcexe6fw"
+
+[node name="BiteRecovery" type="Node" parent="StateMachine" unique_id=1338610806 node_paths=PackedStringArray("parent")]
+script = SubResource("GDScript_hygbs")
+state_duration = 0.5
+parent = NodePath("../..")
+metadata/_custom_type_script = "uid://dmgbhcexe6fw"
+
+[node name="ChargingShot" type="Node" parent="StateMachine" unique_id=52408098 node_paths=PackedStringArray("parent")]
+script = SubResource("GDScript_f1ahw")
+charge_speed = 0.5
+parent = NodePath("../..")
+metadata/_custom_type_script = "uid://dmgbhcexe6fw"
+
+[node name="Shoot" type="Node" parent="StateMachine" unique_id=126711243 node_paths=PackedStringArray("parent")]
+script = SubResource("GDScript_8x32q")
+parent = NodePath("../..")
+metadata/_custom_type_script = "uid://dmgbhcexe6fw"

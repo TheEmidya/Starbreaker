@@ -1,6 +1,7 @@
 res://assets/scenes/entity/enemy/skeleshot/
-res://assets/scenes/entity/enemy/base/
+res://Game Folder/game_assets/Enemies/Tres-2B/Skeleshot/Sprites/
 res://assets/scripts/classes/
+res://assets/scenes/entity/enemy/base/
 res://assets/scenes/entity/player/weapon_scenes/spray/
 res://Game Folder/game_assets/Player/Weapons/firing_modes/Railcannon/Sprites/
 res://assets/sprites/player/misc/
@@ -19,4 +20,3 @@ res://Game Folder/game_assets/Player/Passive/Man Passive/Sprites/
 res://Game Folder/game_assets/Player/Passive/Man Passive/
 res://Game Folder/game_assets/Player/Breaker/LZ-R/
 res://Game Folder/game_assets/Player/Breaker/Starman/
-res://Game Folder/game_assets/Player/Breaker/

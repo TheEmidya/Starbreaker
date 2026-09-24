@@ -1,19 +1,14 @@
-[gd_scene format=3 uid="uid://c0qsib2m70nmv"]
+extends Node
+class_name StateMachineClass
 
-[sub_resource type="GDScript" id="GDScript_jioox"]
-resource_name = "statemachineparent"
-script/source = "extends Node
+@export var intial_state : StateClass
 
-@export var parent : Node2D
-
-@export var intial_state : State
-
-var current_state : State
+var current_state : StateClass
 var states : Dictionary = {}
 
 func _ready():
 	for child in get_children():
-		if child is State:
+		if child is StateClass:
 			states[child.name.to_lower()] = child
 			child.Transistioned.connect(on_child_transistion)
 	if intial_state:
@@ -43,7 +38,3 @@ func on_child_transistion(state, new_state_name):
 	new_state.enter()
 	
 	current_state = new_state
-"
-
-[node name="StateMachine" type="Node" unique_id=138434684]
-script = SubResource("GDScript_jioox")

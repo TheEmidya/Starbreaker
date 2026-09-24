@@ -8,6 +8,10 @@ class_name EnemyEntityClass
 func _ready() -> void:
 	entity_health_class.knockback_applied.connect(entity_movement_class.apply_knockback, 1)
 	entity_health_class.health_depleted.connect(death, 0)
+	entity_health_class.health_changed.connect(hit, 1)
 
 func death():
 	queue_free()
+
+func hit(_arg):
+	pass

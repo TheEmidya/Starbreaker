@@ -80,6 +80,7 @@ color_ramp = SubResource("Gradient_1uw78")
 radius = 1.0
 
 [node name="Starbreaker" type="CharacterBody2D" unique_id=105214128]
+collision_layer = 0
 motion_mode = 1
 script = ExtResource("1_ex8if")
 entity_multipliers = SubResource("Resource_1q4qq")

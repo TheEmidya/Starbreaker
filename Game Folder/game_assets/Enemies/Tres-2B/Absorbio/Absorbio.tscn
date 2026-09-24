@@ -1,10 +1,11 @@
 [gd_scene format=3 uid="uid://c4it8uhwa4evo"]
 
 [ext_resource type="Script" uid="uid://bql2an547gxi1" path="res://Game Folder/game_components/entity_components/Health/health_component.gd" id="1_gcoxo"]
-[ext_resource type="PackedScene" uid="uid://c0qsib2m70nmv" path="res://Game Folder/game_components/entity_components/State Machine/stagemachine_parent.tscn" id="1_ne3wu"]
+[ext_resource type="PackedScene" uid="uid://c0qsib2m70nmv" path="res://assets/scenes/misc/state machine/stagemachine.tscn" id="1_ne3wu"]
 [ext_resource type="Script" uid="uid://chx8xroi3hih8" path="res://Game Folder/game_components/entity_components/Hurtbox/hurtbox.gd" id="2_q2che"]
-[ext_resource type="Script" uid="uid://dmgbhcexe6fw" path="res://Game Folder/game_components/entity_components/State Machine/state_base.gd" id="2_rq7qx"]
+[ext_resource type="Script" uid="uid://dmgbhcexe6fw" path="res://assets/scripts/classes/StateClass.gd" id="2_rq7qx"]
 [ext_resource type="Script" uid="uid://ucfty02weqo2" path="res://Game Folder/game_components/entity_components/Hitbox/hitbox.gd" id="3_l0epk"]
+
 
 [sub_resource type="GDScript" id="GDScript_q3hpd"]
 script/source = "extends Enemy

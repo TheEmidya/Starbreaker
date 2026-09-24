@@ -26,7 +26,8 @@ func apply_knockback(hitbox_area : HitboxClass):
 	last_knockback_amount = hitbox_area.hitbox_data.knockback_amount
 
 func knockback_tick(delta : float):
-	if last_knockback_amount < 0:
+	if last_knockback_amount <= 0:
+		
 		return
 	
 	last_knockback_amount -= 100 * delta

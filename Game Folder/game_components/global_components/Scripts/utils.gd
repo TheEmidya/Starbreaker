@@ -10,6 +10,17 @@ func load_stage(id : int):
 			pass
 
 
+func get_random_position() -> Vector2:
+	var random_position = Vector2.ZERO
+	
+	var screen_size = get_viewport().get_visible_rect().size
+	
+	var random_x = randf_range(0.0, screen_size.x)
+	var random_y = randf_range(0.0, screen_size.y)
+	
+	random_position = Vector2(random_x, random_y)
+	
+	return random_position
 
 
 

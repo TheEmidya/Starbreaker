@@ -3,13 +3,14 @@
 [ext_resource type="Script" uid="uid://bql2an547gxi1" path="res://Game Folder/game_components/entity_components/Health/health_component.gd" id="1_b0e1c"]
 [ext_resource type="Script" uid="uid://chx8xroi3hih8" path="res://Game Folder/game_components/entity_components/Hurtbox/hurtbox.gd" id="1_ey2q7"]
 [ext_resource type="Texture2D" uid="uid://bgspc6d22nb3e" path="res://Game Folder/game_assets/Stages/01 - Tres-2B/Boss/Timothy/Sprites/ph_sprite.png" id="1_t8ueu"]
-[ext_resource type="PackedScene" uid="uid://c0qsib2m70nmv" path="res://Game Folder/game_components/entity_components/State Machine/stagemachine_parent.tscn" id="4_8jqi3"]
+[ext_resource type="PackedScene" uid="uid://c0qsib2m70nmv" path="res://assets/scenes/misc/state machine/stagemachine.tscn" id="4_8jqi3"]
 [ext_resource type="Script" uid="uid://ucfty02weqo2" path="res://Game Folder/game_components/entity_components/Hitbox/hitbox.gd" id="4_y34cm"]
 [ext_resource type="Texture2D" uid="uid://bec7dyabqg5qy" path="res://Game Folder/game_assets/Stages/01 - Tres-2B/Boss/Timothy/Sprites/mono_fingergun.png" id="6_f4y6k"]
 [ext_resource type="Texture2D" uid="uid://b2rr1cp8pqyop" path="res://Game Folder/game_assets/Stages/01 - Tres-2B/Boss/Timothy/Sprites/boom.png" id="6_mugeq"]
 [ext_resource type="AudioStream" uid="uid://3rku5qgtnjbx" path="res://Game Folder/game_assets/Stages/01 - Tres-2B/Boss/Timothy/Music/boomsfx.mp3" id="7_50xss"]
 [ext_resource type="AudioStream" uid="uid://8c11pb2aymuv" path="res://Game Folder/game_assets/Stages/01 - Tres-2B/Boss/Timothy/Music/starbreaker_boss.wav" id="7_y34cm"]
 [ext_resource type="AudioStream" uid="uid://0kio0wlrhq54" path="res://Game Folder/game_assets/Stages/01 - Tres-2B/Boss/Timothy/Music/mus_badnote1.wav" id="11_d6gxk"]
+
 
 [sub_resource type="GDScript" id="GDScript_jm1ts"]
 script/source = "extends Boss

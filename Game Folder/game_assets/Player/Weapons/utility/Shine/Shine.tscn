@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://dqvkw1ec1myhv"]
 
-[ext_resource type="PackedScene" uid="uid://c0qsib2m70nmv" path="res://Game Folder/game_components/entity_components/State Machine/stagemachine_parent.tscn" id="1_dsjbk"]
+[ext_resource type="PackedScene" uid="uid://c0qsib2m70nmv" path="res://assets/scenes/misc/state machine/stagemachine.tscn" id="1_dsjbk"]
+
 
 [sub_resource type="GDScript" id="GDScript_k1ibn"]
 script/source = "extends Weapon

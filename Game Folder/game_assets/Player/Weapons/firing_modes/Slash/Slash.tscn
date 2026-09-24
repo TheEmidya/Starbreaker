@@ -1,7 +1,8 @@
 [gd_scene format=3 uid="uid://d2sv0rtup6yxf"]
 
-[ext_resource type="PackedScene" uid="uid://c0qsib2m70nmv" path="res://Game Folder/game_components/entity_components/State Machine/stagemachine_parent.tscn" id="1_0dh1d"]
+[ext_resource type="PackedScene" uid="uid://c0qsib2m70nmv" path="res://assets/scenes/misc/state machine/stagemachine.tscn" id="1_0dh1d"]
 [ext_resource type="Script" uid="uid://ucfty02weqo2" path="res://Game Folder/game_components/entity_components/Hitbox/hitbox.gd" id="1_ysawc"]
+
 
 [sub_resource type="GDScript" id="GDScript_u1470"]
 script/source = "extends Weapon

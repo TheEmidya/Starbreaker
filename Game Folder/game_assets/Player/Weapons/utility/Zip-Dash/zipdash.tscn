@@ -1,8 +1,9 @@
 [gd_scene format=3 uid="uid://by5k7qr0hhh78"]
 
 [ext_resource type="Script" uid="uid://ucfty02weqo2" path="res://Game Folder/game_components/entity_components/Hitbox/hitbox.gd" id="1_7yi2p"]
-[ext_resource type="PackedScene" uid="uid://c0qsib2m70nmv" path="res://Game Folder/game_components/entity_components/State Machine/stagemachine_parent.tscn" id="2_fdxl6"]
+[ext_resource type="PackedScene" uid="uid://c0qsib2m70nmv" path="res://assets/scenes/misc/state machine/stagemachine.tscn" id="2_fdxl6"]
 [ext_resource type="AudioStream" uid="uid://cm8qj5rk6jeit" path="res://Game Folder/game_assets/Player/SFX/Hits/refunded.wav" id="3_fdxl6"]
+
 
 [sub_resource type="GDScript" id="GDScript_k1en3"]
 script/source = "extends Weapon

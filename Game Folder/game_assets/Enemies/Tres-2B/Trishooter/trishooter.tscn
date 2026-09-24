@@ -5,7 +5,6 @@
 [ext_resource type="Texture2D" uid="uid://ibjey310ja1h" path="res://Game Folder/game_assets/Enemies/Tres-2B/Trishooter/Sprites/trishooter_hit_45x45.png" id="2_7mlk3"]
 [ext_resource type="Script" uid="uid://chx8xroi3hih8" path="res://Game Folder/game_components/entity_components/Hurtbox/hurtbox.gd" id="2_igsfb"]
 [ext_resource type="Script" uid="uid://bql2an547gxi1" path="res://Game Folder/game_components/entity_components/Health/health_component.gd" id="3_hgvv4"]
-[ext_resource type="PackedScene" uid="uid://c0qsib2m70nmv" path="res://Game Folder/game_components/entity_components/State Machine/stagemachine_parent.tscn" id="3_mtath"]
 [ext_resource type="Texture2D" uid="uid://cj28c6xg6lr1k" path="res://Game Folder/game_assets/Enemies/Tres-2B/Trishooter/Trishooter_Spawning_62x40.png" id="4_cjcrx"]
 [ext_resource type="PackedScene" uid="uid://vf8atn3god1g" path="res://Game Folder/game_components/bullet_pattern_gen/bpm.tscn" id="5_kbe1e"]
 [ext_resource type="PackedScene" uid="uid://cpyhh3wvmfubr" path="res://Game Folder/game_assets/Enemies/Tres-2B/Trishooter/bullet_stuff/bullet_trishooter.tscn" id="6_xr2sy"]
@@ -419,52 +418,6 @@ animations = [{
 "speed": 60.0
 }]
 
-[sub_resource type="GDScript" id="GDScript_a3ye7"]
-script/source = "extends State
-
-func enter():
-	Transistioned.emit(self, \"move\")
-"
-
-[sub_resource type="GDScript" id="GDScript_cnuky"]
-script/source = "extends State
-@export var speed = 3075
-@onready var pathfinding: NavigationAgent2D = $\"../../Pathfinding\"
-
-
-func pathfinding_velocity_computed(safe_velocity: Vector2) -> void:
-	if get_parent().current_state == self:
-		parent.velocity = safe_velocity
-
-func physics_update(_delta):
-	make_path()
-	var dir = parent.to_local(pathfinding.get_next_path_position()).normalized()
-	var intended_velocity = dir * speed * _delta
-	pathfinding.set_velocity(intended_velocity)
-	parent.move_and_slide()
-
-func make_path():
-	if global.player:
-		if pathfinding.target_reached and parent.global_position.distance_to(global.player.global_position) >= 80:
-			pathfinding.target_position = global.player.global_position
-"
-
-[sub_resource type="GDScript" id="GDScript_10drs"]
-script/source = "extends State
-
-func enter():
-	Transistioned.emit(self, \"move\")
-"
-
-[sub_resource type="GDScript" id="GDScript_fsgqf"]
-script/source = "extends State
-
-
-func enter():
-	$\"../../PatternGenerator\".firerate_timer.stop()
-	parent.queue_free()
-"
-
 [node name="Trishooter" type="CharacterBody2D" unique_id=364070625 groups=["enemy"]]
 collision_layer = 0
 motion_mode = 1
@@ -507,27 +460,3 @@ path_max_distance = 125.0
 simplify_path = true
 avoidance_enabled = true
 radius = 15.0
-
-[node name="StateMachine" parent="." unique_id=1930307519 node_paths=PackedStringArray("parent", "intial_state") instance=ExtResource("3_mtath")]
-parent = NodePath("..")
-intial_state = NodePath("spawn")
-
-[node name="spawn" type="Node" parent="StateMachine" unique_id=1985760325 node_paths=PackedStringArray("parent")]
-script = SubResource("GDScript_a3ye7")
-parent = NodePath("../..")
-
-[node name="move" type="Node" parent="StateMachine" unique_id=1458129647 node_paths=PackedStringArray("parent")]
-script = SubResource("GDScript_cnuky")
-speed = 4075
-parent = NodePath("../..")
-
-[node name="hit" type="Node" parent="StateMachine" unique_id=992005283 node_paths=PackedStringArray("parent")]
-script = SubResource("GDScript_10drs")
-parent = NodePath("../..")
-
-[node name="death" type="Node" parent="StateMachine" unique_id=855230938 node_paths=PackedStringArray("parent")]
-script = SubResource("GDScript_fsgqf")
-parent = NodePath("../..")
-
-[connection signal="target_reached" from="Pathfinding" to="StateMachine/move" method="_on_pathfinding_target_reached"]
-[connection signal="velocity_computed" from="Pathfinding" to="StateMachine/move" method="pathfinding_velocity_computed"]

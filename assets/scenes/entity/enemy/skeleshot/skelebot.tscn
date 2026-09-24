@@ -1,26 +1,168 @@
 [gd_scene format=3 uid="uid://cce4jvuvkkjwr"]
 
 [ext_resource type="PackedScene" uid="uid://dyqux7x00kasq" path="res://assets/scenes/entity/enemy/base/enemybase.tscn" id="1_x88fq"]
+[ext_resource type="Texture2D" uid="uid://cqexw4iganr5g" path="res://Game Folder/game_assets/Enemies/Tres-2B/Skeleshot/Sprites/default.png" id="2_42vi5"]
+[ext_resource type="Script" uid="uid://juh3p6opw04v" path="res://assets/scripts/classes/StateMachineClass.gd" id="2_cu4nj"]
+[ext_resource type="Script" uid="uid://dmgbhcexe6fw" path="res://assets/scripts/classes/StateClass.gd" id="3_cu4nj"]
 
 [sub_resource type="GDScript" id="GDScript_tl0nl"]
 script/source = "extends EnemyEntityClass
 "
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_kvsis"]
+atlas = ExtResource("2_42vi5")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_xu8t1"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kvsis")
+}],
+"loop": 1,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_yqfy3"]
+radius = 4.1231055
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_x88fq"]
+size = Vector2(16, 16)
+
+[sub_resource type="GDScript" id="GDScript_wsii1"]
+script/source = "extends StateClass
+
+func enter():
+	await get_tree().create_timer(0.75).timeout
+	Transistioned.emit(self, \"MoveTowardPlayer\")
+"
+
+[sub_resource type="GDScript" id="GDScript_cu4nj"]
+script/source = "extends StateClass
+@onready var ai_navigation: NavigationAgent2D = %AI_Navigation
+@onready var entity: EnemyEntityClass = $\"../..\"
+
+@export var distance_before_switching_task := 30.0
+
+func physics_update(_delta):
+	ai_navigation.target_position = global.player.global_position
+	
+	if entity.global_position.distance_to(ai_navigation.target_position) > distance_before_switching_task:
+		Transistioned.emit(self, \"MoveToRandomPoint\")
+	
+	if ai_navigation.is_navigation_finished():
+		return
+	
+	var next_point = ai_navigation.get_next_path_position()
+	var direction = (next_point - entity.global_position).normalized()
+	var desired_velocity = entity.velocity.move_toward(direction * entity.entity_movement_class.entity_movement_speed, entity.entity_movement_class.entity_acceleration)
+	
+	ai_navigation.set_velocity(desired_velocity)
+
+func _on_ai_navigation_velocity_computed(safe_velocity: Vector2) -> void:
+	entity.velocity = safe_velocity
+"
+
+[sub_resource type="GDScript" id="GDScript_42vi5"]
+script/source = "extends StateClass
+
+@onready var ai_navigation: NavigationAgent2D = %AI_Navigation
+@onready var entity: EnemyEntityClass = $\"../..\"
+
+func enter():
+	ai_navigation.target_position = utility.get_random_position()
+
+func physics_update(_delta):
+	if ai_navigation.is_navigation_finished():
+		Transistioned.emit(self, \"FireShot\")
+	
+	var next_point = ai_navigation.get_next_path_position()
+	var direction = (next_point - entity.global_position).normalized()
+	var desired_velocity = entity.velocity.move_toward(direction * entity.entity_movement_class.entity_movement_speed, entity.entity_movement_class.entity_acceleration)
+	
+	ai_navigation.set_velocity(desired_velocity)
+
+func _on_ai_navigation_velocity_computed(safe_velocity: Vector2) -> void:
+	entity.velocity = safe_velocity
+"
+
+[sub_resource type="GDScript" id="GDScript_kvsis"]
+script/source = "extends StateClass
+var skelebot_projectile := preload(\"uid://naow6olch2jr\")
+@onready var entity: EnemyEntityClass = $\"../..\"
+
+func enter():
+	await get_tree().create_timer(1.0).timeout
+	var projectile = skelebot_projectile.instantiate() as ProjectileClass
+	projectile.global_position = entity.global_position
+	global.add_child(projectile)
+	await get_tree().create_timer(0.65).timeout
+	Transistioned.emit(self, \"MoveTowardPlayer\")
+"
 
 [node name="Skelebot" unique_id=2010947124 instance=ExtResource("1_x88fq")]
+collision_layer = 0
 script = SubResource("GDScript_tl0nl")
 
-[node name="EntityMovementClass" parent="." index="0" unique_id=775630230]
-unique_name_in_owner = true
+[node name="Sprite" type="AnimatedSprite2D" parent="." index="0" unique_id=1343073050]
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_xu8t1")
+autoplay = "default"
 
-[node name="EntityHealthClass" parent="." index="1" unique_id=1922871730]
+[node name="Collision" type="CollisionShape2D" parent="." index="1" unique_id=1833679080]
+shape = SubResource("CircleShape2D_yqfy3")
+
+[node name="EntityMovementClass" parent="." index="2" unique_id=775630230]
+unique_name_in_owner = true
+entity_movement_speed = 75.0
+entity_acceleration = 8.0
+
+[node name="EntityHealthClass" parent="." index="3" unique_id=1922871730]
 unique_name_in_owner = true
 entity_max_health = 200.0
 
-[node name="HurtboxClass" parent="." index="2" unique_id=405271929]
+[node name="HurtboxClass" parent="." index="4" unique_id=405271929]
 unique_name_in_owner = true
 
 [node name="Collision" parent="HurtboxClass" index="0" unique_id=1760161592]
 shape = SubResource("RectangleShape2D_x88fq")
 debug_color = Color(0.724514, 0, 0.26808983, 0.41960785)
+
+[node name="AI_Navigation" type="NavigationAgent2D" parent="." index="5" unique_id=496381313]
+unique_name_in_owner = true
+avoidance_enabled = true
+debug_enabled = true
+
+[node name="StateMachineClass" type="Node" parent="." index="6" unique_id=1417261752 node_paths=PackedStringArray("intial_state")]
+script = ExtResource("2_cu4nj")
+intial_state = NodePath("SpawnIn")
+metadata/_custom_type_script = "uid://juh3p6opw04v"
+
+[node name="SpawnIn" type="Node" parent="StateMachineClass" index="0" unique_id=878330558]
+script = SubResource("GDScript_wsii1")
+metadata/_custom_type_script = "uid://dmgbhcexe6fw"
+
+[node name="MoveTowardPlayer" type="Node" parent="StateMachineClass" index="1" unique_id=1702393494]
+script = SubResource("GDScript_cu4nj")
+distance_before_switching_task = 175.0
+metadata/_custom_type_script = "uid://dmgbhcexe6fw"
+
+[node name="MoveToRandomPoint" type="Node" parent="StateMachineClass" index="2" unique_id=957314379]
+script = SubResource("GDScript_42vi5")
+metadata/_custom_type_script = "uid://dmgbhcexe6fw"
+
+[node name="FireShot" type="Node" parent="StateMachineClass" index="3" unique_id=2006724016]
+script = SubResource("GDScript_kvsis")
+metadata/_custom_type_script = "uid://dmgbhcexe6fw"
+
+[node name="Hit" type="Node" parent="StateMachineClass" index="4" unique_id=1697763012]
+script = ExtResource("3_cu4nj")
+metadata/_custom_type_script = "uid://dmgbhcexe6fw"
+
+[node name="Death" type="Node" parent="StateMachineClass" index="5" unique_id=1137002506]
+script = ExtResource("3_cu4nj")
+metadata/_custom_type_script = "uid://dmgbhcexe6fw"
+
+[connection signal="velocity_computed" from="AI_Navigation" to="StateMachineClass/MoveTowardPlayer" method="_on_ai_navigation_velocity_computed"]
+[connection signal="velocity_computed" from="AI_Navigation" to="StateMachineClass/MoveToRandomPoint" method="_on_ai_navigation_velocity_computed"]

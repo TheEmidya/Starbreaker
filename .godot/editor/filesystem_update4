@@ -1,0 +1,7 @@
+res://assets/scenes/entity/enemy/skeleshot/skelebot.tscn
+res://Game Folder/game_assets/Menus/Themes/MenuUI_Theme.tres
+res://Game Folder/game_assets/Enemies/0. NULL/HitEffects/Shader/hitflash.gdshader
+res://Game Folder/game_assets/Player/HUD/outlinecanvaslayer.gdshader
+res://assets/scenes/entity/enemy/skeleshot/skelebot_projectile.tscn
+res://Game Folder/game_components/global_components/Scripts/utils.gd
+res://assets/scripts/classes/EnemyEntityClass.gd

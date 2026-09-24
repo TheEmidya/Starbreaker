@@ -1,8 +1,5 @@
 extends Node
-class_name State
-
-@export var parent : Node
-@export var is_state_cancelable := true
+class_name StateClass
 
 signal Transistioned
 
