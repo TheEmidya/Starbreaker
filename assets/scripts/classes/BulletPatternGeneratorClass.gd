@@ -2,7 +2,6 @@ extends Node2D
 class_name BulletPatternGenerator
 signal shooting()
 signal recharging()
-signal before_shooting()
 
 @export var bulletpath = load("res://Game Folder/game_assets/Enemies/Tres-2B/Trishooter/bullet_stuff/bullet_trishooter.tscn")
 
@@ -13,7 +12,7 @@ signal before_shooting()
 @export var bullet_points := 4
 @export var bullet_spawn_radius := 5 
 @export var shoot_at_player := false
-@export var automatically_fire := true
+@export var automatically_fire := false
 
 func _ready():
 	rotatersetup()
@@ -54,7 +53,7 @@ func shoot():
 		bullet.global_position = s.global_position
 		bullet.rotation = s.global_rotation
 		s.queue_free()
-		global.EntityManager.add_child(bullet, true)
+		global.add_child(bullet, true)
 	emit_signal("shooting")
 	bulletsetup()
 

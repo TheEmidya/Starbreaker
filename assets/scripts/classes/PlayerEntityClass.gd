@@ -10,7 +10,6 @@ signal player_exit_focus()
 @onready var crosshair: AnimatedSprite2D = %Crosshair
 @onready var ui_charge_meter: TextureProgressBar = %ui_charge_meter
 
-
 @export var mouse_turn_weight = 12.0
 @export var crosshair_smoothing = 15.0
 @export var focus_mode_multiplier = 2.0

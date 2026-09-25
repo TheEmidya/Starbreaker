@@ -1,3 +1,5 @@
+EntityMovementClass
+BulletPatternGenerator
 StateClass
 CollisionShape2D
 ProjectileClass
@@ -9,6 +11,4 @@ NavigationAgent2D
 EnemyEntityClass
 HurtboxClass
 EntityHealthClass
-EntityMovementClass
 EntityClass
-Marker2D

@@ -1,7 +1,12 @@
-res://assets/scenes/entity/enemy/skeleshot/skelebot.tscn
-res://Game Folder/game_assets/Menus/Themes/MenuUI_Theme.tres
+res://assets/scenes/main/gamecore_setup.tscn
 res://Game Folder/game_assets/Enemies/0. NULL/HitEffects/Shader/hitflash.gdshader
 res://Game Folder/game_assets/Player/HUD/outlinecanvaslayer.gdshader
+res://Game Folder/game_components/bullet_pattern_gen/bullet_pattern_generator.tscn
+res://assets/scenes/misc/bullet pattern generator/bullet_pattern_generator.tscn
+res://Game Folder/game_assets/Menus/Themes/MenuUI_Theme.tres
+res://assets/scripts/classes/BulletPatternGeneratorClass.gd
+res://assets/scenes/entity/enemy/skeleshot/skelebot.tscn
 res://assets/scenes/entity/enemy/skeleshot/skelebot_projectile.tscn
-res://Game Folder/game_components/global_components/Scripts/utils.gd
-res://assets/scripts/classes/EnemyEntityClass.gd
+res://assets/scripts/classes/ProjectileClass.gd
+res://assets/scenes/entity/player/weapon_scenes/spray/spray_primary_bullet.tscn
+res://assets/scenes/entity/player/weapon_scenes/spray/spray_weapon_scene.tscn

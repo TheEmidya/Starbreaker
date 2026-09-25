@@ -8,6 +8,7 @@
 
 [sub_resource type="GDScript" id="GDScript_x03mc"]
 script/source = "extends ProjectileClass
+var projectile_direction := Vector2.UP
 
 func _ready() -> void:
 	$HitboxClass.hitbox_connection.connect(on_connection, 1)
@@ -43,11 +44,10 @@ metadata/_custom_type_script = "uid://pm27eri1ypa2"
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_1uw78"]
 
-[node name="PlayerSprayProjectile" type="CharacterBody2D" unique_id=1515086155 node_paths=PackedStringArray("entity_movement_class")]
+[node name="PlayerSprayProjectile" type="CharacterBody2D" unique_id=1515086155]
 collision_layer = 2
 collision_mask = 4
 script = SubResource("GDScript_x03mc")
-entity_movement_class = NodePath("EntityMovementClass")
 entity_multipliers = SubResource("Resource_1uw78")
 
 [node name="EntityMovementClass" type="Node" parent="." unique_id=508693437 node_paths=PackedStringArray("entity")]

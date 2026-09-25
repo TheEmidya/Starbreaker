@@ -1,0 +1,13 @@
+[gd_scene format=3 uid="uid://vf8atn3god1g"]
+
+[ext_resource type="Script" uid="uid://58ni1trppkhr" path="res://assets/scripts/classes/BulletPatternGeneratorClass.gd" id="1_2p36t"]
+[ext_resource type="PackedScene" uid="uid://naow6olch2jr" path="res://assets/scenes/entity/enemy/skeleshot/skelebot_projectile.tscn" id="2_hm8yw"]
+
+[node name="BulletPatternGenerator" type="Node2D" unique_id=1416315081]
+script = ExtResource("1_2p36t")
+bulletpath = ExtResource("2_hm8yw")
+firerate = 0.0
+rotation_speed = 0
+bullet_points = 1
+bullet_spawn_radius = 1
+shoot_at_player = true

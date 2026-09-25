@@ -1,6 +1,0 @@
-[gd_scene format=3 uid="uid://vf8atn3god1g"]
-
-[ext_resource type="Script" uid="uid://58ni1trppkhr" path="res://Game Folder/game_components/bullet_pattern_gen/bpm.gd" id="1_kq383"]
-
-[node name="Bpm" type="Node2D" unique_id=1416315081]
-script = ExtResource("1_kq383")

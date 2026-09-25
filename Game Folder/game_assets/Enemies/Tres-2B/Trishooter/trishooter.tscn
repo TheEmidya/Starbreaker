@@ -6,8 +6,9 @@
 [ext_resource type="Script" uid="uid://chx8xroi3hih8" path="res://Game Folder/game_components/entity_components/Hurtbox/hurtbox.gd" id="2_igsfb"]
 [ext_resource type="Script" uid="uid://bql2an547gxi1" path="res://Game Folder/game_components/entity_components/Health/health_component.gd" id="3_hgvv4"]
 [ext_resource type="Texture2D" uid="uid://cj28c6xg6lr1k" path="res://Game Folder/game_assets/Enemies/Tres-2B/Trishooter/Trishooter_Spawning_62x40.png" id="4_cjcrx"]
-[ext_resource type="PackedScene" uid="uid://vf8atn3god1g" path="res://Game Folder/game_components/bullet_pattern_gen/bpm.tscn" id="5_kbe1e"]
+[ext_resource type="PackedScene" uid="uid://vf8atn3god1g" path="res://assets/scenes/misc/bullet pattern generator/bullet_pattern_generator.tscn" id="5_kbe1e"]
 [ext_resource type="PackedScene" uid="uid://cpyhh3wvmfubr" path="res://Game Folder/game_assets/Enemies/Tres-2B/Trishooter/bullet_stuff/bullet_trishooter.tscn" id="6_xr2sy"]
+
 
 [sub_resource type="GDScript" id="GDScript_4qk1k"]
 script/source = "extends Enemy

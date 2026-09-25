@@ -3,7 +3,9 @@
 [ext_resource type="PackedScene" uid="uid://dyqux7x00kasq" path="res://assets/scenes/entity/enemy/base/enemybase.tscn" id="1_x88fq"]
 [ext_resource type="Texture2D" uid="uid://cqexw4iganr5g" path="res://Game Folder/game_assets/Enemies/Tres-2B/Skeleshot/Sprites/default.png" id="2_42vi5"]
 [ext_resource type="Script" uid="uid://juh3p6opw04v" path="res://assets/scripts/classes/StateMachineClass.gd" id="2_cu4nj"]
+[ext_resource type="Script" uid="uid://58ni1trppkhr" path="res://assets/scripts/classes/BulletPatternGeneratorClass.gd" id="2_kvsis"]
 [ext_resource type="Script" uid="uid://dmgbhcexe6fw" path="res://assets/scripts/classes/StateClass.gd" id="3_cu4nj"]
+[ext_resource type="PackedScene" uid="uid://naow6olch2jr" path="res://assets/scenes/entity/enemy/skeleshot/skelebot_projectile.tscn" id="3_xu8t1"]
 
 [sub_resource type="GDScript" id="GDScript_tl0nl"]
 script/source = "extends EnemyEntityClass
@@ -89,14 +91,12 @@ func _on_ai_navigation_velocity_computed(safe_velocity: Vector2) -> void:
 
 [sub_resource type="GDScript" id="GDScript_kvsis"]
 script/source = "extends StateClass
-var skelebot_projectile := preload(\"uid://naow6olch2jr\")
 @onready var entity: EnemyEntityClass = $\"../..\"
+@onready var bullet_pattern_generator: BulletPatternGenerator = $\"../../BulletPatternGenerator\"
 
 func enter():
 	await get_tree().create_timer(1.0).timeout
-	var projectile = skelebot_projectile.instantiate() as ProjectileClass
-	projectile.global_position = entity.global_position
-	global.add_child(projectile)
+	bullet_pattern_generator.shoot()
 	await get_tree().create_timer(0.65).timeout
 	Transistioned.emit(self, \"MoveTowardPlayer\")
 "
@@ -105,36 +105,46 @@ func enter():
 collision_layer = 0
 script = SubResource("GDScript_tl0nl")
 
-[node name="Sprite" type="AnimatedSprite2D" parent="." index="0" unique_id=1343073050]
+[node name="BulletPatternGenerator" type="Node2D" parent="." index="0" unique_id=511514014]
+script = ExtResource("2_kvsis")
+bulletpath = ExtResource("3_xu8t1")
+firerate = 0.0
+rotation_speed = 0
+bullet_points = 1
+bullet_spawn_radius = 1
+shoot_at_player = true
+metadata/_custom_type_script = "uid://58ni1trppkhr"
+
+[node name="Sprite" type="AnimatedSprite2D" parent="." index="1" unique_id=1343073050]
 scale = Vector2(2, 2)
 sprite_frames = SubResource("SpriteFrames_xu8t1")
 autoplay = "default"
 
-[node name="Collision" type="CollisionShape2D" parent="." index="1" unique_id=1833679080]
+[node name="Collision" type="CollisionShape2D" parent="." index="2" unique_id=1833679080]
 shape = SubResource("CircleShape2D_yqfy3")
 
-[node name="EntityMovementClass" parent="." index="2" unique_id=775630230]
+[node name="EntityMovementClass" parent="." index="3" unique_id=775630230]
 unique_name_in_owner = true
 entity_movement_speed = 75.0
 entity_acceleration = 8.0
 
-[node name="EntityHealthClass" parent="." index="3" unique_id=1922871730]
+[node name="EntityHealthClass" parent="." index="4" unique_id=1922871730]
 unique_name_in_owner = true
 entity_max_health = 200.0
 
-[node name="HurtboxClass" parent="." index="4" unique_id=405271929]
+[node name="HurtboxClass" parent="." index="5" unique_id=405271929]
 unique_name_in_owner = true
 
 [node name="Collision" parent="HurtboxClass" index="0" unique_id=1760161592]
 shape = SubResource("RectangleShape2D_x88fq")
 debug_color = Color(0.724514, 0, 0.26808983, 0.41960785)
 
-[node name="AI_Navigation" type="NavigationAgent2D" parent="." index="5" unique_id=496381313]
+[node name="AI_Navigation" type="NavigationAgent2D" parent="." index="6" unique_id=496381313]
 unique_name_in_owner = true
 avoidance_enabled = true
 debug_enabled = true
 
-[node name="StateMachineClass" type="Node" parent="." index="6" unique_id=1417261752 node_paths=PackedStringArray("intial_state")]
+[node name="StateMachineClass" type="Node" parent="." index="7" unique_id=1417261752 node_paths=PackedStringArray("intial_state")]
 script = ExtResource("2_cu4nj")
 intial_state = NodePath("SpawnIn")
 metadata/_custom_type_script = "uid://juh3p6opw04v"
